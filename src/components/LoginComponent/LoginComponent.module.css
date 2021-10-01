@@ -1,0 +1,21 @@
+.LoginSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 30vh;
+  color: #3f51b5;
+}
+.LoginFormControl {
+  width: 300px;
+}
+
+@media screen and (min-width: 720px) {
+  .LoginSection {
+    align-items: flex-start;
+    padding: 15vw;
+  }
+  .LoginTitle {
+    margin-left: 100px;
+  }
+}

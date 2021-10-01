@@ -1,0 +1,48 @@
+.AuthNavContainer {
+  display: flex;
+  align-items: center;
+}
+
+.listAuth {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 23px;
+}
+
+.link {
+  font-size: 16px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 12;
+  font-weight: 700;
+  color: #3f51b5;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration-line: underline;
+  background-color: inherit;
+}
+.activeLink {
+  color: #e84a5f;
+}
+
+.ItemAuth {
+  margin-right: 40px;
+}
+.box {
+  width: 15px;
+}
+.boxContainer {
+  margin-right: 20px;
+}
+@media screen and (min-width: 720px) {
+  .link {
+    font-size: 23px;
+  }
+  .box {
+    width: 30px;
+  }
+}

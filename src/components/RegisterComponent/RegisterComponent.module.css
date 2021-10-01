@@ -1,0 +1,21 @@
+.RegisterSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 23vh;
+  color: #3f51b5;
+}
+.RegisterFormControl {
+  width: 300px;
+}
+
+@media screen and (min-width: 720px) {
+  .RegisterSection {
+    align-items: flex-end;
+    padding-right: 15vw;
+  }
+  .RegisterTitle {
+    margin-right: 60px;
+  }
+}

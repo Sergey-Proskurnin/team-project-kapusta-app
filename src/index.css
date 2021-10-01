@@ -1,0 +1,74 @@
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Roboto';
+  letter-spacing: 0.02em;
+
+  /* background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.4)),
+    url('images/sunset-london-england.jpg') no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.NavLink {
+  font-size: 20px;
+  color: currentColor;
+}
+
+.NavLink--active {
+  color: palevioletred;
+}
+
+::-webkit-scrollbar {
+  /* 1 - scrollbar */
+  width: 4px;
+  height: 4px;
+  background-color: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  /* 5 - slider */
+  border-radius: 2px;
+  background-color: #d1d1d1;
+}
+
+/* @media screen and (min-width: 720px) {
+  html {
+    box-sizing: border-box;
+    width: 100vw;
+    overflow: hidden;
+  }
+  body {
+    background-color: rgb(245, 235, 204);
+  }
+} */

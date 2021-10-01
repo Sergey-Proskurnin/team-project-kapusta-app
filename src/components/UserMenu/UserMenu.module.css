@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  color: #e84a5f;
+}
+.avatar {
+  margin-right: 4;
+  width: 37px;
+}
+.name {
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+@media screen and (min-width: 720px) {
+  .name {
+    font-size: 23px;
+  }
+  .avatar {
+    width: 57px;
+  }
+}
