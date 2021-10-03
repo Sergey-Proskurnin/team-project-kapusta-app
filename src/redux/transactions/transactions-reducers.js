@@ -19,7 +19,6 @@ const monthlyBalancesYear = createReducer([], {
 });
 
 const totalBalance = createReducer(0, {
-  [actions.getTotalBalanceSuccess]: (_, { payload }) => payload,
   [actions.setTotalBalanceSuccess]: (_, { payload }) => payload,
 });
 

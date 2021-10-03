@@ -24,17 +24,6 @@ const calculateBalance = (transaction, actionType) => {
   }
 };
 
-const getBalance = () => async dispatch => {
-  dispatch(actions.getTotalBalanceRequest());
-
-  try {
-    const response = await fetch.getBalance();
-    dispatch(actions.getTotalBalanceSuccess(response.data));
-  } catch (error) {
-    dispatch(actions.getTotalBalanceError(error.message));
-  }
-};
-
 const setBalance = balance => async dispatch => {
   dispatch(actions.setTotalBalanceRequest);
   try {
@@ -84,7 +73,6 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {};
 const getYearlyTransactions = year => async dispatch => {};
 
 const transactionsOperations = {
-  getBalance,
   setBalance,
   addTransaction,
   deleteTransaction,
