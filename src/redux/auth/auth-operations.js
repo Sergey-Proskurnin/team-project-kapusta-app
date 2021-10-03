@@ -11,10 +11,9 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-  changeBalanceSuccess,
-  changeBalanceRequest,
-  changeBalanceError,
 } from './auth-actions';
+
+import {getTotalBalanceSuccess} from 'redux/transactions'
 
 import {
   token,
@@ -22,8 +21,7 @@ import {
   fetchLogin,
   fetchLogout,
   fetchCurrent,
-  fetchBalance,
-} from 'services/fetchApi';
+  } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
@@ -76,21 +74,12 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const response = await fetchCurrent();
     dispatch(getCurrentUserSuccess(response.data.user));
+    dispatch(getTotalBalanceSuccess(response.data.user.balance));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
     alert(`Server error: ${error.message}`);
   }
 };
 
-const balance = sum => async dispatch => {
-  dispatch(changeBalanceRequest());
-  try {
-    const response = await fetchBalance(sum);
-    dispatch(changeBalanceSuccess(response.data.user));
-  } catch (error) {
-    dispatch(changeBalanceError(error.message));
-    alert(`Server error: ${error.message}`);
-  }
-};
 
-export { register, logOut, logIn, getCurrentUser, balance };
+export { register, logOut, logIn, getCurrentUser, };

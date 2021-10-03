@@ -12,10 +12,6 @@ const logoutRequest = createAction('auth/logoutRequest');
 const logoutSuccess = createAction('auth/logoutSuccess');
 const logoutError = createAction('auth/logoutError');
 
-const changeBalanceRequest = createAction('auth/changeBalanceRequest');
-const changeBalanceSuccess = createAction('auth/changeBalanceSuccess');
-const changeBalanceError = createAction('auth/changeBalanceError');
-
 const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
@@ -33,7 +29,4 @@ export {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-  changeBalanceSuccess,
-  changeBalanceRequest,
-  changeBalanceError,
 };

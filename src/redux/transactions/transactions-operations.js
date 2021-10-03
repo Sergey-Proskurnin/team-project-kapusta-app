@@ -19,6 +19,8 @@ const calculateBalance = (transaction, actionType) => {
       return transaction.type === 'income'
         ? priorBalance + transaction.sum
         : priorBalance - transaction.sum;
+    default:
+      return;
   }
 };
 
