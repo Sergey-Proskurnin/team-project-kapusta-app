@@ -20,15 +20,30 @@ const fetchLogout = () => axios.post('/users/logout');
 
 const fetchCurrent = () => axios.get('/users/current');
 
-const fetchBalance = () => axios.putch('/users/current');
+const fetchBalance = () => axios.patch('/users/current');
 
-//---------------------------contacts-operation----------------------------------
 
-export {
-  token,
-  fetchSignUp,
-  fetchLogin,
-  fetchLogout,
-  fetchCurrent,
-  fetchBalance,
+//--------------------------transactions-operation--------------------------
+
+const addTransaction = (transaction, balance) => axios.post('/', transaction);
+const deleteTransaction = (transaction, balance) =>
+  axios.delete('/', transaction);
+const editTransaction = (transaction, balance) => axios.patch('/', transaction);
+const getTransactionsByDate = date => axios.get('/', date);
+const getTransactionsByPeriod = period => axios.get('/', period);
+const setBalance = balance => axios.patch('/', balance);
+const getBalance = axios.get('/');
+
+const fetch = {
+  addTransaction,
+  deleteTransaction,
+  editTransaction,
+  getTransactionsByDate,
+  getTransactionsByPeriod,
+  getBalance,
+  setBalance,
 };
+
+export { token, fetchSignUp, fetchLogin, fetchLogout, fetchCurrent, fetchBalance, fetch };
+
+
