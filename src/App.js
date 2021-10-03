@@ -3,13 +3,10 @@ import { Switch } from 'react-router-dom';
 import TestAuthComponent from 'components/TestAuthComponent/TestAuthComponent';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 const App = () => {
- 
-
   return (
     <div>
-      {/* <TestAuthComponent /> */}
+      <TestAuthComponent />
     </div>
   );
 };

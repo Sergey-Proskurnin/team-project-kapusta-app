@@ -2,6 +2,8 @@ const getIsAuthenticated = state => state.auth.isLogin;
 
 const getUserName = state => state.auth.user.name;
 
+const getBalanceUser = state => state.auth.user.balance;
+
 const getUserAvatar = state => state.auth.user.avatarURL;
 
 const getFetchigCurrentUser = state => state.auth.isFetchigCurrentUser;
@@ -14,4 +16,5 @@ export {
   getFetchigCurrentUser,
   getCurrentToken,
   getUserAvatar,
+  getBalanceUser,
 };

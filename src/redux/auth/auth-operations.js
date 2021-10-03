@@ -11,6 +11,9 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  changeBalanceSuccess,
+  changeBalanceRequest,
+  changeBalanceError,
 } from './auth-actions';
 
 import {
@@ -19,6 +22,7 @@ import {
   fetchLogin,
   fetchLogout,
   fetchCurrent,
+  fetchBalance,
 } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
@@ -78,4 +82,15 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export { register, logOut, logIn, getCurrentUser };
+const balance = sum => async dispatch => {
+  dispatch(changeBalanceRequest());
+  try {
+    const response = await fetchBalance(sum);
+    dispatch(changeBalanceSuccess(response.data.user));
+  } catch (error) {
+    dispatch(changeBalanceError(error.message));
+    alert(`Server error: ${error.message}`);
+  }
+};
+
+export { register, logOut, logIn, getCurrentUser, balance };

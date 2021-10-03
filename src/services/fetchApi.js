@@ -20,7 +20,7 @@ const fetchLogout = () => axios.post('/users/logout');
 
 const fetchCurrent = () => axios.get('/users/current');
 
-const fetchBalance = () => axios.putch('/users/current');
+const fetchBalance = sum => axios.patch('/users/current', sum);
 
 //---------------------------contacts-operation----------------------------------
 
