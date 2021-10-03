@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
-import Navigation from 'components/Navigation';
+// import Navigation from 'components/Navigation';
 import UserMenu from 'components/UserMenu';
 import AuthNav from 'components/AuthNav';
 import s from 'components/AppBar/AppBar.module.css';
@@ -20,7 +20,7 @@ const AppBar = () => {
       unmountOnExit
     >
       <header className={s.header}>
-        <Navigation />
+        {/* <Navigation /> */}
 
         {isAuthenticated ? <UserMenu /> : <AuthNav />}
       </header>
