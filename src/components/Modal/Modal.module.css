@@ -1,0 +1,75 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: #E5E5E5;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+width: 380px;
+height: 194px;
+background: #FFFFFF;
+box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+border-radius: 30px;
+
+}
+
+.closeBtn {
+    display: block;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.yes {
+    background-color: #FF751D;
+        margin-right: 15px;
+        padding: 12px 34px;
+        border-radius: 16px;
+        width: 125px;
+        height: 44px;
+        border: none;
+        font-family: Roboto;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: #FFFFFF;
+}
+
+.no {
+    background-color: transparent;
+        border: 2px solid #F5F6FB;
+        margin-right: 15px;
+        padding: 12px 34px;
+        border-radius: 16px;
+        width: 125px;
+        height: 44px;
+        font-family: Roboto;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        cursor: pointer;
+}
