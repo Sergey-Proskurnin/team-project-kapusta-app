@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from 'redux/auth';
+import { wallet } from 'redux/transactions';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -31,7 +32,7 @@ const persistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    
+    wallet,
   },
   middleware,
   devTools: true,
