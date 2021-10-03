@@ -38,9 +38,6 @@ const getMonthlyBalanceError = createAction('getMonthlyBalanceError');
 
 /*------------------Total Balance------------------*/
 
-const getTotalBalanceRequest = createAction('getTotalBalanceRequest');
-const getTotalBalanceSuccess = createAction('getTotalBalanceSuccess');
-const getTotalBalanceError = createAction('getTotalBalanceError');
 const setTotalBalanceRequest = createAction('setTotalBalanceRequest');
 const setTotalBalanceSuccess = createAction('setTotalBalanceSuccess');
 const setTotalBalanceError = createAction('setTotalBalanceError');
@@ -61,9 +58,6 @@ export {
   getMonthlyBalanceRequest,
   getMonthlyBalanceSuccess,
   getMonthlyBalanceError,
-  getTotalBalanceRequest,
-  getTotalBalanceSuccess,
-  getTotalBalanceError,
   setTotalBalanceRequest,
   setTotalBalanceSuccess,
   setTotalBalanceError,

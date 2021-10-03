@@ -13,7 +13,7 @@ import {
   getCurrentUserError,
 } from './auth-actions';
 
-import {getTotalBalanceSuccess} from 'redux/transactions'
+import {setTotalBalanceSuccess} from 'redux/transactions'
 
 import {
   token,
@@ -74,7 +74,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const response = await fetchCurrent();
     dispatch(getCurrentUserSuccess(response.data.user));
-    dispatch(getTotalBalanceSuccess(response.data.user.balance));
+    dispatch(setTotalBalanceSuccess(response.data.user.balance));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
     alert(`Server error: ${error.message}`);
