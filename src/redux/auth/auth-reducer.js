@@ -11,9 +11,6 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-  changeBalanceSuccess,
-  changeBalanceRequest,
-  changeBalanceError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null, balance: 0 };
@@ -23,7 +20,6 @@ const user = createReducer(initialUserState, {
   [loginSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
-  [changeBalanceSuccess]: (_, { payload }) => payload.balance,
 });
 
 const token = createReducer(null, {
@@ -38,13 +34,11 @@ const error = createReducer(null, {
   [loginError]: setError,
   [logoutError]: setError,
   [getCurrentUserError]: setError,
-  [changeBalanceError]: setError,
 });
 
 const isLogin = createReducer(false, {
   [registerSuccess]: () => false,
   [loginSuccess]: () => true,
-  [changeBalanceSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
   [registerError]: () => false,
   [loginError]: () => false,
@@ -56,9 +50,6 @@ const isFetchigCurrentUser = createReducer(false, {
   [getCurrentUserRequest]: () => true,
   [getCurrentUserSuccess]: () => false,
   [getCurrentUserError]: () => false,
-  [changeBalanceRequest]: () => true,
-  [changeBalanceSuccess]: () => false,
-  [changeBalanceError]: () => false,
 });
 
 const authReducer = combineReducers({

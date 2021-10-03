@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const App = () => {
   return (
     <div>
-      <TestAuthComponent />
+      {/* <TestAuthComponent /> */}
     </div>
   );
 };
