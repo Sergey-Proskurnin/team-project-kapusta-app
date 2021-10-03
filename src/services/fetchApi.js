@@ -20,10 +20,8 @@ const fetchLogout = () => axios.post('/users/logout');
 
 const fetchCurrent = () => axios.get('/users/current');
 
-const fetchBalance = () => axios.patch('/users/current');
 
-
-//--------------------------transactions-operation--------------------------
+const fetchBalance = sum => axios.patch('/users/current', sum);
 
 const addTransaction = (transaction, balance) => axios.post('/', transaction);
 const deleteTransaction = (transaction, balance) =>
@@ -45,5 +43,6 @@ const fetch = {
 };
 
 export { token, fetchSignUp, fetchLogin, fetchLogout, fetchCurrent, fetchBalance, fetch };
+
 
 
