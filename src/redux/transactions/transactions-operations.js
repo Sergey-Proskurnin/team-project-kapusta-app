@@ -2,34 +2,14 @@ import * as actions from './transactions-actions';
 import { fetch } from 'services/fetchApi';
 import { getTotalBalance, getTransactions } from './transactions-selectors';
 
-const calculateBalance = (transaction, actionType) => {
-  const initialBalance = getTotalBalance();
-  switch (actionType) {
-    case 'add':
-      return transaction.type === 'income'
-        ? initialBalance + transaction.sum
-        : initialBalance - transaction.sum;
-    case 'delete':
-      return transaction.type === 'income'
-        ? initialBalance - transaction.sum
-        : initialBalance + transaction.sum;
-    case 'edit':
-      const initialTransaction = getTransactions().find(transaction.id);
-      const priorBalance = initialBalance - initialTransaction;
-      return transaction.type === 'income'
-        ? priorBalance + transaction.sum
-        : priorBalance - transaction.sum;
-    default:
-      return;
-  }
-};
-
 const setBalance = balance => async dispatch => {
-  dispatch(actions.setTotalBalanceRequest);
+  dispatch(actions.setTotalBalanceRequest());
   try {
     const response = await fetch.setBalance(balance);
     dispatch(actions.setTotalBalanceSuccess(response.data));
-  } catch (error) {}
+  } catch (error) {
+    dispatch(actions.setTotalBalanceError(error.message));
+  }
 };
 
 const addTransaction = transaction => async dispatch => {
@@ -68,16 +48,91 @@ const editTransaction = transaction => async dispatch => {
   }
 };
 
-const getTransactionsMonthYear = (month, year) => async dispatch => {};
+const getTransactionsDay = date => async dispatch => {
+  dispatch(actions.getTransactionsRequest());
+  try {
+    const response = fetch.getTransactionsByDate(date);
+    dispatch(actions.getTransactionsSuccess((await response).data));
+  } catch (error) {
+    dispatch(actions.getTransactionsError(error.message));
+  }
+};
 
-const getYearlyTransactions = year => async dispatch => {};
+const getTransactionsMonthYear = (month, year) => async dispatch => {
+  dispatch(actions.getTransactionsMonthYearRequest());
+  try {
+    const response = await fetch.getTransactionsByPeriod({ month, year });
+    dispatch(actions.getTransactionsMonthYearSuccess(response.data));
+  } catch (error) {
+    dispatch(actions.getTransactionsMonthYearError(error.message));
+  }
+};
+
+const getMonthlyBalancesYear = year => async dispatch => {
+  dispatch(actions.getMonthlyBalanceRequest());
+  try {
+    const response = await fetch.getTransactionsByPeriod({ year });
+    const balances = calculateBalancesPerMonth(response.data);
+    dispatch(actions.getMonthlyBalanceSuccess(balances));
+  } catch (error) {
+    dispatch(actions.getMonthlyBalanceError(error.message));
+  }
+};
 
 const transactionsOperations = {
   setBalance,
   addTransaction,
   deleteTransaction,
   editTransaction,
-  getYearlyTransactions,
+  getTransactionsMonthYear,
+  getMonthlyBalancesYear,
+  getTransactionsDay,
 };
 
 export default transactionsOperations;
+
+//-------------helpers--------------------
+
+const calculateBalance = (transaction, actionType) => {
+  const initialBalance = getTotalBalance();
+  switch (actionType) {
+    case 'add':
+      return transaction.type === 'income'
+        ? initialBalance + transaction.sum
+        : initialBalance - transaction.sum;
+    case 'delete':
+      return transaction.type === 'income'
+        ? initialBalance - transaction.sum
+        : initialBalance + transaction.sum;
+    case 'edit':
+      const initialTransaction = getTransactions().find(transaction.id);
+      const priorBalance = initialBalance - initialTransaction;
+      return transaction.type === 'income'
+        ? priorBalance + transaction.sum
+        : priorBalance - transaction.sum;
+    default:
+      return;
+  }
+};
+
+const calculateBalancesPerMonth = transactions => {
+  const result = [];
+  transactions.map(transaction => {
+    const balanceByMonth = result.find(
+      item => item.month === transaction.month,
+    );
+    if (!balanceByMonth) {
+      return result.push({
+        month: transaction.month,
+        value:
+          transaction.type === 'income' ? +transaction.sum : -transaction.sum,
+      });
+    } else {
+      return transaction.type === 'income'
+        ? (balanceByMonth.value += transaction.sum)
+        : (balanceByMonth.value -= transaction.sum);
+    }
+  });
+
+  return result;
+};

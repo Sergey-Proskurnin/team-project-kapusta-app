@@ -22,7 +22,39 @@ const totalBalance = createReducer(0, {
   [actions.setTotalBalanceSuccess]: (_, { payload }) => payload,
 });
 
-const loader = createReducer(false, {});
+const loader = createReducer(false, {
+  [actions.getTransactionsRequest]: true,
+  [actions.getTransactionsSuccess]: false,
+  [actions.getTransactionsError]: false,
+  [actions.addTransactionRequest]: true,
+  [actions.addTransactionSuccess]: false,
+  [actions.addTransactionError]: false,
+  [actions.deleteTransactionRequest]: true,
+  [actions.deleteTransactionSuccess]: false,
+  [actions.deleteTransactionError]: false,
+  [actions.editTransactionRequest]: true,
+  [actions.editTransactionSucces]: false,
+  [actions.editTransactionError]: false,
+  [actions.getMonthlyBalanceRequest]: true,
+  [actions.getMonthlyBalanceSuccess]: false,
+  [actions.getMonthlyBalanceError]: false,
+  [actions.setTotalBalanceRequest]: true,
+  [actions.setTotalBalanceSuccess]: false,
+  [actions.setTotalBalanceError]: false,
+  [actions.getTransactionsMonthYearRequest]: true,
+  [actions.getTransactionsMonthYearSuccess]: false,
+  [actions.getTransactionsMonthYearError]: false,
+});
+
+const error = createReducer(null, {
+  [actions.getTransactionsError]: (_, { payload }) => payload,
+  [actions.addTransactionError]: (_, { payload }) => payload,
+  [actions.deleteTransactionError]: (_, { payload }) => payload,
+  [actions.editTransactionError]: (_, { payload }) => payload,
+  [actions.getMonthlyBalanceError]: (_, { payload }) => payload,
+  [actions.setTotalBalanceError]: (_, { payload }) => payload,
+  [actions.getTransactionsMonthYearError]: (_, { payload }) => payload,
+});
 
 const wallet = combineReducers({
   transactionsDay,
@@ -30,6 +62,7 @@ const wallet = combineReducers({
   monthlyBalancesYear,
   totalBalance,
   loader,
+  error,
 });
 
 export { wallet };
