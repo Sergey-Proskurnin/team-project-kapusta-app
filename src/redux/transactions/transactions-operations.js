@@ -111,13 +111,13 @@ const calculateBalancesPerMonth = transactions => {
       item => item.month === transaction.month,
     );
     if (!balanceByMonth) {
-      result.push({
+      return result.push({
         month: transaction.month,
         value:
           transaction.type === 'income' ? +transaction.sum : -transaction.sum,
       });
     } else {
-      transaction.type === 'income'
+      return transaction.type === 'income'
         ? (balanceByMonth.value += transaction.sum)
         : (balanceByMonth.value -= transaction.sum);
     }
