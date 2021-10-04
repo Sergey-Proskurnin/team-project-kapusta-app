@@ -48,6 +48,16 @@ const editTransaction = transaction => async dispatch => {
   }
 };
 
+const getTransactionsDay = date => async dispatch => {
+  dispatch(actions.getTransactionsRequest());
+  try {
+    const response = fetch.getTransactionsByDate(date);
+    dispatch(actions.getTransactionsSuccess((await response).data));
+  } catch (error) {
+    dispatch(actions.getTransactionsError(error.message));
+  }
+};
+
 const getTransactionsMonthYear = (month, year) => async dispatch => {
   dispatch(actions.getTransactionsMonthYearRequest());
   try {
@@ -76,6 +86,7 @@ const transactionsOperations = {
   editTransaction,
   getTransactionsMonthYear,
   getMonthlyBalancesYear,
+  getTransactionsDay,
 };
 
 export default transactionsOperations;
