@@ -7,6 +7,7 @@ import LoginView from 'views/LoginView';
 import RegisterView from 'views/RegisterView';
 import AppBar from 'components/AppBar';
 import OnLoader from 'components/OnLoader';
+import HomeView from 'views/HomeView';
 
 import {
   getCurrentUser,
@@ -35,7 +36,7 @@ function AppTest() {
       ) : (
         <Suspense fallback={<OnLoader />}>
           <Switch>
-            {/* <Route exact path={'/'} component={HomePage} /> */}
+            <Route exact path={'/'} component={HomeView} />
             <Route exact path={'/register'} component={RegisterView} />
             <Route path={'/login'} component={LoginView} />
             <Redirect to={'/login'} />
