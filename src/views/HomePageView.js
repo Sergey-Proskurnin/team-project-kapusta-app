@@ -6,7 +6,7 @@ import s from './HomePage.module.css';
 
 import { Button, TextField } from '@material-ui/core';
 
-const HomePage = () => {
+const HomePageView = () => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -63,14 +63,16 @@ const HomePage = () => {
               Или зайти с помощью e-mail и пароля, предварительно
               зарегистрировавшись:
             </span>
-            <form action="" autocomplete="on">
+            <form onSubmit={handleSubmit} action="" autoComplete="on">
               <label className={s.formLabel}>
                 <span className={s.labelText}>Электронная почта:</span>
                 <input
-                  className={s.formInput}
+                  onChange={onChange}
                   type="email"
                   name="email"
+                  value={email}
                   placeholder="your@email.com"
+                  className={s.formInput}
                 />
               </label>
               {/* <label className={s.formLabel}>
@@ -78,6 +80,10 @@ const HomePage = () => {
               <input type="password" name="password" placeholder="Пароль" />
             </label> */}
               <TextField
+                onInput={onChange}
+                type="password"
+                name="password"
+                value={password}
                 id="outlined-basic"
                 label="Пароль:"
                 placeholder="Пароль"
@@ -90,6 +96,7 @@ const HomePage = () => {
               />
               <div className={s.containerButton}>
                 <Button
+                  type="submit"
                   variant="contained"
                   style={{
                     width: 125,
@@ -128,4 +135,32 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePageView;
+
+//   return (
+//     <div>
+//       <h1>Please enter your login</h1>
+
+//       <form onSubmit={handleSubmit} autoComplete="off">
+//         <label>
+//           E-mail
+//           <input type="email" name="email" value={email} onChange={onChange} />
+//         </label>
+
+//         <label>
+//           Password
+//           <input
+//             type="password"
+//             name="password"
+//             value={password}
+//             onInput={onChange}
+//           />
+//         </label>
+
+//         <button type="submit">Login</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default HomeView;
