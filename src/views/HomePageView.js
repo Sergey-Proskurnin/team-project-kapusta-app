@@ -1,28 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../redux/auth/auth-operations';
+
 import s from './HomePage.module.css';
 
-import {Button, TextField} from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
-const HomePage = () => (
-  <>
-    <header>
-      <div className={s.logo}>
-        <img src="../img/svg/logo.svg" alt="Kapusta" width="90"
-height="31"/>
-      </div>
-    </header>
-    <div className={s.container}>
-      <div className={s.firstSection}>
-        <div className={s.text}>
-          <img className={s.imgText} src="../img/svg/Union.svg" alt="Kapusta"/>
-          <h1 className={s.fontText}>SMART FINANSE</h1>
+const HomePage = () => {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const clearInput = () => {
+    setEmail('');
+    setPassword('');
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(logIn({ email, password }));
+    clearInput();
+  };
+  return (
+    <>
+      <header>
+        <div className={s.logo}>
+          <img src="../img/svg/logo.svg" alt="Kapusta" width="90" height="31" />
         </div>
-      </div>
-      <div className={s.secondSection}>
-        <div className={s.formRegistr}>
+      </header>
+      <div className={s.container}>
+        <div className={s.firstSection}>
+          <div className={s.text}>
+            <img
+              className={s.imgText}
+              src="../img/svg/Union.svg"
+              alt="Kapusta"
+            />
+            <h1 className={s.fontText}>SMART FINANSE</h1>
+          </div>
+        </div>
+        <div className={s.secondSection}>
+          <div className={s.formRegistr}>
             <span className={s.promtText}>
               Вы можете авторизоваться с помощью Google Account:
-          </span>
+            </span>
             <button className={s.btnGoogle}>Google</button>
             <span className={s.promtText}>
               Или зайти с помощью e-mail и пароля, предварительно
@@ -31,56 +66,66 @@ height="31"/>
             <form action="" autocomplete="on">
               <label className={s.formLabel}>
                 <span className={s.labelText}>Электронная почта:</span>
-                <input  className={s.formInput} type="email" name="email" placeholder="your@email.com" />
+                <input
+                  className={s.formInput}
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                />
               </label>
               {/* <label className={s.formLabel}>
                 <span className={s.labelText}>Пароль:</span>
               <input type="password" name="password" placeholder="Пароль" />
             </label> */}
-            <TextField id="outlined-basic" label="Пароль:" placeholder="Пароль" variant="outlined" style={{
-              marginBottom: 40,
-              borderRadius: 30,
-              backgroundColor: "#F6F7FB",
-              
-            }}
-            />
-            <div className={s.containerButton}>
-               <Button
-                variant="contained"
+              <TextField
+                id="outlined-basic"
+                label="Пароль:"
+                placeholder="Пароль"
+                variant="outlined"
                 style={{
-                  width: 125,
-                  height: 44,
-                  borderRadius: 16,
-                  backgroundColor: '#FF751D',
-                  color: '#FFFFFF',
-                  fontSize: 12,
-                  fontWeight: 'bold',
+                  marginBottom: 40,
+                  borderRadius: 30,
+                  backgroundColor: '#F6F7FB',
                 }}
-              >
-                Войти
-              </Button>
-              <Button
-                variant="contained"
-                style={{
-                  width: 125,
-                  height: 44,
-                  borderRadius: 16,
-                  // backgroundColor: "#FF751D",
-                  color: '#52555F',
-                  fontSize: 12,
-                  fontWeight: 'bold',
-                }}
-              >
-                Регистрация
-              </Button>
-             </div>
+              />
+              <div className={s.containerButton}>
+                <Button
+                  variant="contained"
+                  style={{
+                    width: 125,
+                    height: 44,
+                    borderRadius: 16,
+                    backgroundColor: '#FF751D',
+                    color: '#FFFFFF',
+                    fontSize: 12,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Войти
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{
+                    width: 125,
+                    height: 44,
+                    borderRadius: 16,
+                    // backgroundColor: "#FF751D",
+                    color: '#52555F',
+                    fontSize: 12,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Регистрация
+                </Button>
+              </div>
               {/* <button type="submit">Войти</button> */}
               {/* <button type="submit">Регистрация</button> */}
             </form>
+          </div>
         </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 export default HomePage;
