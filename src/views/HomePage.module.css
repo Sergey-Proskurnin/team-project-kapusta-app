@@ -1,0 +1,232 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+header {
+  width: 100%;
+  position: fixed;
+  min-height: 56px;
+  background-color: #fff;
+  z-index: 2;
+  position: relative;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  min-width: 100%;
+}
+.logo {
+  padding-top: 12px;
+  padding-left: 19px;
+  padding-bottom: 13px;
+}
+.firstSection {
+  background-color: #f5f6fb;
+  height: 286px;
+  border-radius: 0 0 0 45px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.secondSection {
+  /* width: 100%; */
+  min-height: 514px;
+  position: relative;
+  display: flex;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 86px;
+}
+.imgText {
+  width: 183px;
+  height: 46.34px;
+  margin-left: 49px;
+}
+.fontText {
+  margin: 5px 0 0 60px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #52555f;
+}
+.formRegistr {
+  position: absolute;
+  left: 50%;
+  top: -84px;
+  transform: translate(-50%, 0);
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 29px 53px 29px;
+  width: 300px;
+  min-height: 525px;
+  background-color: #fff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+}
+.promtText {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  padding-bottom: 24px;
+}
+.btnGoogle {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f6f7fb;
+  border-radius: 26px;
+  border: 0;
+  width: 122px;
+  height: 40px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #000000;
+  /* outline: none; */
+}
+.btnGoogle::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  margin-right: 10px;
+  margin-left: 20px;
+  background-image: url(../img/svg/Group.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.labelText {
+  padding-bottom: 12px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: black;
+}
+.formInput {
+  border: none;
+  border-radius: 30px;
+  background-color: #f6f7fb;
+  padding: 20px 17px;
+}
+.containerButton {
+  display: flex;
+  justify-content: space-between;
+}
+/* .img-kapusta-one {
+  margin-left: 89%;
+  margin-bottom: 93px;
+  transform: rotate(-180deg);
+}
+.img-kapusta-two {
+  margin-top: auto;
+  margin-left: 35px;
+} */
+
+/* Адаптив */
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+  .imgText {
+    width: 307px;
+    height: 78px;
+    margin-left: 171px;
+  }
+  .firstSection {
+    height: 526px;
+  }
+  .formRegistr {
+    width: 436px;
+    min-height: 535px;
+    top: -50%;
+    padding: 50px 85px 53px 85px;
+  }
+  .fontText {
+    margin: 5px 0 0 225px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .promtText {
+    font-size: 12px;
+    line-height: 14px;
+    padding-bottom: 20px;
+  }
+  .labelText {
+    padding-bottom: 10px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+  .imgText {
+    width: 377px;
+    height: 120px;
+    margin-left: 230px;
+  }
+  .text {
+    padding-top: 308px;
+  }
+  .fontText {
+    margin: 5px 0 0 302px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .formRegistr {
+    width: 436px;
+    min-height: 535px;
+    top: -409px;
+    left: 1170px;
+  }
+  .promtText {
+    text-align: left;
+  }
+}
