@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 
 export default function TestWallet() {
   const dispatch = useDispatch();
-  const testMe = () => dispatch(transactionsOperations.getBalance());
+  const testMe = () =>
+    dispatch(transactionsOperations.getTransactionsDay('date', transactions));
   const transactions = [
     { month: 'jan', sum: 10, description: 'qweqwe', type: 'income' },
     { month: 'feb', sum: 10, description: 'qweqwe', type: 'spend' },
@@ -43,9 +44,9 @@ export default function TestWallet() {
     console.log(result);
     return result;
   };
-
+  // () => calculateBalances(transactions)
   return (
-    <button type="button" onClick={() => calculateBalances(transactions)}>
+    <button type="button" onClick={testMe}>
       Test
     </button>
   );

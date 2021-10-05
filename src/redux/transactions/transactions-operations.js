@@ -1,12 +1,13 @@
 import * as actions from './transactions-actions';
 import { fetch } from 'services/fetchApi';
-import { getTotalBalance, getTransactions } from './transactions-selectors';
+import { store } from '../store';
 
 const setBalance = balance => async dispatch => {
   dispatch(actions.setTotalBalanceRequest());
+
   try {
     const response = await fetch.setBalance(balance);
-    dispatch(actions.setTotalBalanceSuccess(response.data));
+    dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(actions.setTotalBalanceError(error.message));
   }
@@ -51,8 +52,8 @@ const editTransaction = transaction => async dispatch => {
 const getTransactionsDay = date => async dispatch => {
   dispatch(actions.getTransactionsRequest());
   try {
-    const response = fetch.getTransactionsByDate(date);
-    dispatch(actions.getTransactionsSuccess((await response).data));
+    const response = await fetch.getTransactionsByDate(date);
+    dispatch(actions.getTransactionsSuccess(response.data.transactions));
   } catch (error) {
     dispatch(actions.getTransactionsError(error.message));
   }
@@ -94,7 +95,8 @@ export default transactionsOperations;
 //-------------helpers--------------------
 
 const calculateBalance = (transaction, actionType) => {
-  const initialBalance = getTotalBalance();
+  const initialBalance = store.getState().wallet.totalBalance;
+  const transactionsList = store.getState().wallet.transactionsDay;
   switch (actionType) {
     case 'add':
       return transaction.type === 'income'
@@ -105,8 +107,8 @@ const calculateBalance = (transaction, actionType) => {
         ? initialBalance - transaction.sum
         : initialBalance + transaction.sum;
     case 'edit':
-      const initialTransaction = getTransactions().find(transaction.id);
-      const priorBalance = initialBalance - initialTransaction;
+      const initialTransaction = transactionsList.find(transaction.id);
+      const priorBalance = initialBalance - initialTransaction.sum;
       return transaction.type === 'income'
         ? priorBalance + transaction.sum
         : priorBalance - transaction.sum;
