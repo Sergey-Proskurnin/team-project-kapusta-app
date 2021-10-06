@@ -16,8 +16,12 @@ const setBalance = balance => async dispatch => {
 const addTransaction = transaction => async dispatch => {
   dispatch(actions.addTransactionRequest());
   const balance = calculateBalance(transaction, 'add');
+  const splitedDate = dateSplitter(transaction.date);
   try {
-    const response = await fetch.addTransaction(transaction, balance);
+    const response = await fetch.addTransaction(
+      Object.assign(transaction, splitedDate),
+      balance,
+    );
     dispatch(actions.addTransactionSuccess(response.data.transaction));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch (error) {
@@ -137,4 +141,11 @@ const calculateBalancesPerMonth = transactions => {
   });
 
   return result;
+};
+
+const dateSplitter = date => {
+  return {
+    month: Number(date.split('-')[1]),
+    year: Number(date.split('-')[2]),
+  };
 };
