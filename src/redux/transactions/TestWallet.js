@@ -3,8 +3,28 @@ import { useDispatch } from 'react-redux';
 
 export default function TestWallet() {
   const dispatch = useDispatch();
+
   const testMe = () =>
     dispatch(transactionsOperations.getTransactionsDay('date', transactions));
+
+  const dateSplitter = () => {
+    const transaction = {
+      month: 'jan',
+      sum: 10,
+      description: 'qweqwe',
+      type: 'income',
+    };
+    const date = '10-10-2021';
+    date.split('-');
+
+    console.log(
+      Object.assign(transaction, {
+        month: date.split('-')[1],
+        year: date.split('-')[2],
+      }),
+    );
+  };
+
   const transactions = [
     { month: 'jan', sum: 10, description: 'qweqwe', type: 'income' },
     { month: 'feb', sum: 10, description: 'qweqwe', type: 'spend' },
@@ -46,7 +66,7 @@ export default function TestWallet() {
   };
   // () => calculateBalances(transactions)
   return (
-    <button type="button" onClick={testMe}>
+    <button type="button" onClick={dateSplitter}>
       Test
     </button>
   );
