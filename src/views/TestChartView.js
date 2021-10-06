@@ -1,44 +1,47 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import ChartReport from 'components/ChartReport';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionsPerMonth } from 'redux/transactions';
-import transactionsOperations from 'redux/transactions/transactions-operations';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getTransactionsPerMonth } from 'redux/transactions';
+// import transactionsOperations from 'redux/transactions/transactions-operations';
+
+import transactions from 'data/db-transactions.json';
 
 const TestChartView = () => {
-  const dispatch = useDispatch();
-  //data
-  const transactions = useSelector(getTransactionsPerMonth);
-  console.log(transactions.result);
+  // When will be real data ⬇️
+  // const dispatch = useDispatch();
+  // const transactions = useSelector(getTransactionsPerMonth);
+  //   useEffect(() => {
+  //   dispatch(transactionsOperations.getTransactionsMonthYear());
+  // }, [dispatch]);
 
-  const getMaxValueForChart = () => {
-    const result = transactions.result;
-    return result.reduce((acc, currentTransaction) => {
-      return acc.sum < currentTransaction.sum
-        ? acc.sum
-        : currentTransaction.sum;
-    });
-  };
-  console.log(getMaxValueForChart());
+  const { result } = transactions;
+  const category = 'Продукты';
+  const date = '2020-02-20T00:00:00.000Z';
 
-  // const maxValueForChart = transactions.result.reduce(
-  //   (acc, currentTransaction) => {
-  //     return acc.sum < currentTransaction.sum
-  //       ? acc.sum
-  //       : currentTransaction.sum;
-  //   },
-  // );
-  useEffect(() => {
-    dispatch(transactionsOperations.getTransactionsMonthYear());
-  }, [dispatch]);
+  const filteredByDate = result.filter(
+    transaction => transaction.date === date,
+  );
+
+  const filteredByCategoryTransactions = filteredByDate.filter(
+    transaction => transaction.category === category,
+  );
+
+  const maxValueForChart = filteredByCategoryTransactions.reduce(
+    (prevTransaction, currentTransaction) =>
+      prevTransaction.sum > currentTransaction.sum
+        ? prevTransaction
+        : currentTransaction,
+  ).sum;
+
+  const sortedSubCategoryTransactions = [
+    ...filteredByCategoryTransactions,
+  ].sort((a, b) => b.sum - a.sum);
+
   return (
-    <div>
-      <ChartReport
-        chartData={transactions}
-        maxValue={getMaxValueForChart}
-        valueFiled="sum"
-        argumentField="month"
-      />
-    </div>
+    <ChartReport
+      chartData={sortedSubCategoryTransactions}
+      maxValue={maxValueForChart}
+    />
   );
 };
 
