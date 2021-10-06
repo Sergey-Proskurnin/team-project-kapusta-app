@@ -12,7 +12,7 @@ import HomePageView from 'views/HomePageView';
 import BalanceView from 'views/BalanceView';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import ReportView from 'views/ReportView';
+// import ReportView from 'views/ReportView';
 
 import Button from '@material-ui/core/Button';
 import Report from './components/Report';
@@ -41,11 +41,11 @@ const App = () => {
           component={BalanceView}
           redirectTo={routes.home}
         />
-        <PrivateRoute
+        {/* <PrivateRoute
           path={routes.report}
           component={ReportView}
           redirectTo={routes.home}
-        />
+        /> */}
       </Switch>
       {/* <TestAuthComponent /> */}
       {/* <Button

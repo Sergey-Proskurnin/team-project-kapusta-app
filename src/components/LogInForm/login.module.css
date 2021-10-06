@@ -1,71 +1,3 @@
-html {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-}
-header {
-  width: 100%;
-  position: fixed;
-  min-height: 56px;
-  background-color: #fff;
-  z-index: 2;
-  position: relative;
-}
-a {
-  text-decoration: none;
-}
-.container {
-  min-width: 100%;
-}
-.logo {
-  padding-top: 12px;
-  padding-left: 19px;
-  padding-bottom: 13px;
-}
-.firstSection {
-  background-color: #f5f6fb;
-  height: 286px;
-  border-radius: 0 0 0 45px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.secondSection {
-  /* width: 100%; */
-  min-height: 514px;
-  position: relative;
-  display: flex;
-}
-.text {
-  display: flex;
-  flex-direction: column;
-  padding-top: 86px;
-}
-.imgText {
-  width: 183px;
-  height: 46.34px;
-  margin-left: 49px;
-}
-.fontText {
-  margin: 5px 0 0 60px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 15px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #52555f;
-}
 .formRegistr {
   position: absolute;
   left: 50%;
@@ -125,7 +57,7 @@ a {
 
   margin-right: 10px;
   margin-left: 20px;
-  background-image: url(../img/svg/Group.svg);
+  background-image: url(../../img/svg/Group.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -153,25 +85,8 @@ a {
   display: flex;
   justify-content: space-between;
 }
-
 /* Адаптив */
-@media screen and (min-width: 320px) {
-  .container {
-    width: 320px;
-  }
-}
 @media screen and (min-width: 768px) {
-  .container {
-    width: 768px;
-  }
-  .imgText {
-    width: 307px;
-    height: 78px;
-    margin-left: 171px;
-  }
-  .firstSection {
-    height: 526px;
-  }
   .formRegistr {
     width: 436px;
     min-height: 535px;
@@ -195,22 +110,6 @@ a {
   }
 }
 @media screen and (min-width: 1280px) {
-  .container {
-    width: 1280px;
-  }
-  .imgText {
-    width: 377px;
-    height: 120px;
-    margin-left: 230px;
-  }
-  .text {
-    padding-top: 308px;
-  }
-  .fontText {
-    margin: 5px 0 0 302px;
-    font-size: 16px;
-    line-height: 19px;
-  }
   .formRegistr {
     width: 436px;
     min-height: 535px;
