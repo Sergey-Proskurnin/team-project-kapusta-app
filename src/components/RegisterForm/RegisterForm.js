@@ -41,6 +41,8 @@ const RegisterForm = () => {
     }
   };
 
+  
+
   return (
     <div className={s.formRegistr}>
       {/* <span className={s.promtText}>
@@ -48,7 +50,7 @@ const RegisterForm = () => {
       </span>
       <button className={s.btnGoogle}>Google</button> */}
       <span className={s.promtText}>
-        Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+        Для регистрации заполните поля:
       </span>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
         <label className={s.formLabel} htmlFor="">
@@ -101,7 +103,7 @@ const RegisterForm = () => {
               fontWeight: 'bold',
             }}
           >
-            Войти
+            Вернуться
           </Button>
           <Button
             variant="contained"
@@ -114,7 +116,7 @@ const RegisterForm = () => {
               fontWeight: 'bold',
             }}
           >
-            Регистрация
+            Готово
           </Button>
         </div>
       </form>
