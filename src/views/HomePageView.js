@@ -11,18 +11,20 @@ import LoginForm from 'components/LogInForm/LoginForm';
 
 const HomePageView = () => {
 const [login, setLogin] = useState(true);
-  const onRegisterClick = () => {
+const onRegisterClick = () => {
   setLogin(false)
   }
+
   return (
     <>
-      <header>
-        <div className={s.logo}>
+      <header className={s.header}>
+        <div className={s.logo, s.container}>
           <img src={logo} alt="Kapusta" width="90" height="31" />
         </div>
       </header>
       <div className={s.container}>
         <div className={s.firstSection}>
+          <div className={s.bcgImage}></div>
           <div className={s.text}>
             <img
               className={s.imgText}
@@ -34,7 +36,8 @@ const [login, setLogin] = useState(true);
         </div>
         <div className={s.secondSection}>
          {login ?  <LoginForm onClickRegister={onRegisterClick} /> :
-          <RegisterForm/> }
+            <RegisterForm />}
+          <div className={s.bcgImageBottom}></div>
         </div>
       </div>
     </>

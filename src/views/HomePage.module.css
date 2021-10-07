@@ -14,19 +14,20 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
 }
-header {
-  width: 100%;
+.header {
   position: fixed;
   min-height: 56px;
-  background-color: #fff;
-  z-index: 2;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 a {
   text-decoration: none;
 }
 .container {
-  min-width: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .logo {
   padding-top: 12px;
@@ -34,18 +35,20 @@ a {
   padding-bottom: 13px;
 }
 .firstSection {
+  position: relative;
   background-color: #f5f6fb;
+  overflow: hidden;
   height: 286px;
   border-radius: 0 0 0 45px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .secondSection {
-  /* width: 100%; */
   min-height: 514px;
   position: relative;
-  display: flex;
 }
 .text {
+  position: absolute;
   display: flex;
   flex-direction: column;
   padding-top: 86px;
@@ -160,6 +163,28 @@ a {
     width: 320px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .bcgImage {
+    position: absolute;
+    z-index: 2;
+    background-image: url('../img/svg/Vector.svg');
+    width: 83px;
+    height: 89px;
+    top: 104px;
+    left: 271px;
+    transform: rotate(-180deg);
+  }
+  .bcgImageBottom {
+    position: absolute;
+    width: 83px;
+    height: 89px;
+    top: 425px;
+    left: 35px;
+    background-image: url('../img/svg/Vector.svg');
+  }
+}
+
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
@@ -171,37 +196,54 @@ a {
   }
   .firstSection {
     height: 526px;
+    position: relative;
   }
-  .formRegistr {
-    width: 436px;
-    min-height: 535px;
-    top: -50%;
-    padding: 50px 85px 53px 85px;
+  .bcgImage {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 232px;
+    top: 28px;
+    left: 10px;
+    background-image: url('../img/svg/bcgImage.svg');
+  }
+  .text {
+    z-index: 3;
   }
   .fontText {
     margin: 5px 0 0 225px;
-    font-size: 16px;
-    line-height: 19px;
   }
-  .promtText {
-    font-size: 12px;
-    line-height: 14px;
-    padding-bottom: 20px;
-  }
-  .labelText {
-    padding-bottom: 10px;
-    font-size: 12px;
-    line-height: 14px;
+  .bcgImageBottom {
+    position: absolute;
+    z-index: 99;
+    width: 183px;
+    height: 142px;
+    top: 244px;
+    left: 103px;
+    background-image: url('../img/svg/bcgImageBottom.svg');
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;
   }
+  .firstSection {
+    position: relative;
+  }
+  .bcgImage {
+    position: absolute;
+    z-index: 2;
+    width: 1334px;
+    height: 232px;
+    top: 28px;
+    left: 10px;
+    background-image: url('../img/svg/bcgImage.svg');
+  }
   .imgText {
     width: 377px;
     height: 120px;
     margin-left: 230px;
+    padding: 20px 1px 2px 3px;
   }
   .text {
     padding-top: 308px;
@@ -211,13 +253,10 @@ a {
     font-size: 16px;
     line-height: 19px;
   }
-  .formRegistr {
-    width: 436px;
-    min-height: 535px;
-    top: -409px;
-    left: 1170px;
-  }
-  .promtText {
-    text-align: left;
+  .bcgImageBottom {
+    width: 183px;
+    height: 142px;
+    left: 230px;
+    top: 76px;
   }
 }

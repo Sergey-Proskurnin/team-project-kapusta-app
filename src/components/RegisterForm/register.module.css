@@ -10,7 +10,7 @@
 
   margin-left: auto;
   margin-right: auto;
-  padding: 40px 29px 53px 29px;
+  padding: 40px 18px 53px 18px;
   width: 300px;
   min-height: 525px;
   background-color: #fff;
@@ -88,6 +88,7 @@
 /* Адаптив */
 @media screen and (min-width: 768px) {
   .formRegistr {
+    z-index: 4;
     width: 436px;
     min-height: 535px;
     top: -50%;
@@ -111,10 +112,11 @@
 }
 @media screen and (min-width: 1280px) {
   .formRegistr {
+    margin: 0;
     width: 436px;
     min-height: 535px;
     top: -409px;
-    left: 1170px;
+    left: 75%;
   }
   .promtText {
     text-align: left;
