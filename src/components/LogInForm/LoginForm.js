@@ -40,7 +40,7 @@ const LoginForm = ({ onClickRegister }) => {
       <span className={s.promtText}>
         Вы можете авторизоваться с помощью Google Account:
       </span>
-      <a href="http://localhost:5737/api/v1/users/google" className={s.btnGoogle}>Google</a>
+      <a href="https://kapusta-api.herokuapp.com/api/v1/users/google" className={s.btnGoogle}>Google</a>
        <span className={s.promtText}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </span>
