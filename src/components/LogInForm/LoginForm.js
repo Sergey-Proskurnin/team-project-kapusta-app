@@ -10,6 +10,48 @@ const LoginForm = ({ onClickRegister }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [passwordDirty, setPasswordDirty] = useState(false);
+  const [emailError, setEmaiError] = useState('это обязательное поле');
+  const [passwordError, setPasswordError] = useState('это обязательное поле');
+  const [errorSymbol, setErrorSymbol] = useState('*')
+
+  const blurHandler = (e) => {
+    switch (e.target.name) {
+      case 'email':
+        setEmailDirty(true)
+        break
+      case 'password':
+        setPasswordDirty(true)
+        break
+    }
+  }
+  const emailHandler = (e) => {
+    setEmail(e.target.value)
+     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(String(e.target.value).toLowerCase())) {
+      setEmaiError('Некорректный емейл')
+      setErrorSymbol('*')
+      if (!e.target.value) {
+        setEmaiError('это обязательное поле')
+        setErrorSymbol('*')
+      }
+    } else {
+      setEmaiError('')
+    }
+  }
+  
+  const passwordHandler = (e) => {
+    setPassword(e.target.value)
+    if (e.target.value.length < 3 || e.target.value.length > 10) {
+      setPasswordError('Пароль должен быть не меньше 3 и не больше 10 символов')
+      if (!e.target.value) {
+        setPasswordError('это обязательное поле')
+      }
+    } else {
+      setPasswordError('')
+    }
+  }
 
   const clearInput = () => {
     setEmail('');
@@ -21,7 +63,6 @@ const LoginForm = ({ onClickRegister }) => {
     dispatch(logIn({ email, password }));
     clearInput();
   };
-
 
   const onChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -46,28 +87,34 @@ const LoginForm = ({ onClickRegister }) => {
       </span>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
         <label className={s.formLabel}>
-          <span className={s.labelText}>Электронная почта:</span>
+          <span className={s.labelText}>
+            {(emailDirty && emailError) && <span style={{ color: 'red', fontSize:10, paddingTop: 4}}>{errorSymbol} </span>}
+            Электронная почта:</span>
           <input
-            onChange={onChange}
+            onBlur={blurHandler}
+            onChange={emailHandler}
             type="email"
             name="email"
             value={email}
             placeholder="your@email.com"
             className={s.formInput}
-            required
           />
+          {(emailDirty && emailError) && <div style={{ color: 'red', fontSize:10, paddingTop: 4}}>{emailError} </div>}
         </label>
         <label className={s.formLabel}>
-          <span className={s.labelText}>Пароль:</span>
+          <span className={s.labelText}>
+             {(passwordDirty && passwordError) && <span style={{ color: 'red', fontSize:10, paddingTop: 4}}>{errorSymbol} </span>}
+            Пароль:</span>
           <input
-            onChange={onChange}
+            onBlur={blurHandler}
+            onChange={passwordHandler}
             type="password"
             name="password"
             value={password}
             placeholder="Пароль"
             className={s.formInput}
-            required
           />
+           {(passwordDirty && passwordError) && <div style={{ color: 'red', fontSize:10, paddingTop: 4}}>{passwordError} </div>}
         </label>
         <div className={s.containerButton}>
           <Button
@@ -86,6 +133,7 @@ const LoginForm = ({ onClickRegister }) => {
             Войти
           </Button>
           <Button
+            type="button"
             onClick={onClickRegister}
             variant="contained"
             style={{

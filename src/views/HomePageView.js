@@ -25,11 +25,15 @@ const HomePageView = ({ location }) => {
     setLogin(false);
   };
 
+const onComeBackClick = () => {
+  setLogin(true)
+};
   return (
     <>
       <header className={s.header}>
-        <div className={(s.logo, s.container)}>
-          <img src={logo} alt="Kapusta" width="90" height="31" />
+
+        <div className={s.container}>
+          <img className={s.logoImg} src={logo} alt="Kapusta" width="90" height="31" />
         </div>
       </header>
       <div className={s.container}>
@@ -41,11 +45,10 @@ const HomePageView = ({ location }) => {
           </div>
         </div>
         <div className={s.secondSection}>
-          {login ? (
-            <LoginForm onClickRegister={onRegisterClick} />
-          ) : (
-            <RegisterForm />
-          )}
+          {login ?
+            <LoginForm onClickRegister={onRegisterClick} /> :
+            <RegisterForm onClickComeBack={onComeBackClick} />
+          }
           <div className={s.bcgImageBottom}></div>
         </div>
       </div>
