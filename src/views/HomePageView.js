@@ -6,6 +6,7 @@ import RegisterForm from 'components/RegisterForm/RegisterForm';
 import LoginForm from 'components/LogInForm/LoginForm';
 
 const HomePageView = () => {
+
 const [login, setLogin] = useState(true);
 const onRegisterClick = () => {
   setLogin(false)
@@ -25,11 +26,7 @@ const onComeBackClick = () => {
         <div className={s.firstSection}>
           <div className={s.bcgImage}></div>
           <div className={s.text}>
-            <img
-              className={s.imgText}
-              src={imgText}
-              alt="Kapusta"
-            />
+            <img className={s.imgText} src={imgText} alt="Kapusta" />
             <h1 className={s.fontText}>SMART FINANSE</h1>
           </div>
         </div>
@@ -46,4 +43,3 @@ const onComeBackClick = () => {
 };
 
 export default HomePageView;
-
