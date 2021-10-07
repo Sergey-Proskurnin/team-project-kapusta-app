@@ -1,6 +1,5 @@
 import s from './login.module.css';
 import { logIn } from '../../redux/auth/auth-operations';
-// /redux/auth/auth-operations
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -8,6 +7,7 @@ import { Button } from '@material-ui/core';
 
 const LoginForm = ({ onClickRegister }) => {
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailDirty, setEmailDirty] = useState(false);
@@ -64,27 +64,25 @@ const LoginForm = ({ onClickRegister }) => {
     clearInput();
   };
 
-  // const onChange = ({ target: { name, value } }) => {
-  //   switch (name) {
-  //     case 'email':
-  //       setEmail(value);
-  //       break;
-  //     case 'password':
-  //       setPassword(value);
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  // };
-
-  console.log(onClickRegister);
-  return (
+  const onChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        return;
+    }
+  };
+   return (
     <div className={s.formRegistr}>
       <span className={s.promtText}>
         Вы можете авторизоваться с помощью Google Account:
       </span>
-      <a href="http://localhost:5737/api/v1/users/google" className={s.btnGoogle}>Google</a>
-      <span className={s.promtText}>
+      <a href="https://kapusta-api.herokuapp.com/api/v1/users/google" className={s.btnGoogle}>Google</a>
+       <span className={s.promtText}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </span>
       <form onSubmit={handleSubmit} action="" autoComplete="on">

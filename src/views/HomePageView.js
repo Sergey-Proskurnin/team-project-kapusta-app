@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import queryString from 'query-string';
+
 import s from './HomePage.module.css';
 import logo from '../img/svg/logo.svg';
 import imgText from '../img/svg/Union.svg';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 import LoginForm from 'components/LogInForm/LoginForm';
 
-const HomePageView = () => {
+import { loginGoogleSuccess } from 'redux/auth';
 
-const [login, setLogin] = useState(true);
-const onRegisterClick = () => {
-  setLogin(false)
-};
+const HomePageView = ({ location }) => {
+  const { token } = queryString.parse(location.search);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(loginGoogleSuccess(token));
+    }
+  });
+
+  const [login, setLogin] = useState(true);
+  const onRegisterClick = () => {
+    setLogin(false);
+  };
 
 const onComeBackClick = () => {
   setLogin(true)
@@ -18,6 +31,7 @@ const onComeBackClick = () => {
   return (
     <>
       <header className={s.header}>
+
         <div className={s.container}>
           <img className={s.logoImg} src={logo} alt="Kapusta" width="90" height="31" />
         </div>
