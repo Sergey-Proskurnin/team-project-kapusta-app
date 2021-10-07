@@ -24,6 +24,8 @@ const LoginForm = ({ onClickRegister }) => {
       case 'password':
         setPasswordDirty(true)
         break
+        default: return
+        
     }
   }
   const emailHandler = (e) => {
@@ -64,18 +66,18 @@ const LoginForm = ({ onClickRegister }) => {
     clearInput();
   };
 
-  const onChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      default:
-        return;
-    }
-  };
+  // const onChange = ({ target: { name, value } }) => {
+  //   switch (name) {
+  //     case 'email':
+  //       setEmail(value);
+  //       break;
+  //     case 'password':
+  //       setPassword(value);
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
    return (
     <div className={s.formRegistr}>
       <span className={s.promtText}>
