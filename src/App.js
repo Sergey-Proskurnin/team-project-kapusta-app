@@ -34,8 +34,8 @@ const App = () => {
           exact
           path={routes.home}
           restricted
-          // component={HomePageView}
-          component={TestChartView}
+           component={HomePageView}
+          
           redirectTo={routes.balance}
         />
         <PrivateRoute
@@ -43,6 +43,7 @@ const App = () => {
           component={BalanceView}
           redirectTo={routes.home}
         />
+
         {/* <PrivateRoute
           path={routes.report}
           component={ReportView}
