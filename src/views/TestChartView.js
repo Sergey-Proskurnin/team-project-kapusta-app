@@ -1,40 +1,47 @@
-import React from 'react';
+// import React, { useEffect } from 'react';
 import ChartReport from 'components/ChartReport';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getTransactionsPerMonth } from 'redux/transactions';
+// import transactionsOperations from 'redux/transactions/transactions-operations';
 
-const transactions = [
-  { month: 'jan', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'feb', sum: 10, description: 'qweqwe', type: 'spend' },
-  { month: 'march', sum: 10, description: 'qweqwe', type: 'spend' },
-  { month: 'april', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'may', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'jan', sum: 50, description: 'qweqwe', type: 'spend' },
-  { month: 'jan', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'feb', sum: 10, description: 'qweqwe', type: 'spend' },
-  { month: 'feb', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'march', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'march', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'may', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'may', sum: 10, description: 'qweqwe', type: 'spend' },
-  { month: 'may', sum: 10, description: 'qweqwe', type: 'income' },
-  { month: 'jun', sum: 10, description: 'qweqwe', type: 'income' },
-];
+import transactions from 'data/db-transactions.json';
 
 const TestChartView = () => {
-  const getMaxValueForChart = transactions
-    .map(transaction => transaction.sum)
-    .reduce((acc, currentSum) => {
-      return acc > currentSum ? acc : currentSum;
-    });
-  console.log(getMaxValueForChart);
+  // When will be real data ⬇️
+  // const dispatch = useDispatch();
+  // const transactions = useSelector(getTransactionsPerMonth);
+  //   useEffect(() => {
+  //   dispatch(transactionsOperations.getTransactionsMonthYear());
+  // }, [dispatch]);
+
+  const { result } = transactions;
+  const category = 'Продукты';
+  const date = '2020-02-20T00:00:00.000Z';
+
+  const filteredByDate = result.filter(
+    transaction => transaction.date === date,
+  );
+
+  const filteredByCategoryTransactions = filteredByDate.filter(
+    transaction => transaction.category === category,
+  );
+
+  const maxValueForChart = filteredByCategoryTransactions.reduce(
+    (prevTransaction, currentTransaction) =>
+      prevTransaction.sum > currentTransaction.sum
+        ? prevTransaction
+        : currentTransaction,
+  ).sum;
+
+  const sortedSubCategoryTransactions = [
+    ...filteredByCategoryTransactions,
+  ].sort((a, b) => b.sum - a.sum);
+
   return (
-    <div>
-      <ChartReport
-        chartData={transactions}
-        maxValue={getMaxValueForChart}
-        valueFiled="sum"
-        argumentField="month"
-      />
-    </div>
+    <ChartReport
+      chartData={sortedSubCategoryTransactions}
+      maxValue={maxValueForChart}
+    />
   );
 };
 
