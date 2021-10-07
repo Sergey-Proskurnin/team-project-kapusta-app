@@ -16,7 +16,7 @@ body {
 }
 .header {
   position: fixed;
-  min-height: 56px;
+  height: 56px;
   position: relative;
   display: flex;
   align-items: center;
@@ -29,10 +29,8 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
-.logo {
-  padding-top: 12px;
-  padding-left: 19px;
-  padding-bottom: 13px;
+.logoImg {
+  margin-left: 19px;
 }
 .firstSection {
   position: relative;
@@ -188,6 +186,9 @@ a {
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
+  }
+  .logoImg {
+    margin-left: 26px;
   }
   .imgText {
     width: 307px;
