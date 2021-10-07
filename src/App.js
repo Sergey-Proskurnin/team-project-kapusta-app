@@ -20,11 +20,14 @@ import Report from './components/Report';
 // import TestWallet from 'redux/transactions/TestWallet';
 
 const App = () => {
+
   const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuthenticated);
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch, isAuth]);
+  
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <div>

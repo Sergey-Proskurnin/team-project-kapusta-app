@@ -13,7 +13,10 @@ import {
   getCurrentUserError,
 } from './auth-actions';
 
-import {setTotalBalanceSuccess} from 'redux/transactions'
+import {
+  getTransactionsMonthYearError,
+  setTotalBalanceSuccess,
+} from 'redux/transactions';
 
 import {
   token,
@@ -21,7 +24,7 @@ import {
   fetchLogin,
   fetchLogout,
   fetchCurrent,
-  } from 'services/fetchApi';
+} from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
@@ -81,5 +84,4 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-
-export { register, logOut, logIn, getCurrentUser, };
+export { register, logOut, logIn, getCurrentUser };
