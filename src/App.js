@@ -16,6 +16,7 @@ import PublicRoute from './components/PublicRoute';
 
 import Button from '@material-ui/core/Button';
 import Report from './components/Report';
+import TestChartView from 'views/TestChartView';
 
 // import TestWallet from 'redux/transactions/TestWallet';
 
@@ -33,7 +34,8 @@ const App = () => {
           exact
           path={routes.home}
           restricted
-          component={HomePageView}
+          // component={HomePageView}
+          component={TestChartView}
           redirectTo={routes.balance}
         />
         <PrivateRoute
