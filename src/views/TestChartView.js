@@ -1,4 +1,9 @@
 // import React, { useEffect } from 'react';
+import {
+  createTheme,
+  makeStyles,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import ChartReport from 'components/ChartReport';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getTransactionsPerMonth } from 'redux/transactions';
@@ -16,7 +21,7 @@ const TestChartView = () => {
 
   const { result } = transactions;
   const category = 'Продукты';
-  const date = '2020-02-20T00:00:00.000Z';
+  const date = '2020-03-03T00:00:00.000Z';
 
   const filteredByDate = result.filter(
     transaction => transaction.date === date,
@@ -37,6 +42,7 @@ const TestChartView = () => {
     ...filteredByCategoryTransactions,
   ].sort((a, b) => b.sum - a.sum);
 
+  console.log(sortedSubCategoryTransactions);
   return (
     <ChartReport
       chartData={sortedSubCategoryTransactions}
