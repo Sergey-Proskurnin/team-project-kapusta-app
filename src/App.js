@@ -15,7 +15,7 @@ import PublicRoute from './components/PublicRoute';
 // import ReportView from 'views/ReportView';
 
 import Button from '@material-ui/core/Button';
-import Report from './components/Report';
+// import Report from './components/Report';
 
 // import TestWallet from 'redux/transactions/TestWallet';
 
@@ -41,6 +41,7 @@ const App = () => {
           component={BalanceView}
           redirectTo={routes.home}
         />
+
         {/* <PrivateRoute
           path={routes.report}
           component={ReportView}
