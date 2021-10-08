@@ -1,9 +1,4 @@
 // import React, { useEffect } from 'react';
-import {
-  createTheme,
-  makeStyles,
-  ThemeProvider,
-} from '@material-ui/core/styles';
 import ChartReport from 'components/ChartReport';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getTransactionsPerMonth } from 'redux/transactions';

@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Switch } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core';
 
 import Modal from 'components/Modal/Modal';
 
@@ -10,13 +11,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import routes from './routes';
 import HomePageView from 'views/HomePageView';
 import BalanceView from 'views/BalanceView';
+import TestChartView from 'views/TestChartView';
+// import ReportView from 'views/ReportView';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-// import ReportView from 'views/ReportView';
 
 import Button from '@material-ui/core/Button';
-import Report from './components/Report';
-import TestChartView from 'views/TestChartView';
+
+import { theme } from 'theme';
+
 
 // import TestWallet from 'redux/transactions/TestWallet';
 
@@ -30,7 +33,7 @@ const App = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div>
+    <MuiThemeProvider theme={theme}>
       <Switch>
         <PublicRoute
           exact
@@ -44,12 +47,11 @@ const App = () => {
           component={BalanceView}
           redirectTo={routes.home}
         />
-
-        {/* <PrivateRoute
+        <PrivateRoute
           path={routes.report}
-          component={ReportView}
-          redirectTo={routes.home}
-        /> */}
+          component={TestChartView}
+          redirectTo={routes.report}
+        />
       </Switch>
       {/* <TestAuthComponent /> */}
       {/* <Button
@@ -61,7 +63,7 @@ const App = () => {
         Open
       </Button> */}
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
-    </div>
+    </MuiThemeProvider>
   );
 };
 

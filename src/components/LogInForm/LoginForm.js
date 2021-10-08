@@ -3,8 +3,6 @@ import { logIn } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { Button } from '@material-ui/core';
-
 const LoginForm = ({ onClickRegister }) => {
   const dispatch = useDispatch();
 
@@ -69,19 +67,7 @@ const LoginForm = ({ onClickRegister }) => {
     clearInput();
   };
 
-  // const onChange = ({ target: { name, value } }) => {
-  //   switch (name) {
-  //     case 'email':
-  //       setEmail(value);
-  //       break;
-  //     case 'password':
-  //       setPassword(value);
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  // };
-  return (
+   return (
     <div className={s.formRegistr}>
       <span className={s.promtText}>
         Вы можете авторизоваться с помощью Google Account:
@@ -146,36 +132,19 @@ const LoginForm = ({ onClickRegister }) => {
           )}
         </label>
         <div className={s.containerButton}>
-          <Button
-            type="submit"
-            variant="contained"
-            style={{
-              width: 125,
-              height: 44,
-              borderRadius: 16,
-              backgroundColor: '#FF751D',
-              color: '#FFFFFF',
-              fontSize: 12,
-              fontWeight: 'bold',
-            }}
-          >
-            Войти
-          </Button>
-          <Button
-            type="button"
-            onClick={onClickRegister}
-            variant="contained"
-            style={{
-              width: 125,
-              height: 44,
-              borderRadius: 16,
-              color: '#52555F',
-              fontSize: 12,
-              fontWeight: 'bold',
-            }}
-          >
-            Регистрация
-          </Button>
+           <button
+             type="submit"
+           className={s.button}
+           >
+             ВОЙТИ
+           </button>
+           <button
+           type="button"
+             onClick={onClickRegister}
+             className={s.button}
+           >
+             РЕГИСТРАЦИЯ
+           </button>
         </div>
       </form>
     </div>
