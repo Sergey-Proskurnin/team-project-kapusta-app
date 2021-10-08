@@ -76,6 +76,7 @@
   color: black;
 }
 .formInput {
+  outline: none;
   border: none;
   border-radius: 30px;
   background-color: #f6f7fb;
@@ -84,6 +85,29 @@
 .containerButton {
   display: flex;
   justify-content: space-between;
+}
+.button {
+  width: 125px;
+  height: 44px;
+  background-color: #f5f6fb;
+  border-radius: 16px;
+  border: none;
+  padding: 0;
+  color: #52555f;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: #52555f;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #ff751d;
+  color: #fff;
+  filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  transition: 0.5s linear;
+}
+.button:active {
+  background-color: #8a3d0d;
 }
 /* Адаптив */
 @media screen and (min-width: 768px) {
