@@ -12,46 +12,49 @@ const LoginForm = ({ onClickRegister }) => {
   const [passwordDirty, setPasswordDirty] = useState(false);
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
-  const [errorSymbol, setErrorSymbol] = useState('*')
+  const [errorSymbol, setErrorSymbol] = useState('*');
 
-  const blurHandler = (e) => {
+  const blurHandler = e => {
     switch (e.target.name) {
       case 'email':
-        setEmailDirty(true)
-        break
+        setEmailDirty(true);
+        break;
       case 'password':
-        setPasswordDirty(true)
-        break
-        default: return
-        
+        setPasswordDirty(true);
+        break;
+      default:
+        return;
     }
-  }
-  const emailHandler = (e) => {
-    setEmail(e.target.value)
-     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  };
+  const emailHandler = e => {
+    setEmail(e.target.value);
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
-      setEmaiError('Некорректный емейл')
-      setErrorSymbol('*')
+      setEmaiError('Некорректный емейл');
+      setErrorSymbol('*');
       if (!e.target.value) {
-        setEmaiError('это обязательное поле')
-        setErrorSymbol('*')
+        setEmaiError('это обязательное поле');
+        setErrorSymbol('*');
       }
     } else {
-      setEmaiError('')
+      setEmaiError('');
     }
-  }
-  
-  const passwordHandler = (e) => {
-    setPassword(e.target.value)
+  };
+
+  const passwordHandler = e => {
+    setPassword(e.target.value);
     if (e.target.value.length < 3 || e.target.value.length > 10) {
-      setPasswordError('Пароль должен быть не меньше 3 и не больше 10 символов')
+      setPasswordError(
+        'Пароль должен быть не меньше 3 и не больше 10 символов',
+      );
       if (!e.target.value) {
-        setPasswordError('это обязательное поле')
+        setPasswordError('это обязательное поле');
       }
     } else {
-      setPasswordError('')
+      setPasswordError('');
     }
-  }
+  };
 
   const clearInput = () => {
     setEmail('');
@@ -63,20 +66,32 @@ const LoginForm = ({ onClickRegister }) => {
     dispatch(logIn({ email, password }));
     clearInput();
   };
+
    return (
     <div className={s.formRegistr}>
       <span className={s.promtText}>
         Вы можете авторизоваться с помощью Google Account:
       </span>
-      <a href="https://kapusta-api.herokuapp.com/api/v1/users/google" className={s.btnGoogle}>Google</a>
-       <span className={s.promtText}>
+      {/*http://localhost:5737/api/v1/*/}
+      <a
+        href="https://kapusta-api.herokuapp.com/api/v1/users/google"
+        className={s.btnGoogle}
+      >
+        Google
+      </a>
+      <span className={s.promtText}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </span>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
         <label className={s.formLabel}>
           <span className={s.labelText}>
-            {(emailDirty && emailError) && <span style={{ color: 'red', fontSize:10, paddingTop: 4}}>{errorSymbol} </span>}
-            Электронная почта:</span>
+            {emailDirty && emailError && (
+              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                {errorSymbol}{' '}
+              </span>
+            )}
+            Электронная почта:
+          </span>
           <input
             onBlur={blurHandler}
             onChange={emailHandler}
@@ -86,12 +101,21 @@ const LoginForm = ({ onClickRegister }) => {
             placeholder="your@email.com"
             className={s.formInput}
           />
-          {(emailDirty && emailError) && <div style={{ color: 'red', fontSize:10, paddingTop: 4}}>{emailError} </div>}
+          {emailDirty && emailError && (
+            <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+              {emailError}{' '}
+            </div>
+          )}
         </label>
         <label className={s.formLabel}>
           <span className={s.labelText}>
-             {(passwordDirty && passwordError) && <span style={{ color: 'red', fontSize:10, paddingTop: 4}}>{errorSymbol} </span>}
-            Пароль:</span>
+            {passwordDirty && passwordError && (
+              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                {errorSymbol}{' '}
+              </span>
+            )}
+            Пароль:
+          </span>
           <input
             onBlur={blurHandler}
             onChange={passwordHandler}
@@ -101,7 +125,11 @@ const LoginForm = ({ onClickRegister }) => {
             placeholder="Пароль"
             className={s.formInput}
           />
-           {(passwordDirty && passwordError) && <div style={{ color: 'red', fontSize:10, paddingTop: 4}}>{passwordError} </div>}
+          {passwordDirty && passwordError && (
+            <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+              {passwordError}{' '}
+            </div>
+          )}
         </label>
         <div className={s.containerButton}>
            <button

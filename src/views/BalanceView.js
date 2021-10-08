@@ -1,9 +1,13 @@
 import React from 'react';
 import AppBar from 'components/AppBar';
+
+import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
+
 import TabBar from 'components/TabBar';
 import { useStyles } from './useStyles';
 import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
+
 
 const BalanceView = () => {
   const classes = useStyles();
@@ -13,6 +17,7 @@ const BalanceView = () => {
       <AppBar className={classes.wrapper} />
       <div style={{ padding: '100px 20px', textAlign: 'center', color: 'Red' }}>
         <h1>Balance Page</h1>
+        <AddTransaction />
       </div>
       <CalculatorIcon />
       <Grid container className={classes.wrapper}>
