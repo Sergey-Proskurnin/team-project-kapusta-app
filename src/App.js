@@ -8,18 +8,18 @@ import { getCurrentUser } from './redux/auth';
 import { getIsAuthenticated } from './redux/auth';
 import { useDispatch, useSelector } from 'react-redux';
 
-import routes from './routes';
+import routes from 'routes';
+import Header from 'components/Header/Header';
 import HomePageView from 'views/HomePageView';
 import BalanceView from 'views/BalanceView';
 import TestChartView from 'views/TestChartView';
 // import ReportView from 'views/ReportView';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 
 import Button from '@material-ui/core/Button';
 
 import { theme } from 'theme';
-
 
 // import TestWallet from 'redux/transactions/TestWallet';
 
@@ -34,6 +34,7 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <MuiThemeProvider theme={theme}>
+      <Header />
       <Switch>
         <PublicRoute
           exact
@@ -53,15 +54,6 @@ const App = () => {
           redirectTo={routes.report}
         />
       </Switch>
-      {/* <TestAuthComponent /> */}
-      {/* <Button
-        color="secondary"
-        onClick={() => {
-          setModalOpen(true);
-        }}
-      >
-        Open
-      </Button> */}
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
     </MuiThemeProvider>
   );
