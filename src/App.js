@@ -17,9 +17,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 
 import Button from '@material-ui/core/Button';
-import Report from './components/Report';
 
-import TestChartView from 'views/TestChartView';
 import { theme } from 'theme';
 
 
