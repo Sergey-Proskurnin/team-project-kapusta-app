@@ -10,25 +10,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import routes from './routes';
 import HomePageView from 'views/HomePageView';
 import BalanceView from 'views/BalanceView';
+import TestChartView from 'views/TestChartView';
+// import ReportView from 'views/ReportView';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-// import ReportView from 'views/ReportView';
 
 import Button from '@material-ui/core/Button';
 import Report from './components/Report';
-import TestChartView from 'views/TestChartView';
 
 // import TestWallet from 'redux/transactions/TestWallet';
 
 const App = () => {
-
   const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuthenticated);
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch, isAuth]);
-  
+
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <div>
@@ -37,8 +36,7 @@ const App = () => {
           exact
           path={routes.home}
           restricted
-           component={HomePageView}
-          
+          component={HomePageView}
           redirectTo={routes.balance}
         />
         <PrivateRoute
@@ -46,12 +44,11 @@ const App = () => {
           component={BalanceView}
           redirectTo={routes.home}
         />
-
-        {/* <PrivateRoute
+        <PrivateRoute
           path={routes.report}
-          component={ReportView}
-          redirectTo={routes.home}
-        /> */}
+          component={TestChartView}
+          redirectTo={routes.report}
+        />
       </Switch>
       {/* <TestAuthComponent /> */}
       {/* <Button
