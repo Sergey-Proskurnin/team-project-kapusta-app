@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Switch } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core';
 
 import Modal from 'components/Modal/Modal';
 
@@ -18,6 +19,10 @@ import PublicRoute from './components/PublicRoute';
 import Button from '@material-ui/core/Button';
 import Report from './components/Report';
 
+import TestChartView from 'views/TestChartView';
+import { theme } from 'theme';
+
+
 // import TestWallet from 'redux/transactions/TestWallet';
 
 const App = () => {
@@ -30,7 +35,7 @@ const App = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div>
+    <MuiThemeProvider theme={theme}>
       <Switch>
         <PublicRoute
           exact
@@ -60,7 +65,7 @@ const App = () => {
         Open
       </Button> */}
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
-    </div>
+    </MuiThemeProvider>
   );
 };
 
