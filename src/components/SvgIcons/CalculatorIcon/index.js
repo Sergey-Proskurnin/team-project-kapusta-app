@@ -1,1 +1,1 @@
-export {default} from './CalculatorIcon'
+export { default } from './CalculatorIcon';

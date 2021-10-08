@@ -1,8 +1,6 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core';
-
-import Modal from 'components/Modal/Modal';
 
 import { getCurrentUser } from './redux/auth';
 import { getIsAuthenticated } from './redux/auth';
@@ -12,16 +10,12 @@ import routes from 'routes';
 import Header from 'components/Header/Header';
 import HomePageView from 'views/HomePageView';
 import BalanceView from 'views/BalanceView';
-import TestChartView from 'views/TestChartView';
-// import ReportView from 'views/ReportView';
+import ReportsView from 'views/ReportsView';
+
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
-import Button from '@material-ui/core/Button';
-
 import { theme } from 'theme';
-
-// import TestWallet from 'redux/transactions/TestWallet';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,7 +25,6 @@ const App = () => {
     dispatch(getCurrentUser());
   }, [dispatch, isAuth]);
 
-  const [modalOpen, setModalOpen] = useState(false);
   return (
     <MuiThemeProvider theme={theme}>
       <Header />
@@ -50,11 +43,11 @@ const App = () => {
         />
         <PrivateRoute
           path={routes.report}
-          component={TestChartView}
+          component={ReportsView}
           redirectTo={routes.report}
+          //! Не могу перейти на страницу report => перекидывает на home.
         />
       </Switch>
-      {modalOpen && <Modal setOpenModal={setModalOpen} />}
     </MuiThemeProvider>
   );
 };
