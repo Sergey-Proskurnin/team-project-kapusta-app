@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import transactionsOperations from 'redux/transactions/transactions-operations';
+import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core';
 
 export default function AddTransaction({ transactionType = 'income' }) {
   const dispatch = useDispatch();
@@ -88,13 +89,20 @@ export default function AddTransaction({ transactionType = 'income' }) {
           onChange={handleChangeSum}
         />
       </label>
-      <button type="submit" onClick={handleSubmit}>
+      {/* <button type="submit" onClick={handleSubmit}>
         ввод
       </button>
-      {/* <input type="reset" /> */}
+      <input type="reset" /> 
       <button type="button" onClick={cleanState}>
         очистить
-      </button>
+      </button> */}
+
+      <Button variant="contained" color="secondary" onClick={handleSubmit}>
+        <Typography variant="h3">ВВОД</Typography>
+      </Button>
+      <Button variant="outlined" color="inherit" onClick={cleanState}>
+        <Typography variant="h3">ОЧИСТИТЬ</Typography>
+      </Button>
     </form>
   );
 }
