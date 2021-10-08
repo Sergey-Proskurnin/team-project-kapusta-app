@@ -25,17 +25,17 @@ const HomePageView = ({ location }) => {
     setLogin(false);
   };
 
-const onComeBackClick = () => {
-  setLogin(true)
-};
+  const onComeBackClick = () => {
+    setLogin(true);
+  };
   return (
     <>
-      <header className={s.header}>
+      {/* <header className={s.header}>
 
         <div className={s.container}>
           <img className={s.logoImg} src={logo} alt="Kapusta" width="90" height="31" />
         </div>
-      </header>
+      </header> */}
       <div className={s.container}>
         <div className={s.firstSection}>
           <div className={s.bcgImage}></div>
@@ -45,10 +45,11 @@ const onComeBackClick = () => {
           </div>
         </div>
         <div className={s.secondSection}>
-          {login ?
-            <LoginForm onClickRegister={onRegisterClick} /> :
+          {login ? (
+            <LoginForm onClickRegister={onRegisterClick} />
+          ) : (
             <RegisterForm onClickComeBack={onComeBackClick} />
-          }
+          )}
           <div className={s.bcgImageBottom}></div>
         </div>
       </div>
