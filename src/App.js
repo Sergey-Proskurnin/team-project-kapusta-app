@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Switch } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core';
 
 import Modal from 'components/Modal/Modal';
 
@@ -16,17 +17,20 @@ import PublicRoute from './components/PublicRoute';
 
 import Button from '@material-ui/core/Button';
 import Report from './components/Report';
+import { theme } from 'theme';
 
 // import TestWallet from 'redux/transactions/TestWallet';
 
 const App = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuthenticated);
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch, isAuth]);
   const [modalOpen, setModalOpen] = useState(false);
   return (
+  <MuiThemeProvider theme={theme}>
+
     <div>
       <Switch>
         <PublicRoute
@@ -57,8 +61,11 @@ const App = () => {
         Open
       </Button> */}
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
-    </div>
+      </div>
+  </MuiThemeProvider>
+      
   );
+  
 };
 
 export default App;
