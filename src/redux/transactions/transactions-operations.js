@@ -22,7 +22,7 @@ const addTransaction = transaction => async dispatch => {
       Object.assign(transaction, splitedDate),
       balance,
     );
-    dispatch(actions.addTransactionSuccess(response.data.transaction));
+    dispatch(actions.addTransactionSuccess(response.data.resultTransaction));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(actions.addTransactionError(error.message));
@@ -104,18 +104,19 @@ const calculateBalance = (transaction, actionType) => {
   switch (actionType) {
     case 'add':
       return transaction.type === 'income'
-        ? initialBalance + transaction.sum
-        : initialBalance - transaction.sum;
+        ? Number(initialBalance) + Number(transaction.sum)
+        : Number(initialBalance) - Number(transaction.sum);
     case 'delete':
       return transaction.type === 'income'
-        ? initialBalance - transaction.sum
-        : initialBalance + transaction.sum;
+        ? Number(initialBalance) - Number(transaction.sum)
+        : Number(initialBalance) + Number(transaction.sum);
     case 'edit':
       const initialTransaction = transactionsList.find(transaction.id);
-      const priorBalance = initialBalance - initialTransaction.sum;
+      const priorBalance =
+        Number(initialBalance) - Number(initialTransaction.sum);
       return transaction.type === 'income'
-        ? priorBalance + transaction.sum
-        : priorBalance - transaction.sum;
+        ? Number(priorBalance) + Number(transaction.sum)
+        : Number(priorBalance) - Number(transaction.sum);
     default:
       return;
   }
@@ -144,8 +145,9 @@ const calculateBalancesPerMonth = transactions => {
 };
 
 const dateSplitter = date => {
-  return {
+  const splittedDate = {
     month: Number(date.split('-')[1]),
     year: Number(date.split('-')[2]),
   };
+  return splittedDate;
 };

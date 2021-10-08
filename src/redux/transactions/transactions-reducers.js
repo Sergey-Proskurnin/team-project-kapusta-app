@@ -47,12 +47,26 @@ const loader = createReducer(false, {
 });
 
 const error = createReducer(null, {
+  [actions.getTransactionsRequest]: () => null,
+  [actions.getTransactionsSuccess]: () => null,
   [actions.getTransactionsError]: (_, { payload }) => payload,
+  [actions.addTransactionRequest]: () => null,
+  [actions.addTransactionSuccess]: () => null,
   [actions.addTransactionError]: (_, { payload }) => payload,
+  [actions.deleteTransactionRequest]: () => null,
+  [actions.deleteTransactionSuccess]: () => null,
   [actions.deleteTransactionError]: (_, { payload }) => payload,
+  [actions.editTransactionRequest]: () => null,
+  [actions.editTransactionSucces]: () => null,
   [actions.editTransactionError]: (_, { payload }) => payload,
+  [actions.getMonthlyBalanceRequest]: () => null,
+  [actions.getMonthlyBalanceSuccess]: () => null,
   [actions.getMonthlyBalanceError]: (_, { payload }) => payload,
+  [actions.setTotalBalanceRequest]: () => null,
+  [actions.setTotalBalanceSuccess]: () => null,
   [actions.setTotalBalanceError]: (_, { payload }) => payload,
+  [actions.getTransactionsMonthYearRequest]: () => null,
+  [actions.getTransactionsMonthYearSuccess]: () => null,
   [actions.getTransactionsMonthYearError]: (_, { payload }) => payload,
 });
 

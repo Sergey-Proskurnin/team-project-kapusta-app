@@ -21,14 +21,13 @@ import TestChartView from 'views/TestChartView';
 // import TestWallet from 'redux/transactions/TestWallet';
 
 const App = () => {
-
   const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuthenticated);
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch, isAuth]);
-  
+
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <div>
@@ -37,8 +36,7 @@ const App = () => {
           exact
           path={routes.home}
           restricted
-           component={HomePageView}
-          
+          component={HomePageView}
           redirectTo={routes.balance}
         />
         <PrivateRoute
