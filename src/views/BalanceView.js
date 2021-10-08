@@ -15,11 +15,7 @@ const BalanceView = () => {
   return (
     <>
       <AppBar className={classes.wrapper} />
-      <div style={{ padding: '100px 20px', textAlign: 'center', color: 'Red' }}>
-        <h1>Balance Page</h1>
-        <AddTransaction />
-      </div>
-      <CalculatorIcon />
+              <CalculatorIcon />
       <Grid container className={classes.wrapper}>
         <TabBar
           tabs={[
@@ -33,13 +29,8 @@ const BalanceView = () => {
                 >
                   <Grid item>
                     <Grid container spacing={2}>
-                      <Button variant="contained" color="secondary">
-                        <Typography variant="h3">ВВОД</Typography>
-                      </Button>
-                      <Button variant="outlined" color="inherit">
-                        <Typography variant="h3">ОЧИСТИТЬ</Typography>
-                      </Button>
-                    </Grid>
+                    <AddTransaction />
+                      </Grid>
                     <Grid item>
                       <Paper></Paper>
                     </Grid>
