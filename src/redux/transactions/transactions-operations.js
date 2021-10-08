@@ -146,8 +146,8 @@ const calculateBalancesPerMonth = transactions => {
 
 const dateSplitter = date => {
   const splittedDate = {
-    month: Number(date.split('-')[1]),
-    year: Number(date.split('-')[2]),
+    month: String(date.split('-')[1]),
+    year: String(date.split('-')[2]),
   };
   return splittedDate;
 };

@@ -13,8 +13,7 @@ const BalanceView = () => {
 
   return (
     <>
-      <AppBar className={classes.wrapper} />
-              <CalculatorIcon />
+      <CalculatorIcon />
       <Grid container className={classes.wrapper}>
         <TabBar
           tabs={[
