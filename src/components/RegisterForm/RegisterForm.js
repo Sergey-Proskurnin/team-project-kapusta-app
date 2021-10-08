@@ -3,24 +3,25 @@ import { register } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-
-import { Button } from '@material-ui/core';
-
 const RegisterForm = ({onClickComeBack}) => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [nameDirty, setNameDirty] = useState(false);
   const [emailDirty, setEmailDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
+  const [nameError, setNameError] = useState('это обязательное поле');
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*')
 
   const blurHandler = (e) => {
     switch (e.target.name) {
+      case 'name':
+        setNameDirty(true)
+        break
       case 'email':
         setEmailDirty(true)
         break
@@ -32,7 +33,18 @@ const RegisterForm = ({onClickComeBack}) => {
 
   const nameHandler = (e) => {
     setName(e.target.value)
-  }
+    const re = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
+    if (!re.test(String(e.target.value).toLowerCase())) {
+      setNameError('Некорректное имя')
+      setErrorSymbol('*')
+       if (!e.target.value) {
+        setNameError('это обязательное поле')
+        setErrorSymbol('*')
+      }
+    }else {
+      setNameError('')
+    }
+}
 
   const emailHandler = (e) => {
     setEmail(e.target.value)
@@ -80,8 +92,11 @@ const RegisterForm = ({onClickComeBack}) => {
       </span>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
         <label className={s.formLabel} htmlFor="">
-          <span className={s.labelText}>Имя:</span>
+          <span className={s.labelText}>
+             {(nameDirty && nameError) && <span style={{ color: 'red', fontSize:10, paddingTop: 4}}>{errorSymbol} </span>}
+            Имя:</span>
           <input
+            onBlur={blurHandler}
             onChange={nameHandler}
             type="text"
             name="name"
@@ -89,6 +104,7 @@ const RegisterForm = ({onClickComeBack}) => {
             placeholder="Ваше имя"
             className={s.formInput}
           />
+           {(nameDirty && nameError) && <span style={{ color: 'red', fontSize:10, paddingTop: 4}}>{nameError} </span>}
         </label>
         <label className={s.formLabel} htmlFor="">
           <span className={s.labelText}>
@@ -121,36 +137,19 @@ const RegisterForm = ({onClickComeBack}) => {
            {(passwordDirty && passwordError) && <div style={{ color: 'red', fontSize:10, paddingTop: 4}}>{passwordError} </div>}
         </label>
         <div className={s.containerButton}>
-          <Button
-            onClick={onClickComeBack}
+            <button
             type="button"
-            variant="contained"
-            style={{
-              width: 125,
-              height: 44,
-              borderRadius: 16,
-              backgroundColor: '#FF751D',
-              color: '#FFFFFF',
-              fontSize: 12,
-              fontWeight: 'bold',
-            }}
-          >
-            Вернуться
-          </Button>
-          <Button
-            variant="contained"
-            type="submit"
-            style={{
-              width: 125,
-              height: 44,
-              borderRadius: 16,
-              color: '#52555F',
-              fontSize: 12,
-              fontWeight: 'bold',
-            }}
-          >
-            Готово
-          </Button>
+            onClick={onClickComeBack}
+           className={s.button}
+           >
+             ВЕРНУТЬСЯ
+          </button>
+          <button
+             type="submit"
+           className={s.button}
+           >
+             ГОТОВО
+           </button>
         </div>
       </form>
     </div>

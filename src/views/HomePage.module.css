@@ -67,93 +67,6 @@ a {
   text-transform: uppercase;
   color: #52555f;
 }
-.formRegistr {
-  position: absolute;
-  left: 50%;
-  top: -84px;
-  transform: translate(-50%, 0);
-  z-index: 1;
-
-  display: flex;
-  flex-direction: column;
-
-  margin-left: auto;
-  margin-right: auto;
-  padding: 40px 29px 53px 29px;
-  width: 300px;
-  min-height: 525px;
-  background-color: #fff;
-  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  border-radius: 30px;
-}
-.promtText {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 12px;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: #52555f;
-  padding-bottom: 24px;
-}
-.btnGoogle {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  background-color: #f6f7fb;
-  border-radius: 26px;
-  border: 0;
-  width: 122px;
-  height: 40px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  text-align: center;
-  color: #000000;
-  /* outline: none; */
-}
-.btnGoogle::before {
-  content: '';
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-
-  margin-right: 10px;
-  margin-left: 20px;
-  background-image: url(../img/svg/Group.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.formLabel {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-}
-.labelText {
-  padding-bottom: 12px;
-  width: 100%;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
-  color: black;
-}
-.formInput {
-  border: none;
-  border-radius: 30px;
-  background-color: #f6f7fb;
-  padding: 20px 17px;
-}
-.containerButton {
-  display: flex;
-  justify-content: space-between;
-}
 
 /* Адаптив */
 @media screen and (min-width: 320px) {
@@ -219,8 +132,10 @@ a {
     z-index: 99;
     width: 183px;
     height: 142px;
-    top: 244px;
-    left: 103px;
+    /* top: 244px;
+    left: 103px; */
+    top: 48%;
+    left: 13%;
     background-image: url('../img/svg/bcgImageBottom.svg');
   }
 }
