@@ -1,44 +1,18 @@
 // import React, { useEffect } from 'react';
 import ChartReport from 'components/ChartReport';
+import { Container } from 'components/Container';
 import { Report } from 'components/Report';
-import transactions from '../../data/db-transactions.json';
 
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getTransactionsPerMonth } from 'redux/transactions';
 // import transactionsOperations from 'redux/transactions/transactions-operations';
 
 const ReportsView = () => {
-  const { result } = transactions;
-  const category = 'Продукты';
-  const date = '2020-03-03T00:00:00.000Z';
-
-  const filteredByDate = result.filter(
-    transaction => transaction.date === date,
-  );
-
-  const filteredByCategoryTransactions = filteredByDate.filter(
-    transaction => transaction.category === category,
-  );
-
-  const maxValueForChart = filteredByCategoryTransactions.reduce(
-    (prevTransaction, currentTransaction) =>
-      prevTransaction.sum > currentTransaction.sum
-        ? prevTransaction
-        : currentTransaction,
-  ).sum;
-
-  const sortedSubCategoryTransactions = [
-    ...filteredByCategoryTransactions,
-  ].sort((a, b) => b.sum - a.sum);
-
   return (
-    <>
+    <Container>
       <Report />
-      <ChartReport
-        chartData={sortedSubCategoryTransactions}
-        maxValue={maxValueForChart}
-      />
-    </>
+      <ChartReport />
+    </Container>
   );
 };
 
