@@ -44,11 +44,11 @@ const Report = () => {
         <CurrentMonth />
       </div>
       <CurrentAmount />
-      <div className={`${s.reportWrapper} ${s.section}`}>
+      <div className={s.reportWrapper}>
         <div className={s.transactionWrapper}>
           <ArrowBackIosIcon style={{ color: '#FF751D' }} fontSize="small" />
 
-          <h1>Расходы:</h1>
+          <h1 className={s.reportTitle}>Расходы</h1>
           <ArrowForwardIosIcon style={{ color: '#FF751D' }} fontSize="small" />
         </div>
         <ul className={s.reportList}>
