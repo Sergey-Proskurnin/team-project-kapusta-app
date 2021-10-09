@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Balance from '../Balance';
 import s from './Report.module.css';
 import { useSelector, useDispatch } from 'react-redux';
