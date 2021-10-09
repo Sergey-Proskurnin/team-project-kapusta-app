@@ -1,3 +1,4 @@
 import Report from './Report';
 import CurrentAmount from './CurrentAmount';
-export { Report, CurrentAmount };
+import CurrentMonth from './CurrentMonth';
+export { Report, CurrentAmount, CurrentMonth };

@@ -41,9 +41,23 @@
     },
     {
       "date": "2020-02-20T00:00:00.000Z",
+      "_id": "615c52ef792ce5001db469a4",
+      "type": "expense",
+      "category": "Продукты",
+      "subCategory": "Свинина",
+      "sum": 200,
+      "day": 20,
+      "month": 2,
+      "year": 2020,
+      "createdAt": "2021-10-05T13:28:15.062Z",
+      "updatedAt": "2021-10-05T13:28:15.062Z"
+    },
+    {
+      "date": "2020-02-20T00:00:00.000Z",
       "_id": "615c5326792ce5001db469a7",
       "type": "expense",
-      "category": "Aлкоголь",
+      "category": "Алкоголь",
+
       "subCategory": "Свинина",
       "sum": 200,
       "day": 20,
@@ -95,7 +109,7 @@
       "date": "2020-02-22T00:00:00.000Z",
       "_id": "615c5417792ce5001db469b7",
       "type": "expense",
-      "category": "Все для дома",
+      "category": "Всё для дома",
       "subCategory": "Мебель",
       "sum": 10000,
       "day": 22,
