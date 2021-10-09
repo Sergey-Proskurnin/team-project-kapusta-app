@@ -34,10 +34,25 @@ const Balance = () => {
   return (
     <form onSubmit={onhandleSubmit}>
       <label htmlFor="balans">
-        Баланс:{' '}
-        <input type="text" name="name" value={sum} onChange={onHandleChange} />
-        UAH
-        <button className={s}>Подтвердить</button>
+        Баланс:
+        {balance === 0 ? (
+          <>
+            <input
+              type="text"
+              name="name"
+              // value={sum}
+              onChange={onHandleChange}
+            />
+            <button className={s}>Подтвердить</button>
+          </>
+        ) : (
+          <>
+            <p>{balance.toFixed(2)} UAH</p>
+            <button className={s} disabled>
+              Подтвердить
+            </button>
+          </>
+        )}
       </label>
     </form>
   );
