@@ -1,0 +1,30 @@
+.backgroundContainerImage {
+  position: relative;
+  width: 100%;
+}
+.backgroundContainer {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 286px;
+  border-radius: 0 0 0 45px;
+  background-color: #f2f5fc;
+}
+
+@media screen and (min-width: 768px) {
+  .backgroundContainerImage {
+    background-repeat: no-repeat;
+    background-image: url('../../img/svg/bcgImageBottom.svg');
+    background-position: right 10% bottom;
+  }
+  .backgroundContainer {
+    height: 526px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .backgroundContainerImage {
+    background-size: contain;
+    background-image: url('../../img/svg/bcgImage.svg');
+    background-position: right bottom;
+  }
+}

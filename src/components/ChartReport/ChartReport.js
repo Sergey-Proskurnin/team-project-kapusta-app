@@ -1,40 +1,111 @@
-import Paper from '@material-ui/core/Paper';
-import {
-  Chart,
-  BarSeries,
-  ArgumentAxis,
-  ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
-import { Animation } from '@devexpress/dx-react-chart';
 import useWindowDimensions from 'hooks/useWindowDimensions';
-import { useEffect, useState } from 'react';
+import transactions from '../../data/db-transactions.json';
+import { Bar } from 'react-chartjs-2';
+import s from './ChartReport.module.css';
 
-export default function ChartReport({ chartData, maxValue }) {
-  const { height, width } = useWindowDimensions();
-  const [chartProps, setChartProps] = useState({});
+export default function ChartReport() {
+  const { _, width } = useWindowDimensions();
 
-  useEffect(() => {
-    setChartProps(
-      width > 480
-        ? { bar: { width: '38' }, chart: { rotated: false } }
-        : { bar: { height: '38' }, chart: { rotated: true } },
-    );
-  }, [width]);
+  const { result } = transactions;
+  const category = 'Продукты';
+  const date = '2020-03-03T00:00:00.000Z';
+
+  const filteredByDate = result.filter(
+    transaction => transaction.date === date,
+  );
+
+  const filteredByCategoryTransactions = filteredByDate.filter(
+    transaction => transaction.category === category,
+  );
+
+  const sortedSubCategoryTransactions = [
+    ...filteredByCategoryTransactions,
+  ].sort((a, b) => b.sum - a.sum);
+
+  const sortedLables = [...sortedSubCategoryTransactions].map(
+    label => label.subCategory,
+  );
+
+  const sortedSum = [...sortedSubCategoryTransactions].map(data => data.sum);
+
+  const barWidth = width < 425 ? 15 : 38;
+
+  const data = {
+    labels: sortedLables,
+    datasets: [
+      {
+        label: 'Расход',
+        data: sortedSum,
+        backgroundColor: [
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+        ],
+        borderColor: [
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+          '#FFDAC0',
+          '#FFDAC0',
+          '#FF751D',
+        ],
+        borderWidth: 1,
+        borderRadius: 10,
+        barThickness: barWidth,
+      },
+    ],
+  };
+
+  const optionsVertical = {
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
+
+  const optionsHorizontal = {
+    indexAxis: 'y',
+    elements: {
+      bar: {
+        borderWidth: 1,
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+    },
+  };
+
+  const options = width < 425 ? optionsHorizontal : optionsVertical;
 
   return (
-    <Paper>
-      <Chart data={chartData} {...chartProps.chart}>
-        <ArgumentAxis />
-        <ValueAxis max={maxValue} />
-
-        <BarSeries
-          valueField="sum"
-          argumentField="subCategory"
-          color={'#FF751D'}
-          {...chartProps.bar}
-        />
-        <Animation />
-      </Chart>
-    </Paper>
+    <div className={s.chartContainer}>
+      <Bar data={data} options={options} />
+    </div>
   );
 }

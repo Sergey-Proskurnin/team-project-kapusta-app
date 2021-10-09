@@ -57,6 +57,7 @@
       "_id": "615c5326792ce5001db469a7",
       "type": "expense",
       "category": "Алкоголь",
+
       "subCategory": "Свинина",
       "sum": 200,
       "day": 20,
