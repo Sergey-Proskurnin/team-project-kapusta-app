@@ -1,9 +1,12 @@
 import React from 'react';
 import { SvgIcon } from '@material-ui/core';
 
+import s from './CalculatorIcon.module.css'
+
 const CalculatorIcon = () => {
   return (
     <SvgIcon
+     className={s.iconForm} 
       width="18"
       height="20"
       viewBox="0 0 18 20"
