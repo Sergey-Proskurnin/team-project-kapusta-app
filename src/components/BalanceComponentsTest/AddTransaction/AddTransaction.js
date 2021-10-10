@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
+import СalendarIcon from 'components/SvgIcons/СalendarIcon';
+import { ReactComponent as ArrowUp } from 'components/SvgIcons/ArrowUp/arrowDown.svg';
+import ArrowDown from 'components/SvgIcons/ArrowDown';
 
-import s from './AddTransaction.module.css'
+import s from './AddTransaction.module.css';
 
 export default function AddTransaction({ transactionType = 'income' }) {
   const dispatch = useDispatch();
@@ -12,7 +15,7 @@ export default function AddTransaction({ transactionType = 'income' }) {
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
 
-  const startDate = new Date().toLocaleString().split(',')[0]
+  const startDate = new Date().toLocaleString().split(',')[0];
 
   console.log(startDate);
 
@@ -28,7 +31,6 @@ export default function AddTransaction({ transactionType = 'income' }) {
     dispatch(transactionsOperations.addTransaction(transaction));
     cleanState();
   };
-
   const handleChangeDate = e => {
     setDate(e.target.value);
   };
@@ -47,66 +49,74 @@ export default function AddTransaction({ transactionType = 'income' }) {
     setCategory('');
     setSum(0);
   };
-  
+
   return (
     <div className={s.container}>
-    
-    <form className={s.containerForm} noValidate>
-    <div className={s.dateForm}>
-        {startDate}
-      </div>
-        <label>
-        <input
-        className={s.inputDescriptions}
-          value={description}
-          name="description"
-          id="description"
-          type="text"
-          placeholder="Описание товара"
-          required
-          onChange={handleChangeDescription}
-        />
-      </label>
-      <label>
-        <input
-        className={s.inputСategory}
-          value={category}
-          name="category"
-          id="description"
-          type="text"
-          placeholder="Категория товара"
-          required
-          onChange={handleChangeCategory}
-        />
-      </label>
-      <label>
-      <div className={s.positionIcon}>
-        <input
-          className={s.inputSum}
-          value={sum}
-          name="sum"
-          id="sum"
-          type="text"
-          placeholder="0,00"
-          required
-          onChange={handleChangeSum}
-        />
-        <CalculatorIcon/>
+      <form className={s.containerForm} noValidate>
+        <div className={s.dateForm}>
+          <СalendarIcon />
+          <p>{startDate}</p>
         </div>
-      </label>
-           <button type="button" onClick={handleSubmit} className={s.button}>
+        <div className={s.inputForm}>
+          <label>
+            <input
+              className={s.inputDescriptions}
+              value={description}
+              name="description"
+              id="description"
+              type="text"
+              placeholder="Описание товара"
+              required
+              onChange={handleChangeDescription}
+            />
+          </label>
+          <label>
+          <div className={s.positionIcon}>
+             <input
+              className={s.inputСategory}
+              value={category}
+              name="category"
+              id="description"
+              type="text"
+              placeholder="Категория товара"
+              required
+              onChange={handleChangeCategory}
+            />
+            <ArrowUp className={s.iconForm}/>
+            </div>
+          </label>
+          <label>
+            <div className={s.positionIcon}>
+              <input
+                className={s.inputSum}
+                value={sum}
+                name="sum"
+                id="sum"
+                type="string"
+                placeholder="0.00"
+                required
+                onChange={handleChangeSum}
+              />
+              <CalculatorIcon />
+            </div>
+          </label>
+        </div>
+        <div>
+          <button type="button" onClick={handleSubmit} className={s.button}>
             ВВОД
           </button>
-            <button type="button" onClick={handleSubmit} className={s.button}>
+          <button type="button" onClick={handleSubmit} className={s.button}>
             ОЧИСТИТЬ
           </button>
+        </div>
+
         {/* <Button variant="contained" color="secondary" onClick={handleSubmit}>
           <Typography variant="h3">ВВОД</Typography>
         </Button>
         <Button variant="outlined" color="inherit" onClick={cleanState}>
           <Typography variant="h3">ОЧИСТИТЬ</Typography>
         </Button> */}
-    </form>
+      </form>
     </div>
   );
 }
