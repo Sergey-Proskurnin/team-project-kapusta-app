@@ -72,7 +72,7 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                 className={s.inputСategory}
                 value={category}
                 name="category"
-                id="description"
+                id="category"
                 type="text"
                 placeholder="Категория товара"
                 required
