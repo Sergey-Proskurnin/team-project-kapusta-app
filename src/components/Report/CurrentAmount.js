@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import s from './Report.module.css';
 import { result } from '../../data/db-transactions.json';
-const month = 3;
+import { ReactComponent as Strip } from './strip.svg';
+const month = 2;
 
 const CurrentAmount = () => {
   const filteredByMonth = result.filter(
     transaction => transaction.month === month,
   );
-  const filteredIncome = filteredByMonth.filter(
-    transaction => transaction.type === 'income',
-  );
-  const filteredExpense = filteredByMonth.filter(
-    transaction => transaction.type === 'expense',
-  );
-  let totalIncome = 0;
-  let totalExpense = 0;
-  const totalSumIncome = filteredIncome.map(el => {
-    totalIncome += el.sum;
-  });
-  const totalSumExpence = filteredExpense.map(el => {
-    totalExpense += el.sum;
-  });
+  let totalSum = 0;
+  const findTotalSum = type => {
+    const filteredType = filteredByMonth.filter(
+      transaction => transaction.type === type,
+    );
+    filteredType.map(el => (totalSum += el.sum));
+    return totalSum;
+  };
 
   return (
     <div className={s.section}>
       <div className={s.transactionWrapper}>
-        <p>Расходы:</p>
-        <span>{`-${totalExpense.toFixed(2)} грн.`}</span>
+        <p className={s.amountTitle}>Расходы:</p>
+        <span
+          className={`${s.amountText} ${s.amountExpense}`}
+        >{`-${findTotalSum('expense')}.00 грн.`}</span>
       </div>
+      <Strip />
       <div className={s.transactionWrapper}>
-        <p>Доходы:</p>
-        <span>{`+${totalIncome.toFixed(2)} грн.`}</span>
+        <p className={s.amountTitle}>Доходы:</p>
+        <span className={`${s.amountText} ${s.amountIncome}`}>{`+${findTotalSum(
+          'income',
+        )}.00грн.`}</span>
       </div>
     </div>
   );

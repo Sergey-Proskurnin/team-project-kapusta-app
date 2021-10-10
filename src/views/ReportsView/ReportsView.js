@@ -11,7 +11,6 @@ import { Report } from 'components/Report';
 const ReportsView = () => {
   return (
     <Container>
-      <ArrowToGoBack />
       <Report />
       <ChartReport />
     </Container>
