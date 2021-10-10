@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Header from 'components/Header';
-
 import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
 
 import TabBar from 'components/TabBar';
 import { useStyles } from './useStyles';
-import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core';
+import {
+  Button,
+  Divider,
+  Grid,
+  Paper,
+  Select,
+  Typography,
+} from '@material-ui/core';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
 import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
 import useViewport from 'services/useViewport';
@@ -45,6 +50,7 @@ const BalanceView = () => {
                   <Grid item>
                     <Grid container spacing={2}>
                       <Grid item>
+
                         <AddTransaction
                           transactionType={type}
                           date={date}

@@ -5,8 +5,17 @@ import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
 import СalendarIcon from 'components/SvgIcons/СalendarIcon';
 import { ReactComponent as ArrowUp } from 'components/SvgIcons/ArrowUp/arrowDown.svg';
 import ArrowDown from 'components/SvgIcons/ArrowDown';
+import CustomSelect from 'components/CustomSelect';
 
 import s from './AddTransaction.module.css';
+
+
+import Select from 'react-select';
+
+import st from 'components/CustomSelect/CustomSelect.module.css';
+import options from 'data/categories.json';
+
+
 
 export default function AddTransaction({ transactionType, date, changeDate }) {
   const dispatch = useDispatch();
@@ -33,8 +42,9 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
   const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
+
   const handleChangeCategory = e => {
-    setCategory(e.target.value);
+    setCategory(e.label);
   };
   const handleChangeSum = e => {
     setSum(e.target.value);
@@ -44,6 +54,42 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     setDescription('');
     setCategory('');
     setSum(0);
+  };
+
+  const customStyles = {
+    control: (base, state) => ({
+      ...base,
+      width: 200,
+      height: 44,
+      border: '2px solid #F5F6FB',
+      background: '#FFFFFF',
+      // match with the menu
+      borderRadius: state.isFocused ? '0px 0px 0 0' : 0,
+      // Overwrittes the different states of border
+      borderColor: state.isFocused ? '#F5F6FB' : '#F5F6FB',
+      // Removes weird border around container
+      boxShadow: state.isFocused ? null : null,
+      '&:hover': {
+        // Overwrittes the different states of border
+        borderColor: state.isFocused ? '#F5F6FB' : '#F5F6FB',
+      },
+    }),
+    menuList: styles => ({
+      ...styles,
+      background: 'white',
+      color: '#C7CCDC',
+    }),
+    option: (styles, { isFocused, isSelected }) => ({
+      ...styles,
+      color: '52555F',
+      background: isFocused ? 'orange' : isSelected ? '#FFFFFF' : undefined,
+      zIndex: 1,
+    }),
+    menu: base => ({
+      ...base,
+      margin: 0,
+      zIndex: 100,
+    }),
   };
 
   return (
@@ -68,17 +114,25 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
           </label>
           <label>
             <div className={s.positionIcon}>
-              <input
-                className={s.inputСategory}
-                value={category}
-                name="category"
-                id="category"
-                type="text"
-                placeholder="Категория товара"
-                required
+              <Select
                 onChange={handleChangeCategory}
+                styles={customStyles}
+                options={options}
+                placeholder="Категория товара"
+                className={st.select}
+                isSearchable
               />
-              <ArrowUp className={s.iconForm} />
+              {/* <input
+              className={s.inputСategory}
+              value={category}
+              name="category"
+              id="description"
+              type="text"
+              placeholder="Категория товара"
+              required
+              onChange={handleChangeCategory}
+            />
+            <ArrowUp className={s.iconForm}/> */}
             </div>
           </label>
           <label>

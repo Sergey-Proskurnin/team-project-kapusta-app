@@ -25,9 +25,9 @@
 }
 
 .iconForm {
-    position: absolute;
-    top: 50%;
-    right: 20px; 
+  position: absolute;
+  top: 50%;
+  right: 20px;
 }
 
 .inputDescriptions {
@@ -104,6 +104,7 @@
 
 .inputSum {
   border: 2px solid #f5f6fb;
+  border-left: 0px;
   width: 126px;
   height: 44px;
   color: #143bbd;

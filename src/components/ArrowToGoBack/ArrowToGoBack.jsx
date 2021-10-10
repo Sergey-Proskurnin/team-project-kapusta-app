@@ -5,10 +5,11 @@ import arrow from 'img/svg/ArrowToGoBack.svg';
 
 const ArrowToGoBack = () => {
   const history = useHistory();
-  console.log('history', history);
+
   const setHistoryPath = () => {
     history.push('/');
   };
+
   return (
     <button type="button" className={s.toGoBack}>
       <img
