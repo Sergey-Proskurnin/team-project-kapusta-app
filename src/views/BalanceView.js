@@ -13,7 +13,6 @@ const BalanceView = () => {
 
   return (
     <>
-      <CalculatorIcon />
       <Grid container className={classes.wrapper}>
         <TabBar
           tabs={[
@@ -27,7 +26,9 @@ const BalanceView = () => {
                 >
                   <Grid item>
                     <Grid container spacing={2}>
+                      <Grid item >
                     <AddTransaction />
+                     </Grid>
                       </Grid>
                     <Grid item>
                       <Paper></Paper>

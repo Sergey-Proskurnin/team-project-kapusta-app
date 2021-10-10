@@ -1,140 +1,171 @@
 .containerForm {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 35px;
+}
 
-  .dateForm{
-    width: 150px;
-    height: 40px;
-    border: 0px;
-    padding-left: auto;
-    padding-right: auto;
-      }
+.dateForm {
+  width: 150px;
+  height: 40px;
+  /* border: 2px solid #f5f6fb; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.inputForm {
+  display: flex;
+}
+
+.iconForm {
+    position: absolute;
+    top: 50%;
+    right: 20px; 
+}
 
 .inputDescriptions {
-    border: 2px solid #F5F6FB;
-    border-right: 0px;
-    width: 289px;
-    height: 44px;
-    color: #143bbd;
-    border-radius: 16px 0 0 0 ;
+  border: 2px solid #f5f6fb;
+  border-right: 0px;
+  width: 289px;
+  height: 44px;
+  color: #143bbd;
+  border-radius: 16px 0 0 0;
 }
-.inputDescriptions::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
-    padding-left: 21px;
-}
-
-.inputDescriptions::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputDescriptions::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
+  padding-left: 21px;
 }
 
-.inputDescriptions::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputDescriptions::-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
-.inputDescriptions:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+
+.inputDescriptions::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
+}
+.inputDescriptions:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .inputСategory {
-    border: 2px solid #F5F6FB;
-    border-right: 0px;
-    width: 188px;
-    height: 44px;
-    color: #143bbd;
-    border-radius: 0;
-    padding-left: 20px;
+  border: 2px solid #f5f6fb;
+  border-right: 0px;
+  width: 188px;
+  height: 44px;
+  color: #143bbd;
+  border-radius: 0;
+  padding-left: 20px;
 }
-.inputСategory::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
-}
-
-.inputСategory::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputСategory::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
 
-.inputСategory::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputСategory::-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
-.inputСategory:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+
+.inputСategory::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
+}
+.inputСategory:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .inputSum {
-    border: 2px solid #F5F6FB;
-    width: 126px;
-    height: 44px;
-    color: #143bbd;
-    border-radius: 0 16px 16px 0;
-    padding-left: 20px;
-    padding-left: 45px;
+  border: 2px solid #f5f6fb;
+  width: 126px;
+  height: 44px;
+  color: #143bbd;
+  border-radius: 0 16px 16px 0;
+  padding-left: 20px;
+  padding-left: 45px;
 }
 
-.inputSum::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputSum::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
 
-.inputSum::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputSum::-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
 
-.inputSum::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputSum::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
-.inputSum::-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #C7CCDC;
-    font-size: 12px;
-    line-height: 14px;
+.inputSum::-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #c7ccdc;
+  font-size: 12px;
+  line-height: 14px;
 }
 
-.positionIcon{
-    position: relative;
-    display: flex;
-    flex-direction:column;
+.positionIcon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .button {
-    width: 125px;
-    height: 44px;
-    background-color: #f5f6fb;
-    border-radius: 16px;
-    border: none;
-    padding: 0;
-    color: #52555f;
-    font-size: 12px;
-    line-height: 14px;
-    font-weight: bold;
-    letter-spacing: 0.02em;
-    box-shadow: #52555f;
-    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
-    cursor: pointer;
-  }
-  .button:hover {
-    background-color: #ff751d;
-    color: #fff;
-    filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
-    transition: 0.5s linear;
-  }
-  .button:active {
-    background-color: #8a3d0d;
-  }
+  width: 125px;
+  height: 44px;
+  background-color: #f5f6fb;
+  border-radius: 16px;
+  border: none;
+  padding: 0;
+  color: #52555f;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  box-shadow: #52555f;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #ff751d;
+  color: #fff;
+  filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  transition: 0.5s linear;
+}
+.button:active {
+  background-color: #8a3d0d;
+}

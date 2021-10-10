@@ -8,6 +8,7 @@ export const useStyles = makeStyles(theme => ({
     background: theme.palette.primary.main,
   },
   tabContent: {
+    // width: 1060,
     marginBottom: 40,
     padding: theme.spacing(2, 0),
     [theme.breakpoints.up('md')]: {
