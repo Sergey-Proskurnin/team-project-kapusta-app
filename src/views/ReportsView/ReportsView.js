@@ -1,4 +1,5 @@
 // import React, { useEffect } from 'react';
+import ArrowToGoBack from 'components/ArrowToGoBack';
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
@@ -10,6 +11,7 @@ import { Report } from 'components/Report';
 const ReportsView = () => {
   return (
     <Container>
+      <ArrowToGoBack />
       <Report />
       <ChartReport />
     </Container>

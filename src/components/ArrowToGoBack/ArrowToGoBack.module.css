@@ -1,0 +1,21 @@
+.toGoBack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.svgArrow {
+  margin-right: 18px;
+}
+
+.title {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+
+  color: rgba(82, 85, 95, 0.7);
+}
