@@ -1,13 +1,15 @@
 .modalBackground {
   width: 100vw;
   height: 100vh;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0%;
   left: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .modalContainer {
@@ -73,4 +75,29 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.commonStyles {
+  background-color: transparent;
+  border-radius: 16px;
+  border: 2px solid #f5f6fb;
+  width: 125px;
+  height: 44px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #52555f;
+}
+.commonStyles:hover {
+  background-color: #ff751d;
+  color: #ffffff;
+}
+.commonStyles:not(:last-child) {
+  margin-right: 15px;
 }

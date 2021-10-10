@@ -1,6 +1,6 @@
 import {
   registerRequest,
-  // registerSuccess,
+  registerSuccess,
   registerError,
   logoutRequest,
   logoutSuccess,
@@ -32,7 +32,7 @@ const register = credentials => async dispatch => {
     const response = await fetchSignUp(credentials);
     // token.set(response.data.token);
     console.log(response);
-    // dispatch(registerSuccess(response.data));
+    dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));
     alert(`Incorrect login!

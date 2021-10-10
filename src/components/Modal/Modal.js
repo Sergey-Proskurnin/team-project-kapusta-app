@@ -39,10 +39,10 @@ function Modal({
         </span>
         <p className={styles.title}>{modalTitle}</p>
         <div className={styles.buttons}>
-          <button className={styles.yes} onClick={handleClickLeft}>
+          <button className={styles.commonStyles} onClick={handleClickLeft}>
             {modalButtonleft}
           </button>
-          <button className={styles.no} onClick={handleClickRight}>
+          <button className={styles.commonStyles} onClick={handleClickRight}>
             {modalButtonRight}
           </button>
         </div>
