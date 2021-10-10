@@ -1,9 +1,9 @@
-.container {
+.summaryContainer {
   width: 230px;
   height: 278px;
 }
 
-h4 {
+.summaryTitle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +30,7 @@ h4 {
   border: 1px solid #ffffff;
 }
 
-p {
+.summaryDescription {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;

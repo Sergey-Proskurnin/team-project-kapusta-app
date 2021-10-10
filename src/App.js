@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import routes from 'routes';
 import Header from 'components/Header/Header';
 import HomePageView from 'views/HomePageView';
-import BalanceView from 'views/BalanceView';
+import BalanceView from 'views/BalanceView/BalanceView';
 import ReportsView from 'views/ReportsView';
 
 import PrivateRoute from 'components/PrivateRoute';

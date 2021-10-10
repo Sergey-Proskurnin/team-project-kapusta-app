@@ -32,25 +32,36 @@ const Balance = () => {
     dispatch(transactionOp.setBalance(sum));
   };
   return (
-    <form onSubmit={onhandleSubmit}>
-      <label htmlFor="balans">
+    <form htmlFor="balans">
+      <label className={s.formBalance}>
         Баланс:
         {balance === 0 ? (
           <>
-            <input
-              type="text"
-              name="name"
-              // value={sum}
-              onChange={onHandleChange}
-            />
-            <button className={s}>Подтвердить</button>
+            <div>
+              <input
+                type="text"
+                name="name"
+                // value={sum}
+                onChange={onHandleChange}
+              />
+            </div>
+            <div>
+              <button className={s}>Подтвердить</button>
+            </div>
+
+            <div></div>
+            <div></div>
           </>
         ) : (
           <>
-            <p>{balance.toFixed(2)} UAH</p>
-            <button className={s} disabled>
-              Подтвердить
-            </button>
+            <div>
+              <p>{balance.toFixed(2)} UAH</p>
+            </div>
+            <div>
+              <button className={s} disabled>
+                Подтвердить
+              </button>
+            </div>
           </>
         )}
       </label>
