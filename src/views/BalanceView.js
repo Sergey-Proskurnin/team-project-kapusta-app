@@ -1,11 +1,17 @@
 import React from 'react';
-import Header from 'components/Header';
 
 import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
 
 import TabBar from 'components/TabBar';
 import { useStyles } from './useStyles';
-import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core';
+import {
+  Button,
+  Divider,
+  Grid,
+  Paper,
+  Select,
+  Typography,
+} from '@material-ui/core';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
 
 const BalanceView = () => {
@@ -26,10 +32,10 @@ const BalanceView = () => {
                 >
                   <Grid item>
                     <Grid container spacing={2}>
-                      <Grid item >
-                    <AddTransaction />
-                     </Grid>
+                      <Grid item>
+                        <AddTransaction />
                       </Grid>
+                    </Grid>
                     <Grid item>
                       <Paper></Paper>
                     </Grid>
