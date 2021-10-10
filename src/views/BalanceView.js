@@ -7,7 +7,7 @@ import TabBar from 'components/TabBar';
 import { useStyles } from './useStyles';
 import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
-import TransactionsList from 'components/BalanceComponentsTest/Transactions.List/TransactionsList';
+import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
 import useViewport from 'services/useViewport';
 
 const BalanceView = () => {
