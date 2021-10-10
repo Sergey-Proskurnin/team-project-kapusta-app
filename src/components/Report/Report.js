@@ -10,7 +10,6 @@ import { result } from '../../data/db-transactions.json';
 import { CurrentAmount, CurrentMonth } from './';
 import categories from '../../data/categories';
 const stat = ['Расходы', 'Доходы'];
-
 const month = 2;
 
 const Report = () => {
