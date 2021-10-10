@@ -13,15 +13,18 @@ const Header = () => {
 
   return (
     <header className={s.header}>
-      <Link to="/" alt="homepage" className={s.logoLink}>
-        <img src={logo} className={s.logoImg} alt="Kapusta-logo" />
-      </Link>
-      {isAuthenticated && (
-        <div className={s.userInfo_container}>
-          <UserInfo />
-          <UserLogout />
-        </div>
-      )}
+      <div className={s.header_container}>
+        <Link to="/" alt="homepage" className={s.logoLink}>
+          <img src={logo} className={s.logoImg} alt="Kapusta-logo" />
+        </Link>
+
+        {isAuthenticated && (
+          <div className={s.user_container}>
+            <UserInfo />
+            <UserLogout />
+          </div>
+        )}
+      </div>
     </header>
   );
 };
