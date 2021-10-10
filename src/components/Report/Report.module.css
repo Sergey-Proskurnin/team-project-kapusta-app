@@ -6,16 +6,17 @@
 }
 .section {
   display: flex;
-  border: 1px solid tomato;
+  /* border: 1px solid tomato; */
   text-align: center;
   justify-content: center;
-  width: 1060px;
+  /* width: 1060px; */
   margin-left: auto;
   margin-right: auto;
-  border-radius: 30px;
   margin-bottom: 30px;
-  background-color: #ffffff;
-  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+
+  background: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 20px;
 }
 .navigation {
   justify-content: space-between;
@@ -27,15 +28,14 @@
   fill: darkgreen;
 }
 .reportWrapper {
-  display: grid;
-  padding-left: 212px;
-  padding-right: 212px;
+  margin-bottom: 30px;
 }
 .transactionWrapper {
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .reportList {
   padding: 0px;
@@ -81,6 +81,20 @@ ArrowBackIosIcon {
     display: none;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .section {
+    border-radius: 30px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  }
+  .reportList {
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+}
+
 /* img {
   display: inline-block;
   width: 56px;
@@ -94,4 +108,14 @@ ArrowBackIosIcon {
 }
 .reportCardTitle {
   text-transform: uppercase;
+}
+
+.reportTitle {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
 }

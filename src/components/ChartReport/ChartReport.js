@@ -28,6 +28,30 @@ export default function ChartReport() {
 
   const sortedSum = [...sortedSubCategoryTransactions].map(data => data.sum);
 
+  const getNextColor = color => {
+    const colors = ['#FF751D', '#FFDAC0', '#FFDAC0'];
+
+    if (!color) {
+      return colors[0];
+    }
+
+    const colorIdx = colors.findIndex(item => color === item);
+
+    return colors[colorIdx + 1] ? colors[colorIdx + 1] : colors[0];
+  };
+
+  const colorsArray = array => {
+    let prev = null;
+
+    return sortedSum.map(item => {
+      const currentColor = getNextColor(prev);
+
+      prev = currentColor;
+
+      return currentColor;
+    });
+  };
+
   const barWidth = width < 425 ? 15 : 38;
 
   const data = {
@@ -36,36 +60,8 @@ export default function ChartReport() {
       {
         label: 'Расход',
         data: sortedSum,
-        backgroundColor: [
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-        ],
-        borderColor: [
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-          '#FFDAC0',
-          '#FFDAC0',
-          '#FF751D',
-        ],
+        backgroundColor: colorsArray(sortedSum),
+        borderColor: colorsArray(sortedSum),
         borderWidth: 1,
         borderRadius: 10,
         barThickness: barWidth,
