@@ -33,9 +33,11 @@ const deleteTransaction = transaction => async dispatch => {
   dispatch(actions.deleteTransactionRequest());
   const balance = calculateBalance(transaction, 'delete');
   try {
-    const response = await fetch.deleteTransaction(transaction.id, balance);
-    dispatch(actions.deleteTransactionSuccess(transaction));
-    dispatch(actions.setTotalBalanceSuccess(response.data.balance));
+    console.log(transaction._id, balance);
+    // const response = await fetch.deleteTransaction(transaction.id, balance);
+    // console.log(response);
+    // dispatch(actions.deleteTransactionSuccess(transaction));
+    // dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(actions.addTransactionError(error.message));
   }
@@ -57,7 +59,7 @@ const getTransactionsDay = date => async dispatch => {
   dispatch(actions.getTransactionsRequest());
   try {
     const response = await fetch.getTransactionsByDate(date);
-    dispatch(actions.getTransactionsSuccess(response.data.transactions));
+    dispatch(actions.getTransactionsSuccess(response.data.result));
   } catch (error) {
     dispatch(actions.getTransactionsError(error.message));
   }
@@ -107,6 +109,7 @@ const calculateBalance = (transaction, actionType) => {
         ? Number(initialBalance) + Number(transaction.sum)
         : Number(initialBalance) - Number(transaction.sum);
     case 'delete':
+      console.log(store.getState());
       return transaction.type === 'income'
         ? Number(initialBalance) - Number(transaction.sum)
         : Number(initialBalance) + Number(transaction.sum);
