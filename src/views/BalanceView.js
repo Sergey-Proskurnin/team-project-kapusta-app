@@ -24,11 +24,9 @@ const BalanceView = () => {
   const [date, setDate] = useState('');
   const startDate = new Date().toLocaleString().split(',')[0];
 
-  console.log(startDate);
-
-  useEffect(() => {
+    useEffect(() => {
     setDate(startDate);
-  }, []);
+  }, [startDate]);
 
   const typeToggle = () => {
     type === 'income' ? setType('expense') : setType('income');
@@ -54,7 +52,7 @@ const BalanceView = () => {
                         <AddTransaction
                           transactionType={type}
                           date={date}
-                          changeDate={setDate}
+                          // changeDate={setDate}
                         />
                         <TransactionsList transactionType={type} />
                       </Grid>

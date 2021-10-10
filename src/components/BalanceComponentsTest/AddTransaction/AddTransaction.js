@@ -9,15 +9,16 @@ import CustomSelect from 'components/CustomSelect';
 
 import s from './AddTransaction.module.css';
 
-
 import Select from 'react-select';
 
 import st from 'components/CustomSelect/CustomSelect.module.css';
 import options from 'data/categories.json';
 
-
-
-export default function AddTransaction({ transactionType, date, changeDate }) {
+export default function AddTransaction({
+  transactionType,
+  date,
+   changeDate
+}) {
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState('');
@@ -36,9 +37,9 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     dispatch(transactionsOperations.addTransaction(transaction));
     cleanState();
   };
-  const handleChangeDate = e => {
-    changeDate(e.target.value);
-  };
+  // const handleChangeDate = e => {
+  //   changeDate(e.target.value);
+  // };
   const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
@@ -50,7 +51,7 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     setSum(e.target.value);
   };
   const cleanState = () => {
-    handleChangeDate('');
+    // handleChangeDate('');
     setDescription('');
     setCategory('');
     setSum(0);
