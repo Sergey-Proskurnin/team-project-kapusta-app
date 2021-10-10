@@ -2,8 +2,10 @@ import s from './register.module.css';
 import { register } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import Modal from 'components/Modal';
 
 const RegisterForm = ({ onClickComeBack }) => {
+  
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -16,6 +18,12 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
+
+  const [setModalOpen, setShowModal] = useState(false);
+  const toggleModal = () => {
+    setShowModal(setShowModal => !setShowModal);
+  };
+
 
   const blurHandler = e => {
     switch (e.target.name) {
@@ -170,9 +178,19 @@ const RegisterForm = ({ onClickComeBack }) => {
           <button type="button" onClick={onClickComeBack} className={s.button}>
             ВЕРНУТЬСЯ
           </button>
-          <button type="submit" className={s.button}>
+          <button type="submit" onClick={toggleModal} className={s.button}>
             ГОТОВО
           </button>
+           {setModalOpen && (
+        <Modal
+          modalTitle={'Подтвердите вашу аутентификацию на вашей почте!'}
+          modalButtonleft={'👌'}
+          modalButtonRight={'ОК'}   
+          handleClickLeft={toggleModal}
+          handleClickRight={toggleModal}
+          onClose={toggleModal}
+        />
+      )}
         </div>
       </form>
     </div>
