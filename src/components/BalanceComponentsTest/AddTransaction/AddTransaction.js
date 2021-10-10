@@ -9,21 +9,20 @@ import CustomSelect from 'components/CustomSelect';
 
 import s from './AddTransaction.module.css';
 
+
 import Select from 'react-select';
 
 import st from 'components/CustomSelect/CustomSelect.module.css';
 import options from 'data/categories.json';
 
-export default function AddTransaction({ transactionType = 'income' }) {
+
+
+export default function AddTransaction({ transactionType, date, changeDate }) {
   const dispatch = useDispatch();
-  const [date, setDate] = useState('');
+
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
-
-  const startDate = new Date().toLocaleString().split(',')[0];
-
-  console.log(startDate);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -38,7 +37,7 @@ export default function AddTransaction({ transactionType = 'income' }) {
     cleanState();
   };
   const handleChangeDate = e => {
-    setDate(e.target.value);
+    changeDate(e.target.value);
   };
   const handleChangeDescription = e => {
     setDescription(e.target.value);
@@ -51,7 +50,7 @@ export default function AddTransaction({ transactionType = 'income' }) {
     setSum(e.target.value);
   };
   const cleanState = () => {
-    setDate('');
+    handleChangeDate('');
     setDescription('');
     setCategory('');
     setSum(0);
@@ -98,7 +97,7 @@ export default function AddTransaction({ transactionType = 'income' }) {
       <form className={s.containerForm} noValidate>
         <div className={s.dateForm}>
           <СalendarIcon />
-          <p>{startDate}</p>
+          <p>{date}</p>
         </div>
         <div className={s.inputForm}>
           <label>
@@ -156,7 +155,7 @@ export default function AddTransaction({ transactionType = 'income' }) {
           <button type="button" onClick={handleSubmit} className={s.button}>
             ВВОД
           </button>
-          <button type="button" onClick={handleSubmit} className={s.button}>
+          <button type="button" onClick={cleanState} className={s.button}>
             ОЧИСТИТЬ
           </button>
         </div>

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
 
 import TabBar from 'components/TabBar';
@@ -13,9 +12,27 @@ import {
   Typography,
 } from '@material-ui/core';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
+import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
+import useViewport from 'services/useViewport';
 
 const BalanceView = () => {
   const classes = useStyles();
+  const [type, setType] = useState('income');
+  const { width } = useViewport();
+  console.log(width);
+
+  const [date, setDate] = useState('');
+  const startDate = new Date().toLocaleString().split(',')[0];
+
+  console.log(startDate);
+
+  useEffect(() => {
+    setDate(startDate);
+  }, []);
+
+  const typeToggle = () => {
+    type === 'income' ? setType('expense') : setType('income');
+  };
 
   return (
     <>
@@ -33,7 +50,13 @@ const BalanceView = () => {
                   <Grid item>
                     <Grid container spacing={2}>
                       <Grid item>
-                        <AddTransaction />
+
+                        <AddTransaction
+                          transactionType={type}
+                          date={date}
+                          changeDate={setDate}
+                        />
+                        <TransactionsList transactionType={type} />
                       </Grid>
                     </Grid>
                     <Grid item>

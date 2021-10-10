@@ -26,7 +26,7 @@ const fetchCurrent = () => axios.get('/users/current');
 const addTransaction = (transaction, balance) =>
   axios.post('/transaction', { transaction, balance });
 const deleteTransaction = (transactionId, balance) =>
-  axios.delete(`/transaction/${transactionId}`, { balance });
+  axios.delete(`/transaction/${transactionId}`, balance);
 const editTransaction = (transaction, balance) =>
   axios.put(`/transaction/${transaction.id}`, { transaction, balance });
 const getTransactionsByDate = date => axios.get(`/transaction/${date}`);
