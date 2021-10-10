@@ -4,13 +4,13 @@ import styles from './Summary.module.css';
 
 const Summary = () => {
   return (
-    <div className={styles.container}>
-      <h4>Сводка</h4>
+    <div className={styles.summaryContainer}>
+      <h4 className={styles.summaryTitle}>Сводка</h4>
       <ul className={styles.summaryList}>
         {data.map(({ name, id }, index) => (
           <li key={index} className={styles.summaryItem}>
-            <p>{name}</p>
-            <p>{`${id}.00`}</p>
+            <p className={styles.summaryDescription}>{name}</p>
+            <p className={styles.summaryDescription}>{`${id}.00`}</p>
           </li>
         ))}
       </ul>

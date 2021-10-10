@@ -1,0 +1,17 @@
+.holst {
+width: 1060px;
+height: 579px;
+border: 1px solid red;
+margin-top: 132px;
+background-color: #fff;
+border-radius: 0px 30px 30px 30px;
+position: relative;
+}
+
+.dataContainer {
+display: flex;
+justify-content: space-between;
+margin-left: 20px;
+margin-right: 20px;
+
+} 

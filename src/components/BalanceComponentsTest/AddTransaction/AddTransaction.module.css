@@ -1,14 +1,18 @@
 .containerForm {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  margin-left: 30px;
-  margin-right: 35px;
+  margin-top: 33px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 59px;
+  margin-left: -10px;
+  /* margin-right: 0px; */
 }
 
 .dateForm {
-  width: 150px;
+  width: 100px;
   height: 40px;
   /* border: 2px solid #f5f6fb; */
   display: flex;
@@ -66,7 +70,7 @@
   line-height: 14px;
 }
 
-.inputСategory {
+/* .inputСategory {
   border: 2px solid #f5f6fb;
   border-right: 0px;
   width: 188px;
@@ -76,31 +80,27 @@
   padding-left: 20px;
 }
 .inputСategory::-webkit-input-placeholder {
-  /* WebKit browsers */
   color: #c7ccdc;
   font-size: 12px;
   line-height: 14px;
 }
 
 .inputСategory::-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
   color: #c7ccdc;
   font-size: 12px;
   line-height: 14px;
 }
 
 .inputСategory::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
   color: #c7ccdc;
   font-size: 12px;
   line-height: 14px;
 }
 .inputСategory:-ms-input-placeholder {
-  /* Internet Explorer 10+ */
   color: #c7ccdc;
   font-size: 12px;
   line-height: 14px;
-}
+} */
 
 .inputSum {
   border: 2px solid #f5f6fb;
@@ -148,7 +148,6 @@
 .button {
   width: 125px;
   height: 44px;
-  background-color: #f5f6fb;
   border-radius: 16px;
   border: none;
   padding: 0;
@@ -157,16 +156,33 @@
   line-height: 14px;
   font-weight: bold;
   letter-spacing: 0.02em;
-  box-shadow: #52555f;
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
   cursor: pointer;
+  margin-left: 15px;
 }
-.button:hover {
+
+.buttonLeft{
+  color: #fff;
+  background-color: #ff751d;
+}
+
+.buttonLeft:hover {
+  background-color: #f5f6fb;
+  color: #52555f;
+  filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  transition: 0.5s linear;
+}
+.buttonRight{
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+.buttonRight:hover {
   background-color: #ff751d;
   color: #fff;
   filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
   transition: 0.5s linear;
 }
-.button:active {
-  background-color: #8a3d0d;
-}
+
+
+

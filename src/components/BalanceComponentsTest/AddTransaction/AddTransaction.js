@@ -60,7 +60,7 @@ export default function AddTransaction({
   const customStyles = {
     control: (base, state) => ({
       ...base,
-      width: 200,
+      width: 188,
       height: 44,
       border: '2px solid #F5F6FB',
       background: '#FFFFFF',
@@ -94,7 +94,7 @@ export default function AddTransaction({
   };
 
   return (
-    <div className={s.container}>
+    <div className={'s'}>
       <form className={s.containerForm} noValidate>
         <div className={s.dateForm}>
           <СalendarIcon />
@@ -153,10 +153,10 @@ export default function AddTransaction({
           </label>
         </div>
         <div>
-          <button type="button" onClick={handleSubmit} className={s.button}>
+          <button type="button" onClick={handleSubmit} className={`${s.button} ${s.buttonLeft}`}>
             ВВОД
           </button>
-          <button type="button" onClick={cleanState} className={s.button}>
+          <button type="button" onClick={cleanState} className={`${s.button} ${s.buttonRight}`}>
             ОЧИСТИТЬ
           </button>
         </div>
