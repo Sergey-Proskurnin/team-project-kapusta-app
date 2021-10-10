@@ -13,29 +13,46 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  align-items: center;
 
-  background: #ffffff;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
 }
 .navigation {
   justify-content: space-between;
 }
-.icon {
-  width: 56px;
-  height: 56px;
-  border: 1px solid darkblue;
-  fill: darkgreen;
+.iconSvg {
+  width: 58px;
+  height: 58px;
 }
 .reportWrapper {
   margin-bottom: 30px;
+}
+.reportMonth {
+  font-size: 12px;
+  line-height: 1.17;
+  /* border: 1px solid tomato; */
+  justify-content: space-between;
+  height: 39px;
+  align-items: center;
+}
+.title {
+  color: rgba(82, 85, 95, 0.7);
+}
+.reportMonthTitle {
+  width: 100px;
+  height: 20px;
+  text-transform: uppercase;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 .transactionWrapper {
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .reportList {
   padding: 0px;
@@ -80,6 +97,24 @@ ArrowBackIosIcon {
   .button {
     display: none;
   }
+}
+.transactionWrapper:not(:last-child) {
+  margin-right: 20px;
+}
+
+.amountTitle {
+  color: #52555f;
+  margin-right: 15px;
+}
+.amountText {
+  font-size: 14px;
+  line-height: 1.14;
+}
+.amountExpense {
+  color: #e53935;
+}
+.amountIncome {
+  color: #407946;
 }
 
 @media screen and (min-width: 768px) {

@@ -5,7 +5,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import s from './Report.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import months from '../../data/month';
-
 const CurrentMonth = () => {
   let date = new Date();
   let selectedMonth = date.getMonth();
@@ -47,18 +46,19 @@ const CurrentMonth = () => {
   };
 
   return (
-    <div>
-      <p>Текущий период:</p>
+    <div className={s.reportMonth}>
+      <p className={s.title}>Текущий период:</p>
       <div className={s.transactionWrapper}>
         <ArrowBackIosIcon
-          style={{ color: '#FF751D' }}
-          fontSize="small"
+          style={{ color: '#FF751D', width: '12' }}
+          // fontSize="small"
           onClick={onHandleClickLeft}
         />
-        <span>{`${monthnames[month]} ${year}`}</span>
+        <span
+          className={s.reportMonthTitle}
+        >{`${monthnames[month]} ${year}`}</span>
         <ArrowForwardIosIcon
-          style={{ color: '#FF751D' }}
-          fontSize="small"
+          style={{ color: '#FF751D', width: '12' }}
           onClick={onHandleClickRight}
         />
       </div>
