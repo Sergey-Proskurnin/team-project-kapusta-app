@@ -28,15 +28,15 @@ const Balance = () => {
               name="name"
               // value={sum}
               onChange={onHandleChange}
-              className={s.balanceInput}
+              className={s.balanceInpute}
             />
-            <button className={s.balanceButton}>Подтвердить</button>
+            <button className={s.balanceButton}>ПОДТВЕРДИТЬ</button>
           </>
         ) : (
           <>
-            <p>{balance.toFixed(2)} UAH</p>
+            <p className={s.balanceInpute}>{balance.toFixed(2)} UAH</p>
             <button className={s.balanceButton} disabled>
-              Подтвердить
+              ПОДТВЕРДИТЬ
             </button>
           </>
         )}

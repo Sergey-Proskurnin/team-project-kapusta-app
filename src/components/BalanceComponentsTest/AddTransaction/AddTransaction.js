@@ -7,6 +7,8 @@ import { ReactComponent as ArrowUp } from 'components/SvgIcons/ArrowUp/arrowDown
 import ArrowDown from 'components/SvgIcons/ArrowDown';
 import CustomSelect from 'components/CustomSelect';
 
+import useWindowDimensions from 'hooks/useWindowDimensions';
+
 import s from './AddTransaction.module.css';
 
 import Select from 'react-select';
@@ -17,13 +19,15 @@ import options from 'data/categories.json';
 export default function AddTransaction({
   transactionType,
   date,
-   changeDate
+  //  changeDate
 }) {
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
+
+  const viewPort = useWindowDimensions();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -94,36 +98,39 @@ export default function AddTransaction({
   };
 
   return (
-    <div className={'s'}>
-      <form className={s.containerForm} noValidate>
-        <div className={s.dateForm}>
-          <СalendarIcon />
-          <p>{date}</p>
-        </div>
-        <div className={s.inputForm}>
-          <label>
-            <input
-              className={s.inputDescriptions}
-              value={description}
-              name="description"
-              id="description"
-              type="text"
-              placeholder="Описание товара"
-              required
-              onChange={handleChangeDescription}
-            />
-          </label>
-          <label>
-            <div className={s.positionIcon}>
-              <Select
-                onChange={handleChangeCategory}
-                styles={customStyles}
-                options={options}
-                placeholder="Категория товара"
-                className={st.select}
-                isSearchable
-              />
-              {/* <input
+    <>
+      {viewPort.width > 1280 ? (
+        <>
+          <div className={'s'}>
+            <form className={s.containerForm} noValidate>
+              <div className={s.dateForm}>
+                <СalendarIcon />
+                <p>{date}</p>
+              </div>
+              <div className={s.inputForm}>
+                <label>
+                  <input
+                    className={s.inputDescriptions}
+                    value={description}
+                    name="description"
+                    id="description"
+                    type="text"
+                    placeholder="Описание товара"
+                    required
+                    onChange={handleChangeDescription}
+                  />
+                </label>
+                <label>
+                  <div className={s.positionIcon}>
+                    <Select
+                      onChange={handleChangeCategory}
+                      styles={customStyles}
+                      options={options}
+                      placeholder="Категория товара"
+                      className={st.select}
+                      isSearchable
+                    />
+                    {/* <input
               className={s.inputСategory}
               value={category}
               name="category"
@@ -134,40 +141,125 @@ export default function AddTransaction({
               onChange={handleChangeCategory}
             />
             <ArrowUp className={s.iconForm}/> */}
-            </div>
-          </label>
-          <label>
-            <div className={s.positionIcon}>
-              <input
-                className={s.inputSum}
-                value={sum}
-                name="sum"
-                id="sum"
-                type="string"
-                placeholder="0.00"
-                required
-                onChange={handleChangeSum}
-              />
-              <CalculatorIcon />
-            </div>
-          </label>
-        </div>
-        <div>
-          <button type="button" onClick={handleSubmit} className={`${s.button} ${s.buttonLeft}`}>
-            ВВОД
-          </button>
-          <button type="button" onClick={cleanState} className={`${s.button} ${s.buttonRight}`}>
-            ОЧИСТИТЬ
-          </button>
-        </div>
-
-        {/* <Button variant="contained" color="secondary" onClick={handleSubmit}>
-          <Typography variant="h3">ВВОД</Typography>
-        </Button>
-        <Button variant="outlined" color="inherit" onClick={cleanState}>
-          <Typography variant="h3">ОЧИСТИТЬ</Typography>
-        </Button> */}
-      </form>
-    </div>
+                  </div>
+                </label>
+                <label>
+                  <div className={s.positionIcon}>
+                    <input
+                      className={s.inputSum}
+                      value={sum}
+                      name="sum"
+                      id="sum"
+                      type="string"
+                      placeholder="0.00"
+                      required
+                      onChange={handleChangeSum}
+                    />
+                    <CalculatorIcon />
+                  </div>
+                </label>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className={`${s.button} ${s.buttonLeft}`}
+                >
+                  ВВОД
+                </button>
+                <button
+                  type="button"
+                  onClick={cleanState}
+                  className={`${s.button} ${s.buttonRight}`}
+                >
+                  ОЧИСТИТЬ
+                </button>
+              </div>
+            </form>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={'s'}>
+            <form className={s.containerForm768} noValidate>
+              <div className={s.containerFormTablet}>
+                <div className={s.dateForm}>
+                  <СalendarIcon />
+                  <p>{date}</p>
+                </div>
+                <div className={s.inputForm}>
+                  <label>
+                    <input
+                      className={s.inputDescriptions}
+                      value={description}
+                      name="description"
+                      id="description"
+                      type="text"
+                      placeholder="Описание товара"
+                      required
+                      onChange={handleChangeDescription}
+                    />
+                  </label>
+                  <label>
+                    <div className={s.positionIcon}>
+                      <Select
+                        onChange={handleChangeCategory}
+                        styles={customStyles}
+                        options={options}
+                        placeholder="Категория товара"
+                        className={st.select}
+                        isSearchable
+                      />
+                      {/* <input
+              className={s.inputСategory}
+              value={category}
+              name="category"
+              id="description"
+              type="text"
+              placeholder="Категория товара"
+              required
+              onChange={handleChangeCategory}
+            />
+            <ArrowUp className={s.iconForm}/> */}
+                    </div>
+                  </label>
+                  <label>
+                    <div className={s.positionIcon}>
+                      <input
+                        className={s.inputSum}
+                        value={sum}
+                        name="sum"
+                        id="sum"
+                        type="string"
+                        placeholder="0.00"
+                        required
+                        onChange={handleChangeSum}
+                      />
+                      <CalculatorIcon />
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div className={s.positionButton768}>
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className={`${s.button} ${s.buttonLeft}`}
+                >
+                  ВВОД
+                </button>
+                <button
+                  type="button"
+                  onClick={cleanState}
+                  className={`${s.button} ${s.buttonRight}`}
+                >
+                  ОЧИСТИТЬ
+                </button>
+              </div>
+            </form>
+          </div>
+        </>
+      )}
+    </>
   );
 }

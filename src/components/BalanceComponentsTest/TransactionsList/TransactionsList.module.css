@@ -1,5 +1,5 @@
 .main {
-  margin: 48px auto;
+  /* margin: 48px auto; */
   width: 605px;
   height: 38px;
   text-align: center;
@@ -12,7 +12,7 @@
 
 @media screen and (min-width: 1280px) {
       .main {
-    margin: 59px auto;
+    /* margin: 59px auto; */
       width: 760px;
       height: 38px;  
       }

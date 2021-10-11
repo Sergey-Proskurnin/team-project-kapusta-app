@@ -1,6 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/core';
 
 import { getCurrentUser } from './redux/auth';
 import { getIsAuthenticated } from './redux/auth';
@@ -15,7 +14,6 @@ import ReportsView from 'views/ReportsView';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
-import { theme } from 'theme';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +24,7 @@ const App = () => {
   }, [dispatch, isAuth]);
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <>
       <Header />
       <Switch>
         <PublicRoute
@@ -48,7 +46,7 @@ const App = () => {
           //! Не могу перейти на страницу report => перекидывает на home.
         />
       </Switch>
-    </MuiThemeProvider>
+    </>
   );
 };
 
