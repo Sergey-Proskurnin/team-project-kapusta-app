@@ -4,20 +4,18 @@ import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import styles from './TransactionsList.module.css';
 
-export default function TransactionsList({
-  transactionType,
-  date = '10-10-2021',
-}) {
+export default function TransactionsList({ transactionType, date }) {
   const dispatch = useDispatch();
   const transactions = useSelector(selectors.getTransactionsPerDay);
   const filteredTransactions = transactions.filter(
     item => item.type === transactionType,
   );
 
-  useEffect(
-    () => dispatch(transactionsOperations.getTransactionsDay(date)),
-    [],
-  );
+  useEffect(() => {
+    if (date) {
+      dispatch(transactionsOperations.getTransactionsDay(date));
+    }
+  }, [date]);
   const deleteTransaction = transaction => {
     dispatch(transactionsOperations.deleteTransaction(transaction));
   };
@@ -37,9 +35,13 @@ export default function TransactionsList({
         {filteredTransactions.map(transaction => (
           <tr key={transaction._id}>
             <td className={styles.th}>{transaction.date}</td>
-            <td  className={styles.th}>{transaction.subCategory}</td>
+            <td className={styles.th}>{transaction.subCategory}</td>
             <td className={styles.th}>{transaction.category}</td>
-            <td className={styles.th}>{transaction.sum}</td>
+            <td className={styles.th}>
+              {transactionType === 'income'
+                ? transaction.sum
+                : `-${transaction.sum}`}
+            </td>
             <td>
               <button
                 type="button"
