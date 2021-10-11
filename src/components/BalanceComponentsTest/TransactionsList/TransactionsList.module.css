@@ -37,7 +37,7 @@
 }
 
 .td {
-display: grid;
+  display: revert;
   align-items: center;
   height: 38px;
   padding: 0 8px;
@@ -50,4 +50,10 @@ display: grid;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
+}
+
+.deleteBtn {
+  margin-right: auto;
+  margin-left: auto;
+  cursor: pointer;
 }
