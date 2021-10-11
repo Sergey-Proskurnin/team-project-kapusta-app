@@ -15,10 +15,8 @@
 }
 
 @media screen and (min-width: 768px) {
-  .reportBalance {
-    justify-content: flex-start;
-
-  }
+  /* .reportBalance {
+    } */
 
   .balanceLabel {
     display: flex;
@@ -32,7 +30,6 @@
   .balanceInput {
     width: 125px;
     height: 44px;
-    padding-top: 13px;
     margin-left: 21px;
     margin-right: 15px;
     border: 2px solid #ffffff;
@@ -43,9 +40,9 @@
     line-height: 1.17;
     font-weight: bold;
     color: black;
-
     padding-top: 12px;
   }
+
   .balanceButton {
     width: 125px;
     height: 44px;
@@ -59,13 +56,11 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .reportBalance {
-    /* padding-top: 40px; */
-
-    /* display: flex;
+  /* .reportBalance {
+    display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } */
   .balanceLabel {
     display: flex;
     align-items: center;

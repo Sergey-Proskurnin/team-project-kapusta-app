@@ -13,10 +13,7 @@ import {
   getCurrentUserError,
 } from './auth-actions';
 
-import {
-  getTransactionsMonthYearError,
-  setTotalBalanceSuccess,
-} from 'redux/transactions';
+import { setTotalBalanceSuccess } from 'redux/transactions';
 
 import {
   token,
@@ -31,7 +28,6 @@ const register = credentials => async dispatch => {
   try {
     const response = await fetchSignUp(credentials);
     // token.set(response.data.token);
-    console.log(response);
     dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));

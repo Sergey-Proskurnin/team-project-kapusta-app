@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import styles from './TransactionsList.module.css';
-import  deleteBtn  from 'components/SvgIcons/DeleteBtn/DeleteBtn.svg';
-
+import deleteBtn from 'components/SvgIcons/DeleteBtn/DeleteBtn.svg';
 
 export default function TransactionsList({ transactionType, date }) {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ export default function TransactionsList({ transactionType, date }) {
     }
   }, [date]);
   const deleteTransaction = transaction => {
-    dispatch(transactionsOperations.deleteTransaction(transactions));
+    dispatch(transactionsOperations.deleteTransaction(transaction));
   };
 
   return (
@@ -35,12 +34,11 @@ export default function TransactionsList({ transactionType, date }) {
       </thead>
       <tbody>
         {filteredTransactions.map(transaction => (
-
-          <tr key={transaction._id}>
-            <td className={styles.th}>{transaction.date}</td>
-            <td className={styles.th}>{transaction.subCategory}</td>
-            <td className={styles.th}>{transaction.category}</td>
-            <td className={styles.th}>
+          <tr key={transaction._id} className={styles.td}>
+            <td>{transaction.date}</td>
+            <td>{transaction.subCategory}</td>
+            <td>{transaction.category}</td>
+            <td>
               {transactionType === 'income'
                 ? transaction.sum
                 : `-${transaction.sum}`}
@@ -52,7 +50,12 @@ export default function TransactionsList({ transactionType, date }) {
               >
                 
               </button> */}
-              <img src={deleteBtn} className={styles.deleteBtn} onClick={() => deleteTransaction(transactions)} />
+              <img
+                src={deleteBtn}
+                className={styles.deleteBtn}
+                alt="Basket"
+                onClick={() => deleteTransaction(transaction)}
+              />
             </td>
           </tr>
         ))}
