@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import styles from './TransactionsList.module.css';
+import  deleteBtn  from 'components/SvgIcons/DeleteBtn/DeleteBtn.svg';
+
 
 export default function TransactionsList({ transactionType, date }) {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ export default function TransactionsList({ transactionType, date }) {
     }
   }, [date]);
   const deleteTransaction = transaction => {
-    dispatch(transactionsOperations.deleteTransaction(transaction));
+    dispatch(transactionsOperations.deleteTransaction(transactions));
   };
 
   return (
@@ -33,6 +35,7 @@ export default function TransactionsList({ transactionType, date }) {
       </thead>
       <tbody>
         {filteredTransactions.map(transaction => (
+
           <tr key={transaction._id}>
             <td className={styles.th}>{transaction.date}</td>
             <td className={styles.th}>{transaction.subCategory}</td>
@@ -43,12 +46,13 @@ export default function TransactionsList({ transactionType, date }) {
                 : `-${transaction.sum}`}
             </td>
             <td>
-              <button
+              {/* <button
                 type="button"
                 onClick={() => deleteTransaction(transaction)}
               >
-                иконка корзинки
-              </button>
+                
+              </button> */}
+              <img src={deleteBtn} className={styles.deleteBtn} onClick={() => deleteTransaction(transactions)} />
             </td>
           </tr>
         ))}
