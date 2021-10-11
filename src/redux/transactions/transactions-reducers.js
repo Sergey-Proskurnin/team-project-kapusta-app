@@ -5,9 +5,9 @@ const transactionsDay = createReducer([], {
   [actions.getTransactionsSuccess]: (_, { payload }) => payload,
   [actions.addTransactionSuccess]: (state, { payload }) => [...state, payload],
   [actions.deleteTransactionSuccess]: (state, { payload }) =>
-    state.filter(item => item.id !== payload),
+    state.filter(item => item._id !== payload),
   [actions.editTransactionSucces]: (state, { payload }) =>
-    state.map(item => (item.id === payload.id ? payload : item)),
+    state.map(item => (item._id === payload._id ? payload : item)),
 });
 
 const transactionsMonthYear = createReducer([], {
