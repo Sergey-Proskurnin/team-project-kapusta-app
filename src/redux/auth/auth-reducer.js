@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
-  // registerSuccess,
+  registerSuccess,
   registerError,
   logoutSuccess,
   logoutError,
@@ -17,7 +17,7 @@ import {
 const initialUserState = { name: null, email: null, balance: 0 };
 
 const user = createReducer(initialUserState, {
-  // [registerSuccess]: (_, { payload }) => payload.user,
+  [registerSuccess]: (_, { payload }) => payload.user,
   [loginSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,

@@ -1,8 +1,9 @@
 import s from './register.module.css';
 import { register } from '../../redux/auth/auth-operations';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import Modal from 'components/Modal';
+import {getUserName} from 'redux/auth/auth-selector'
 
 const RegisterForm = ({ onClickComeBack }) => {
   
@@ -18,12 +19,14 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
-
   const [setModalOpen, setShowModal] = useState(false);
+  const user = useSelector(getUserName);
+  
+  const onRegister = () => dispatch(register({ name, email, password }));
+
   const toggleModal = () => {
     setShowModal(setShowModal => !setShowModal);
   };
-
 
   const blurHandler = e => {
     switch (e.target.name) {
@@ -91,14 +94,23 @@ const RegisterForm = ({ onClickComeBack }) => {
     setEmail('');
     setPassword('');
   };
-
+  
+  useEffect(() => {
+    if (user) {
+      setShowModal(true);
+    }
+  },
+    [user]
+  )
+  
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(register({ name, email, password }));
+    onRegister();
     clearInput();
   };
 
   return (
+
     <div className={s.formRegistr}>
       <span className={s.promtText}>Для регистрации заполните поля:</span>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
@@ -178,12 +190,12 @@ const RegisterForm = ({ onClickComeBack }) => {
           <button type="button" onClick={onClickComeBack} className={s.button}>
             ВЕРНУТЬСЯ
           </button>
-          <button type="submit" onClick={toggleModal} className={s.button}>
+          <button type="submit"  className={s.button}>
             ГОТОВО
           </button>
            {setModalOpen && (
         <Modal
-          modalTitle={'Подтвердите вашу аутентификацию на вашей почте!'}
+          modalTitle={`${user}, перейдите на ваш электронный адрес и подтвердите аутентификацию!`}
           modalButtonleft={'👌'}
           modalButtonRight={'ОК'}   
           handleClickLeft={toggleModal}
