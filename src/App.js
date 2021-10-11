@@ -14,7 +14,6 @@ import ReportsView from 'views/ReportsView';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
-
 const App = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuthenticated);

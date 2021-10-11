@@ -1,42 +1,51 @@
-span {
-  height: 11px;
-  align-self: end;
+@media screen and (min-width: 320px) {
 }
+@media screen and (min-width: 768px) {
+  span {
+    height: 11px;
+    align-self: end;
+  }
 
-.toGoReport {
-  display: flex;
-  width: 154px;
-  height: 24px;
-  align-items: center;
+  .toGoReport {
+    display: flex;
+    width: 154px;
+    height: 24px;
+    align-items: center;
 
-  margin-left: 205px;
+    margin-left: 111px;
+  }
+
+  .title {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .link {
+    display: flex;
+
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+
+    color: #52555f;
+    cursor: pointer;
+  }
+
+  .link::after {
+    content: '';
+    background-image: url('../../img/svg/report.svg');
+    width: 14px;
+    height: 14px;
+    margin-left: 20px;
+  }
+
+  .link:hover {
+    color: orangered;
+  }
 }
-
-.title {
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-}
-
-.link {
-  display: flex;
-
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-
-  color: #52555f;
-  cursor: pointer;
-}
-
-.link::after {
-  content: '';
-  background-image: url('../../img/svg/report.svg');
-  width: 14px;
-  height: 14px;
-  margin-left: 20px;
-}
-
-.link:hover {
-  color: orangered;
+@media screen and (min-width: 1280px) {
+  .toGoReport {
+    margin-left: 205px;
+  }
 }

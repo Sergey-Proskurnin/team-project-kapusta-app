@@ -2,11 +2,21 @@
 }
 
 @media screen and (min-width: 768px) {
+  .balanceContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin-top: 40px;
+    margin-left: 160px;
+  }
+
   .holst {
     width: 665px;
     height: 626px;
     border: 1px solid #fff;
     margin-top: 98px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #fff;
     border-radius: 0px 30px 30px 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
@@ -49,11 +59,21 @@
   }
 }
 @media screen and (min-width: 1280px) {
+  .balanceContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-top: 40px;
+    
+  }
+
   .holst {
     width: 1060px;
     height: 579px;
     border: 1px solid #fff;
     margin-top: 48px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #fff;
     border-radius: 0px 30px 30px 30px;
     position: relative;
