@@ -4,8 +4,8 @@
 @media screen and (min-width: 768px) {
   .reportBalance {
     padding-top: 40px;
-    margin-left: 72px;
   }
+
   .balanceLabel {
     display: flex;
     align-items: center;
@@ -27,7 +27,6 @@
     line-height: 1.17;
     font-weight: bold;
     color: black;
-    padding-top: 12px;
   }
   .balanceButton {
     width: 125px;
@@ -39,11 +38,14 @@
     font-size: 12px;
     line-height: 1.17;
   }
-
 }
 
 @media screen and (min-width: 1280px) {
   .reportBalance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     padding-top: 40px;
   }
   .balanceLabel {
@@ -67,7 +69,6 @@
     line-height: 1.17;
     font-weight: bold;
     color: black;
-    padding-top: 12px;
   }
   .balanceButton {
     width: 125px;

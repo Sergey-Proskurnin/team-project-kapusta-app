@@ -7,7 +7,7 @@ import useViewport from 'services/useViewport';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import Summary from 'components/Summary';
 import Balance from 'components/Balance';
-
+import ToGoReport from 'components/ToGoReport';
 import s from './BalanceView.module.css';
 
 const BalanceView = () => {
@@ -28,22 +28,33 @@ const BalanceView = () => {
     type === 'income' ? setType('expense') : setType('income');
   };
 
+  //FIXME: Прописать нормально стили! НЕ ИНЛАЙНОМ!
   return (
     <Container>
       {viewPort.width >= 1280 ? (
         <>
-          <Balance />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'end',
+              alignItems: 'baseline',
+            }}
+          >
+            <Balance />
+            <ToGoReport />
+          </div>
+
           <div className={s.holst}>
             <div className={s.buttonContainer}>
               <button className={s.buttonSpentIncome}>РАСХОД</button>
               <button className={s.buttonSpentIncome}>ДОХОД</button>
             </div>
+
             <AddTransaction
               transactionType={type}
               date={date}
               // changeDate={setDate}
             />
-
             <div className={s.dataContainer}>
               <TransactionsList transactionType={type} />
               <Summary />
@@ -66,7 +77,6 @@ const BalanceView = () => {
 
             <div className={s.dataContainer}>
               <TransactionsList transactionType={type} />
-              
             </div>
           </div>
           <Summary />
