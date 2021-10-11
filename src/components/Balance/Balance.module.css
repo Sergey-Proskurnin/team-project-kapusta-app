@@ -19,6 +19,7 @@
     /* padding-top: 40px; */
     /* margin-left: 72px; */
   }
+
   .balanceLabel {
     display: flex;
     align-items: center;
@@ -27,6 +28,7 @@
     font-size: 12px;
     line-height: 1.17;
   }
+
   .balanceInput {
     width: 125px;
     height: 44px;
@@ -40,6 +42,7 @@
     line-height: 1.17;
     font-weight: bold;
     color: black;
+
     padding-top: 12px;
   }
   .balanceButton {
@@ -57,6 +60,12 @@
 @media screen and (min-width: 1280px) {
   .reportBalance {
     /* padding-top: 40px; */
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 40px; */
   }
   .balanceLabel {
     display: flex;
@@ -66,7 +75,7 @@
     font-size: 12px;
     line-height: 1.17;
   }
-  .balanceInput {
+  .balanceInpute {
     width: 125px;
     height: 44px;
     margin-left: 40px;

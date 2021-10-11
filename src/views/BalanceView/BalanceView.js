@@ -4,11 +4,11 @@ import { Container } from 'components/Container';
 
 import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
 import useViewport from 'services/useViewport';
-import useWindowDimensions from 'hooks/useWindowDimensions'
-import Summary from 'components/Summary'
+import useWindowDimensions from 'hooks/useWindowDimensions';
+import Summary from 'components/Summary';
 import Balance from 'components/Balance';
-
-import s from './BalanceView.module.css'
+import ToGoReport from 'components/ToGoReport';
+import s from './BalanceView.module.css';
 
 const BalanceView = () => {
   const [type, setType] = useState('income');
@@ -28,30 +28,60 @@ const BalanceView = () => {
     type === 'income' ? setType('expense') : setType('income');
   };
 
+  //FIXME: Прописать нормально стили! НЕ ИНЛАЙНОМ!
   return (
-    
     <Container>
-      <Balance />
-      <div>
-      <button>РАСХОД</button>
-      <button>ДОХОД</button>
-      </div>
-      <div className={s.holst} >
-         <AddTransaction
-        transactionType={type}
-        date={date}
-        // changeDate={setDate}
-      />
-      
-      
+      {viewPort.width >= 1280 ? (
+        <>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'end',
+              alignItems: 'baseline',
+            }}
+          >
+            <Balance />
+            <ToGoReport />
+          </div>
 
-      <div className={s.dataContainer}>
+          <div className={s.holst}>
+            <div className={s.buttonContainer}>
+              <button className={s.buttonSpentIncome}>РАСХОД</button>
+              <button className={s.buttonSpentIncome}>ДОХОД</button>
+            </div>
 
-        <TransactionsList transactionType={type} />
-        <Summary/>
-      </div>
-       </div>
-    
+            <AddTransaction
+              transactionType={type}
+              date={date}
+              // changeDate={setDate}
+            />
+            <div className={s.dataContainer}>
+              <TransactionsList transactionType={type} />
+              <Summary />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <Balance />
+          <div className={s.holst}>
+            <div className={s.buttonContainer}>
+              <button className={s.buttonSpentIncome}>РАСХОД</button>
+              <button className={s.buttonSpentIncome}>ДОХОД</button>
+            </div>
+            <AddTransaction
+              transactionType={type}
+              date={date}
+              // changeDate={setDate}
+            />
+
+            <div className={s.dataContainer}>
+              <TransactionsList transactionType={type} />
+            </div>
+          </div>
+          <Summary />
+        </>
+      )}
     </Container>
   );
 };

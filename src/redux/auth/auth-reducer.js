@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
-  registerSuccess,
+  // registerSuccess,
   registerError,
   logoutSuccess,
   logoutError,
@@ -17,14 +17,14 @@ import {
 const initialUserState = { name: null, email: null, balance: 0 };
 
 const user = createReducer(initialUserState, {
-  [registerSuccess]: (_, { payload }) => payload.user,
+  // [registerSuccess]: (_, { payload }) => payload.user,
   [loginSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.token,
+  // [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
   [loginGoogleSuccess]: (_, { payload }) => payload,
   [logoutSuccess]: () => null,
@@ -39,7 +39,7 @@ const error = createReducer(null, {
 });
 
 const isLogin = createReducer(false, {
-  [registerSuccess]: () => false,
+  // [registerSuccess]: () => false,
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
   [registerError]: () => false,

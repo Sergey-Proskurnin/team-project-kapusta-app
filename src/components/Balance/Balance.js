@@ -26,11 +26,12 @@ const Balance = () => {
             <input
               type="text"
               name="name"
+              maxlength="10"
               // value={sum}
               onChange={onHandleChange}
-              className={s.balanceInput}
+              className={s.balanceInpute}
             />
-            <button className={s.balanceButton}>Подтвердить</button>
+            <button className={s.balanceButton}>ПОДТВЕРДИТЬ</button>
           </>
         ) : (
           <>
