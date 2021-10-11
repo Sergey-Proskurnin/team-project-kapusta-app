@@ -25,7 +25,7 @@ export default function AddTransaction({
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [sum, setSum] = useState(0);
+  const [sum, setSum] = useState();
 
   const viewPort = useWindowDimensions();
 
@@ -104,6 +104,13 @@ export default function AddTransaction({
           <div className={'s'}>
             <form className={s.containerForm} noValidate>
               <div className={s.dateForm}>
+                {/* <label>
+                  <input
+                    className={s.inputDescriptions}
+                    type="date"
+                    placeholder="2017-06-01"
+                  />
+                </label> */}
                 <СalendarIcon />
                 <p>{date}</p>
               </div>
@@ -128,6 +135,7 @@ export default function AddTransaction({
                       options={options}
                       placeholder="Категория товара"
                       className={st.select}
+                      categoryType={transactionType}
                       isSearchable
                     />
                     {/* <input
@@ -185,6 +193,13 @@ export default function AddTransaction({
             <form className={s.containerForm768} noValidate>
               <div className={s.containerFormTablet}>
                 <div className={s.dateForm}>
+                  {/* <label>
+                    <input
+                      className={s.inputDescriptions}
+                      type="date"
+                      placeholder="2017-06-01"
+                    />
+                  </label> */}
                   <СalendarIcon />
                   <p>{date}</p>
                 </div>

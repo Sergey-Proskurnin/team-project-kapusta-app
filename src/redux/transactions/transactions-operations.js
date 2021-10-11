@@ -7,7 +7,7 @@ const setBalance = balance => async dispatch => {
 
   try {
     const response = await fetch.setBalance(balance);
-    dispatch(actions.setTotalBalanceSuccess(response.data.balance));
+    dispatch(actions.setTotalBalanceSuccess(response.data.data.balance));
   } catch (error) {
     dispatch(actions.setTotalBalanceError(error.message));
   }
@@ -22,6 +22,7 @@ const addTransaction = transaction => async dispatch => {
       Object.assign(transaction, splitedDate),
       balance,
     );
+
     dispatch(actions.addTransactionSuccess(response.data.resultTransaction));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch (error) {
@@ -33,11 +34,10 @@ const deleteTransaction = transaction => async dispatch => {
   dispatch(actions.deleteTransactionRequest());
   const balance = calculateBalance(transaction, 'delete');
   try {
-    console.log(transaction._id, balance);
-    // const response = await fetch.deleteTransaction(transaction.id, balance);
-    // console.log(response);
-    // dispatch(actions.deleteTransactionSuccess(transaction));
-    // dispatch(actions.setTotalBalanceSuccess(response.data.balance));
+    await fetch.deleteTransaction(transaction._id);
+    const setBalance = await fetch.setBalance(balance);
+    dispatch(actions.deleteTransactionSuccess(transaction._id));
+    dispatch(actions.setTotalBalanceSuccess(setBalance.data.data.balance));
   } catch (error) {
     dispatch(actions.addTransactionError(error.message));
   }
@@ -59,6 +59,7 @@ const getTransactionsDay = date => async dispatch => {
   dispatch(actions.getTransactionsRequest());
   try {
     const response = await fetch.getTransactionsByDate(date);
+
     dispatch(actions.getTransactionsSuccess(response.data.result));
   } catch (error) {
     dispatch(actions.getTransactionsError(error.message));
@@ -78,8 +79,8 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
 const getMonthlyBalancesYear = year => async dispatch => {
   dispatch(actions.getMonthlyBalanceRequest());
   try {
-    const response = await fetch.getTransactionsByPeriod({ year });
-    const balances = calculateBalancesPerMonth(response.data);
+    const response = await fetch.getTransactionsByPeriod(year);
+    const balances = calculateBalancesPerMonth(response.data.result);
     dispatch(actions.getMonthlyBalanceSuccess(balances));
   } catch (error) {
     dispatch(actions.getMonthlyBalanceError(error.message));
@@ -109,7 +110,6 @@ const calculateBalance = (transaction, actionType) => {
         ? Number(initialBalance) + Number(transaction.sum)
         : Number(initialBalance) - Number(transaction.sum);
     case 'delete':
-      console.log(store.getState());
       return transaction.type === 'income'
         ? Number(initialBalance) - Number(transaction.sum)
         : Number(initialBalance) + Number(transaction.sum);
@@ -149,8 +149,8 @@ const calculateBalancesPerMonth = transactions => {
 
 const dateSplitter = date => {
   const splittedDate = {
-    month: String(date.split('-')[1]),
-    year: String(date.split('-')[2]),
+    month: String(date.split('.')[1]),
+    year: String(date.split('.')[2]),
   };
   return splittedDate;
 };
