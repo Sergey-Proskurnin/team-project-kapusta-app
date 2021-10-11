@@ -39,6 +39,7 @@ const BalanceView = () => {
           <ToGoReport />
         </div>
 
+
         <div className={s.holst}>
           <div className={s.buttonContainer}>
             <button
@@ -66,6 +67,7 @@ const BalanceView = () => {
           <div className={s.dataContainer}>
             <TransactionsList transactionType={type} date={date} />
             {viewPort.width > 1280 && <Summary />}
+
           </div>
         </div>
         {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}

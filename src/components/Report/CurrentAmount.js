@@ -18,19 +18,19 @@ const CurrentAmount = () => {
   };
 
   return (
-    <div className={s.section}>
-      <div className={s.transactionWrapper}>
+    <div className={`${s.section} ${s.amountSection}`}>
+      <div className={`${s.transactionWrapper} ${s.amountwrapper}`}>
         <p className={s.amountTitle}>Расходы:</p>
         <span
           className={`${s.amountText} ${s.amountExpense}`}
         >{`-${findTotalSum('expense')}.00 грн.`}</span>
       </div>
-      <Strip />
-      <div className={s.transactionWrapper}>
+      <Strip className={s.amountStrip} />
+      <div className={`${s.transactionWrapper} ${s.amountwrapper}`}>
         <p className={s.amountTitle}>Доходы:</p>
         <span className={`${s.amountText} ${s.amountIncome}`}>{`+${findTotalSum(
           'income',
-        )}.00грн.`}</span>
+        )}.00 грн.`}</span>
       </div>
     </div>
   );
