@@ -1,5 +1,4 @@
 @media screen and (min-width: 320px) {
-
 }
 
 @media screen and (min-width: 768px) {
@@ -15,17 +14,17 @@
     margin-bottom: 59px;
     margin-left: -10px;
     margin-right: 0px;
-  } 
+  }
 
   .containerFormTablet {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
   }
 
   .positionButton768 {
     margin-top: 30px;
   }
-  
+
   .dateForm {
     width: 100px;
     height: 40px;
@@ -33,22 +32,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     font-weight: 900;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputForm {
     display: flex;
   }
-  
+
   .iconForm {
     position: absolute;
     top: 50%;
     right: 20px;
   }
-  
+
   .inputDescriptions {
     border: 2px solid #f5f6fb;
     border-right: 0px;
@@ -64,14 +63,14 @@
     line-height: 14px;
     padding-left: 21px;
   }
-  
+
   .inputDescriptions::-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: #c7ccdc;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputDescriptions::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     color: #c7ccdc;
@@ -84,7 +83,7 @@
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   /* .inputСategory {
     border: 2px solid #f5f6fb;
     border-right: 0px;
@@ -116,7 +115,7 @@
     font-size: 12px;
     line-height: 14px;
   } */
-  
+
   .inputSum {
     border: 2px solid #f5f6fb;
     border-left: 0px;
@@ -124,24 +123,24 @@
     height: 44px;
     color: #143bbd;
     border-radius: 0 16px 16px 0;
-    padding-left: 20px;
-    padding-left: 45px;
+
+    padding-right: 45px;
   }
-  
+
   .inputSum::-webkit-input-placeholder {
     /* WebKit browsers */
     color: #c7ccdc;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputSum::-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: #c7ccdc;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputSum::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     color: #c7ccdc;
@@ -154,7 +153,7 @@
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .positionIcon {
     position: relative;
     display: flex;
@@ -175,30 +174,30 @@
     cursor: pointer;
     margin-left: 15px;
   }
-  
-  .buttonLeft{
+
+  .buttonLeft {
     color: #fff;
     background-color: #ff751d;
   }
-  
+
   .buttonLeft:hover {
     background-color: #f5f6fb;
     color: #52555f;
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
     transition: 0.5s linear;
   }
-  .buttonRight{
+  .buttonRight {
     color: #52555f;
     background-color: #f5f6fb;
   }
-  
+
   .buttonRight:hover {
     background-color: #ff751d;
     color: #fff;
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
     transition: 0.5s linear;
   }
-} 
+}
 
 @media screen and (min-width: 1280px) {
   .containerForm {
@@ -213,7 +212,7 @@
     margin-left: -10px;
     /* margin-right: 0px; */
   }
-  
+
   .dateForm {
     width: 100px;
     height: 40px;
@@ -221,22 +220,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     font-weight: 900;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputForm {
     display: flex;
   }
-  
+
   .iconForm {
     position: absolute;
     top: 50%;
     right: 20px;
   }
-  
+
   .inputDescriptions {
     border: 2px solid #f5f6fb;
     border-right: 0px;
@@ -252,14 +251,14 @@
     line-height: 14px;
     padding-left: 21px;
   }
-  
+
   .inputDescriptions::-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: #c7ccdc;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputDescriptions::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     color: #c7ccdc;
@@ -272,7 +271,7 @@
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   /* .inputСategory {
     border: 2px solid #f5f6fb;
     border-right: 0px;
@@ -304,7 +303,7 @@
     font-size: 12px;
     line-height: 14px;
   } */
-  
+
   .inputSum {
     border: 2px solid #f5f6fb;
     border-left: 0px;
@@ -312,24 +311,26 @@
     height: 44px;
     color: #143bbd;
     border-radius: 0 16px 16px 0;
-    padding-left: 20px;
-    padding-left: 45px;
+    text-align: center;
+    padding-left: 5px;
   }
-  
+  .inputSum::placeholder {
+    text-align: end;
+  }
   .inputSum::-webkit-input-placeholder {
     /* WebKit browsers */
     color: #c7ccdc;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputSum::-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: #c7ccdc;
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .inputSum::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     color: #c7ccdc;
@@ -342,7 +343,7 @@
     font-size: 12px;
     line-height: 14px;
   }
-  
+
   .positionIcon {
     position: relative;
     display: flex;
@@ -363,23 +364,23 @@
     cursor: pointer;
     margin-left: 15px;
   }
-  
-  .buttonLeft{
+
+  .buttonLeft {
     color: #fff;
     background-color: #ff751d;
   }
-  
+
   .buttonLeft:hover {
     background-color: #f5f6fb;
     color: #52555f;
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
     transition: 0.5s linear;
   }
-  .buttonRight{
+  .buttonRight {
     color: #52555f;
     background-color: #f5f6fb;
   }
-  
+
   .buttonRight:hover {
     background-color: #ff751d;
     color: #fff;
@@ -387,18 +388,3 @@
     transition: 0.5s linear;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

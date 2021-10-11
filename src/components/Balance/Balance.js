@@ -26,6 +26,7 @@ const Balance = () => {
             <input
               type="text"
               name="name"
+              maxlength="10"
               // value={sum}
               onChange={onHandleChange}
               className={s.balanceInpute}

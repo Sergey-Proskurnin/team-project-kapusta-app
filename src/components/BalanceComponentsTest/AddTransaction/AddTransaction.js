@@ -159,6 +159,7 @@ export default function AddTransaction({
                       name="sum"
                       id="sum"
                       type="string"
+                      maxLength="10"
                       placeholder="0.00"
                       required
                       onChange={handleChangeSum}
