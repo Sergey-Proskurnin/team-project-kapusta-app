@@ -104,9 +104,7 @@ const BalanceView = () => {
             />
 
             <div className={s.dataContainer}>
-
               <TransactionsList transactionType={type} date={date} />
-
             </div>
           </div>
           <Summary />
