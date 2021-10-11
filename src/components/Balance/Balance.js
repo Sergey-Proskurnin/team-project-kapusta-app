@@ -34,8 +34,8 @@ const Balance = () => {
           </>
         ) : (
           <>
-            <p>{balance.toFixed(2)} UAH</p>
-            <button className={s.balanceButton} disabled>
+            <p className={s.balanceInput}>{balance.toFixed(2)} UAH</p>
+            <button className={`${s.balanceButton} ${s.buttonNun}`} disabled>
               Подтвердить
             </button>
           </>
