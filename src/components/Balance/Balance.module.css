@@ -1,9 +1,23 @@
 @media screen and (min-width: 320px) {
+  .reportBalance {
+    display: flex;
+  }
+  .buttonNun {
+    display: none;
+  }
+  .balanceInput {
+    width: 125px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    border-radius: 16px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .reportBalance {
-    padding-top: 40px;
+    /* padding-top: 40px; */
+    /* margin-left: 72px; */
   }
 
   .balanceLabel {
@@ -14,7 +28,8 @@
     font-size: 12px;
     line-height: 1.17;
   }
-  .balanceInpute {
+
+  .balanceInput {
     width: 125px;
     height: 44px;
     margin-left: 21px;
@@ -27,6 +42,8 @@
     line-height: 1.17;
     font-weight: bold;
     color: black;
+
+    padding-top: 12px;
   }
   .balanceButton {
     width: 125px;
@@ -42,11 +59,13 @@
 
 @media screen and (min-width: 1280px) {
   .reportBalance {
-    display: flex;
+    /* padding-top: 40px; */
+
+    /* display: flex;
     justify-content: center;
     align-items: center;
 
-    padding-top: 40px;
+    padding-top: 40px; */
   }
   .balanceLabel {
     display: flex;
@@ -69,6 +88,7 @@
     line-height: 1.17;
     font-weight: bold;
     color: black;
+    padding-top: 12px;
   }
   .balanceButton {
     width: 125px;
@@ -79,5 +99,8 @@
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 1.17;
+  }
+  .buttonNun {
+    display: block;
   }
 }

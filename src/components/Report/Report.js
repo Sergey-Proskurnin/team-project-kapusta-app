@@ -43,8 +43,10 @@ const Report = () => {
     <div className={s.reportContainer}>
       <div className={`${s.navigation} ${s.section}`}>
         <ArrowToGoBack />
-        <Balance />
-        <CurrentMonth />
+        <div className={s.navigationWrapper}>
+          <Balance />
+          <CurrentMonth />
+        </div>
       </div>
       <CurrentAmount />
       <div className={`${s.reportWrapper} ${s.section}`}>
@@ -61,7 +63,7 @@ const Report = () => {
               return;
             }
             return (
-              <li className={s.reportCard} key={event._id}>
+              <li className={s.reportCard} key={event.id}>
                 <p>{sum}</p>
                 <svg className={s.iconSvg}>
                   <use xlinkHref={`${sprite}#${event.label}`} />{' '}

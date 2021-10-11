@@ -6,7 +6,6 @@
 }
 .section {
   display: flex;
-  /* border: 1px solid tomato; */
   text-align: center;
   justify-content: center;
   /* width: 1060px; */
@@ -14,19 +13,13 @@
   margin-right: auto;
   margin-bottom: 30px;
   align-items: center;
-
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
 }
-.navigation {
-  justify-content: space-between;
-}
-.iconSvg {
-  width: 58px;
-  height: 58px;
-}
+
 .reportWrapper {
   margin-bottom: 30px;
+  display: block;
 }
 .reportMonth {
   font-size: 12px;
@@ -47,13 +40,7 @@
   display: flex;
   align-items: center;
 }
-.transactionWrapper {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  /* margin-bottom: 20px; */
-}
+
 .reportList {
   padding: 0px;
   display: flex;
@@ -65,56 +52,87 @@
   justify-content: center;
 }
 
-.reportCard {
-  text-align: center;
-  flex-basis: calc((100% - 100px) / 6);
-}
-.reportCard:not(:nth-child(6n)).reportCard:not(:last-child) {
-  margin-right: 20px;
-}
 ArrowBackIosIcon {
   fill: #ff751d;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (min-width: 320px) {
+  .navigation {
+    display: block;
+  }
   .reportCard {
     text-align: center;
-    flex-basis: calc((100% - 75px) / 6);
+    /* width: 93px; */
+    height: 122px;
+    border-bottom: 1px solid #e0e5eb;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 12px;
+    align-items: 1.17;
+    box-sizing: border-box;
+    display: block;
+    max-width: 100%;
+    flex-basis: calc((100% - 60px) / 3);
   }
   .container {
     width: 668px;
   }
-  .reportCard:not(:nth-child(6n)) {
-    margin-right: 15px;
+  .reportCard:not(:nth-child(3n)) {
+    /* margin-right: 10px; */
+  }
+
+  .transactionWrapper {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  .transactionWrapper.amountwrapper {
+    display: block;
+  }
+  .iconSvg {
+    /* display: block; */
+    max-width: 56px;
+    max-height: 56px;
+  }
+  .iconSvg:hover {
+    fill: #ff751d;
+  }
+  .iconSvg:focus {
+    fill: #ff751d;
+  }
+  .reportCardTitle {
+    text-transform: uppercase;
     font-size: 12px;
-    align-items: 1.17;
+    line-height: 14px;
   }
-  .reportWrapper {
-    padding-left: 37px;
-    padding-right: 37px;
+  .amountTitle {
+    color: #52555f;
+    /* margin-right: 15px; */
   }
-
-  .button {
-    display: none;
+  .amountSection {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.14;
   }
 }
-.transactionWrapper:not(:last-child) {
+/* .transactionWrapper:not(:last-child) {
   margin-right: 20px;
-}
+} */
 
-.amountTitle {
-  color: #52555f;
-  margin-right: 15px;
-}
-.amountText {
-  font-size: 14px;
-  line-height: 1.14;
-}
 .amountExpense {
   color: #e53935;
 }
 .amountIncome {
   color: #407946;
+}
+.amountStrip {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -122,27 +140,44 @@ ArrowBackIosIcon {
     border-radius: 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   }
-  .reportList {
-    padding: 30px;
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+  .navigationWrapper {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+  .reportCard {
+    text-align: center;
+    flex-basis: calc((100% - 77px) / 6);
+  }
+
+  .reportCard:not(:nth-child(6n)) {
+    margin-right: 10px;
+    font-size: 12px;
+    align-items: 1.17;
+  }
+  .reportWrapper {
     background: #ffffff;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 30px;
+    padding: 20px;
   }
-}
-
-/* img {
-  display: inline-block;
-  width: 56px;
-  height: 56px;
-} */
-.iconSvg:hover {
-  fill: #ff751d;
-}
-.iconSvg:focus {
-  fill: #ff751d;
-}
-.reportCardTitle {
-  text-transform: uppercase;
+  .transactionWrapper {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  .reportList {
+    padding: 20px;
+  }
+  .amountSection {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 }
 
 .reportTitle {
@@ -153,4 +188,24 @@ ArrowBackIosIcon {
   text-transform: uppercase;
 
   color: #000000;
+}
+@media screen and (min-width: 1280px) {
+  .reportCard {
+    text-align: center;
+    flex-basis: calc((100% - 100px) / 6);
+  }
+  .reportCard:not(:nth-child(6n)).reportCard:not(:last-child) {
+    margin-right: 20px;
+  }
+  .iconSvg {
+    max-width: 58px;
+    max-height: 58px;
+  }
+  .reportWrapper {
+    padding-left: 37px;
+    padding-right: 37px;
+  }
+  .amountTitle {
+    margin-right: 15px;
+  }
 }
