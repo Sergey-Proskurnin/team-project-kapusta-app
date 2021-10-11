@@ -9,7 +9,7 @@ const UserInfo = () => {
   const UserName = useSelector(state => getUserName(state));
   console.log(UserName);
   const UserAvatar = useSelector(state => getUserAvatar(state));
-  const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
+  // const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
   // const CutUserName = UserName.substring(0, UserName.indexOf('@'));
 
   //TODO: Добавить src для Img с дефолтной авой
