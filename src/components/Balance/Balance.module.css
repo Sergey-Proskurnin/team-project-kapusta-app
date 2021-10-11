@@ -3,7 +3,7 @@
 
 @media screen and (min-width: 768px) {
   .reportBalance {
-    padding-top: 40px;
+    justify-content: flex-start;
   }
 
   .balanceLabel {
@@ -17,6 +17,7 @@
   .balanceInpute {
     width: 125px;
     height: 44px;
+    padding-top: 13px;
     margin-left: 21px;
     margin-right: 15px;
     border: 2px solid #ffffff;
@@ -45,8 +46,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    padding-top: 40px;
   }
   .balanceLabel {
     display: flex;

@@ -25,7 +25,7 @@ export default function AddTransaction({
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [sum, setSum] = useState();
+  const [sum, setSum] = useState(0);
 
   const viewPort = useWindowDimensions();
 

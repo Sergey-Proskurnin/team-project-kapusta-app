@@ -25,98 +25,54 @@ const BalanceView = () => {
 
   useEffect(() => {
     setDate(startDate);
-  }, []);
+  }, [startDate]);
   console.log(date);
   const typeToggle = e => {
     setType(`${e.target.title}`);
   };
 
-  //FIXME: Прописать нормально стили! НЕ ИНЛАЙНОМ!
   return (
     <Container>
-      {viewPort.width >= 1280 ? (
-        <>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'end',
-              alignItems: 'baseline',
-            }}
-          >
-            <Balance />
-            <ToGoReport />
-          </div>
-
-          <div className={s.holst}>
-            <div className={s.buttonContainer}>
-              <button
-                className={s.buttonSpentIncome}
-                onClick={typeToggle}
-                title="expense"
-              >
-                РАСХОД
-              </button>
-              <button
-                className={s.buttonSpentIncome}
-                onClick={typeToggle}
-                title="income"
-              >
-                ДОХОД
-              </button>
-            </div>
-
-            <AddTransaction
-              transactionType={type}
-              date={date}
-
-              // changeDate={setDate}
-            />
-            <div className={s.dataContainer}>
-              <TransactionsList transactionType={type} date={date} />
-              <Summary />
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
+      <>
+        <div className={s.balanceContainer}>
           <Balance />
-          <div className={s.holst}>
-            <div className={s.buttonContainer}>
-              <button
-                className={s.buttonSpentIncome}
-                onClick={typeToggle}
-                title="expense"
-              >
-                РАСХОД
-              </button>
-              <button
-                className={s.buttonSpentIncome}
-                onClick={typeToggle}
-                title="income"
-              >
-                ДОХОД
-              </button>
-            </div>
-            <AddTransaction
-              transactionType={type}
-              date={date}
-              // changeDate={setDate}
-            />
+          <ToGoReport />
+        </div>
 
-            <div className={s.dataContainer}>
-
-              <TransactionsList transactionType={type} date={date} />
-
-            </div>
+        <div className={s.holst}>
+          <div className={s.buttonContainer}>
+            <button
+              className={s.buttonSpentIncome}
+              onClick={typeToggle}
+              title="expense"
+            >
+              РАСХОД
+            </button>
+            <button
+              className={s.buttonSpentIncome}
+              onClick={typeToggle}
+              title="income"
+            >
+              ДОХОД
+            </button>
           </div>
-          <Summary />
-        </>
-      )}
+
+          <AddTransaction
+            transactionType={type}
+            date={date}
+
+            // changeDate={setDate}
+          />
+          <div className={s.dataContainer}>
+            <TransactionsList transactionType={type} date={date} />
+            {viewPort.width > 1280 && <Summary />}
+          </div>
+        </div>
+        {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
+      </>
     </Container>
   );
 };
 
 export default BalanceView;
-// {
-//   viewPort && <Summary />;
-// }
+
