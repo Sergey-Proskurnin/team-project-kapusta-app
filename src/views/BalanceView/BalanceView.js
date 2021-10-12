@@ -25,8 +25,8 @@ const BalanceView = () => {
 
   useEffect(() => {
     setDate(startDate);
-  }, [startDate]);
-  console.log(date);
+  }, []);
+
   const typeToggle = e => {
     setType(`${e.target.title}`);
   };
@@ -38,7 +38,6 @@ const BalanceView = () => {
           <Balance />
           <ToGoReport />
         </div>
-
 
         <div className={s.holst}>
           <div className={s.buttonContainer}>
@@ -61,13 +60,11 @@ const BalanceView = () => {
           <AddTransaction
             transactionType={type}
             date={date}
-
-            // changeDate={setDate}
+            changeDate={setDate}
           />
           <div className={s.dataContainer}>
             <TransactionsList transactionType={type} date={date} />
             {viewPort.width > 1280 && <Summary />}
-
           </div>
         </div>
         {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
@@ -77,4 +74,3 @@ const BalanceView = () => {
 };
 
 export default BalanceView;
-
