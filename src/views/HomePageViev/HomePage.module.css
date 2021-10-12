@@ -1,26 +1,10 @@
-html {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-}
-.header {
+/* .header {
   position: fixed;
   height: 56px;
   position: relative;
   display: flex;
   align-items: center;
-}
+} */
 a {
   text-decoration: none;
 }
@@ -42,7 +26,7 @@ a {
 }
 
 .secondSection {
-  min-height: 514px;
+  height: 514px;
   position: relative;
 }
 .text {
@@ -79,7 +63,7 @@ a {
   .bcgImage {
     position: absolute;
     z-index: 2;
-    background-image: url('../img/svg/Vector.svg');
+    background-image: url('../../img/svg/Vector.svg');
     width: 83px;
     height: 89px;
     top: 104px;
@@ -92,7 +76,7 @@ a {
     height: 89px;
     top: 425px;
     left: 35px;
-    background-image: url('../img/svg/Vector.svg');
+    background-image: url('../../img/svg/Vector.svg');
   }
 }
 
@@ -119,7 +103,7 @@ a {
     height: 232px;
     top: 28px;
     left: 10px;
-    background-image: url('../img/svg/bcgImage.svg');
+    background-image: url('../../img/svg/bcgImage.svg');
   }
   .text {
     z-index: 3;
@@ -127,16 +111,17 @@ a {
   .fontText {
     margin: 5px 0 0 225px;
   }
+  .secondSection {
+    height: 442px;
+  }
   .bcgImageBottom {
     position: absolute;
     z-index: 99;
     width: 183px;
     height: 142px;
-    /* top: 244px;
-    left: 103px; */
-    top: 48%;
+    top: 56%;
     left: 13%;
-    background-image: url('../img/svg/bcgImageBottom.svg');
+    background-image: url('../../img/svg/bcgImageBottom.svg');
   }
 }
 @media screen and (min-width: 1280px) {
@@ -153,7 +138,7 @@ a {
     height: 232px;
     top: 28px;
     left: 10px;
-    background-image: url('../img/svg/bcgImage.svg');
+    background-image: url('../../img/svg/bcgImage.svg');
   }
   .imgText {
     width: 377px;
@@ -168,6 +153,9 @@ a {
     margin: 5px 0 0 302px;
     font-size: 16px;
     line-height: 19px;
+  }
+  .secondSection {
+    height: 268px;
   }
   .bcgImageBottom {
     width: 183px;

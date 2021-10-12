@@ -101,7 +101,7 @@ const RegisterForm = ({ onClickComeBack }) => {
     }
   },
     [user]
-  )
+  );
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -110,19 +110,18 @@ const RegisterForm = ({ onClickComeBack }) => {
   };
 
   return (
-
     <div className={s.formRegistr}>
-      <span className={s.promtText}>Для регистрации заполните поля:</span>
+      <p className={s.promtText}>Для регистрации заполните поля:</p>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
         <label className={s.formLabel} htmlFor="">
-          <span className={s.labelText}>
+          <p className={s.labelText}>
             {nameDirty && nameError && (
               <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
                 {errorSymbol}{' '}
               </span>
             )}
             Имя:
-          </span>
+          </p>
           <input
             onBlur={blurHandler}
             onChange={nameHandler}
@@ -133,20 +132,20 @@ const RegisterForm = ({ onClickComeBack }) => {
             className={s.formInput}
           />
           {nameDirty && nameError && (
-            <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+            <div style={{ color: 'red', fontSize: 10, paddingTop: 4, textAlign:'left' }}>
               {nameError}{' '}
-            </span>
+            </div>
           )}
         </label>
         <label className={s.formLabel} htmlFor="">
-          <span className={s.labelText}>
+          <p className={s.labelText}>
             {emailDirty && emailError && (
               <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
                 {errorSymbol}{' '}
               </span>
             )}
             Электронная почта:
-          </span>
+          </p>
           <input
             onBlur={blurHandler}
             onChange={emailHandler}
@@ -163,14 +162,14 @@ const RegisterForm = ({ onClickComeBack }) => {
           )}
         </label>
         <label className={s.formLabel} htmlFor="">
-          <span className={s.labelText}>
+          <p className={s.labelText}>
             {passwordDirty && passwordError && (
               <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
                 {errorSymbol}{' '}
               </span>
             )}
             Пароль:
-          </span>
+          </p>
           <input
             onBlur={blurHandler}
             onChange={passwordHandler}

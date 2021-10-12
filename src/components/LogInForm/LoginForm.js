@@ -69,9 +69,9 @@ const LoginForm = ({ onClickRegister }) => {
 
    return (
     <div className={s.formRegistr}>
-      <span className={s.promtText}>
+      <p className={s.promtText}>
         Вы можете авторизоваться с помощью Google Account:
-      </span>
+      </p>
       {/*http://localhost:5737/api/v1/*/}
       <a
         href="https://kapusta-api.herokuapp.com/api/v1/users/google"
@@ -79,19 +79,19 @@ const LoginForm = ({ onClickRegister }) => {
       >
         Google
       </a>
-      <span className={s.promtText}>
+      <p className={s.promtText}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
-      </span>
+      </p>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
         <label className={s.formLabel}>
-          <span className={s.labelText}>
+          <p className={s.labelText}>
             {emailDirty && emailError && (
               <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
                 {errorSymbol}{' '}
               </span>
             )}
             Электронная почта:
-          </span>
+          </p>
           <input
             onBlur={blurHandler}
             onChange={emailHandler}
