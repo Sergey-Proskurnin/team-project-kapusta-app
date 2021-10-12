@@ -41,7 +41,7 @@ ArrowBackIosIcon {
   .container {
     width: 668px;
   }
-  .buttonNun {
+  .buttonNone {
     display: none;
   }
   .navigation {
@@ -161,15 +161,15 @@ ArrowBackIosIcon {
     border-radius: 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   }
+
   .navigation {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
   .navigationWrapper {
     display: flex;
     margin-top: 0px;
-
-    margin-top: 0 s;
+    width: 60%;
   }
   .reportCard {
     text-align: center;
@@ -232,8 +232,16 @@ ArrowBackIosIcon {
     padding-left: 37px;
     padding-right: 37px;
   }
-
+  .buttonNone {
+    display: block;
+  }
   .reportMonth {
     margin-left: 205px;
+  }
+  .navigation {
+    justify-content: space-between;
+  }
+  .navigationWrapper {
+    width: 65%;
   }
 }

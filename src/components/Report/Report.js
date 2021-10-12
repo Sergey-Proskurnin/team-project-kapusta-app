@@ -42,9 +42,9 @@ const Report = () => {
   return (
     <div className={s.reportContainer}>
       <div className={`${s.navigation} ${s.section}`}>
-        <ArrowToGoBack />
+        <ArrowToGoBack style={{ marginRight: 'auto' }} />
         <div className={s.navigationWrapper}>
-          <Balance hide={s.buttonNun} />
+          <Balance hide={s.buttonNone} />
           <CurrentMonth />
         </div>
       </div>
