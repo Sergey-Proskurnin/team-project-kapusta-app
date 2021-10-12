@@ -4,7 +4,7 @@ import { getTotalBalance } from '../../redux/transactions/transactions-selectors
 import { useSelector, useDispatch } from 'react-redux';
 import transactionOp from '../../redux/transactions/transactions-operations';
 
-const Balance = () => {
+const Balance = hide => {
   const balance = useSelector(getTotalBalance);
   const dispatch = useDispatch();
   const [sum, setSum] = useState('');
@@ -37,7 +37,7 @@ const Balance = () => {
         ) : (
           <>
             <p className={s.balanceInput}>{balance.toFixed(2)} UAH</p>
-            <button className={`${s.balanceButton} ${s.buttonNun}`} disabled>
+            <button className={`${s.balanceButton} ${hide}`} disabled>
               Подтвердить
             </button>
           </>

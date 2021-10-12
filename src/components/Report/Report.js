@@ -28,7 +28,7 @@ const Report = () => {
     );
     return filteredByType;
   };
-
+  console.log(s.buttonNun);
   const findeTotalSumByCategiry = (type, category) => {
     let totalExpense = 0;
     getTransactionByType(type)
@@ -44,7 +44,7 @@ const Report = () => {
       <div className={`${s.navigation} ${s.section}`}>
         <ArrowToGoBack />
         <div className={s.navigationWrapper}>
-          <Balance />
+          <Balance hide={s.buttonNun} />
           <CurrentMonth />
         </div>
       </div>
