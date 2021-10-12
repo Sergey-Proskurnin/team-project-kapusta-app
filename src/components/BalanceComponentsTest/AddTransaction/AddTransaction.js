@@ -15,18 +15,15 @@ import Select from 'react-select';
 
 import st from 'components/CustomSelect/CustomSelect.module.css';
 import options from 'data/categories.json';
+import CalendarPicker from 'components/DayPicker/DayPicker';
 
-export default function AddTransaction({
-  transactionType,
-  date,
-  //  changeDate
-}) {
+export default function AddTransaction({ transactionType, date, changeDate }) {
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
-
+  const [picker, setPicker] = useState(false);
   const viewPort = useWindowDimensions();
 
   const handleSubmit = e => {
@@ -44,6 +41,17 @@ export default function AddTransaction({
   // const handleChangeDate = e => {
   //   changeDate(e.target.value);
   // };
+  const handleCalendarClick = () => {
+    setPicker(true);
+  };
+  const closePicker = dateNew => {
+    const newDate = `${dateNew.getUTCDate()}.${
+      dateNew.getUTCMonth() + 1
+    }.${dateNew.getUTCFullYear()}`;
+
+    changeDate(newDate);
+    setPicker(false);
+  };
   const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
@@ -111,7 +119,15 @@ export default function AddTransaction({
                     placeholder="2017-06-01"
                   />
                 </label> */}
-                <СalendarIcon />
+                <div onClick={handleCalendarClick}>
+                  <СalendarIcon />
+                  {picker && (
+                    <CalendarPicker
+                      closeHandler={closePicker}
+                      startDate={date}
+                    />
+                  )}
+                </div>
                 <p>{date}</p>
               </div>
               <div className={s.inputForm}>
@@ -201,7 +217,7 @@ export default function AddTransaction({
                       placeholder="2017-06-01"
                     />
                   </label> */}
-                  <СalendarIcon />
+                  <СalendarIcon onClick={handleCalendarClick} />
                   <p>{date}</p>
                 </div>
                 <div className={s.inputForm}>

@@ -69,8 +69,8 @@ const getTransactionsDay = date => async dispatch => {
 const getTransactionsMonthYear = (month, year) => async dispatch => {
   dispatch(actions.getTransactionsMonthYearRequest());
   try {
-    const response = await fetch.getTransactionsByPeriod({ month, year });
-    dispatch(actions.getTransactionsMonthYearSuccess(response.data));
+    const response = await fetch.getTransactionsByPeriod(`${month}-${year}`);
+    dispatch(actions.getTransactionsMonthYearSuccess(response.data.result));
   } catch (error) {
     dispatch(actions.getTransactionsMonthYearError(error.message));
   }
