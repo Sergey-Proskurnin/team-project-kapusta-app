@@ -17,6 +17,7 @@ const Balance = hide => {
     e.preventDefault();
     dispatch(transactionOp.setBalance(sum));
   };
+  console.log(hide);
   return (
     <form onSubmit={onhandleSubmit} className={s.reportBalance}>
       <label htmlFor="balans" className={s.balanceLabel}>
@@ -37,7 +38,7 @@ const Balance = hide => {
         ) : (
           <>
             <p className={s.balanceInput}>{balance.toFixed(2)} UAH</p>
-            <button className={`${s.balanceButton} ${hide}`} disabled>
+            <button className={`${s.balanceButton} ${hide.hide}`} disabled>
               Подтвердить
             </button>
           </>

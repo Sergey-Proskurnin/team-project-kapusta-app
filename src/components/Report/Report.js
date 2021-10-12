@@ -28,7 +28,7 @@ const Report = () => {
     );
     return filteredByType;
   };
-  console.log(s.buttonNun);
+
   const findeTotalSumByCategiry = (type, category) => {
     let totalExpense = 0;
     getTransactionByType(type)
