@@ -8,6 +8,7 @@ import useWindowDimensions from 'hooks/useWindowDimensions';
 import Summary from 'components/Summary';
 import Balance from 'components/Balance';
 import ToGoReport from 'components/ToGoReport';
+import ArrowToGoBack from 'components/ArrowToGoBack';
 import s from './BalanceView.module.css';
 
 const BalanceView = () => {
@@ -33,13 +34,13 @@ const BalanceView = () => {
 
   return (
     <Container>
-      <>
+      
+        {viewPort.width > 768 && 
+        <>
         <div className={s.balanceContainer}>
           <Balance />
           <ToGoReport />
         </div>
-
-
         <div className={s.holst}>
           <div className={s.buttonContainer}>
             <button
@@ -57,21 +58,28 @@ const BalanceView = () => {
               ДОХОД
             </button>
           </div>
-
           <AddTransaction
             transactionType={type}
             date={date}
-
             // changeDate={setDate}
           />
           <div className={s.dataContainer}>
             <TransactionsList transactionType={type} date={date} />
             {viewPort.width > 1280 && <Summary />}
-
           </div>
         </div>
         {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
-      </>
+      </>}
+        {viewPort.width <= 767 && 
+        <> 
+        {/* <ToGoReport /> */}
+        <ArrowToGoBack/>
+        <AddTransaction
+         transactionType={type}
+         date={date}/>
+        </>
+                }
+
     </Container>
   );
 };
