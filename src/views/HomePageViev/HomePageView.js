@@ -4,10 +4,9 @@ import queryString from 'query-string';
 
 import s from './HomePage.module.css';
 
-import imgText from '../img/svg/Union.svg';
-import RegisterForm from 'components/RegisterForm/RegisterForm';
-import LoginForm from 'components/LogInForm/LoginForm';
-
+import imgText from '../../img/svg/Union.svg'
+import RegisterForm from '../../components/RegisterForm/RegisterForm'
+import LoginForm from '../../components/LogInForm/LoginForm'
 import { loginGoogleSuccess } from 'redux/auth';
 
 const HomePageView = ({ location }) => {
