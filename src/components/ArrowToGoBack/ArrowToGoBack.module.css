@@ -13,11 +13,3 @@
   letter-spacing: 0.04em;
   color: rgba(82, 85, 95, 0.7);
 }
-
-.link::before {
-  content: '';
-  background-image: url('../../img/svg/ArrowToGoBack.svg');
-  width: 18px;
-  height: 12px;
-  margin-right: 18px;
-}

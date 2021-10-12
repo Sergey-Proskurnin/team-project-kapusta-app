@@ -5,16 +5,16 @@ import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
 import СalendarIcon from 'components/SvgIcons/СalendarIcon';
 import { ReactComponent as ArrowUp } from 'components/SvgIcons/ArrowUp/arrowDown.svg';
 import ArrowDown from 'components/SvgIcons/ArrowDown';
-import CustomSelect from 'components/CustomSelect';
 
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import s from './AddTransaction.module.css';
 
 import Select from 'react-select';
+import Dropdown from 'components/Dropdown';
 
-import st from 'components/CustomSelect/CustomSelect.module.css';
-import options from 'data/categories.json';
+// import st from 'components/CustomSelect/CustomSelect.module.css';
+// import options from 'data/categories.json';
 
 export default function AddTransaction({
   transactionType,
@@ -26,6 +26,7 @@ export default function AddTransaction({
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
+  const [selected, setSelected] = useState('');
 
   const viewPort = useWindowDimensions();
 
@@ -61,42 +62,43 @@ export default function AddTransaction({
     setSum(0);
   };
 
-  const customStyles = {
-    control: (base, state) => ({
-      ...base,
-      width: 188,
-      height: 44,
-      border: '2px solid #F5F6FB',
-      background: '#FFFFFF',
-      // match with the menu
-      borderRadius: state.isFocused ? '0px 0px 0 0' : 0,
-      // Overwrittes the different states of border
-      borderColor: state.isFocused ? '#F5F6FB' : '#F5F6FB',
-      // Removes weird border around container
-      boxShadow: state.isFocused ? null : null,
-      '&:hover': {
-        // Overwrittes the different states of border
-        borderColor: state.isFocused ? '#F5F6FB' : '#F5F6FB',
-      },
-    }),
-    menuList: styles => ({
-      ...styles,
-      background: 'white',
-      color: '#C7CCDC',
-    }),
-    option: (styles, { isFocused, isSelected }) => ({
-      ...styles,
-      color: '52555F',
-      background: isFocused ? 'orange' : isSelected ? '#FFFFFF' : undefined,
-      zIndex: 1,
-    }),
-    menu: base => ({
-      ...base,
-      margin: 0,
-      zIndex: 100,
-    }),
-  };
+  // const customStyles = {
+  //   control: (base, state) => ({
+  //     ...base,
+  //     width: 188,
+  //     height: 44,
+  //     border: '2px solid #F5F6FB',
+  //     background: '#FFFFFF',
+  //     // match with the menu
+  //     borderRadius: state.isFocused ? '0px 0px 0 0' : 0,
+  //     // Overwrittes the different states of border
+  //     borderColor: state.isFocused ? '#F5F6FB' : '#F5F6FB',
+  //     // Removes weird border around container
+  //     boxShadow: state.isFocused ? null : null,
+  //     '&:hover': {
+  //       // Overwrittes the different states of border
+  //       borderColor: state.isFocused ? '#F5F6FB' : '#F5F6FB',
+  //     },
+  //   }),
+  //   menuList: styles => ({
+  //     ...styles,
+  //     background: 'white',
+  //     color: '#C7CCDC',
+  //   }),
+  //   option: (styles, { isFocused, isSelected }) => ({
+  //     ...styles,
+  //     color: '52555F',
+  //     background: isFocused ? 'orange' : isSelected ? '#FFFFFF' : undefined,
+  //     zIndex: 1,
+  //   }),
+  //   menu: base => ({
+  //     ...base,
+  //     margin: 0,
+  //     zIndex: 100,
+  //   }),
+  // };
 
+  //FIXME: Рендер для таблета и изменения атребутов инпута для таблета
   return (
     <>
       {viewPort.width > 1280 ? (
@@ -129,7 +131,8 @@ export default function AddTransaction({
                 </label>
                 <label>
                   <div className={s.positionIcon}>
-                    <Select
+                    <Dropdown selected={selected} setSelected={setCategory} />
+                    {/* <Select
                       onChange={handleChangeCategory}
                       styles={customStyles}
                       options={options}
@@ -137,7 +140,7 @@ export default function AddTransaction({
                       className={st.select}
                       categoryType={transactionType}
                       isSearchable
-                    />
+                    /> */}
                     {/* <input
               className={s.inputСategory}
               value={category}
@@ -218,14 +221,25 @@ export default function AddTransaction({
                   </label>
                   <label>
                     <div className={s.positionIcon}>
-                      <Select
+                      {/* <Select
                         onChange={handleChangeCategory}
                         styles={customStyles}
                         options={options}
                         placeholder="Категория товара"
                         className={st.select}
                         isSearchable
-                      />
+                      /> */}
+                      {/* <div class="react-select-container">
+                        <div class="react-select__control">
+                          <div class="react-select__value-container">...</div>
+                          <div class="react-select__indicators">...</div>
+                        </div>
+                        <div class="react-select__menu">
+                          <div class="react-select__menu-list">
+                            <div class="react-select__option">...</div>
+                          </div>
+                        </div>
+                      </div> */}
                       {/* <input
               className={s.inputСategory}
               value={category}
