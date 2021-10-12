@@ -247,6 +247,7 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                   <label>
 
                     <div className={s.positionIcon}>
+                    <Dropdown selected={selected} setSelected={setCategory} />
                       {/* <Select
 
                         onChange={handleChangeCategory}
@@ -350,14 +351,15 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
         </label>
         <label>
           <div className={'s'}>
-            <Select
+
+            {/* <Select
               onChange={handleChangeCategory}
               styles={customStyles}
               options={options}
               placeholder="Категория товара"
               className={st.select}
               isSearchable
-            />
+            /> */}
             {/* <input
     className={s.inputСategory}
     value={category}
