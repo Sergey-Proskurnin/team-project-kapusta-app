@@ -7,11 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Summary = ({ year = 2021 }) => {
   const dispatch = useDispatch();
+  const totalBalance = useSelector(selectors.getTotalBalance);
+
   useEffect(() => {
     dispatch(transactionsOperations.getMonthlyBalancesYear(year));
-  }, []);
+    // dispatch(transactionsOperations.getTransactionsMonthYear(10, 2021));
+  }, [totalBalance]);
   const balances = useSelector(selectors.getMonthlyBalances);
-  console.log(balances, 'balances');
+
   return (
     <div className={styles.summaryContainer}>
       <h4 className={styles.summaryTitle}>Сводка</h4>

@@ -13,20 +13,23 @@ import s from './AddTransaction.module.css';
 import Select from 'react-select';
 import Dropdown from 'components/Dropdown';
 
+
 // import st from 'components/CustomSelect/CustomSelect.module.css';
 // import options from 'data/categories.json';
+import CalendarPicker from 'components/DayPicker/DayPicker';
 
-export default function AddTransaction({
-  transactionType,
-  date,
-  //  changeDate
-}) {
+
+export default function AddTransaction({ transactionType, date, changeDate }) {
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
+
   const [selected, setSelected] = useState('');
+
+
+  const [picker, setPicker] = useState(false);
 
   const viewPort = useWindowDimensions();
 
@@ -45,6 +48,17 @@ export default function AddTransaction({
   // const handleChangeDate = e => {
   //   changeDate(e.target.value);
   // };
+  const handleCalendarClick = () => {
+    setPicker(true);
+  };
+  const closePicker = dateNew => {
+    const newDate = `${dateNew.getUTCDate()}.${
+      dateNew.getUTCMonth() + 1
+    }.${dateNew.getUTCFullYear()}`;
+
+    changeDate(newDate);
+    setPicker(false);
+  };
   const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
@@ -101,7 +115,7 @@ export default function AddTransaction({
   //FIXME: Рендер для таблета и изменения атребутов инпута для таблета
   return (
     <>
-      {viewPort.width > 1280 ? (
+      {viewPort.width >= 1280  && (
         <>
           <div className={'s'}>
             <form className={s.containerForm} noValidate>
@@ -113,7 +127,15 @@ export default function AddTransaction({
                     placeholder="2017-06-01"
                   />
                 </label> */}
-                <СalendarIcon />
+                <div onClick={handleCalendarClick}>
+                  <СalendarIcon />
+                  {picker && (
+                    <CalendarPicker
+                      closeHandler={closePicker}
+                      startDate={date}
+                    />
+                  )}
+                </div>
                 <p>{date}</p>
               </div>
               <div className={s.inputForm}>
@@ -130,9 +152,11 @@ export default function AddTransaction({
                   />
                 </label>
                 <label>
+
                   <div className={s.positionIcon}>
                     <Dropdown selected={selected} setSelected={setCategory} />
                     {/* <Select
+
                       onChange={handleChangeCategory}
                       styles={customStyles}
                       options={options}
@@ -190,7 +214,8 @@ export default function AddTransaction({
             </form>
           </div>
         </>
-      ) : (
+      ) } 
+      {viewPort.width >=768 && viewPort.width < 1280 &&(
         <>
           <div className={'s'}>
             <form className={s.containerForm768} noValidate>
@@ -203,7 +228,7 @@ export default function AddTransaction({
                       placeholder="2017-06-01"
                     />
                   </label> */}
-                  <СalendarIcon />
+                  <СalendarIcon onClick={handleCalendarClick} />
                   <p>{date}</p>
                 </div>
                 <div className={s.inputForm}>
@@ -220,8 +245,10 @@ export default function AddTransaction({
                     />
                   </label>
                   <label>
+
                     <div className={s.positionIcon}>
                       {/* <Select
+
                         onChange={handleChangeCategory}
                         styles={customStyles}
                         options={options}
@@ -289,7 +316,100 @@ export default function AddTransaction({
             </form>
           </div>
         </>
-      )}
+      )
+      }
+{viewPort.width < 768 && ( 
+  <>
+  <div className={'s'}>
+  <form className={s.containerForm320} noValidate>
+    <div className={s.containerFormTablet}>
+      <div className={s.dateForm}>
+        {/* <label>
+          <input
+            className={s.inputDescriptions}
+            type="date"
+            placeholder="2017-06-01"
+          />
+        </label> */}
+        
+        <p>{date}</p>
+        <СalendarIcon />
+      </div>
+      <div className={s.inputForm}>
+        <label>
+          <input
+            className={s.inputDescriptions}
+            value={description}
+            name="description"
+            id="description"
+            type="text"
+            placeholder="Описание товара"
+            required
+            onChange={handleChangeDescription}
+          />
+        </label>
+        <label>
+          <div className={'s'}>
+            <Select
+              onChange={handleChangeCategory}
+              styles={customStyles}
+              options={options}
+              placeholder="Категория товара"
+              className={st.select}
+              isSearchable
+            />
+            {/* <input
+    className={s.inputСategory}
+    value={category}
+    name="category"
+    id="description"
+    type="text"
+    placeholder="Категория товара"
+    required
+    onChange={handleChangeCategory}
+  />
+  <ArrowUp className={s.iconForm}/> */}
+          </div>
+        </label>
+        <label>
+          <div className={s.positionInputSum}>
+            <div><input
+              className={s.inputSum}
+              value={sum}
+              name="sum"
+              id="sum"
+              type="string"
+              placeholder="0.00"
+              required
+              onChange={handleChangeSum}
+            /></div>
+            <div className={s.positionIcon}><CalculatorIcon /></div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div className={s.positionButton320}>
+      <button
+        type="button"
+        onClick={handleSubmit}
+        className={`${s.button} ${s.buttonLeft}`}
+      >
+        ВВОД
+      </button>
+      <button
+        type="button"
+        onClick={cleanState}
+        className={`${s.button} ${s.buttonRight}`}
+      >
+        ОЧИСТИТЬ
+      </button>
+    </div>
+  </form>
+</div>
+</>
+)
+}
+
     </>
   );
 }

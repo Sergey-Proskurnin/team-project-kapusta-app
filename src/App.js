@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import routes from 'routes';
 import Header from 'components/Header/Header';
-import HomePageView from 'views/HomePageView';
+import HomePageView from 'views/HomePageViev/HomePageView';
 import BalanceView from 'views/BalanceView/BalanceView';
 import ReportsView from 'views/ReportsView';
 
