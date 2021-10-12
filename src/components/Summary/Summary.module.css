@@ -34,6 +34,10 @@
     background: #f5f6fb;
     border: 1px solid #ffffff;
   }
+
+  .summaryItem:last-child {
+  border-bottom-right-radius: 20px;
+}
   
   .summaryDescription {
       font-family: Roboto;
