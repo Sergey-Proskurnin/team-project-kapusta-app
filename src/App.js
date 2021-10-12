@@ -41,8 +41,7 @@ const App = () => {
         <PrivateRoute
           path={routes.report}
           component={ReportsView}
-          redirectTo={routes.report}
-          //! Не могу перейти на страницу report => перекидывает на home.
+          // redirectTo={routes.report}
         />
       </Switch>
     </>

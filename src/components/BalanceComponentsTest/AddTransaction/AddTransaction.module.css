@@ -283,6 +283,10 @@
     border-radius: 0 16px 16px 0;
     background-color: #fff;
     padding-right: 45px;
+    text-align: right;
+  }
+  .inputSum::placeholder {
+    text-align: end;
   }
   .inputSum::-webkit-input-placeholder {
     /* WebKit browsers */
