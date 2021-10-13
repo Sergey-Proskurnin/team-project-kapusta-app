@@ -4,6 +4,7 @@ import styles from './Summary.module.css';
 import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import { useDispatch, useSelector } from 'react-redux';
+import { AccountBalanceSharp } from '@material-ui/icons';
 
 const Summary = ({ year = 2021 }) => {
   const dispatch = useDispatch();
@@ -15,11 +16,13 @@ const Summary = ({ year = 2021 }) => {
   }, [totalBalance]);
   const balances = useSelector(selectors.getMonthlyBalances);
 
+  const sortedBalances = [...balances].sort((a, b) => b.month - a.month);
+
   return (
     <div className={styles.summaryContainer}>
       <h4 className={styles.summaryTitle}>Сводка</h4>
       <ul className={styles.summaryList}>
-        {balances.map(({ month, value }, index) => (
+        {sortedBalances.map(({ month, value }, index) => (
           <li key={index} className={styles.summaryItem}>
             <p className={styles.summaryDescription}>
               {data.find(monthData => monthData.id === month).name}
