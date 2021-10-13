@@ -9,16 +9,17 @@ import Summary from 'components/Summary';
 import Balance from 'components/Balance';
 import ToGoReport from 'components/ToGoReport';
 import ArrowToGoBack from 'components/ArrowToGoBack';
+import contextProps from 'context/context';
 import s from './BalanceView.module.css';
 
 const BalanceView = () => {
   const [type, setType] = useState('income');
-  // const { width } = useViewport();
-  const viewPort = useWindowDimensions();
-  // console.log(width);
-  // console.log(viewPort);
-
   const [date, setDate] = useState('');
+  
+  const viewPort = useWindowDimensions();
+  
+
+  
   const day = new Date();
   const startDate = `${day.getUTCDate()}.${
     day.getUTCMonth() + 1
@@ -33,7 +34,8 @@ const BalanceView = () => {
   };
 
   return (
-    <Container>
+    <contextProps.Provider value={type}> 
+        <Container>
       
         {viewPort.width > 768 && 
         <>
@@ -44,14 +46,14 @@ const BalanceView = () => {
         <div className={s.holst}>
           <div className={s.buttonContainer}>
             <button
-              className={s.buttonSpentIncome}
+              className={`${s.buttonSpentIncome} ${type === "expense" && s.buttonSpentIncomeActive}`}
               onClick={typeToggle}
               title="expense"
             >
               РАСХОД
             </button>
             <button
-              className={s.buttonSpentIncome}
+              className={`${s.buttonSpentIncome} ${type === "income" && s.buttonSpentIncomeActive}`}
               onClick={typeToggle}
               title="income"
             >
@@ -73,7 +75,6 @@ const BalanceView = () => {
       </>}
         {viewPort.width <= 767 && 
         <> 
-        {/* <ToGoReport /> */}
         <ArrowToGoBack/>
         <AddTransaction
          transactionType={type}
@@ -82,6 +83,7 @@ const BalanceView = () => {
                 }
 
     </Container>
+    </contextProps.Provider>
   );
 };
 

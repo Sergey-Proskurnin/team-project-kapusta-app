@@ -17,7 +17,7 @@ const Balance = hide => {
     e.preventDefault();
     dispatch(transactionOp.setBalance(sum));
   };
-  console.log(hide);
+  
   return (
     <form onSubmit={onhandleSubmit} className={s.reportBalance}>
       <label htmlFor="balans" className={s.balanceLabel}>
