@@ -34,9 +34,8 @@ const BalanceView = () => {
 
   return (
     <Container>
-      
         {viewPort.width > 768 && 
-        <>
+        <div className={s.mainWindov} >
         <div className={s.balanceContainer}>
           <Balance />
           <ToGoReport />
@@ -70,7 +69,7 @@ const BalanceView = () => {
           </div>
         </div>
         {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
-      </>}
+      </div>}
         {viewPort.width <= 767 && 
         <> 
         {/* <ToGoReport /> */}
