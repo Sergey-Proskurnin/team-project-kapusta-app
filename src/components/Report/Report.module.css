@@ -67,11 +67,13 @@ ArrowBackIosIcon {
   }
   .reportTitle {
     font-weight: bold;
+    font-style: normal;
     font-size: 14px;
     line-height: 16px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #000000;
+    min-width: 96px;
   }
   .reportMonthTitle {
     width: 110px;
@@ -130,6 +132,7 @@ ArrowBackIosIcon {
   }
   .amountTitle {
     color: #52555f;
+    /* min-width: 96px; */
     /* margin-right: 15px; */
   }
   .amountSection {
@@ -139,6 +142,9 @@ ArrowBackIosIcon {
     font-weight: bold;
     font-size: 14px;
     line-height: 1.17;
+  }
+  .buttonWidth {
+    min-width: 183px;
   }
 }
 /* .transactionWrapper:not(:last-child) {

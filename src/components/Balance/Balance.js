@@ -4,7 +4,7 @@ import { getTotalBalance } from '../../redux/transactions/transactions-selectors
 import { useSelector, useDispatch } from 'react-redux';
 import transactionOp from '../../redux/transactions/transactions-operations';
 
-const Balance = hide => {
+const Balance = ({ hide, width }) => {
   const balance = useSelector(getTotalBalance);
   const dispatch = useDispatch();
   const [sum, setSum] = useState('');
@@ -17,7 +17,6 @@ const Balance = hide => {
     e.preventDefault();
     dispatch(transactionOp.setBalance(sum));
   };
-  console.log(hide);
   return (
     <form onSubmit={onhandleSubmit} className={s.reportBalance}>
       <label htmlFor="balans" className={s.balanceLabel}>
@@ -33,12 +32,16 @@ const Balance = hide => {
               onChange={onHandleChange}
               className={s.balanceInpute}
             />
-            <button className={s.balanceButton}>ПОДТВЕРДИТЬ</button>
+            <button className={`${s.balanceButton} ${width}`}>
+              ПОДТВЕРДИТЬ
+            </button>
           </>
         ) : (
           <>
-            <p className={s.balanceInput}>{balance.toFixed(2)} UAH</p>
-            <button className={`${s.balanceButton} ${hide.hide}`} disabled>
+            <p className={`${s.balanceInput} ${width}`}>
+              {`${balance.toLocaleString('ru')}.00`} UAH
+            </p>
+            <button className={`${s.balanceButton} ${hide}`} disabled>
               Подтвердить
             </button>
           </>
