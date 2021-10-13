@@ -1,26 +1,63 @@
 .container {
-  /* position: relative;
-  display: flex;
+  /* position: relative; */
+  /* display: flex;
   flex-direction: column;
   align-items: center; */
 
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  overflow: hidden;
+  /* padding-left: 20px;
+  padding-right: 20px; */
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    width: 768px;
+  }
+  .bcgSection {
+    position: relative;
+    background-color: #f5f6fb;
+    height: 526px;
+    overflow: hidden;
+    border-radius: 0 0 0 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .dataSection {
+    position: relative;
+    height: 657px;
+  }
+  .bcgImage {
+    position: absolute;
+    z-index: 2;
+    width: 183px;
+    height: 142px;
+    bottom: 64px;
+    right: 88px;
+    background-image: url('../../img/svg/bcgImageBottom.svg');
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
     width: 1260px;
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
+  }
+  .bcgSection {
+    background-color: #f2f5fc;
+  }
+  .dataSection {
+    height: 268px;
+  }
+  .bcgImage {
+    z-index: 2;
+    width: 1334px;
+    height: 232px;
+    left: 10px;
+    top: 74px;
+    background-image: url('../../img/svg/bcgImage.svg');
   }
 }
