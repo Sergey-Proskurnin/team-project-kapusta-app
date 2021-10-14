@@ -16,9 +16,7 @@ const UserLogout = () => {
     setShowModal(prevShowModal => !prevShowModal);
   };
 
-  console.log(setModalOpen);
-
-  return (
+    return (
     <>
       <button type="button" onClick={toggleModal} className={s.logoutBtn}>
         <p className={s.textBtn}>Выйти</p>

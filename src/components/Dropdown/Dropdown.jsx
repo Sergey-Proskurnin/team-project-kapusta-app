@@ -33,7 +33,7 @@ function Dropdown({ category, setCategory }) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="m1 1 5 4 5-4" stroke="#C7CCDC" stroke-width="2" />
+            <path d="m1 1 5 4 5-4" stroke="#C7CCDC" strokeWidth="2" />
           </svg>
         ) : (
           <svg
@@ -46,7 +46,7 @@ function Dropdown({ category, setCategory }) {
             <path
               d="m1 6 5-4 5 4"
               stroke="#C7CCDC"
-              stroke-width="2"
+              strokeWidth="2"
               className="crownUp"
             />
           </svg>

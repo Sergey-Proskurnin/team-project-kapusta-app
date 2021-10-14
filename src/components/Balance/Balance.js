@@ -12,7 +12,7 @@ const Balance = ({ hide, width }) => {
   const onHandleChange = e => setSum(e.currentTarget.value);
   useEffect(() => {
     setSum(balance);
-  });
+  }, []);
   const onhandleSubmit = e => {
     e.preventDefault();
     dispatch(transactionOp.setBalance(sum));
@@ -21,12 +21,13 @@ const Balance = ({ hide, width }) => {
     <form onSubmit={onhandleSubmit} className={s.reportBalance}>
       <label htmlFor="balans" className={s.balanceLabel}>
         Баланс:
-        {balance === 0 ? (
+        <div className={s.buttonsGroup}>
+           {balance === 0 ? (
           <>
             <input
               type="text"
               name="name"
-              maxlength="10"
+              maxLength="10"
               placeholder="00.00"
               // value={sum}
               onChange={onHandleChange}
@@ -42,10 +43,12 @@ const Balance = ({ hide, width }) => {
               {`${balance.toLocaleString('ru')}.00`} UAH
             </p>
             <button className={`${s.balanceButton} ${hide}`} disabled>
-              Подтвердить
+            ПОДТВЕРДИТЬ
             </button>
           </>
         )}
+        </div>
+       
       </label>
     </form>
   );

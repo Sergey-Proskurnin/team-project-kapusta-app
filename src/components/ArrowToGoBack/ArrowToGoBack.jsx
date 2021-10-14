@@ -1,7 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import s from './ArrowToGoBack.module.css';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+
+
 
 const ArrowToGoBack = () => {
+  const viewPort = useWindowDimensions();
+
   return (
     <div type="button" className={s.toGoBack}>
       <NavLink className={s.link} to="/balance">
@@ -16,7 +21,9 @@ const ArrowToGoBack = () => {
             fill="#FF751D"
           />
         </svg>
-        <p style={{ marginLeft: 18 }}>Вернуться на главную</p>
+        <p style={{ marginLeft: 18 }}>
+          {viewPort.width > 767 && "Вернуться на главную"}
+          </p>
       </NavLink>
     </div>
   );
