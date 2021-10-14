@@ -1,3 +1,7 @@
+
+
+
+
 .main {
   /* margin: 48px auto; */
   width: 605px;
@@ -7,6 +11,7 @@
   color: rgb(0, 0, 0);
   border-radius: 20px 20px 0 0;
   background-color: #F5F6FB;
+  border-collapse: collapse;
 }
 
 
