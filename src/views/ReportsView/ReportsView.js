@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
@@ -28,11 +28,7 @@ const ReportsView = () => {
     }
   };
   const getCategory = e => {
-    if (e.target.localName === 'svg' || e.target.localName === 'use') {
-      setCategory(e.target.attributes.title.nodeValue);
-    }
-
-    return;
+    setCategory(e.target.attributes.title.nodeValue);
   };
 
   return (
@@ -44,7 +40,7 @@ const ReportsView = () => {
         onHandleClickLeft={onHandleClickLeft}
         getCategory={getCategory}
       />
-      <ChartReport />
+      <ChartReport month={month} year={year} category={category} />
     </Container>
   );
 };
