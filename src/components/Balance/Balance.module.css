@@ -1,9 +1,11 @@
 @media screen and (min-width: 320px) {
   .reportBalance {
     display: table-footer-group;
+    font-size: 12px;
+    color: rgba(82, 85, 95, 0.7);
   }
 
-  .balanceLabel {
+    .balanceLabel {
     display: block;
     text-align: center;
     align-items: center;
@@ -17,14 +19,33 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    color: #000;
     width: 125px;
     height: 44px;
     border: 2px solid #ffffff;
     background-color: transparent;
-    border-radius: 16px;
-    margin-top: 6px;
+    border-radius: 22px 0 0 22px;
+    /* border-right: 1px; */
+    
     font-weight: 700;
   }
+
+  .balanceButton {
+    width: 125px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    border-left: 1px;
+    background-color: transparent;
+    border-radius: 0 22px 22px 0;
+    color: rgba(82, 85, 95, 0.7);
+    font-size: 12px;
+    line-height: 1.17;
+  }
+  .buttonsGroup{
+    display: flex;
+    margin-top: 12px;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -35,7 +56,7 @@
 
   .balanceLabel {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: start;
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
@@ -70,13 +91,14 @@
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 1.17;
+    margin-left: 15px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .balanceLabel {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
@@ -105,6 +127,7 @@
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 1.17;
+    margin-left: 0px;
   }
   .buttonNun {
     display: block;

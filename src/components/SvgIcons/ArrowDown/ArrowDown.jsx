@@ -12,7 +12,7 @@ const ArrowDown = () => {
       fill="#C7CCDC"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M1 6L6 2L11 6" stroke="#C7CCDC" stroke-width="2" />
+      <path d="M1 6L6 2L11 6" stroke="#C7CCDC" strokeWidth="2" />
     </SvgIcon>
   );
 };

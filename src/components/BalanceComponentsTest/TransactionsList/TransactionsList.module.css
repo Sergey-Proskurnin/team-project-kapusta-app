@@ -1,28 +1,27 @@
 .main {
-  margin: 48px auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 605px;
   height: 38px;
   text-align: center;
   border-radius: 30px;
   color: rgb(0, 0, 0);
   border-radius: 20px 20px 0 0;
-  background-color: #F5F6FB;
-    border-spacing: 0px 2px; 
-        border-left: 2px;
-    border-left-style: outset;
-    border-right-style: inset;
-    border-right-color: transparent;
-    border-left-color: transparent;
-
+  background-color: #f5f6fb;
+  border-spacing: 0px 2px;
+  border-left: 2px;
+  border-left-style: outset;
+  border-right-style: inset;
+  border-right-color: transparent;
+  border-left-color: transparent;
 }
 
-
 @media screen and (min-width: 1280px) {
-      .main {
+  .main {
     /* margin: 59px auto; */
-      width: 760px;
-      height: 38px;  
-      }
+    width: 760px;
+    height: 38px;
+  }
 }
 
 .theadTable {
@@ -36,13 +35,11 @@
   color: #52555f;
 }
 
-
 @media screen and (min-width: 768px) {
-      .theadTable {
+  .theadTable {
     display: revert;
-      }
+  }
 }
-
 
 .th {
   padding: 10px;
