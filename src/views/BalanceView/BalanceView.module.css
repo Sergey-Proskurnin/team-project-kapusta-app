@@ -2,11 +2,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .mainWindov {
+  /* .mainWindov {
     position: absolute;
     left: 7%;
     top: -80%;
-  }
+  } */
   .balanceContainer {
     display: flex;
     justify-content: right;
@@ -25,7 +25,7 @@
     border-radius: 0px 30px 30px 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     position: relative;
-    z-index: 3;
+    /* z-index: 3; */
   }
   .dataContainer {
     display: flex;
@@ -64,16 +64,16 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .mainWindov {
+  /* .mainWindov {
     left: 8%;
     top: -195%;
-  }
+  } */
   .balanceContainer {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
     margin-top: 40px;
-    /* width: 1060px; */
+    width: 1060px;
   }
 
   .holst {
