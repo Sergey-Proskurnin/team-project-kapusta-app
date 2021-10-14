@@ -141,6 +141,10 @@
     color: #ff751d;
   }
 }
+.containerSummary768 {
+  margin-right: auto;
+}
+
 @media screen and (min-width: 1280px) {
   /* .mainWindov {
     left: 8%;
