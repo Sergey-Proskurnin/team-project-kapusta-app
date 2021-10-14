@@ -11,7 +11,11 @@ import s from './AddTransaction.module.css';
 
 import Dropdown from 'components/Dropdown';
 
+
+import CalculattorInput from 'components/CalculatorInput/CalculatorInput';
+
 // import CalendarPicker from 'components/DayPicker/DayPicker';
+
 
 export default function AddTransaction() {
   const { type, picker, handleCalendarClick, closePicker, date } =
@@ -20,6 +24,8 @@ export default function AddTransaction() {
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+
+  const [calc, setCalc] = useState(false);
   const [sum, setSum] = useState();
 
   const viewPort = useWindowDimensions();
@@ -36,6 +42,31 @@ export default function AddTransaction() {
     dispatch(transactionsOperations.addTransaction(transaction));
     cleanState();
   };
+
+  // const handleChangeDate = e => {
+  //   changeDate(e.target.value);
+  // };
+ 
+  
+  const handleCalcClick = () => {
+    setCalc(true);
+  };
+
+  const closeCalc = result => {
+    setSum(result);
+
+    setCalc(false);
+  };
+
+  // const closePicker = dateNew => {
+  //   const newDate = `${dateNew.getUTCDate()}.${
+  //     dateNew.getUTCMonth() + 1
+  //   }.${dateNew.getUTCFullYear()}`;
+
+  //   changeDate(newDate);
+  //   setPicker(false);
+  // };
+
 
   const handleChangeDescription = e => {
     setDescription(e.target.value);
@@ -94,7 +125,10 @@ export default function AddTransaction() {
                     required
                     onChange={handleChangeSum}
                   />
-                  <CalculatorIcon />
+                  <div onClick={handleCalcClick}>
+                    <CalculatorIcon />
+                    {calc && <CalculattorInput onCloseCalculator={closeCalc} />}
+                  </div>
                 </div>
               </label>
             </div>

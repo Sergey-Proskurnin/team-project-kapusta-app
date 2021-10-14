@@ -51,7 +51,7 @@ const BalanceView = () => {
 
   useEffect(() => {
     setDate(startDate);
-  }, []);
+  }, [date]);
 
   const contextValueBalance = {
     type,
