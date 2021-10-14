@@ -9,6 +9,8 @@ const ReportsView = () => {
   let selectedYear = date.getFullYear();
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
+  const [category, setCategory] = useState('');
+
   const onHandleClickRight = () => {
     if (month < 12) {
       setMonth(prev => (prev += 1));
@@ -25,6 +27,13 @@ const ReportsView = () => {
       setMonth(prev => (prev -= 1));
     }
   };
+  const getCategory = e => {
+    if (e.target.localName === 'svg' || e.target.localName === 'use') {
+      setCategory(e.target.attributes.title.nodeValue);
+    }
+
+    return;
+  };
 
   return (
     <Container>
@@ -33,6 +42,7 @@ const ReportsView = () => {
         year={year}
         onHandleClickRight={onHandleClickRight}
         onHandleClickLeft={onHandleClickLeft}
+        getCategory={getCategory}
       />
       <ChartReport />
     </Container>
