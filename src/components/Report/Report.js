@@ -11,23 +11,14 @@ import { CurrentAmount, CurrentMonth } from './';
 import categories from '../../data/categories';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
-const stat = ['Расходы', 'Доходы'];
 
-const month = 2;
-
-const Report = ({ transactionType, month, year }) => {
+const Report = ({ month, year, onHandleClickRight, onHandleClickLeft }) => {
   let mounthToString = String(month);
   let yearToString = String(year);
   const [type, setType] = useState('expense');
 
   const transaction = useSelector(getTransactionsPerMonth);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(
-      transactionOp.getTransactionsMonthYear(mounthToString, yearToString),
-    );
-  }, [month, year]);
 
   const getTransactionByType = type => {
     const filteredByType = transaction.filter(
@@ -44,17 +35,13 @@ const Report = ({ transactionType, month, year }) => {
       });
     return totalExpense;
   };
-  // const typeToggle = e => {
-  //   setType(`${e.target.title}`);
-  // };
+
   const onClick = () => {
     if (type === 'expense') {
       setType('income');
-      console.log(type);
     }
     if (type === 'income') {
       setType('expense');
-      console.log(type);
     }
   };
   return (
@@ -63,7 +50,12 @@ const Report = ({ transactionType, month, year }) => {
         <ArrowToGoBack />
         <div className={s.navigationWrapper}>
           <Balance hide={s.buttonNone} width={s.buttonWidth} />
-          <CurrentMonth currentMonth={month} currentYear={year} />
+          <CurrentMonth
+            currentMonth={month}
+            currentYear={year}
+            onHandleClickRight={onHandleClickRight}
+            onHandleClickLeft={onHandleClickLeft}
+          />
         </div>
       </div>
       <CurrentAmount currentMonth={month} currentYear={year} />
@@ -88,7 +80,6 @@ const Report = ({ transactionType, month, year }) => {
         <ul className={s.reportList}>
           {categories.map(event => {
             let sum = findeTotalSumByCategiry(type, event.label);
-            //  let sum = findeTotalSumByCategiry(transactionType, event.label);
             if (sum === 0) {
               return;
             }

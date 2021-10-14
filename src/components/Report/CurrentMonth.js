@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import s from './Report.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import months from '../../data/month';
-const CurrentMonth = ({ currentMonth, currentYear }) => {
-  const [month, setMonth] = useState(currentMonth);
-  const [year, setYear] = useState(currentYear);
 
-  const onHandleClickRight = () => {
-    if (month < 12) {
-      setMonth(prev => (prev += 1));
-    } else {
-      setMonth(1);
-      setYear(prev => (prev += 1));
-    }
-  };
-  const onHandleClickLeft = () => {
-    if (month <= 1) {
-      setMonth(12);
-      setYear(prev => (prev -= 1));
-    } else {
-      setMonth(prev => (prev -= 1));
-    }
-  };
-  const monthToString = String(month);
+import s from './Report.module.css';
+
+import months from '../../data/month';
+const CurrentMonth = ({
+  currentMonth,
+  currentYear,
+  onHandleClickRight,
+  onHandleClickLeft,
+}) => {
+  const monthToString = String(currentMonth);
   const selectMonth = months.filter(el => el.id === monthToString);
   return (
     <div className={s.reportMonth}>
@@ -39,7 +25,7 @@ const CurrentMonth = ({ currentMonth, currentYear }) => {
         {
           <span
             className={s.reportMonthTitle}
-          >{`${selectMonth[0].name} ${year}`}</span>
+          >{`${selectMonth[0].name} ${currentYear}`}</span>
         }
 
         <ArrowForwardIosIcon
