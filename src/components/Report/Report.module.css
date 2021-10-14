@@ -92,7 +92,7 @@
   .iconSvg {
     max-width: 56px;
     max-height: 56px;
-    background: repeating-radial-gradient(
+    /* background: repeating-radial-gradient(
       #000 (-1em),
       #000 1em,
       transparent 1em,
@@ -101,13 +101,32 @@
     background-size: 100% 70%;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 25%;
+    border-radius: 25%; */
   }
   .iconSvg:hover {
     fill: #ff751d;
+    background-image: radial-gradient(
+      80% 60%,
+      #ffdac0 15%,
+      #ffdac0 15%,
+      #ffdac0 40%,
+      #ffdac0 40%,
+      #ffdac0 65%,
+      #fff 65%
+    );
   }
+
   .iconSvg:focus {
     fill: #ff751d;
+    background-image: radial-gradient(
+      80% 60%,
+      #ffdac0 15%,
+      #ffdac0 15%,
+      #ffdac0 40%,
+      #ffdac0 40%,
+      #ffdac0 65%,
+      #fff 65%
+    );
   }
   .reportCardTitle {
     text-transform: uppercase;
