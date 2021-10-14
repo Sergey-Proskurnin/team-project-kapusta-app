@@ -26,7 +26,7 @@ const BalanceView = () => {
 
   useEffect(() => {
     setDate(startDate);
-  }, []);
+  }, [date]);
 
   const typeToggle = e => {
     setType(`${e.target.title}`);
@@ -38,8 +38,12 @@ const BalanceView = () => {
         {viewPort.width > 768 && (
           <>
             <div className={s.balanceContainer}>
-              <div><Balance /></div>
-              <div><ToGoReport /></div>
+              <div>
+                <Balance />
+              </div>
+              <div>
+                <ToGoReport />
+              </div>
             </div>
             <div className={s.holst}>
               <div className={s.buttonContainer}>
@@ -73,7 +77,7 @@ const BalanceView = () => {
               </div>
             </div>
             <div className={s.containerSummary768}>
-            {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
+              {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
             </div>
           </>
         )}

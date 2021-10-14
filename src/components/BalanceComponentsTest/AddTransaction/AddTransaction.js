@@ -12,6 +12,7 @@ import s from './AddTransaction.module.css';
 import Dropdown from 'components/Dropdown';
 
 import CalendarPicker from 'components/DayPicker/DayPicker';
+import CalculattorInput from 'components/CalculatorInput/CalculatorInput';
 
 export default function AddTransaction({ transactionType, date, changeDate }) {
   const type = useContext(contextProps);
@@ -22,7 +23,7 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
   const [sum, setSum] = useState(0);
 
   const [picker, setPicker] = useState(false);
-
+  const [calc, setCalc] = useState(false);
   const viewPort = useWindowDimensions();
 
   const handleSubmit = e => {
@@ -44,13 +45,33 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     setPicker(true);
   };
   const closePicker = dateNew => {
-    const newDate = `${dateNew.getUTCDate()}.${
-      dateNew.getUTCMonth() + 1
-    }.${dateNew.getUTCFullYear()}`;
+    const newDate = `${dateNew.getDate()}.${
+      dateNew.getMonth() + 1
+    }.${dateNew.getFullYear()}`;
 
     changeDate(newDate);
     setPicker(false);
   };
+
+  const handleCalcClick = () => {
+    setCalc(true);
+  };
+
+  const closeCalc = result => {
+    setSum(result);
+
+    setCalc(false);
+  };
+
+  // const closePicker = dateNew => {
+  //   const newDate = `${dateNew.getUTCDate()}.${
+  //     dateNew.getUTCMonth() + 1
+  //   }.${dateNew.getUTCFullYear()}`;
+
+  //   changeDate(newDate);
+  //   setPicker(false);
+  // };
+
   const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
@@ -62,7 +83,7 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     // handleChangeDate('');
     setDescription('');
     setCategory('');
-    setSum(0);
+    setSum('');
   };
 
   //FIXME: Рендер для таблета и изменения атребутов инпута для таблета
@@ -88,11 +109,13 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                   name="description"
                   id="description"
                   type="text"
-                  placeholder={type === 'expense' ? "Описание товара" : "Описание дохода"}
+                  placeholder={
+                    type === 'expense' ? 'Описание товара' : 'Описание дохода'
+                  }
                   required
                   onChange={handleChangeDescription}
                 />
-              </label >
+              </label>
               <label className={s.labelSelect}>
                 <div className={s.positionIcon}>
                   <Dropdown category={category} setCategory={setCategory} />
@@ -111,7 +134,10 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                     required
                     onChange={handleChangeSum}
                   />
-                  <CalculatorIcon />
+                  <div onClick={handleCalcClick}>
+                    <CalculatorIcon />
+                    {calc && <CalculattorInput onCloseCalculator={closeCalc} />}
+                  </div>
                 </div>
               </label>
             </div>
@@ -159,7 +185,11 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                       name="description"
                       id="description"
                       type="text"
-                      placeholder={type === 'expense' ? "Описание товара" : "Описание дохода"}
+                      placeholder={
+                        type === 'expense'
+                          ? 'Описание товара'
+                          : 'Описание дохода'
+                      }
                       required
                       onChange={handleChangeDescription}
                     />
@@ -213,7 +243,10 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
               <div className={s.containerFormTablet}>
                 <div className={s.dateForm}>
                   <p>{date}</p>
-                  <div className={s.calendarOverley} onClick={handleCalendarClick}>
+                  <div
+                    className={s.calendarOverley}
+                    onClick={handleCalendarClick}
+                  >
                     <СalendarIcon />
                     {picker && (
                       <CalendarPicker
@@ -231,7 +264,11 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                       name="description"
                       id="description"
                       type="text"
-                      placeholder={type === 'expense' ? "Описание товара" : "Описание дохода"}
+                      placeholder={
+                        type === 'expense'
+                          ? 'Описание товара'
+                          : 'Описание дохода'
+                      }
                       required
                       onChange={handleChangeDescription}
                     />
