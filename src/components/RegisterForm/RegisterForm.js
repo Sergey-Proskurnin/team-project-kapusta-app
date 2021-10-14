@@ -104,7 +104,7 @@ const RegisterForm = ({ onClickComeBack }) => {
   );
 
   
-  // const notScrol = () => {
+  // const notScroll = () => {
   //   if (setModalOpen) {
   //     document.body.style.overflow = 'hidden';
   //   }
@@ -114,7 +114,7 @@ const RegisterForm = ({ onClickComeBack }) => {
     e.preventDefault();
     onRegister();
     clearInput();
-    // notScrol();
+    // notScroll();
   };
 
 
