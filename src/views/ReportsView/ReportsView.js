@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
@@ -9,6 +9,8 @@ const ReportsView = () => {
   let selectedYear = date.getFullYear();
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
+  const [category, setCategory] = useState('');
+
   const onHandleClickRight = () => {
     if (month < 12) {
       setMonth(prev => (prev += 1));
@@ -25,6 +27,9 @@ const ReportsView = () => {
       setMonth(prev => (prev -= 1));
     }
   };
+  const getCategory = e => {
+    setCategory(e.target.attributes.title.nodeValue);
+  };
 
   return (
     <Container>
@@ -33,8 +38,9 @@ const ReportsView = () => {
         year={year}
         onHandleClickRight={onHandleClickRight}
         onHandleClickLeft={onHandleClickLeft}
+        getCategory={getCategory}
       />
-      <ChartReport />
+      <ChartReport month={month} year={year} category={category} />
     </Container>
   );
 };

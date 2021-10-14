@@ -12,9 +12,13 @@ import categories from '../../data/categories';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
 
-const Report = ({ month, year, onHandleClickRight, onHandleClickLeft }) => {
-  let mounthToString = String(month);
-  let yearToString = String(year);
+const Report = ({
+  month,
+  year,
+  onHandleClickRight,
+  onHandleClickLeft,
+  getCategory,
+}) => {
   const [type, setType] = useState('expense');
 
   const transaction = useSelector(getTransactionsPerMonth);
@@ -86,8 +90,15 @@ const Report = ({ month, year, onHandleClickRight, onHandleClickLeft }) => {
             return (
               <li className={s.reportCard} key={event.id}>
                 <p>{sum.toLocaleString('ru')}</p>
-                <svg className={s.iconSvg}>
-                  <use xlinkHref={`${sprite}#${event.label}`} />{' '}
+                <svg
+                  className={s.iconSvg}
+                  title={event.label}
+                  onClick={getCategory}
+                >
+                  <use
+                    xlinkHref={`${sprite}#${event.label}`}
+                    title={event.label}
+                  />
                 </svg>
                 <p className={s.reportCardTitle}>{event.label}</p>
               </li>

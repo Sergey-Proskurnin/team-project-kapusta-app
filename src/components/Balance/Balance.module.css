@@ -5,7 +5,7 @@
     color: rgba(82, 85, 95, 0.7);
   }
 
-    .balanceLabel {
+  .balanceLabel {
     display: block;
     text-align: center;
     align-items: center;
@@ -25,8 +25,6 @@
     border: 2px solid #ffffff;
     background-color: transparent;
     border-radius: 22px 0 0 22px;
-    /* border-right: 1px; */
-    
     font-weight: 700;
   }
 
@@ -41,11 +39,10 @@
     font-size: 12px;
     line-height: 1.17;
   }
-  .buttonsGroup{
+  .buttonsGroup {
     display: flex;
     margin-top: 12px;
   }
-
 }
 
 @media screen and (min-width: 768px) {
@@ -92,6 +89,9 @@
     font-size: 12px;
     line-height: 1.17;
     margin-left: 15px;
+  }
+  .buttonsGroup {
+    margin-top: 0px;
   }
 }
 
