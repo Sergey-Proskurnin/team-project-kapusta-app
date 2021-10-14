@@ -3,14 +3,13 @@ import { useState, useContext } from 'react';
 
 import contextProps from 'context/context';
 
-import { optionsIncome } from 'data/categoriesIncom.json'
-import { optionsExpense } from 'data/categoriesExpense.json'
-
+import { optionsIncome } from 'data/categoriesIncom.json';
+import { optionsExpense } from 'data/categoriesExpense.json';
 
 function Dropdown({ category, setCategory }) {
   const [isActive, setIsActive] = useState(false);
 
-  const type = useContext(contextProps);
+  const { type } = useContext(contextProps);
   const options = type === 'expense' ? optionsIncome : optionsExpense;
   return (
     <div className={s.dropdown}>
@@ -52,11 +51,11 @@ function Dropdown({ category, setCategory }) {
           </svg>
         )}
       </div>
-
       {isActive && (
         <div className={s.dropdownContent}>
-          {options.map(option => (
+          {options.map((option, idx) => (
             <div
+              key={idx}
               onClick={e => {
                 setCategory(option);
                 setIsActive(false);

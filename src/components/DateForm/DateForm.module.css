@@ -1,0 +1,39 @@
+@media screen and (min-width: 320px) {
+  .dateForm {
+    width: 280px;
+    height: 40px;
+    border: 1px solid #f5f6fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .calendarOverley {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dateForm {
+    margin-bottom: 0px;
+    padding-top: 10px;
+
+    border: 1px solid #fff;
+    justify-content: start;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .dateForm {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
+}
