@@ -13,15 +13,18 @@ function Modal({
   modalButtonRight = ' Нет',
 }) {
   useEffect(() => {
+    window.document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.document.body.style.overflow = 'visible';
     };
   });
 
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
       onClose();
+
     }
   };
 
