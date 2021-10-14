@@ -35,11 +35,13 @@ const BalanceView = () => {
 
   return (
     <Container>
+
       {viewPort.width > 768 && (
         <>
           <div className={s.balanceContainer}>
             <Balance />
             <ToGoReport />
+
           </div>
           <div className={s.holst}>
             <div className={s.buttonContainer}>
@@ -68,7 +70,9 @@ const BalanceView = () => {
               {viewPort.width > 1280 && <Summary />}
             </div>
           </div>
+
           {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
+
         </>
       )}
       {viewPort.width <= 767 && (

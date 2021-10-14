@@ -102,12 +102,21 @@ const RegisterForm = ({ onClickComeBack }) => {
   },
     [user]
   );
+
+  
+  // const notScroll = () => {
+  //   if (setModalOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //   }
+  // };
   
   const handleSubmit = e => {
     e.preventDefault();
     onRegister();
     clearInput();
+    // notScroll();
   };
+
 
   return (
     <div className={s.formRegistr}>
