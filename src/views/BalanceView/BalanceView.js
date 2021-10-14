@@ -66,9 +66,12 @@ const BalanceView = () => {
             transactionType={type}
             date={date}
 
-
+            changeDate={setDate}
+          />
+          <div className={s.dataContainer}>
+            <TransactionsList transactionType={type} date={date} />
+            {viewPort.width > 1280 && <Summary />}
           </div>
-
         </div>
         {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
       </>}
@@ -81,46 +84,6 @@ const BalanceView = () => {
         </>
                 }
 
-//           <div className={s.holst}>
-//             <div className={s.buttonContainer}>
-//               <button
-//                 className={s.buttonSpentIncome}
-//                 onClick={typeToggle}
-//                 title="expense"
-//               >
-//                 РАСХОД
-//               </button>
-//               <button
-//                 className={s.buttonSpentIncome}
-//                 onClick={typeToggle}
-//                 title="income"
-//               >
-//                 ДОХОД
-//               </button>
-//             </div>
-//             <AddTransaction
-//               transactionType={type}
-//               date={date}
-//               changeDate={setDate}
-//             />
-//             <div className={s.dataContainer}>
-//               <TransactionsList transactionType={type} date={date} />
-//               {viewPort.width > 1280 && <Summary />}
-//             </div>
-//           </div>
-
-
-          {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
-
-        </>
-      )}
-      {viewPort.width <= 767 && (
-        <>
-          {/* <ToGoReport /> */}
-          <ArrowToGoBack />
-          <AddTransaction transactionType={type} date={date} />
-        </>
-      )}
     </Container>
     </contextProps.Provider>
   );
