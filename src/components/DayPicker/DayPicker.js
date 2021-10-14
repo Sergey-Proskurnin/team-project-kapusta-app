@@ -4,10 +4,7 @@ import 'react-day-picker/lib/style.css';
 import styles from './DayPicker.module.css';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 
-export default function CalendarPicker({
-  startDate = '10.10.2021',
-  closeHandler,
-}) {
+export default function CalendarPicker({ startDate, closeHandler }) {
   const ref = useRef();
   const [selectedDay, setSelectedDay] = useState();
   const [close, setClose] = useState(false);
@@ -60,6 +57,7 @@ export default function CalendarPicker({
         locale="ru"
         modifiers={modifiers}
         modifiersStyles={modifiersStyles}
+        showOutsideDays
       />
     </div>
   );
