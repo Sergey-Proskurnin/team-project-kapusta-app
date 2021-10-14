@@ -2,33 +2,32 @@ import { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
-import СalendarIcon from 'components/SvgIcons/СalendarIcon';
+// import СalendarIcon from 'components/SvgIcons/СalendarIcon';
 import contextProps from 'context/context';
-
+import DateForm from 'components/DateForm';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import s from './AddTransaction.module.css';
 
 import Dropdown from 'components/Dropdown';
 
-import CalendarPicker from 'components/DayPicker/DayPicker';
+// import CalendarPicker from 'components/DayPicker/DayPicker';
 
-export default function AddTransaction({ transactionType, date, changeDate }) {
-  const type = useContext(contextProps);
+export default function AddTransaction() {
+  const { type, picker, handleCalendarClick, closePicker, date } =
+    useContext(contextProps);
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [sum, setSum] = useState(0);
-
-  const [picker, setPicker] = useState(false);
+  const [sum, setSum] = useState();
 
   const viewPort = useWindowDimensions();
 
   const handleSubmit = e => {
     e.preventDefault();
     const transaction = {
-      type: transactionType,
+      type: type,
       date,
       category,
       subCategory: description,
@@ -37,20 +36,7 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     dispatch(transactionsOperations.addTransaction(transaction));
     cleanState();
   };
-  // const handleChangeDate = e => {
-  //   changeDate(e.target.value);
-  // };
-  const handleCalendarClick = () => {
-    setPicker(true);
-  };
-  const closePicker = dateNew => {
-    const newDate = `${dateNew.getUTCDate()}.${
-      dateNew.getUTCMonth() + 1
-    }.${dateNew.getUTCFullYear()}`;
 
-    changeDate(newDate);
-    setPicker(false);
-  };
   const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
@@ -59,27 +45,22 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
     setSum(e.target.value);
   };
   const cleanState = () => {
-    // handleChangeDate('');
     setDescription('');
     setCategory('');
-    setSum(0);
+    setSum('');
   };
 
-  //FIXME: Рендер для таблета и изменения атребутов инпута для таблета
   return (
     <>
       {viewPort.width >= 1280 && (
         <>
           <form className={s.containerForm} noValidate>
-            <div className={s.dateForm}>
-              <div onClick={handleCalendarClick}>
-                <СalendarIcon />
-                {picker && (
-                  <CalendarPicker closeHandler={closePicker} startDate={date} />
-                )}
-              </div>
-              <p>{date}</p>
-            </div>
+            <DateForm
+              date={date}
+              handleCalendarClick={handleCalendarClick}
+              closePicker={closePicker}
+              picker={picker}
+            />
             <div className={s.inputForm}>
               <label className={s.labelDescriptions}>
                 <input
@@ -88,11 +69,13 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                   name="description"
                   id="description"
                   type="text"
-                  placeholder={type === 'expense' ? "Описание товара" : "Описание дохода"}
+                  placeholder={
+                    type === 'expense' ? 'Описание товара' : 'Описание дохода'
+                  }
                   required
                   onChange={handleChangeDescription}
                 />
-              </label >
+              </label>
               <label className={s.labelSelect}>
                 <div className={s.positionIcon}>
                   <Dropdown category={category} setCategory={setCategory} />
@@ -139,18 +122,12 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
           <div className={'s'}>
             <form className={s.containerForm768} noValidate>
               <div className={s.containerFormTablet}>
-                <div className={s.dateForm}>
-                  <div onClick={handleCalendarClick}>
-                    <СalendarIcon />
-                    {picker && (
-                      <CalendarPicker
-                        closeHandler={closePicker}
-                        startDate={date}
-                      />
-                    )}
-                  </div>
-                  <p>{date}</p>
-                </div>
+                <DateForm
+                  date={date}
+                  handleCalendarClick={handleCalendarClick}
+                  closePicker={closePicker}
+                  picker={picker}
+                />
                 <div className={s.inputForm}>
                   <label className={s.labelDescriptions}>
                     <input
@@ -159,7 +136,11 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                       name="description"
                       id="description"
                       type="text"
-                      placeholder={type === 'expense' ? "Описание товара" : "Описание дохода"}
+                      placeholder={
+                        type === 'expense'
+                          ? 'Описание товара'
+                          : 'Описание дохода'
+                      }
                       required
                       onChange={handleChangeDescription}
                     />
@@ -211,18 +192,6 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
           <div className={'s'}>
             <form className={s.containerForm320} noValidate>
               <div className={s.containerFormTablet}>
-                <div className={s.dateForm}>
-                  <p>{date}</p>
-                  <div className={s.calendarOverley} onClick={handleCalendarClick}>
-                    <СalendarIcon />
-                    {picker && (
-                      <CalendarPicker
-                        closeHandler={closePicker}
-                        startDate={date}
-                      />
-                    )}
-                  </div>
-                </div>
                 <div className={s.inputForm}>
                   <label>
                     <input
@@ -231,14 +200,18 @@ export default function AddTransaction({ transactionType, date, changeDate }) {
                       name="description"
                       id="description"
                       type="text"
-                      placeholder={type === 'expense' ? "Описание товара" : "Описание дохода"}
+                      placeholder={
+                        type === 'expense'
+                          ? 'Описание товара'
+                          : 'Описание дохода'
+                      }
                       required
                       onChange={handleChangeDescription}
                     />
                   </label>
                   <label>
                     <div className={'s'}>
-                      <Dropdown category={category} setSelected={setCategory} />
+                      <Dropdown category={category} setCategory={setCategory} />
                     </div>
                   </label>
                   <label>

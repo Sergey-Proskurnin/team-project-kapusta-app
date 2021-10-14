@@ -16,37 +16,12 @@
     justify-content: center;
     margin-top: 13px;
   }
-  .balanceContainer label {
-    /* display: block;
-    text-align: center;
-    align-items: center;
-    margin-left: 15px;
-    margin-right: auto;
-    margin-bottom: 30px;
-    padding-top: 30px; */
-  }
-
-  .balanceContainer input {
-    /* display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    height: 44px;
-    border: 2px solid #ffffff;
-    background-color: transparent;
-    border-radius: 16px;
-    margin-top: 6px;
-    font-weight: 700; */
-  }
-  .balanceContainer button {
-    /* display: inline-block; */
-  }
 
   .buttonContainer {
     width: 100%;
     position: fixed;
     bottom: 0px;
+    height: 53px;
   }
   .buttonExpense {
     min-width: 50%;
@@ -75,23 +50,28 @@
     font-weight: bold;
   }
   .buttonIncome:hover {
-    color: #52555f;
+    background-color: #ff751d;
+    color: #fff;
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
     transition: 0.5s linear;
   }
 
   .buttonExpense:hover {
-    color: #52555f;
+    background-color: #ff751d;
+    color: #fff;
     filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
     transition: 0.5s linear;
   }
 
-  .buttonIncome:active {
+  .buttonArrowGoBack {
+    position: absolute;
+    left: 22px;
+    outline: none;
+    border: none;
+    background: none;
     color: #ff751d;
-  }
-
-  .buttonExpense:active {
-    color: #ff751d;
+    font-size: 36px;
+    font-weight: bolder;
   }
 }
 
@@ -101,10 +81,6 @@
     left: 7%;
     top: -80%;
   } */
-
-  .containerSummary768{
-
-  }
 
   .balanceContainer {
     display: flex;
@@ -132,7 +108,6 @@
     justify-content: center;
     margin-left: 20px;
     margin-right: 20px;
-    
   }
 
   .buttonContainer {
@@ -199,7 +174,7 @@
   .buttonContainer {
     position: absolute;
     top: -7.1%;
-   }
+  }
 
   .buttonSpentIncome {
     width: 138px;
