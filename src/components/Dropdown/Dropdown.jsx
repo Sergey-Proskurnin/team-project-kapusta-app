@@ -1,25 +1,17 @@
 import s from './Dropdown.module.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
-const options = [
-  'Транспорт',
-  'Продукты',
-  'Здоровье',
-  'Алкоголь',
-  'Развлечения',
-  'Всё для дома',
-  'Техника',
-  'Коммуналка, связь',
-  'Образование',
-  'Спорт, хобби',
-  'Прочее',
-  'Заработная плата',
-  'Доп.доход',
-];
+import contextProps from 'context/context';
 
-function Dropdown({ selected, setSelected }) {
+import { optionsIncome } from 'data/categoriesIncom.json'
+import { optionsExpense } from 'data/categoriesExpense.json'
+
+
+function Dropdown({ category, setCategory }) {
   const [isActive, setIsActive] = useState(false);
 
+  const type = useContext(contextProps);
+  const options = type === 'expense' ? optionsIncome : optionsExpense;
   return (
     <div className={s.dropdown}>
       <div
@@ -27,7 +19,12 @@ function Dropdown({ selected, setSelected }) {
         className={s.dropdownBtn}
         onClick={e => setIsActive(!isActive)}
       >
-        {!selected ? 'Категория товара' : selected}
+        {!category && type === 'expense'
+          ? 'Категория товара'
+          : !category && type === 'income'
+          ? 'Категория дохода'
+          : category}
+
         {!isActive ? (
           <svg
             className={s.crownSvg}
@@ -61,7 +58,7 @@ function Dropdown({ selected, setSelected }) {
           {options.map(option => (
             <div
               onClick={e => {
-                setSelected(option);
+                setCategory(option);
                 setIsActive(false);
               }}
               className={s.dropdownItem}

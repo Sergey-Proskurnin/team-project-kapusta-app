@@ -29,7 +29,7 @@
   }
   .dataContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -59,7 +59,7 @@
     transition: 0.5s linear;
   }
 
-  .buttonSpentIncome:active {
+  .buttonSpentIncomeActive {
     color: #ff751d;
   }
 }
