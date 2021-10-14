@@ -5,46 +5,28 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import s from './Report.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import months from '../../data/month';
-const CurrentMonth = () => {
-  let date = new Date();
-  let selectedMonth = date.getMonth();
-  let selectedYear = date.getFullYear();
-  const [month, setMonth] = useState(selectedMonth);
-  const [year, setYear] = useState(selectedYear);
+const CurrentMonth = ({ currentMonth, currentYear }) => {
+  const [month, setMonth] = useState(currentMonth);
+  const [year, setYear] = useState(currentYear);
 
-  let monthnames = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь',
-  ];
   const onHandleClickRight = () => {
-    if (month < 11) {
+    if (month < 12) {
       setMonth(prev => (prev += 1));
     } else {
-      selectedMonth = 0;
-      selectedYear++;
-      setMonth(0);
+      setMonth(1);
       setYear(prev => (prev += 1));
     }
   };
   const onHandleClickLeft = () => {
-    if (month <= 0) {
-      setMonth(11);
+    if (month <= 1) {
+      setMonth(12);
       setYear(prev => (prev -= 1));
     } else {
       setMonth(prev => (prev -= 1));
     }
   };
-
+  const monthToString = String(month);
+  const selectMonth = months.filter(el => el.id === monthToString);
   return (
     <div className={s.reportMonth}>
       <p className={s.title}>Текущий период:</p>
@@ -54,9 +36,12 @@ const CurrentMonth = () => {
           // fontSize="small"
           onClick={onHandleClickLeft}
         />
-        <span
-          className={s.reportMonthTitle}
-        >{`${monthnames[month]} ${year}`}</span>
+        {
+          <span
+            className={s.reportMonthTitle}
+          >{`${selectMonth[0].name} ${year}`}</span>
+        }
+
         <ArrowForwardIosIcon
           style={{ color: '#FF751D', width: '12' }}
           onClick={onHandleClickRight}
