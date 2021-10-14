@@ -45,6 +45,7 @@
 
   .buttonContainer {
     width: 100%;
+    height: 53px;
     position: fixed;
     bottom: 0px;
   }
@@ -102,8 +103,7 @@
     top: -80%;
   } */
 
-  .containerSummary768{
-
+  .containerSummary768 {
   }
 
   .balanceContainer {
@@ -132,7 +132,6 @@
     justify-content: center;
     margin-left: 20px;
     margin-right: 20px;
-    
   }
 
   .buttonContainer {
@@ -199,7 +198,7 @@
   .buttonContainer {
     position: absolute;
     top: -7.1%;
-   }
+  }
 
   .buttonSpentIncome {
     width: 138px;
