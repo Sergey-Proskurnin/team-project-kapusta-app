@@ -16,6 +16,18 @@
 }
 
 .userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #52555f;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
   width: 32px;
   height: 32px;
   margin-right: 10px;
@@ -38,5 +50,6 @@
 }
 
 .userFullName:hover {
-  color: orangered;
+  font-weight: bold;
+  color: #ff751d;
 }

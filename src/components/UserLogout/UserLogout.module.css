@@ -12,6 +12,7 @@
 }
 
 .textBtn:hover {
-  color: orangered;
-  border-bottom: 1px solid orangered;
+  font-weight: bold;
+  color: #ff751d;
+  border-bottom: 1px solid #ff751d;
 }
