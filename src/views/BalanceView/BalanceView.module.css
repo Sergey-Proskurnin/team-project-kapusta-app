@@ -75,14 +75,9 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  /* .mainWindov {
-    position: absolute;
-    left: 7%;
-    top: -80%;
-  } */
 
-  .balanceContainer {
+@media screen and (min-width: 768px) {
+    .balanceContainer {
     display: flex;
     justify-content: right;
     align-items: baseline;
