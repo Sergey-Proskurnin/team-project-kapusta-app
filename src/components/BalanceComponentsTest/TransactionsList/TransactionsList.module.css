@@ -1,9 +1,5 @@
-
-
-
-
 .main {
-  /* margin: 48px auto; */
+  margin: 48px auto;
   width: 605px;
   height: 38px;
   text-align: center;
@@ -11,7 +7,13 @@
   color: rgb(0, 0, 0);
   border-radius: 20px 20px 0 0;
   background-color: #F5F6FB;
-  border-collapse: collapse;
+    border-spacing: 0px 2px; 
+        border-left: 2px;
+    border-left-style: outset;
+    border-right-style: inset;
+    border-right-color: transparent;
+    border-left-color: transparent;
+
 }
 
 
