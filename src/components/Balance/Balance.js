@@ -12,7 +12,7 @@ const Balance = ({ hide, width }) => {
   const onHandleChange = e => setSum(e.currentTarget.value);
   useEffect(() => {
     setSum(balance);
-  }, []);
+  }, [balance]);
   const onhandleSubmit = e => {
     e.preventDefault();
     dispatch(transactionOp.setBalance(sum));
@@ -22,33 +22,32 @@ const Balance = ({ hide, width }) => {
       <label htmlFor="balans" className={s.balanceLabel}>
         Баланс:
         <div className={s.buttonsGroup}>
-           {balance === 0 ? (
-          <>
-            <input
-              type="text"
-              name="name"
-              maxLength="10"
-              placeholder="00.00"
-              // value={sum}
-              onChange={onHandleChange}
-              className={s.balanceInpute}
-            />
-            <button className={`${s.balanceButton} ${width}`}>
-              ПОДТВЕРДИТЬ
-            </button>
-          </>
-        ) : (
-          <>
-            <p className={`${s.balanceInput} ${width}`}>
-              {`${balance.toLocaleString('ru')}.00`} UAH
-            </p>
-            <button className={`${s.balanceButton} ${hide}`} disabled>
-            ПОДТВЕРДИТЬ
-            </button>
-          </>
-        )}
+          {balance === 0 ? (
+            <>
+              <input
+                type="text"
+                name="name"
+                maxLength="10"
+                placeholder="00.00"
+                // value={sum}
+                onChange={onHandleChange}
+                className={s.balanceInpute}
+              />
+              <button className={`${s.balanceButton} ${width}`}>
+                ПОДТВЕРДИТЬ
+              </button>
+            </>
+          ) : (
+            <>
+              <p className={`${s.balanceInput} ${width}`}>
+                {`${balance.toLocaleString('ru')}.00`} UAH
+              </p>
+              <button className={`${s.balanceButton} ${hide}`} disabled>
+                ПОДТВЕРДИТЬ
+              </button>
+            </>
+          )}
         </div>
-       
       </label>
     </form>
   );
