@@ -5,27 +5,11 @@
 
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 54px;
     margin-bottom: 59px;
     margin-left: auto;
     margin-right: auto;
   }
-  .dateForm {
-    width: 280px;
-    height: 40px;
-    border: 1px solid #f5f6fb;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 10px;
-
-    font-weight: 900;
-    font-size: 12px;
-    line-height: 14px;
-  }
-.calendarOverley {
-  margin-left: 10px;
-}
 
   .iconForm {
     position: absolute;
@@ -175,13 +159,6 @@
     margin: 30px auto;
   }
 
-  .dateForm {
-    margin-bottom: 0px;
-    padding-top: 10px;
-
-    border: 1px solid #fff;
-    justify-content: start;
-  }
   .inputForm {
     display: flex;
     width: 75%;
@@ -231,15 +208,6 @@
     justify-content: space-between;
     align-items: center;
     margin: 33px 20px 59px;
-  }
-
-  .dateForm {
-    width: 100px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 0;
   }
 
   .inputForm {
