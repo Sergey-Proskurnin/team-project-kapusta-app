@@ -16,3 +16,27 @@
   color: #ff751d;
   border-bottom: 1px solid #ff751d;
 }
+
+.btnLogout {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  color: #cbccd0;
+}
+
+.btnLogout:hover {
+  background: rgba(251, 124, 47, 0.2);
+  color: #ff751d;
+}
+
+.iconLogout {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
