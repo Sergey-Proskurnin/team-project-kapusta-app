@@ -1,0 +1,7 @@
+@media screen and (max-width: 767px) {
+  .containerReport {
+    align-self: stretch;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
