@@ -5,8 +5,8 @@ import СalendarIcon from 'components/SvgIcons/СalendarIcon';
 
 const DateForm = ({ date, handleCalendarClick, closePicker, picker }) => {
   return (
-    <div className={s.dateForm}>
-      <div className={s.calendarOverley} onClick={handleCalendarClick}>
+    <div className={s.dateForm}  onClick={handleCalendarClick}>
+      <div className={s.calendarOverley}>
         <СalendarIcon />
         {picker && (
           <CalendarPicker closeHandler={closePicker} startDate={date} />
