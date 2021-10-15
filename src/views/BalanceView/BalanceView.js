@@ -51,7 +51,7 @@ const BalanceView = () => {
 
   useEffect(() => {
     setDate(startDate);
-  }, [date]);
+  }, []);
 
   const contextValueBalance = {
     type,
@@ -63,7 +63,7 @@ const BalanceView = () => {
   return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>
-        {viewPort.width > 768 && (
+        {viewPort.width >= 768 && (
           <>
             <div className={s.balanceContainer}>
               <div>
@@ -109,7 +109,7 @@ const BalanceView = () => {
             </div>
           </>
         )}
-        {viewPort.width <= 767 && (
+        {viewPort.width < 768 && (
           <>
             {listRender ? (
               <>
