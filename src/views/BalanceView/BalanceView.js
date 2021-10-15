@@ -19,6 +19,10 @@ const BalanceView = () => {
   const [picker, setPicker] = useState(false);
   const [listRender, setListRender] = useState(true);
 
+  useEffect(() => {
+    setDate(startDate);
+  }, []);
+
   const handleCalendarClick = () => {
     setPicker(true);
   };
@@ -31,7 +35,13 @@ const BalanceView = () => {
     setDate(newDate);
     setPicker(false);
   };
-
+  const contextValueBalance = {
+    type,
+    picker,
+    handleCalendarClick,
+    closePicker,
+    date,
+  };
   const typeToggle = e => {
     setType(`${e.target.title}`);
   };
@@ -49,17 +59,6 @@ const BalanceView = () => {
     day.getMonth() + 1
   }.${day.getFullYear()}`;
 
-  useEffect(() => {
-    setDate(startDate);
-  }, [date]);
-
-  const contextValueBalance = {
-    type,
-    picker,
-    handleCalendarClick,
-    closePicker,
-    date,
-  };
   return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>

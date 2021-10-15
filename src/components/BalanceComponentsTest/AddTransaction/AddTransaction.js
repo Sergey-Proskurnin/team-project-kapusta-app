@@ -11,11 +11,9 @@ import s from './AddTransaction.module.css';
 
 import Dropdown from 'components/Dropdown';
 
-
 import CalculattorInput from 'components/CalculatorInput/CalculatorInput';
 
 // import CalendarPicker from 'components/DayPicker/DayPicker';
-
 
 export default function AddTransaction() {
   const { type, picker, handleCalendarClick, closePicker, date } =
@@ -26,7 +24,7 @@ export default function AddTransaction() {
   const [category, setCategory] = useState('');
 
   const [calc, setCalc] = useState(false);
-  const [sum, setSum] = useState();
+  const [sum, setSum] = useState('');
 
   const viewPort = useWindowDimensions();
 
@@ -46,8 +44,7 @@ export default function AddTransaction() {
   // const handleChangeDate = e => {
   //   changeDate(e.target.value);
   // };
- 
-  
+
   const handleCalcClick = () => {
     setCalc(true);
   };
@@ -66,7 +63,6 @@ export default function AddTransaction() {
   //   changeDate(newDate);
   //   setPicker(false);
   // };
-
 
   const handleChangeDescription = e => {
     setDescription(e.target.value);
