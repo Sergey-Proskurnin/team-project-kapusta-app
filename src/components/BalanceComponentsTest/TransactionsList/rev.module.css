@@ -1,0 +1,106 @@
+.bodyTable {
+  width: 97.7%;
+  table-layout: fixed;
+  border: none;
+}
+
+.bodyTableScroll {
+  height: 342px;
+  overflow-x: auto;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.main {
+  width: 605px;
+  text-align: center;
+  border-radius: 30px;
+  color: rgb(0, 0, 0);
+  border-radius: 20px 20px 0 0;
+  background-color: #f5f6fb;
+  border-spacing: 0px 2px;
+  border-left: 2px;
+  border-left-style: outset;
+  border-right-style: inset;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.mainTbody {
+  border-radius: 0;
+}
+
+.theadTable {
+  display: none;
+  align-items: center;
+  height: 38px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #52555f;
+}
+
+.th {
+  padding: 10px;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  align-items: center;
+  letter-spacing: 0.02em;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  font-family: Roboto;
+  font-style: normal;
+}
+
+.td {
+  display: revert;
+  align-items: center;
+  height: 38px;
+  padding: 0 8px;
+  background: #ffffff;
+  color: #52555f;
+  border-bottom: 2px solid #f4f6fb;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+    width: 760px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .theadTable {
+    display: revert;
+  }
+}
+
+.deleteBtn {
+  margin-right: auto;
+  margin-left: auto;
+  cursor: pointer;
+  width: 16px;
+  height: 18px;
+}
+
+.deleteBtnIcon {
+  width: 16px;
+  height: 18px;
+}
+
+.deleteBtn:hover svg path {
+  color: red;
+  fill: currentColor;
+}
+
+@media screen and (min-width: 1280px) {
+  .bodyTable {
+    width: 75%;
+  }
+}

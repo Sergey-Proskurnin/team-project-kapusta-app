@@ -59,10 +59,22 @@ const BalanceView = () => {
     day.getMonth() + 1
   }.${day.getFullYear()}`;
 
+
+  useEffect(() => {
+    setDate(startDate);
+  }, []);
+
+  const contextValueBalance = {
+    type,
+    picker,
+    handleCalendarClick,
+    closePicker,
+    date,
+  };
   return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>
-        {viewPort.width > 768 && (
+        {viewPort.width >= 768 && (
           <>
             <div className={s.balanceContainer}>
               <div>
@@ -108,7 +120,7 @@ const BalanceView = () => {
             </div>
           </>
         )}
-        {viewPort.width <= 767 && (
+        {viewPort.width < 768 && (
           <>
             {listRender ? (
               <>

@@ -11,6 +11,7 @@ html {
 body {
   font-family: 'Roboto';
   letter-spacing: 0.02em;
+  overflow-x: hidden;
 
   /* background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.4)),
     url('images/sunset-london-england.jpg') no-repeat center center fixed; */
@@ -59,7 +60,7 @@ img {
 ::-webkit-scrollbar-thumb {
   /* 5 - slider */
   border-radius: 2px;
-  background-color: #d1d1d1;
+  background-color: #ff751d;
 }
 
 /* @media screen and (min-width: 720px) {
