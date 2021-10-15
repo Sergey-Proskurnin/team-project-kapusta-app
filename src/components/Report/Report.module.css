@@ -85,6 +85,7 @@
     align-items: center;
     font-size: 14px;
     text-align: 1.17;
+    /* border: 1px solid tomato; */
   }
   .transactionWrapper.amountwrapper {
     display: block;
@@ -92,16 +93,8 @@
   .iconSvg {
     max-width: 56px;
     max-height: 56px;
-    /* background: repeating-radial-gradient(
-      #000 (-1em),
-      #000 1em,
-      transparent 1em,
-      transparent 3 * 1em
-    );
-    background-size: 100% 70%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 25%; */
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   .iconSvg:hover {
     fill: #ff751d;
@@ -114,6 +107,8 @@
       #ffdac0 65%,
       #fff 65%
     );
+    transform: rotate(10deg);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .iconSvg:focus {
@@ -127,6 +122,8 @@
       #ffdac0 65%,
       #fff 65%
     );
+    transform: rotate(10deg);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .reportCardTitle {
     text-transform: uppercase;
