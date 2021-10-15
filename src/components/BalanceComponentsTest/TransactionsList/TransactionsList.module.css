@@ -1,8 +1,20 @@
+.bodyTable {
+  width: 97%;
+  table-layout: fixed;
+  border: none;
+  overflow-x: hidden;
+}
+
+.bodyTableScroll {
+  height: 342px;
+  overflow-x: hidden;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #fff;
+}
+
 .main {
-  margin-left: auto;
-  margin-right: auto;
   width: 605px;
-  height: 38px;
   text-align: center;
   border-radius: 30px;
   color: rgb(0, 0, 0);
@@ -16,29 +28,18 @@
   border-left-color: transparent;
 }
 
-@media screen and (min-width: 1280px) {
-  .main {
-    /* margin: 59px auto; */
-    width: 760px;
-    height: 38px;
-  }
+.mainTbody {
+  border-radius: 0;
+  /* overflow: auto; */
 }
 
 .theadTable {
-  /* color: rgb(0, 0, 0);
-  border-radius: 30px 30px 0px 0px; */
   display: none;
   align-items: center;
   height: 38px;
   font-size: 13px;
   font-weight: normal;
   color: #52555f;
-}
-
-@media screen and (min-width: 768px) {
-  .theadTable {
-    display: revert;
-  }
 }
 
 .th {
@@ -70,8 +71,74 @@
   letter-spacing: 0.04em;
 }
 
+.thData {
+  width: 100px;
+}
+
+.thDesc {
+  max-width: 200px;
+}
+
+.thCateg {
+  width: 140px;
+}
+
+.thSum {
+  width: 130px;
+}
+.tdSum {
+font-weight: bold;
+width: 130px;
+color: #407946;
+}
+.tdSumExpense {
+font-weight: bold;
+color: #E7192E;
+}
+.tdDesc {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+
+}
+.thIcon {
+  width: 40px;
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+    width: 760px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .theadTable {
+    display: revert;
+  }
+}
+
 .deleteBtn {
   margin-right: auto;
   margin-left: auto;
   cursor: pointer;
+  width: 16px;
+  height: 18px;
+}
+
+.deleteBtnIcon {
+  width: 16px;
+  height: 18px;
+}
+
+.deleteBtn:hover svg path {
+  color: #ff751d;
+  fill: currentColor;
+}
+
+@media screen and (min-width: 1280px) {
+  .bodyTable {
+    width: 75%;
+  }
 }

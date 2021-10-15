@@ -11,6 +11,10 @@
     margin-right: auto;
   }
 
+  .calculatorIcon {
+    cursor: pointer;
+  }
+
   .iconForm {
     position: absolute;
     top: 50%;

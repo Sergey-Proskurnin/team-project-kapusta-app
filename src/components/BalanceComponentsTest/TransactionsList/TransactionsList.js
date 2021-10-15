@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import styles from './rev.module.css';
+import styles from './TransactionsList.module.css';
 
 export default function TransactionsList({ transactionType, date }) {
   const dispatch = useDispatch();
@@ -25,11 +25,12 @@ export default function TransactionsList({ transactionType, date }) {
       <table className={styles.main}>
         <thead className={styles.theadTable}>
           <tr>
-            <th className={styles.th}>Дата</th>
-            <th className={styles.th}>Описание</th>
-            <th className={styles.th}>Категория</th>
-            <th className={styles.th}>Сумма</th>
-            {/* <th>Удалить?</th> */}
+            <th className={`${styles.th} ${styles.thData}`}>Дата</th>
+            <th className={`${styles.th} ${styles.thDesc}`}>Описание</th>
+            <th className={`${styles.th} ${styles.thCateg}`}>Категория</th>
+            <th className={`${styles.th} ${styles.thSum}`}>Сумма</th>
+            <th className={`${styles.th} ${styles.thIcon}`}></th>
+            <th className={`${styles.th} ${styles.thIcon}`}></th>
           </tr>
         </thead>
       </table>
@@ -38,15 +39,19 @@ export default function TransactionsList({ transactionType, date }) {
           <tbody className={styles.tbodyTable}>
             {filteredTransactions.map(transaction => (
               <tr key={transaction._id} className={styles.td}>
-                <td>{transaction.date}</td>
-                <td>{transaction.subCategory}</td>
-                <td>{transaction.category}</td>
-                <td>
+                <td className={styles.thData}>{transaction.date}</td>
+                <td className={styles.tdDesc}> {transaction.subCategory}</td>
+                <td className={styles.thCateg}>{transaction.category}</td>
+                <td
+                  className={`${styles.tdSum} ${
+                    transactionType !== 'income' && styles.tdSumExpense
+                  }`}
+                >
                   {transactionType === 'income'
-                    ? transaction.sum
-                    : `-${transaction.sum}`}
+                    ? `${transaction.sum}.00 грн.`
+                    : `-${transaction.sum}.00 грн.`}
                 </td>
-                <td>
+                <td className={styles.thIcon}>
                   <div
                     className={styles.deleteBtn}
                     onClick={() => deleteTransaction(transaction)}
@@ -70,6 +75,7 @@ export default function TransactionsList({ transactionType, date }) {
                     </svg>
                   </div>
                 </td>
+                <td className={styles.thIcon}>ed</td>
               </tr>
             ))}
           </tbody>

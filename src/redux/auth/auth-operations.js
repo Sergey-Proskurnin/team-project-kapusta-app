@@ -32,7 +32,7 @@ const register = credentials => async dispatch => {
   } catch (error) {
     dispatch(registerError(error.message));
     alert(`Incorrect login!
-    Server error: ${error}`);
+    Server error: ${error.message}`);
   }
 };
 
