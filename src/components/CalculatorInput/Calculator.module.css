@@ -1,12 +1,13 @@
 .calc {
   position: absolute;
-  margin: 0 auto;
+  margin: 50px -120px;
   width: 170px;
   padding: 10px;
   text-align: center;
   border-radius: 6px;
   border: 2px solid #f5f6fb;
   background: white;
+  z-index: 2;
 }
 .keypad {
   display: grid;
@@ -54,4 +55,16 @@
   font-size: 12px;
   margin-left: auto;
   color: white;
+}
+@media screen and (min-width: 768px) {
+  .calc {
+    position: absolute;
+    margin: 0px -65px;
+    width: 170px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    border: 2px solid #f5f6fb;
+    background: white;
+  }
 }

@@ -41,10 +41,6 @@ export default function AddTransaction() {
     cleanState();
   };
 
-  // const handleChangeDate = e => {
-  //   changeDate(e.target.value);
-  // };
-
   const handleCalcClick = () => {
     setCalc(true);
   };
@@ -54,15 +50,6 @@ export default function AddTransaction() {
 
     setCalc(false);
   };
-
-  // const closePicker = dateNew => {
-  //   const newDate = `${dateNew.getUTCDate()}.${
-  //     dateNew.getUTCMonth() + 1
-  //   }.${dateNew.getUTCFullYear()}`;
-
-  //   changeDate(newDate);
-  //   setPicker(false);
-  // };
 
   const handleChangeDescription = e => {
     setDescription(e.target.value);
@@ -192,7 +179,12 @@ export default function AddTransaction() {
                         required
                         onChange={handleChangeSum}
                       />
-                      <CalculatorIcon />
+                      <div onClick={handleCalcClick}>
+                        <CalculatorIcon />
+                        {calc && (
+                          <CalculattorInput onCloseCalculator={closeCalc} />
+                        )}
+                      </div>
                     </div>
                   </label>
                 </div>
@@ -259,7 +251,12 @@ export default function AddTransaction() {
                         />
                       </div>
                       <div className={s.positionIcon}>
-                        <CalculatorIcon />
+                        <div onClick={handleCalcClick}>
+                          <CalculatorIcon />
+                          {calc && (
+                            <CalculattorInput onCloseCalculator={closeCalc} />
+                          )}
+                        </div>
                       </div>
                     </div>
                   </label>
