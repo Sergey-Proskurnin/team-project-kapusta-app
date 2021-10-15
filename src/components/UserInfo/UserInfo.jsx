@@ -1,18 +1,19 @@
 import { useSelector } from 'react-redux';
 import { getUserName, getUserAvatar } from 'redux/auth';
 
+import useWindowDimensions from 'hooks/useWindowDimensions';
 import s from './UserInfo.module.css';
 
 const UserInfo = () => {
   const UserName = useSelector(state => getUserName(state));
   const UserAvatar = useSelector(state => getUserAvatar(state));
-  // const UserAvatar = undefined;
   const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
-  console.log(FirstLetterOfUser);
+  const viewPort = useWindowDimensions();
 
   return (
     <>
-      <div className={s.userInfo}>
+      {viewPort.width >= 768 && (
+        <div className={s.userInfo}>
         <div className={s.userInfo_container}>
           {UserAvatar ? (
             <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
@@ -21,7 +22,17 @@ const UserInfo = () => {
           )}
           <p className={s.userFullName}>{UserName}</p>
         </div>
-      </div>
+        </div>
+      )}
+      {viewPort.width < 768 && (
+         <div className={s.userInfo_container}>
+          {UserAvatar ? (
+            <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
+          ) : (
+            <p className={s.userAvatar}>{FirstLetterOfUser}</p>
+          )}
+        </div>
+      )}
     </>
   );
 };
