@@ -5,8 +5,9 @@ import s from './UserInfo.module.css';
 
 const UserInfo = () => {
   const UserName = useSelector(state => getUserName(state));
-  const UserAvatar = useSelector(state => getUserAvatar(state));
-  // const UserAvatar = undefined;
+  const avatar = useSelector(state => getUserAvatar(state));
+  const defaultGravatar = "https://s.gravatar.com/avatar/c61f12f616393799baecd77a09b6565c?s=250"
+  const UserAvatar = avatar !== defaultGravatar ? avatar : undefined
   const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
   console.log(FirstLetterOfUser);
 
