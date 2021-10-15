@@ -1,32 +1,12 @@
-.section {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-  align-items: center;
-  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  border-radius: 20px;
-}
-
-.reportWrapper {
-  margin-bottom: 30px;
-  display: block;
-}
-
-.reportList {
-  padding: 0px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px;
-  align-items: center;
-  list-style: none;
-  font-size: 12px;
-  justify-content: center;
-}
-
 @media screen and (min-width: 320px) {
+  .section {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
   ArrowBackIosIcon {
     fill: #ff751d;
   }
@@ -44,9 +24,17 @@
   .navigation {
     display: block;
   }
+
   .navigationWrapper {
     display: inline-block;
     margin-top: 10px;
+  }
+  .reportWrapper {
+    margin-bottom: 30px;
+    display: block;
+  }
+  .amountText {
+    min-width: 120px;
   }
   .reportCard {
     text-align: center;
@@ -56,7 +44,7 @@
     font-size: 12px;
     align-items: 1.17;
     box-sizing: border-box;
-    flex-basis: calc((100% - 60px) / 3);
+    flex-basis: calc((100% - 20px) / 3);
   }
   .reportTitle {
     font-weight: bold;
@@ -91,8 +79,16 @@
     display: block;
   }
   .reportList {
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
     margin: 0px;
-    padding: 20px;
+    align-items: center;
+    list-style: none;
+    font-size: 12px;
+    justify-content: center;
+    margin: 0px;
+    padding-top: 20px;
   }
   .iconSvg {
     max-width: 56px;
@@ -146,9 +142,7 @@
     height: 39px;
     align-items: center;
   }
-  .amountTitle {
-    color: #52555f;
-  }
+
   .amountSection {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -156,27 +150,33 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 1.17;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 30px;
+    margin-bottom: 30px;
+  }
+  .amountTitle {
+    color: #52555f;
+  }
+  .amountExpense {
+    color: #e53935;
+  }
+  .amountIncome {
+    color: #407946;
+  }
+  .amountStrip {
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .buttonWidth {
     min-width: 183px;
     border-radius: 16px;
   }
 }
-.amountExpense {
-  color: #e53935;
-}
-.amountIncome {
-  color: #407946;
-}
-.amountStrip {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
 @media screen and (min-width: 768px) {
   .section {
-    border-radius: 30px;
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    margin-bottom: 30px;
+    /* border-radius: 30px;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4); */
   }
 
   .navigation {
@@ -185,7 +185,7 @@
   .navigationWrapper {
     display: flex;
     margin-top: 0px;
-    width: 60%;
+    width: 65%;
   }
 
   .reportCard {
@@ -212,7 +212,7 @@
     align-items: center;
   }
   .reportMonth {
-    justify-content: space-between;
+    margin-left: auto;
   }
 
   .amountSection {
@@ -230,10 +230,9 @@
   }
   .buttonWidth {
     min-width: 125px;
-    max-width: 125px;
+    max-width: 100%;
   }
 }
-
 @media screen and (min-width: 1280px) {
   .reportCard {
     text-align: center;
@@ -254,12 +253,12 @@
     display: block;
   }
   .reportMonth {
-    margin-left: 205px;
+    margin-left: auto;
   }
   .navigation {
     justify-content: space-between;
   }
   .navigationWrapper {
-    width: 65%;
+    width: 69%;
   }
 }

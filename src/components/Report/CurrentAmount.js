@@ -40,14 +40,14 @@ const CurrentAmount = ({ currentMonth, currentYear }) => {
         <p className={s.amountTitle}>Расходы:</p>
         <span
           className={`${s.amountText} ${s.amountExpense}`}
-        >{`-${findTotalSum('expense').toLocaleString('ru')}.00 грн.`}</span>
+        >{`- ${findTotalSum('expense').toLocaleString('ru')}.00 грн.`}</span>
       </div>
       <Strip className={s.amountStrip} />
       <div className={`${s.transactionWrapper} ${s.amountwrapper}`}>
         <p className={s.amountTitle}>Доходы:</p>
-        <span className={`${s.amountText} ${s.amountIncome}`}>{`+${findTotalSum(
-          'income',
-        ).toLocaleString('ru')}.00 грн.`}</span>
+        <span
+          className={`${s.amountText} ${s.amountIncome}`}
+        >{`+ ${findTotalSum('income').toLocaleString('ru')}.00 грн.`}</span>
       </div>
     </div>
   );
