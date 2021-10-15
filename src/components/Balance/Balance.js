@@ -29,11 +29,10 @@ const Balance = ({ hide, width }) => {
                 name="name"
                 maxLength="10"
                 placeholder="00.00"
-                // value={sum}
                 onChange={onHandleChange}
-                className={s.balanceInpute}
+                className={s.balanceInput}
               />
-              <button className={`${s.balanceButton} ${width}`}>
+              <button className={`${s.balanceButton} ${width}`} type="submit">
                 ПОДТВЕРДИТЬ
               </button>
             </>

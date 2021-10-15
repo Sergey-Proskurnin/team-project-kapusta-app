@@ -10,8 +10,9 @@ const OnLoader = () => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
       }}
-      type="Puff"
-      color="#00BFFF"
+      type="Circles"
+      // type="Watch"
+      color="#FFDAC0"
       height={100}
       width={100}
     />

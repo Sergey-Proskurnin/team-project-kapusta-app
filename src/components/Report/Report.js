@@ -4,13 +4,13 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Balance from '../Balance';
 import s from './Report.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import transactionOp from '../../redux/transactions/transactions-operations';
 import { getTransactionsPerMonth } from '../../redux/transactions/transactions-selectors';
-import { result } from '../../data/db-transactions.json';
 import { CurrentAmount, CurrentMonth } from './';
 import categories from '../../data/categories';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
+import transactionsOperations from 'redux/transactions/transactions-operations';
+import Loader from '../OnLoader';
 
 const Report = ({
   month,
@@ -20,9 +20,13 @@ const Report = ({
   getCategory,
 }) => {
   const [type, setType] = useState('expense');
-
   const transaction = useSelector(getTransactionsPerMonth);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if ((month, year)) {
+      dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
+    }
+  }, [month, year]);
 
   const getTransactionByType = type => {
     const filteredByType = transaction.filter(
@@ -30,6 +34,7 @@ const Report = ({
     );
     return filteredByType;
   };
+
   const findeTotalSumByCategiry = (type, category) => {
     let totalExpense = 0;
     getTransactionByType(type)
@@ -64,7 +69,7 @@ const Report = ({
       </div>
       <CurrentAmount currentMonth={month} currentYear={year} />
       <div className={`${s.reportWrapper} ${s.section}`}>
-        <div className={s.transactionWrapper}>
+        <div className={`${s.transactionWrapper} ${s.sectionReportTitle}`}>
           <ArrowBackIosIcon
             style={{ color: '#FF751D' }}
             fontSize="small"
@@ -82,28 +87,36 @@ const Report = ({
           />
         </div>
         <ul className={s.reportList}>
-          {categories.map(event => {
-            let sum = findeTotalSumByCategiry(type, event.label);
-            if (sum === 0) {
-              return;
-            }
-            return (
-              <li className={s.reportCard} key={event.id}>
-                <p>{sum.toLocaleString('ru')}</p>
-                <svg
-                  className={s.iconSvg}
-                  title={event.label}
-                  onClick={getCategory}
-                >
-                  <use
-                    xlinkHref={`${sprite}#${event.label}`}
+          {getTransactionByType(type).length === 0 ? (
+            <p>
+              Отчет будет доступен после того как вы внесете данные о своих
+              доходах и расходах за выбранный период.
+            </p>
+          ) : (
+            categories.map(event => {
+              let sum = findeTotalSumByCategiry(type, event.label);
+              if (sum === 0) {
+                return;
+              }
+
+              return (
+                <li className={s.reportCard} key={event.id}>
+                  <p>{`${sum.toLocaleString('ru')}.00`}</p>
+                  <svg
+                    className={s.iconSvg}
                     title={event.label}
-                  />
-                </svg>
-                <p className={s.reportCardTitle}>{event.label}</p>
-              </li>
-            );
-          })}
+                    onClick={getCategory}
+                  >
+                    <use
+                      xlinkHref={`${sprite}#${event.label}`}
+                      title={event.label}
+                    />
+                  </svg>
+                  <p className={s.reportCardTitle}>{event.label}</p>
+                </li>
+              );
+            })
+          )}
         </ul>
       </div>
     </div>
