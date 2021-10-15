@@ -75,8 +75,9 @@
     text-align: 1.17;
     /* border: 1px solid tomato; */
   }
-  .transactionWrapper.amountwrapper {
+  .transactionWrapper.amountWrapper {
     display: block;
+    /* flex-basis: calc(100% / 2); */
   }
   .reportList {
     padding: 0px;
@@ -164,8 +165,8 @@
     color: #407946;
   }
   .amountStrip {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
   }
   .buttonWidth {
     min-width: 183px;
@@ -222,7 +223,11 @@
   .amountTitle {
     margin-right: 15px;
   }
-  .transactionWrapper.amountwrapper {
+  .amountStrip {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .transactionWrapper.amountWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
