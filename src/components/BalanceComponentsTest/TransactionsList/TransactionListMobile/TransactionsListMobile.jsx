@@ -23,7 +23,7 @@ export default function TransactionsListMobile({ transactionType, date }) {
     <div className={s.tsList}>
       <ul className={s.tsListUl}>
         {transactions.map(transaction => (
-          <li key={transaction.id} className={s.listItem}>
+          <li key={transaction._id} className={s.listItem}>
             <div className={s.tsList__container}>
               <div>
                 <div className={s.listItem__wrapper}>
