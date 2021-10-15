@@ -1,27 +1,25 @@
-/* @media screen and (min-width: 320px) {
+@media screen and (min-width: 320px) {
   .pickerWrapper {
     position: absolute;
-    right: 0%;
+    margin: 20px -90px;
     width: fit-content;
     background-color: white;
     z-index: 2;
     border-radius: 20px;
     text-align: center;
-    top: 120%;
     border: 1px solid #f5f6fb;
   }
-} */
+}
 
 @media screen and (min-width: 768px) {
   .pickerWrapper {
     position: absolute;
-    left: 4%;
+    margin: 10px 0px;
     width: 40%;
     background-color: white;
     z-index: 2;
     border-radius: 20px;
     text-align: center;
-    top: 12%;
     border: 1px solid #f5f6fb;
   }
 }
