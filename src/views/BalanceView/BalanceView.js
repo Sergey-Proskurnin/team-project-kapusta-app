@@ -3,12 +3,13 @@ import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddT
 import { Container } from 'components/Container';
 
 import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
+import TransactionsListMobile from 'components/BalanceComponentsTest/TransactionsList/TransactionListMobile';
 // import useViewport from 'services/useViewport';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import Summary from 'components/Summary';
 import Balance from 'components/Balance';
 import ToGoReport from 'components/ToGoReport';
-import ArrowToGoBack from 'components/ArrowToGoBack';
+
 import DateForm from 'components/DateForm';
 import contextProps from 'context/context';
 import s from './BalanceView.module.css';
@@ -59,7 +60,7 @@ const BalanceView = () => {
     day.getMonth() + 1
   }.${day.getFullYear()}`;
 
- return (
+  return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>
         {viewPort.width >= 768 && (
@@ -151,6 +152,8 @@ const BalanceView = () => {
                   &#8592;
                 </button>
                 <AddTransaction transactionType={type} date={date} />
+
+                <TransactionsListMobile transactionType={type} date={date} />
               </>
             )}
           </>

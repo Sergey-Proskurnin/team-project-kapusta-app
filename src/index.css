@@ -73,3 +73,7 @@ img {
     background-color: rgb(245, 235, 204);
   }
 } */
+
+li {
+  list-style: none;
+}
