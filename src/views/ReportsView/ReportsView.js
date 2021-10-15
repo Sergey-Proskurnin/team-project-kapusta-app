@@ -10,7 +10,6 @@ const ReportsView = () => {
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
   const [category, setCategory] = useState('');
-
   const onHandleClickRight = () => {
     if (month < 12) {
       setMonth(prev => (prev += 1));

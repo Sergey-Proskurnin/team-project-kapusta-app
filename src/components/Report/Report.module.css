@@ -50,9 +50,9 @@
   }
   .reportCard {
     text-align: center;
-    height: 150px;
+    height: 135px;
     border-bottom: 1px solid #e0e5eb;
-    padding-top: 20px;
+    margin-bottom: 20px;
     font-size: 12px;
     align-items: 1.17;
     box-sizing: border-box;
@@ -89,6 +89,10 @@
   }
   .transactionWrapper.amountwrapper {
     display: block;
+  }
+  .reportList {
+    margin: 0px;
+    padding: 20px;
   }
   .iconSvg {
     max-width: 56px;
@@ -183,6 +187,7 @@
     margin-top: 0px;
     width: 60%;
   }
+
   .reportCard {
     text-align: center;
     flex-basis: calc((100% - 77px) / 6);
@@ -209,9 +214,7 @@
   .reportMonth {
     justify-content: space-between;
   }
-  .reportList {
-    padding: 20px;
-  }
+
   .amountSection {
     padding-top: 15px;
     padding-bottom: 15px;

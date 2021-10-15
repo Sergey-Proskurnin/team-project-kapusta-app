@@ -4,13 +4,13 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Balance from '../Balance';
 import s from './Report.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import transactionOp from '../../redux/transactions/transactions-operations';
 import { getTransactionsPerMonth } from '../../redux/transactions/transactions-selectors';
 import { CurrentAmount, CurrentMonth } from './';
 import categories from '../../data/categories';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
 import transactionsOperations from 'redux/transactions/transactions-operations';
+import Loader from '../OnLoader';
 
 const Report = ({
   month,
@@ -69,7 +69,7 @@ const Report = ({
       </div>
       <CurrentAmount currentMonth={month} currentYear={year} />
       <div className={`${s.reportWrapper} ${s.section}`}>
-        <div className={s.transactionWrapper}>
+        <div className={`${s.transactionWrapper} ${s.sectionReportTitle}`}>
           <ArrowBackIosIcon
             style={{ color: '#FF751D' }}
             fontSize="small"
