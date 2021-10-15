@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
+import s from './ReportView.module.css';
 
 const ReportsView = () => {
   let date = new Date();
@@ -32,14 +33,16 @@ const ReportsView = () => {
 
   return (
     <Container>
-      <Report
-        month={month}
-        year={year}
-        onHandleClickRight={onHandleClickRight}
-        onHandleClickLeft={onHandleClickLeft}
-        getCategory={getCategory}
-      />
-      <ChartReport month={month} year={year} category={category} />
+      <div className={s.containerReport}>
+        <Report
+          month={month}
+          year={year}
+          onHandleClickRight={onHandleClickRight}
+          onHandleClickLeft={onHandleClickLeft}
+          getCategory={getCategory}
+        />
+        <ChartReport month={month} year={year} category={category} />
+      </div>
     </Container>
   );
 };

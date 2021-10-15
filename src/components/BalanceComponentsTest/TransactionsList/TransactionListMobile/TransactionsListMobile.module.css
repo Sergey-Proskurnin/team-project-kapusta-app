@@ -1,0 +1,90 @@
+.tsList {
+  display: flex;
+  width: 283px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.listItem {
+  margin-bottom: 12px;
+}
+.tsList__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.listItem__wrapper {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.tsListUl {
+  display: block;
+  width: 100%;
+  padding: 0;
+}
+
+.listItem__subCategory {
+  margin-bottom: 3px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+}
+.listItem__date {
+  margin-right: 20px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
+.listItem__category {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+}
+.listItem__sum {
+  display: block;
+  justify-content: end;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  letter-spacing: 0.04em;
+
+  color: #e7192e;
+}
+
+.deleteBtn {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.deleteBtn:hover svg path {
+  fill: #ff751d;
+}

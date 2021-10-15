@@ -1,0 +1,44 @@
+.commentBubble {
+  position: relative;
+  padding: 23px;
+  width: 282px;
+  height: auto;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  /* background: grey; */
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  /* top: -155%;
+  right: 35%;
+  opacity: 0;
+  transition: all 0.25s; */
+}
+
+@media screen and (min-width: 768px) {
+  .commentBubble {
+    width: 292px;
+  }
+}
+
+.commentBubble::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 19px solid transparent;
+  border-bottom-color: #1d346a;
+  border-top: 0;
+  margin-left: -96px;
+  margin-top: -17px;
+}
+
+.bubbleText {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 16px;
+}

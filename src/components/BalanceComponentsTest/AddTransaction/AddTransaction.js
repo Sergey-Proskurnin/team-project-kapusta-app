@@ -2,7 +2,6 @@ import { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
-// import СalendarIcon from 'components/SvgIcons/СalendarIcon';
 import contextProps from 'context/context';
 import DateForm from 'components/DateForm';
 import useWindowDimensions from 'hooks/useWindowDimensions';
@@ -12,8 +11,6 @@ import s from './AddTransaction.module.css';
 import Dropdown from 'components/Dropdown';
 
 import CalculattorInput from 'components/CalculatorInput/CalculatorInput';
-
-// import CalendarPicker from 'components/DayPicker/DayPicker';
 
 export default function AddTransaction() {
   const { type, picker, handleCalendarClick, closePicker, date } =
@@ -41,10 +38,6 @@ export default function AddTransaction() {
     cleanState();
   };
 
-  // const handleChangeDate = e => {
-  //   changeDate(e.target.value);
-  // };
-
   const handleCalcClick = () => {
     setCalc(true);
   };
@@ -54,15 +47,6 @@ export default function AddTransaction() {
 
     setCalc(false);
   };
-
-  // const closePicker = dateNew => {
-  //   const newDate = `${dateNew.getUTCDate()}.${
-  //     dateNew.getUTCMonth() + 1
-  //   }.${dateNew.getUTCFullYear()}`;
-
-  //   changeDate(newDate);
-  //   setPicker(false);
-  // };
 
   const handleChangeDescription = e => {
     setDescription(e.target.value);
@@ -81,7 +65,7 @@ export default function AddTransaction() {
     <>
       {viewPort.width >= 1280 && (
         <>
-          <form className={s.containerForm} noValidate>
+          <form onSubmit={handleSubmit} className={s.containerForm}>
             <DateForm
               date={date}
               handleCalendarClick={handleCalendarClick}
@@ -122,18 +106,16 @@ export default function AddTransaction() {
                     onChange={handleChangeSum}
                   />
                   <div onClick={handleCalcClick}>
-                    <CalculatorIcon />
+                    <div className={s.calculatorIcon}>
+                      <CalculatorIcon />
+                    </div>
                     {calc && <CalculattorInput onCloseCalculator={closeCalc} />}
                   </div>
                 </div>
               </label>
             </div>
             <div className={s.positionButton}>
-              <button
-                type="button"
-                onClick={handleSubmit}
-                className={`${s.button} ${s.buttonLeft}`}
-              >
+              <button type="submit" className={`${s.button} ${s.buttonLeft}`}>
                 ВВОД
               </button>
               <button
@@ -149,8 +131,8 @@ export default function AddTransaction() {
       )}
       {viewPort.width >= 768 && viewPort.width < 1280 && (
         <>
-          <div className={'s'}>
-            <form className={s.containerForm768} noValidate>
+          <div>
+            <form onSubmit={handleSubmit} className={s.containerForm768}>
               <div className={s.containerFormTablet}>
                 <DateForm
                   date={date}
@@ -192,17 +174,18 @@ export default function AddTransaction() {
                         required
                         onChange={handleChangeSum}
                       />
-                      <CalculatorIcon />
+                      <div onClick={handleCalcClick}>
+                        <CalculatorIcon />
+                        {calc && (
+                          <CalculattorInput onCloseCalculator={closeCalc} />
+                        )}
+                      </div>
                     </div>
                   </label>
                 </div>
               </div>
               <div className={s.positionButton}>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className={`${s.button} ${s.buttonLeft}`}
-                >
+                <button type="submit" className={`${s.button} ${s.buttonLeft}`}>
                   ВВОД
                 </button>
                 <button
@@ -219,8 +202,8 @@ export default function AddTransaction() {
       )}
       {viewPort.width < 768 && (
         <>
-          <div className={'s'}>
-            <form className={s.containerForm320} noValidate>
+          <div>
+            <form onSubmit={handleSubmit} className={s.containerForm320}>
               <div className={s.containerFormTablet}>
                 <div className={s.inputForm}>
                   <label>
@@ -240,7 +223,7 @@ export default function AddTransaction() {
                     />
                   </label>
                   <label>
-                    <div className={'s'}>
+                    <div>
                       <Dropdown category={category} setCategory={setCategory} />
                     </div>
                   </label>
@@ -259,18 +242,19 @@ export default function AddTransaction() {
                         />
                       </div>
                       <div className={s.positionIcon}>
-                        <CalculatorIcon />
+                        <div onClick={handleCalcClick}>
+                          <CalculatorIcon />
+                          {calc && (
+                            <CalculattorInput onCloseCalculator={closeCalc} />
+                          )}
+                        </div>
                       </div>
                     </div>
                   </label>
                 </div>
               </div>
               <div className={s.positionButton}>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className={`${s.button} ${s.buttonLeft}`}
-                >
+                <button type="submit" className={`${s.button} ${s.buttonLeft}`}>
                   ВВОД
                 </button>
                 <button
