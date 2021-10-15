@@ -59,19 +59,7 @@ const BalanceView = () => {
     day.getMonth() + 1
   }.${day.getFullYear()}`;
 
-
-  useEffect(() => {
-    setDate(startDate);
-  }, []);
-
-  const contextValueBalance = {
-    type,
-    picker,
-    handleCalendarClick,
-    closePicker,
-    date,
-  };
-  return (
+ return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>
         {viewPort.width >= 768 && (
