@@ -12,6 +12,7 @@ function Modal({
   modalTitle = 'Вы действительно хотите выйти?',
   modalButtonleft = 'Да',
   modalButtonRight = ' Нет',
+  Form,
 }) {
   useEffect(() => {
     window.document.body.style.overflowY = 'hidden';
@@ -41,6 +42,7 @@ function Modal({
           &#10006;
         </span>
         <p className={styles.title}>{modalTitle}</p>
+        {Form && <Form />}
         <div className={styles.buttons}>
           <button className={styles.commonStyles} onClick={handleClickLeft}>
             {modalButtonleft}

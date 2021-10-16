@@ -1,16 +1,17 @@
 import { useState, useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
 import contextProps from 'context/context';
 import DateForm from 'components/DateForm';
 import useWindowDimensions from 'hooks/useWindowDimensions';
+import OnLoader from 'components/OnLoader';
 
 import s from './AddTransaction.module.css';
 
 import Dropdown from 'components/Dropdown';
 
-import CalculattorInput from 'components/CalculatorInput/CalculatorInput';
+import CalculatorInput from 'components/CalculatorInput';
 
 export default function AddTransaction() {
   const { type, picker, handleCalendarClick, closePicker, date } =
@@ -109,7 +110,7 @@ export default function AddTransaction() {
                     <div className={s.calculatorIcon}>
                       <CalculatorIcon />
                     </div>
-                    {calc && <CalculattorInput onCloseCalculator={closeCalc} />}
+                    {calc && <CalculatorInput onCloseCalculator={closeCalc} />}
                   </div>
                 </div>
               </label>
@@ -177,7 +178,7 @@ export default function AddTransaction() {
                       <div onClick={handleCalcClick}>
                         <CalculatorIcon />
                         {calc && (
-                          <CalculattorInput onCloseCalculator={closeCalc} />
+                          <CalculatorInput onCloseCalculator={closeCalc} />
                         )}
                       </div>
                     </div>
@@ -245,7 +246,7 @@ export default function AddTransaction() {
                         <div onClick={handleCalcClick}>
                           <CalculatorIcon />
                           {calc && (
-                            <CalculattorInput onCloseCalculator={closeCalc} />
+                            <CalculatorInput onCloseCalculator={closeCalc} />
                           )}
                         </div>
                       </div>

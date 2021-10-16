@@ -46,10 +46,13 @@ const deleteTransaction = transaction => async dispatch => {
 const editTransaction = transaction => async dispatch => {
   dispatch(actions.editTransactionRequest());
   const balance = calculateBalance(transaction, 'edit');
+
   try {
     const response = await fetch.editTransaction(transaction, balance);
-    dispatch(actions.editTransactionSucces(response.data.transaction));
+    console.log(response);
+    dispatch(actions.editTransactionSucces(response.data.result));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
+    console.log(response);
   } catch (error) {
     dispatch(actions.editTransactionError(error.message));
   }
@@ -114,7 +117,9 @@ const calculateBalance = (transaction, actionType) => {
         ? Number(initialBalance) - Number(transaction.sum)
         : Number(initialBalance) + Number(transaction.sum);
     case 'edit':
-      const initialTransaction = transactionsList.find(transaction.id);
+      const initialTransaction = transactionsList.find(
+        item => item._id === transaction._id,
+      );
       const priorBalance =
         Number(initialBalance) - Number(initialTransaction.sum);
       return transaction.type === 'income'
