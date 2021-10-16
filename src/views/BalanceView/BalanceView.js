@@ -124,6 +124,7 @@ const BalanceView = () => {
                   closePicker={closePicker}
                   picker={picker}
                 />
+                <TransactionsListMobile transactionType={type} date={date} />
                 <div className={s.buttonContainer}>
                   <button
                     className={`${s.buttonExpense} ${
@@ -151,7 +152,6 @@ const BalanceView = () => {
                   &#8592;
                 </button>
                 <AddTransaction transactionType={type} date={date} />
-                <TransactionsListMobile transactionType={type} date={date} />
               </>
             )}
           </>

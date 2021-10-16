@@ -76,7 +76,9 @@ export default function TransactionsList({ transactionType, date }) {
                     </svg>
                   </div>
                 </td>
-                <td className={styles.thIcon}>ed</td>
+                <td className={styles.thIcon}>
+                  <div className={styles.deleteBtn}>ed</div>
+                </td>
               </tr>
             ))}
           </tbody>
