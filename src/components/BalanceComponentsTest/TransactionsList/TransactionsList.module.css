@@ -140,3 +140,12 @@
     width: 75%;
   }
 }
+
+.buttonsGroup {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.buttonGroup:hover svg path {
+  fill: red;
+}

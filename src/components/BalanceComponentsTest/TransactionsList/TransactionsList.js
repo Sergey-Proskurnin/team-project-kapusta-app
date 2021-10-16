@@ -143,6 +143,7 @@ export default function TransactionsList() {
             </tbody>
           </table>
         </div>
+
       </div>
     </>
   );
