@@ -1,5 +1,4 @@
 .container {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +9,7 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    align-items: center;
+    align-items: stretch;
     padding-left: 50px;
     padding-right: 50px;
     width: 768px;
