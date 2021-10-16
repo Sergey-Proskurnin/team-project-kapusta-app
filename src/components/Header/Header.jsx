@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getIsAuthenticated } from 'redux/auth';
 
@@ -17,7 +17,7 @@ const Header = () => {
         <Link to="/" alt="homepage" className={s.logoLink}>
           <img src={logo} className={s.logoImg} alt="Kapusta-logo" />
         </Link>
-
+        <NavLink to="/developers">DEVELOPERS TEAM</NavLink>
         {isAuthenticated && (
           <div className={s.user_container}>
             <UserInfo />
