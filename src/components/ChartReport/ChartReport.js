@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import useWindowDimensions from 'hooks/useWindowDimensions';
@@ -26,8 +26,6 @@ export default function ChartReport({ month, year, category, type }) {
     transaction =>
       transaction.month === String(month) && transaction.year === String(year),
   );
-
-  console.log(filteredByDate, 'filteredByDate');
 
   const findTotalSumForChart = data => {
     if (!!category) {
@@ -65,8 +63,6 @@ export default function ChartReport({ month, year, category, type }) {
     });
     return result;
   };
-
-  console.log(findTotalSumForChart(filteredByDate), 'findTotalSumForChart');
 
   const sortedSubCategoryTransactions = [
     ...findTotalSumForChart(filteredByDate),
