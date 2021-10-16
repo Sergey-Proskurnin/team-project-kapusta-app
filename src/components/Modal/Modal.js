@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
+import { textAnimation } from '../../helpers/animationText';
+import { gsap, Power1 } from 'gsap';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -24,7 +26,6 @@ function Modal({
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
       onClose();
-
     }
   };
 
@@ -34,20 +35,44 @@ function Modal({
     }
   };
 
+   let text = useRef(null);
+   useEffect(() => {
+     textAnimation(text);
+   }, []);
+  
+   let buttons = useRef(null);
+   useEffect(() => {
+     gsap.fromTo(
+       buttons,
+       0.5,
+       {
+         y: -100,
+       },
+       {
+         y: 13,
+         ease: Power1.easeInOut,
+       },
+     );
+   }, []);
+
   return createPortal(
     <div className={styles.modalBackground} onClick={handleOverlayClick}>
       <div className={styles.modalContainer}>
         <span className={styles.closeBtn} onClick={onClose}>
           &#10006;
         </span>
-        <p className={styles.title}>{modalTitle}</p>
+        <div className={styles.title} ref={el => (text = el)}>
+          <p>{modalTitle}</p>
+        </div>
         <div className={styles.buttons}>
-          <button className={styles.commonStyles} onClick={handleClickLeft}>
-            {modalButtonleft}
-          </button>
-          <button className={styles.commonStyles} onClick={handleClickRight}>
-            {modalButtonRight}
-          </button>
+          <div ref={el => (buttons = el)}>
+            <button className={styles.commonStyles} onClick={handleClickLeft}>
+              {modalButtonleft}
+            </button>
+            <button className={styles.commonStyles} onClick={handleClickRight}>
+              {modalButtonRight}
+            </button>
+          </div>
         </div>
       </div>
     </div>,

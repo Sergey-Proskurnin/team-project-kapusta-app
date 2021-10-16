@@ -1,11 +1,11 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import CalculatorIcon from 'components/SvgIcons/CalculatorIcon/CalculatorIcon';
 import contextProps from 'context/context';
 import DateForm from 'components/DateForm';
 import useWindowDimensions from 'hooks/useWindowDimensions';
-
+import { gsap, Power3 } from 'gsap';
 import s from './AddTransaction.module.css';
 
 import Dropdown from 'components/Dropdown';
@@ -61,6 +61,39 @@ export default function AddTransaction() {
     setSum('');
   };
 
+   let enterRef = useRef(null);
+   let clearRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      enterRef,
+      1,
+      {
+        opacity: 0,
+        x: -800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+
+    gsap.fromTo(
+      clearRef,
+      1,
+      {
+        opacity: 0,
+        x: 800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+  }, []);
+
   return (
     <>
       {viewPort.width >= 1280 && (
@@ -115,16 +148,20 @@ export default function AddTransaction() {
               </label>
             </div>
             <div className={s.positionButton}>
-              <button type="submit" className={`${s.button} ${s.buttonLeft}`}>
-                ВВОД
-              </button>
-              <button
-                type="button"
-                onClick={cleanState}
-                className={`${s.button} ${s.buttonRight}`}
-              >
-                ОЧИСТИТЬ
-              </button>
+              <div ref={el => (enterRef = el)}>
+                <button type="submit" className={`${s.button} ${s.buttonLeft}`}>
+                  ВВОД
+                </button>
+              </div>
+              <div ref={el => (clearRef = el)}>
+                <button
+                  type="button"
+                  onClick={cleanState}
+                  className={`${s.button} ${s.buttonRight}`}
+                >
+                  ОЧИСТИТЬ
+                </button>
+              </div>
             </div>
           </form>
         </>
@@ -185,16 +222,23 @@ export default function AddTransaction() {
                 </div>
               </div>
               <div className={s.positionButton}>
-                <button type="submit" className={`${s.button} ${s.buttonLeft}`}>
-                  ВВОД
-                </button>
-                <button
-                  type="button"
-                  onClick={cleanState}
-                  className={`${s.button} ${s.buttonRight}`}
-                >
-                  ОЧИСТИТЬ
-                </button>
+                <div ref={el => (enterRef = el)}>
+                  <button
+                    type="submit"
+                    className={`${s.button} ${s.buttonLeft}`}
+                  >
+                    ВВОД
+                  </button>
+                </div>
+                <div ref={el => (clearRef = el)}>
+                  <button
+                    type="button"
+                    onClick={cleanState}
+                    className={`${s.button} ${s.buttonRight}`}
+                  >
+                    ОЧИСТИТЬ
+                  </button>
+                </div>
               </div>
             </form>
           </div>
