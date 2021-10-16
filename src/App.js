@@ -10,8 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import routes from 'routes';
 import Header from 'components/Header/Header';
 
-import DevelopersView from 'views/DevelopersView/DevelopersView';
-
 import OnLoader from 'components/OnLoader';
 
 import PrivateRoute from 'components/PrivateRoute';
@@ -25,6 +23,9 @@ const BalanceView = lazy(() =>
 );
 const ReportsView = lazy(() =>
   import('views/ReportsView' /*webpackChunkName: "reports-view" */),
+);
+const DevelopersView  = lazy(() =>
+  import('views/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */),
 );
 
 const App = () => {
