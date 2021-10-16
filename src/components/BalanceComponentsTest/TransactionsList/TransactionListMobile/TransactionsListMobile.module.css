@@ -1,32 +1,35 @@
-.tsList {
-  display: flex;
-  width: 283px;
-  height: 30px;
-  margin: 0 auto;
+.firstWrapper {
+  display: block;
+  min-width: 283px;
+  height: 42px;
+
+  border-bottom: 1px solid #f5f6fb;
+  margin-bottom: 10px;
+}
+
+.tsList__container {
+  width: 90%;
+  padding-top: 45px;
 }
 
 .listItem {
-  margin-bottom: 12px;
-}
-.tsList__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
+  width: 99%;
 }
 
 .listItem__wrapper {
   display: flex;
-  margin-bottom: 3px;
+  flex-direction: column;
 }
 
-.tsListUl {
-  display: block;
-  width: 100%;
-  padding: 0;
+.dateCategory__wrapper {
+  display: flex;
 }
 
 .listItem__subCategory {
+  height: 20px;
   margin-bottom: 3px;
 
   font-family: Roboto;
@@ -63,28 +66,26 @@
 
   color: #52555f;
 }
+
+s.listItem__sumWrapper {
+  display: flex;
+  align-items: center;
+}
+
 .listItem__sum {
-  display: block;
-  justify-content: end;
+  display: inline-flex;
+  min-width: 84px;
+  justify-content: flex-end;
 
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
   line-height: 14px;
-  display: flex;
-  align-items: center;
-  text-align: right;
   letter-spacing: 0.04em;
-
-  color: #e7192e;
 }
 
-.deleteBtn {
+.buttonsGroup {
   border: 1px solid transparent;
   background-color: transparent;
-}
-
-.deleteBtn:hover svg path {
-  fill: #ff751d;
 }
