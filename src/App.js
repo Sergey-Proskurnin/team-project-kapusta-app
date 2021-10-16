@@ -2,11 +2,15 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 
 import { getCurrentUser } from './redux/auth';
+
 import { getFetchigCurrentUser, getCurrentToken } from './redux/auth';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import routes from 'routes';
 import Header from 'components/Header/Header';
+
+import DevelopersView from 'views/DevelopersView/DevelopersView';
 
 import OnLoader from 'components/OnLoader';
 
@@ -51,7 +55,6 @@ const App = () => {
               component={HomePageView}
               redirectTo={routes.balance}
             />
-
             <PrivateRoute
               path={routes.balance}
               component={BalanceView}
@@ -60,6 +63,12 @@ const App = () => {
             <PrivateRoute
               path={routes.report}
               component={ReportsView}
+              redirectTo={routes.home}
+            />
+
+            <PublicRoute
+              path={routes.developers}
+              component={DevelopersView}
               redirectTo={routes.home}
             />
           </Switch>

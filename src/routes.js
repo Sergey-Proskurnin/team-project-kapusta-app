@@ -2,6 +2,7 @@ const routes = {
   home: '/',
   balance: '/balance',
   report: '/report',
-  googleAuthorized: '/googleauthorized'
+  developers: '/developers',
+  googleAuthorized: '/googleauthorized',
 };
 export default routes;
