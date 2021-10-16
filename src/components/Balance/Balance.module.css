@@ -20,12 +20,14 @@
     align-items: center;
     justify-content: center;
     color: #000;
-    width: 125px;
+    min-width: 125px;
     height: 44px;
     border: 2px solid #ffffff;
     background-color: transparent;
     border-radius: 22px 0 0 22px;
     font-weight: 700;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .balanceButton {
@@ -65,7 +67,6 @@
   }
 
   .balanceInput {
-    width: 125px;
     height: 44px;
     margin-left: 21px;
     margin-top: 0px;
@@ -105,7 +106,6 @@
     line-height: 1.17;
   }
   .balanceInput {
-    width: 125px;
     height: 44px;
     margin-left: 40px;
     margin-right: 15px;

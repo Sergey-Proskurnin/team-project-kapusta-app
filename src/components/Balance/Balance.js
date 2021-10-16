@@ -30,7 +30,7 @@ const Balance = ({ hide, width }) => {
                 maxLength="10"
                 placeholder="00.00"
                 onChange={onHandleChange}
-                className={s.balanceInput}
+                className={`${s.balanceInput} ${width}`}
               />
               <button className={`${s.balanceButton} ${width}`} type="submit">
                 ПОДТВЕРДИТЬ
