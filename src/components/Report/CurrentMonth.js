@@ -1,10 +1,12 @@
 import React from 'react';
+
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import s from './Report.module.css';
 
-import months from '../../data/month';
+import months from 'data/month';
+
 const CurrentMonth = ({
   currentMonth,
   currentYear,
@@ -19,7 +21,6 @@ const CurrentMonth = ({
       <div className={s.transactionWrapper}>
         <ArrowBackIosIcon
           style={{ color: '#FF751D', width: '12' }}
-          // fontSize="small"
           onClick={onHandleClickLeft}
         />
         {

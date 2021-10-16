@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
+
 import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
 import { Container } from 'components/Container';
-
 import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
 import TransactionsListMobile from 'components/BalanceComponentsTest/TransactionsList/TransactionListMobile';
-// import useViewport from 'services/useViewport';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 import Summary from 'components/Summary';
 import Balance from 'components/Balance';
 import ToGoReport from 'components/ToGoReport';
-
 import DateForm from 'components/DateForm';
+
+import useWindowDimensions from 'hooks/useWindowDimensions';
 import contextProps from 'context/context';
 import s from './BalanceView.module.css';
 
@@ -152,7 +151,6 @@ const BalanceView = () => {
                   &#8592;
                 </button>
                 <AddTransaction transactionType={type} date={date} />
-
                 <TransactionsListMobile transactionType={type} date={date} />
               </>
             )}

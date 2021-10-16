@@ -87,21 +87,19 @@
   width: 130px;
 }
 .tdSum {
-font-weight: bold;
-width: 130px;
-color: #407946;
+  font-weight: bold;
+  width: 130px;
+  color: #407946;
 }
 .tdSumExpense {
-font-weight: bold;
-color: #E7192E;
+  font-weight: bold;
+  color: #e7192e;
 }
 .tdDesc {
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  
-
 }
 .thIcon {
   width: 40px;

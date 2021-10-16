@@ -1,12 +1,13 @@
-import s from './register.module.css';
-import { register } from '../../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+
+import s from './register.module.css';
+import { register } from 'redux/auth/auth-operations';
+
 import Modal from 'components/Modal';
-import {getUserName} from 'redux/auth/auth-selector'
+import { getUserName } from 'redux/auth/auth-selector';
 
 const RegisterForm = ({ onClickComeBack }) => {
-  
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -21,7 +22,7 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [errorSymbol, setErrorSymbol] = useState('*');
   const [setModalOpen, setShowModal] = useState(false);
   const user = useSelector(getUserName);
-  
+
   const onRegister = () => dispatch(register({ name, email, password }));
 
   const toggleModal = () => {
@@ -94,29 +95,18 @@ const RegisterForm = ({ onClickComeBack }) => {
     setEmail('');
     setPassword('');
   };
-  
+
   useEffect(() => {
     if (user) {
       setShowModal(true);
     }
-  },
-    [user]
-  );
+  }, [user]);
 
-  
-  // const notScroll = () => {
-  //   if (setModalOpen) {
-  //     document.body.style.overflow = 'hidden';
-  //   }
-  // };
-  
   const handleSubmit = e => {
     e.preventDefault();
     onRegister();
     clearInput();
-    // notScroll();
   };
-
 
   return (
     <div className={s.formRegistr}>
@@ -141,7 +131,14 @@ const RegisterForm = ({ onClickComeBack }) => {
             className={s.formInput}
           />
           {nameDirty && nameError && (
-            <div style={{ color: 'red', fontSize: 10, paddingTop: 4, textAlign:'left' }}>
+            <div
+              style={{
+                color: 'red',
+                fontSize: 10,
+                paddingTop: 4,
+                textAlign: 'left',
+              }}
+            >
               {nameError}{' '}
             </div>
           )}
@@ -198,19 +195,19 @@ const RegisterForm = ({ onClickComeBack }) => {
           <button type="button" onClick={onClickComeBack} className={s.button}>
             ВЕРНУТЬСЯ
           </button>
-          <button type="submit"  className={s.button}>
+          <button type="submit" className={s.button}>
             ГОТОВО
           </button>
-           {setModalOpen && (
-        <Modal
-          modalTitle={`${user}, перейдите на ваш электронный адрес и подтвердите аутентификацию!`}
-          modalButtonleft={'👌'}
-          modalButtonRight={'ОК'}   
-          handleClickLeft={toggleModal}
-          handleClickRight={toggleModal}
-          onClose={toggleModal}
-        />
-      )}
+          {setModalOpen && (
+            <Modal
+              modalTitle={`${user}, перейдите на ваш электронный адрес и подтвердите аутентификацию!`}
+              modalButtonleft={'👌'}
+              modalButtonRight={'ОК'}
+              handleClickLeft={toggleModal}
+              handleClickRight={toggleModal}
+              onClose={toggleModal}
+            />
+          )}
         </div>
       </form>
     </div>

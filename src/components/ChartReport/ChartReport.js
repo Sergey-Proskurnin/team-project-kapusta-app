@@ -1,6 +1,8 @@
-import useWindowDimensions from 'hooks/useWindowDimensions';
-import transactions from '../../data/db-transactions.json';
 import { Bar } from 'react-chartjs-2';
+
+import useWindowDimensions from 'hooks/useWindowDimensions';
+import transactions from 'data/db-transactions.json';
+
 import s from './ChartReport.module.css';
 
 export default function ChartReport() {

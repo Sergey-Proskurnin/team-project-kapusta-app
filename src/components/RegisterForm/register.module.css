@@ -75,7 +75,7 @@
 .button:active {
   background-color: #8a3d0d;
 }
-/* Адаптив */
+/* Adaptive */
 @media screen and (min-width: 768px) {
   .formRegistr {
     z-index: 4;

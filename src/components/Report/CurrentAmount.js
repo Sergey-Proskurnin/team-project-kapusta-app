@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import s from './Report.module.css';
-// import { result } from '../../data/db-transactions.json';
-import { ReactComponent as Strip } from './strip.svg';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import transactionsOperations from 'redux/transactions/transactions-operations';
-import { getTransactionsPerMonth } from '../../redux/transactions/transactions-selectors';
 
-// const month = 2;
+import s from './Report.module.css';
+import { ReactComponent as Strip } from './strip.svg';
+import transactionsOperations from 'redux/transactions/transactions-operations';
+import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
+
+
 
 const CurrentAmount = ({ currentMonth, currentYear }) => {
   const dispatch = useDispatch();

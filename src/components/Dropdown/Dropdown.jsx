@@ -1,8 +1,7 @@
-import s from './Dropdown.module.css';
 import { useState, useContext } from 'react';
 
+import s from './Dropdown.module.css';
 import contextProps from 'context/context';
-
 import { optionsIncome } from 'data/categoriesIncom.json';
 import { optionsExpense } from 'data/categoriesExpense.json';
 
