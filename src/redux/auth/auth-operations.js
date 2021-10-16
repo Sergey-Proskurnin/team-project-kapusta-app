@@ -29,10 +29,10 @@ const register = credentials => async dispatch => {
     const response = await fetchSignUp(credentials);
     // token.set(response.data.token);
     dispatch(registerSuccess(response.data));
-  } catch (error) {
-    dispatch(registerError(error.message));
+  } catch ({response}) {
+    dispatch(registerError(response.data.message));
     alert(`Incorrect login!
-    Server error: ${error.message}`);
+    Server error: ${response.data.message}`);
   }
 };
 
@@ -42,9 +42,9 @@ const logIn = credentials => async dispatch => {
     const response = await fetchLogin(credentials);
     token.set(response.data.data);
     dispatch(loginSuccess(response.data.data));
-  } catch (error) {
-    dispatch(loginError(error.message));
-    alert(`Incorrect login or password! Server error: ${error.message}`);
+  } catch ({response}) {
+    dispatch(loginError(response.data.message));
+    alert(`Incorrect login or password! Server error: ${response.data.message}`);
   }
 };
 
@@ -54,9 +54,9 @@ const logOut = () => async dispatch => {
     await fetchLogout();
     token.unset();
     dispatch(logoutSuccess());
-  } catch (error) {
-    dispatch(logoutError(error.message));
-    alert(`Server error: ${error.message}`);
+  } catch ({response}) {
+    dispatch(logoutError(response.data.message));
+    alert(`Server error: ${response.data.message}`);
   }
 };
 
@@ -74,9 +74,9 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const response = await fetchCurrent();
     dispatch(getCurrentUserSuccess(response.data.user));
     dispatch(setTotalBalanceSuccess(response.data.user.balance));
-  } catch (error) {
-    dispatch(getCurrentUserError(error.message));
-    alert(`Server error: ${error.message}`);
+  } catch ({response}) {
+    dispatch(getCurrentUserError(response.data.message));
+    alert(`Server error: ${response.data.message}`);
   }
 };
 
