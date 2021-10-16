@@ -29,6 +29,7 @@
     border-radius: 16px 16px 0 0;
     margin-bottom: -2px;
     padding-left: 21px;
+    outline: none;
   }
 
   .inputDescriptions::-webkit-input-placeholder {
@@ -64,6 +65,7 @@
     background-color: #f5f6fb;
     border-radius: 22px 0px 0px 22px;
     padding-left: 25px;
+    outline: none;
   }
 
   .inputSum::-webkit-input-placeholder {

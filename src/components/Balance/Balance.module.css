@@ -6,6 +6,7 @@
   }
 
   .balanceLabel {
+    position: relative;
     display: block;
     text-align: center;
     align-items: center;
@@ -20,7 +21,7 @@
     align-items: center;
     justify-content: center;
     color: #000;
-    min-width: 125px;
+    width: 125px;
     height: 44px;
     border: 2px solid #ffffff;
     background-color: transparent;
@@ -28,6 +29,7 @@
     font-weight: 700;
     padding-left: 20px;
     padding-right: 20px;
+    outline: none;
   }
 
   .balanceButton {
@@ -40,7 +42,15 @@
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 1.17;
+    cursor: pointer;
   }
+
+  .balanceButton:hover {
+    background-color: #cfd1d4;
+    color: #f5f6fb;
+    transition: 0.5s linear;
+  }
+
   .buttonsGroup {
     display: flex;
     margin-top: 12px;
@@ -70,6 +80,7 @@
     height: 44px;
     margin-left: 21px;
     margin-top: 0px;
+    width: 125px;
     border: 2px solid #ffffff;
     background-color: transparent;
     border-radius: 16px;

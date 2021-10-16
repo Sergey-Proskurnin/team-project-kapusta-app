@@ -1,5 +1,5 @@
 .commentBubble {
-  position: relative;
+  position: absolute;
   padding: 23px;
   width: 282px;
   height: auto;
@@ -7,15 +7,37 @@
   line-height: 20px;
   color: #ffffff;
   background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
-  
+
   border-radius: 30px;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
-  }
+  top: 117%;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.prompt {
+  font-family: Roboto;
+  margin-top: 15px;
+  line-height: 10px;
+  color: #ffffff;
+  font-style: normal;
+}
 
 @media screen and (min-width: 768px) {
   .commentBubble {
     width: 292px;
+    top: 150%;
+    left: 18.5%;
+    animation: 5s;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .commentBubble {
+    top: 150%;
+    left: 22.5%;
+    animation: 5s;
   }
 }
 
