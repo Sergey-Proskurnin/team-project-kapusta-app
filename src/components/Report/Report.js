@@ -18,11 +18,13 @@ import Loader from '../OnLoader';
 const Report = ({
   month,
   year,
+  type,
   onHandleClickRight,
   onHandleClickLeft,
   getCategory,
+  onHandleChangeType,
 }) => {
-  const [type, setType] = useState('expense');
+  // const [type, setType] = useState('expense');
   const transaction = useSelector(getTransactionsPerMonth);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -48,14 +50,14 @@ const Report = ({
     return totalExpense;
   };
 
-  const onClick = () => {
-    if (type === 'expense') {
-      setType('income');
-    }
-    if (type === 'income') {
-      setType('expense');
-    }
-  };
+  // const onHandleChangeType = () => {
+  //   if (type === 'expense') {
+  //     setType('income');
+  //   }
+  //   if (type === 'income') {
+  //     setType('expense');
+  //   }
+  // };
   return (
     <div className={s.reportContainer}>
       <div className={`${s.navigation} ${s.section}`}>
@@ -76,7 +78,7 @@ const Report = ({
           <ArrowBackIosIcon
             style={{ color: '#FF751D' }}
             fontSize="small"
-            onClick={onClick}
+            onClick={onHandleChangeType}
           />
           {type === 'expense' ? (
             <h1 className={s.reportTitle}>расходы:</h1>
@@ -86,7 +88,7 @@ const Report = ({
           <ArrowForwardIosIcon
             style={{ color: '#FF751D' }}
             fontSize="small"
-            onClick={onClick}
+            onClick={onHandleChangeType}
           />
         </div>
         <ul className={s.reportList}>
