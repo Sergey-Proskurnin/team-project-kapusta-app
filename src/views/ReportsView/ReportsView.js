@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
+
 import s from './ReportView.module.css';
 
 const ReportsView = () => {

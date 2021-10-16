@@ -1,7 +1,8 @@
-import s from './login.module.css';
-import { logIn } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+
+import s from './login.module.css';
+import { logIn } from '../../redux/auth/auth-operations';
 
 const LoginForm = ({ onClickRegister }) => {
   const dispatch = useDispatch();
@@ -67,12 +68,11 @@ const LoginForm = ({ onClickRegister }) => {
     clearInput();
   };
 
-   return (
+  return (
     <div className={s.formRegistr}>
       <p className={s.promtText}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      {/*http://localhost:5737/api/v1/*/}
       <a
         href="https://kapusta-api.herokuapp.com/api/v1/users/google"
         className={s.btnGoogle}
@@ -132,19 +132,12 @@ const LoginForm = ({ onClickRegister }) => {
           )}
         </label>
         <div className={s.containerButton}>
-           <button
-             type="submit"
-           className={s.button}
-           >
-             ВОЙТИ
-           </button>
-           <button
-           type="button"
-             onClick={onClickRegister}
-             className={s.button}
-           >
-             РЕГИСТРАЦИЯ
-           </button>
+          <button type="submit" className={s.button}>
+            ВОЙТИ
+          </button>
+          <button type="button" onClick={onClickRegister} className={s.button}>
+            РЕГИСТРАЦИЯ
+          </button>
         </div>
       </form>
     </div>

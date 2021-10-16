@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import Balance from '../Balance';
+
 import s from './Report.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { getTransactionsPerMonth } from '../../redux/transactions/transactions-selectors';
+
+import Balance from '../Balance';
+import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
 import { CurrentAmount, CurrentMonth } from './';
-import categories from '../../data/categories';
+import categories from 'data/categories';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
 import transactionsOperations from 'redux/transactions/transactions-operations';

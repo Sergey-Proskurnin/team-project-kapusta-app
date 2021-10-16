@@ -6,7 +6,6 @@ import s from './Calculator.module.css';
 export default function CalculatorInput({ onCloseCalculator }) {
   const ref = useRef();
   const [result, setResult] = useState('');
-  // const inputRef = useRef(null);
   const [close, setClose] = useState(false);
   useEffect(() => {
     if (close) {
