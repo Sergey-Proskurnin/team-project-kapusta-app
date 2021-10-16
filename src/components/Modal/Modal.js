@@ -14,11 +14,11 @@ function Modal({
   modalButtonRight = ' Нет',
 }) {
   useEffect(() => {
-    window.document.body.style.overflow = 'hidden';
+    window.document.body.style.overflowY = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.document.body.style.overflow = 'visible';
+      window.document.body.style.overflowY = 'visible';
     };
   });
 

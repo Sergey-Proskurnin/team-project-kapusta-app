@@ -38,7 +38,7 @@ export default function ChartReport({ month, year, category }) {
   const sortedSum = [...sortedSubCategoryTransactions].map(data => data.sum);
 
   const getNextColor = color => {
-    const colors = ['#FF751D', '#FFDAC0', '#FFDAC0'];
+    const colors = ['#FF751D', '#FFDAC0', '#fcd7bd', '#FF751D'];
 
     if (!color) {
       return colors[0];
