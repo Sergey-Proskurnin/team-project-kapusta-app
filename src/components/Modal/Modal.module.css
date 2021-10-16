@@ -28,6 +28,12 @@
   padding-top: 20px;
 }
 
+.closeBtn:hover {
+  color: #ff751d;
+  font-weight: bolder;
+
+}
+
 .title {
   text-align: center;
   margin-top: 18px;
