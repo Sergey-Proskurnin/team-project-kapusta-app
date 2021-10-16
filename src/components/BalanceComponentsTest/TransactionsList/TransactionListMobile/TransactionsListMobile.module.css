@@ -10,6 +10,7 @@
 .tsList__container {
   width: 90%;
   padding-top: 45px;
+  margin-bottom: 15%;
 }
 
 .listItem {
@@ -22,6 +23,7 @@
 .listItem__wrapper {
   display: flex;
   flex-direction: column;
+  width: 148px;
 }
 
 .dateCategory__wrapper {
@@ -29,6 +31,7 @@
 }
 
 .listItem__subCategory {
+  display: inline-block;
   height: 20px;
   margin-bottom: 3px;
 
@@ -37,9 +40,13 @@
   font-weight: bold;
   font-size: 12px;
   line-height: 14px;
-  display: flex;
+
   align-items: center;
   letter-spacing: 0.04em;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   color: #52555f;
 }
@@ -67,9 +74,11 @@
   color: #52555f;
 }
 
-s.listItem__sumWrapper {
+.listItem__sumWrapper {
   display: flex;
   align-items: center;
+  width: 100px;
+  padding-left: 10px;
 }
 
 .listItem__sum {

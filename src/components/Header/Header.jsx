@@ -17,7 +17,9 @@ const Header = () => {
         <Link to="/" alt="homepage" className={s.logoLink}>
           <img src={logo} className={s.logoImg} alt="Kapusta-logo" />
         </Link>
-        <NavLink to="/developers">DEVELOPERS TEAM</NavLink>
+        <NavLink to="/developers" className={s.Blazing}>
+          TEAM FSD #28
+        </NavLink>
         {isAuthenticated && (
           <div className={s.user_container}>
             <UserInfo />
