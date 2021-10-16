@@ -1,8 +1,9 @@
-import s from './login.module.css';
-import { logIn } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { useState, useRef, useEffect } from 'react';
 import { gsap, Power3 } from 'gsap';
+
+import s from './login.module.css';
+import { logIn } from '../../redux/auth/auth-operations';
 
 const LoginForm = ({ onClickRegister }) => {
   const dispatch = useDispatch();
@@ -67,7 +68,6 @@ const LoginForm = ({ onClickRegister }) => {
     dispatch(logIn({ email, password }));
     clearInput();
   };
-
 
   let emailRef = useRef(null);
   let passwordRef = useRef(null);
@@ -198,5 +198,6 @@ const LoginForm = ({ onClickRegister }) => {
        </form>
      </div>
    );
+
 };
 export default LoginForm;

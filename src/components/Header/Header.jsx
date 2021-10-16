@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getIsAuthenticated } from 'redux/auth';
 import { useRef, useEffect } from 'react';
@@ -39,6 +39,7 @@ const Header = () => {
             </div>
           )}
         </div>
+
       </div>
     </header>
   );

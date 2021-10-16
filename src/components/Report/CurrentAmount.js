@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import s from './Report.module.css';
-// import { result } from '../../data/db-transactions.json';
-import { ReactComponent as Strip } from './strip.svg';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import transactionsOperations from 'redux/transactions/transactions-operations';
-import { getTransactionsPerMonth } from '../../redux/transactions/transactions-selectors';
 
-// const month = 2;
+import s from './Report.module.css';
+import { ReactComponent as Strip } from './strip.svg';
+import transactionsOperations from 'redux/transactions/transactions-operations';
+import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
+
+
 
 const CurrentAmount = ({ currentMonth, currentYear }) => {
   const dispatch = useDispatch();
@@ -36,18 +36,18 @@ const CurrentAmount = ({ currentMonth, currentYear }) => {
 
   return (
     <div className={`${s.section} ${s.amountSection}`}>
-      <div className={`${s.transactionWrapper} ${s.amountwrapper}`}>
+      <div className={`${s.transactionWrapper} ${s.amountWrapper}`}>
         <p className={s.amountTitle}>Расходы:</p>
         <span
           className={`${s.amountText} ${s.amountExpense}`}
-        >{`-${findTotalSum('expense').toLocaleString('ru')}.00 грн.`}</span>
+        >{`- ${findTotalSum('expense').toLocaleString('ru')}.00 грн.`}</span>
       </div>
       <Strip className={s.amountStrip} />
-      <div className={`${s.transactionWrapper} ${s.amountwrapper}`}>
+      <div className={`${s.transactionWrapper} ${s.amountWrapper}`}>
         <p className={s.amountTitle}>Доходы:</p>
-        <span className={`${s.amountText} ${s.amountIncome}`}>{`+${findTotalSum(
-          'income',
-        ).toLocaleString('ru')}.00 грн.`}</span>
+        <span
+          className={`${s.amountText} ${s.amountIncome}`}
+        >{`+ ${findTotalSum('income').toLocaleString('ru')}.00 грн.`}</span>
       </div>
     </div>
   );

@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react';
+
 import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
 import { Container } from 'components/Container';
-
 import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
 import TransactionsListMobile from 'components/BalanceComponentsTest/TransactionsList/TransactionListMobile';
-// import useViewport from 'services/useViewport';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 import Summary from 'components/Summary';
 import Balance from 'components/Balance';
 import ToGoReport from 'components/ToGoReport';
-
 import DateForm from 'components/DateForm';
+
+import useWindowDimensions from 'hooks/useWindowDimensions';
 import contextProps from 'context/context';
 import s from './BalanceView.module.css';
+import { useSelector } from 'react-redux';
+import { getLoader } from 'redux/transactions';
+import OnLoader from 'components/OnLoader';
 
 const BalanceView = () => {
   const [type, setType] = useState('income');
   const [date, setDate] = useState('');
   const [picker, setPicker] = useState(false);
   const [listRender, setListRender] = useState(true);
+  const loader = useSelector(getLoader);
 
   useEffect(() => {
     setDate(startDate);
@@ -42,6 +45,7 @@ const BalanceView = () => {
     handleCalendarClick,
     closePicker,
     date,
+    setDate,
   };
   const typeToggle = e => {
     setType(`${e.target.title}`);
@@ -63,6 +67,7 @@ const BalanceView = () => {
   return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>
+        {loader && <OnLoader />}
         {viewPort.width >= 768 && (
           <>
             <div className={s.balanceContainer}>
@@ -125,6 +130,7 @@ const BalanceView = () => {
                   closePicker={closePicker}
                   picker={picker}
                 />
+                <TransactionsListMobile transactionType={type} date={date} />
                 <div className={s.buttonContainer}>
                   <button
                     className={`${s.buttonExpense} ${
@@ -152,8 +158,6 @@ const BalanceView = () => {
                   &#8592;
                 </button>
                 <AddTransaction transactionType={type} date={date} />
-
-                <TransactionsListMobile transactionType={type} date={date} />
               </>
             )}
           </>

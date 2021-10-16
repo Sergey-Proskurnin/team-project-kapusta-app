@@ -1,8 +1,8 @@
-import s from './Dropdown.module.css';
 import { useState, useContext } from 'react';
 
+import s from './Dropdown.module.css';
+import st from 'components/EditTransaction/EditTransaction.module.css'
 import contextProps from 'context/context';
-
 import { optionsIncome } from 'data/categoriesIncom.json';
 import { optionsExpense } from 'data/categoriesExpense.json';
 
@@ -15,7 +15,7 @@ function Dropdown({ category, setCategory }) {
     <div className={s.dropdown}>
       <div
         tabIndex="0"
-        className={s.dropdownBtn}
+        className={`${s.dropdownBtn} ${st.dropdown}`}
         onClick={e => setIsActive(!isActive)}
       >
         {!category && type === 'expense'

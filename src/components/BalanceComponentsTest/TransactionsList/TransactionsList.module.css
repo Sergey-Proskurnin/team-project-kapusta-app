@@ -87,21 +87,19 @@
   width: 130px;
 }
 .tdSum {
-font-weight: bold;
-width: 130px;
-color: #407946;
+  font-weight: bold;
+  width: 130px;
+  color: #407946;
 }
 .tdSumExpense {
-font-weight: bold;
-color: #E7192E;
+  font-weight: bold;
+  color: #e7192e;
 }
 .tdDesc {
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  
-
 }
 .thIcon {
   width: 40px;
@@ -141,4 +139,13 @@ color: #E7192E;
   .bodyTable {
     width: 75%;
   }
+}
+
+.buttonsGroup {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.buttonGroup:hover svg path {
+  fill: red;
 }

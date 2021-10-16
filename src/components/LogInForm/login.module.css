@@ -47,7 +47,6 @@
   text-align: center;
   letter-spacing: 0.02em;
   color: #000000;
-  /* outline: none; */
 }
 .btnGoogle::before {
   content: '';
@@ -111,7 +110,7 @@
   transition: 0.5s linear;
 }
 
-/* Адаптив */
+/* Adaptive */
 @media screen and (min-width: 768px) {
   .formRegistr {
     z-index: 4;

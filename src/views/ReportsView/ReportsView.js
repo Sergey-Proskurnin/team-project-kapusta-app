@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
+
 import s from './ReportView.module.css';
 
 const ReportsView = () => {
@@ -11,6 +13,7 @@ const ReportsView = () => {
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
   const [category, setCategory] = useState('');
+  const [type, setType] = useState('expense');
   const onHandleClickRight = () => {
     if (month < 12) {
       setMonth(prev => (prev += 1));
@@ -27,6 +30,14 @@ const ReportsView = () => {
       setMonth(prev => (prev -= 1));
     }
   };
+  const onHandleChangeType = () => {
+    if (type === 'expense') {
+      setType('income');
+    }
+    if (type === 'income') {
+      setType('expense');
+    }
+  };
   const getCategory = e => {
     setCategory(e.target.attributes.title.nodeValue);
   };
@@ -40,8 +51,15 @@ const ReportsView = () => {
           onHandleClickRight={onHandleClickRight}
           onHandleClickLeft={onHandleClickLeft}
           getCategory={getCategory}
+          onHandleChangeType={onHandleChangeType}
+          type={type}
         />
-        <ChartReport month={month} year={year} category={category} />
+        <ChartReport
+          month={month}
+          year={year}
+          category={category}
+          type={type}
+        />
       </div>
     </Container>
   );

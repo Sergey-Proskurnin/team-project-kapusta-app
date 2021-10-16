@@ -3,8 +3,9 @@ import DayPicker, { LocaleUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import styles from './DayPicker.module.css';
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import st from 'components/EditTransaction/EditTransaction.module.css';
 
-export default function CalendarPicker({ startDate, closeHandler }) {
+export default function CalendarPicker({ startDate, closeHandler, align }) {
   const ref = useRef();
   const [selectedDay, setSelectedDay] = useState();
   const [close, setClose] = useState(false);
@@ -46,7 +47,7 @@ export default function CalendarPicker({ startDate, closeHandler }) {
   };
 
   return (
-    <div className={styles.pickerWrapper} ref={ref}>
+    <div className={`${styles.pickerWrapper} ${align}`} ref={ref}>
       <DayPicker
         selectedDays={[selectedDay, modifiers.today]}
         onDayClick={handleDayClick}

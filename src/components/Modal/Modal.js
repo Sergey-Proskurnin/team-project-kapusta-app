@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+
 import styles from './Modal.module.css';
 import { textAnimation } from '../../helpers/animationText';
 import { gsap, Power1 } from 'gsap';
@@ -13,13 +14,14 @@ function Modal({
   modalTitle = 'Вы действительно хотите выйти?',
   modalButtonleft = 'Да',
   modalButtonRight = ' Нет',
+  Form,
 }) {
   useEffect(() => {
-    window.document.body.style.overflow = 'hidden';
+    window.document.body.style.overflowY = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.document.body.style.overflow = 'visible';
+      window.document.body.style.overflowY = 'visible';
     };
   });
 
@@ -61,9 +63,14 @@ function Modal({
         <span className={styles.closeBtn} onClick={onClose}>
           &#10006;
         </span>
-        <div className={styles.title} ref={el => (text = el)}>
-          <p>{modalTitle}</p>
-        </div>
+
+//         <div className={styles.title} ref={el => (text = el)}>
+//           <p>{modalTitle}</p>
+//         </div>
+
+        <p className={styles.title}>{modalTitle}</p>
+        {Form && <Form />}
+
         <div className={styles.buttons}>
           <div ref={el => (buttons = el)}>
             <button className={styles.commonStyles} onClick={handleClickLeft}>

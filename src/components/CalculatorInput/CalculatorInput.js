@@ -3,10 +3,9 @@ import useOnClickOutside from 'hooks/useOnClickOutside';
 
 import s from './Calculator.module.css';
 
-export default function CalculatorInput({ onCloseCalculator }) {
+export default function CalculatorInput({ onCloseCalculator, position }) {
   const ref = useRef();
   const [result, setResult] = useState('');
-  // const inputRef = useRef(null);
   const [close, setClose] = useState(false);
   useEffect(() => {
     if (close) {
@@ -41,7 +40,7 @@ export default function CalculatorInput({ onCloseCalculator }) {
     }
   }
   return (
-    <div className={s.calc} ref={ref}>
+    <div className={position ? `${position}` : `${s.calc}`} ref={ref}>
       <input type="text" value={result} className={s.calcInput} readOnly />
 
       <div className={s.keypad}>

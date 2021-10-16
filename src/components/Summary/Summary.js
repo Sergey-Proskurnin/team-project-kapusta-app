@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import data from '../../data/month.json';
+import { useDispatch, useSelector } from 'react-redux';
+
+import data from 'data/month.json';
 import styles from './Summary.module.css';
 import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { AccountBalanceSharp } from '@material-ui/icons';
 
 const Summary = ({ year = 2021 }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,6 @@ const Summary = ({ year = 2021 }) => {
 
   useEffect(() => {
     dispatch(transactionsOperations.getMonthlyBalancesYear(year));
-    // dispatch(transactionsOperations.getTransactionsMonthYear(10, 2021));
   }, [totalBalance]);
   const balances = useSelector(selectors.getMonthlyBalances);
 

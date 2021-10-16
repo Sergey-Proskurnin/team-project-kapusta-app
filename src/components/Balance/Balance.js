@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import s from './Balance.module.css';
-import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import transactionOp from '../../redux/transactions/transactions-operations';
+
+import s from './Balance.module.css';
+import { getTotalBalance } from 'redux/transactions/transactions-selectors';
+import transactionOp from 'redux/transactions/transactions-operations';
 
 const Balance = ({ hide, width }) => {
   const balance = useSelector(getTotalBalance);
@@ -30,7 +31,7 @@ const Balance = ({ hide, width }) => {
                 maxLength="10"
                 placeholder="00.00"
                 onChange={onHandleChange}
-                className={s.balanceInput}
+                className={`${s.balanceInput} ${width}`}
               />
               <button className={`${s.balanceButton} ${width}`} type="submit">
                 ПОДТВЕРДИТЬ
