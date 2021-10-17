@@ -90,6 +90,12 @@
   height: 35px;
   border-radius: 16px;
 }
+
+.buttonOk:hover {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
 .buttonCancel {
   color: #52555f;
   background-color: #f5f6fb;
@@ -99,9 +105,28 @@
   height: 35px;
   border-radius: 16px;
 }
+
+.buttonCancel:hover {
+  color: #f5f6fb;
+  background-color: #ff751d;
+  outline: none;
+  border: none;
+  width: 120px;
+  height: 35px;
+  border-radius: 16px;
+}
+
 .buttonContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 10px;
+}
+.closeIcon {
+  margin-left: auto;
+  color: #52555f;
+}
+.closeIcon:hover {
+  margin-left: auto;
+  color: #ff751d;
 }
