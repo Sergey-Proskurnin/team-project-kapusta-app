@@ -8,8 +8,6 @@ export default function TransactionsListMobile({ transactionType, date }) {
   const dispatch = useDispatch();
   const transactions = useSelector(selectors.getTransactionsPerDay);
 
-  console.log(transactions);
-
   useEffect(() => {
     if (date) {
       dispatch(transactionsOperations.getTransactionsDay(date));
@@ -23,8 +21,8 @@ export default function TransactionsListMobile({ transactionType, date }) {
     <div className={s.tsList__container}>
       <ul style={{ width: '100%', padding: 0 }}>
         {transactions.map(transaction => (
-          <div className={s.firstWrapper}>
-            <li key={transaction._id} className={s.listItem}>
+          <div key={transaction._id} className={s.firstWrapper}>
+            <li className={s.listItem}>
               <div className={s.listItem__wrapper}>
                 <p className={s.listItem__subCategory}>
                   {transaction.subCategory}

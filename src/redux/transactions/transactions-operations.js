@@ -49,10 +49,8 @@ const editTransaction = transaction => async dispatch => {
 
   try {
     const response = await fetch.editTransaction(transaction, balance);
-    console.log(response);
     dispatch(actions.editTransactionSucces(response.data.result));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
-    console.log(response);
   } catch (error) {
     dispatch(actions.editTransactionError(error.message));
   }
