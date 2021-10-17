@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import Dropdown from 'components/Dropdown';
 import CalculatorInput from 'components/CalculatorInput';
@@ -24,6 +24,13 @@ export default function EditTransaction({
   const [calc, setCalc] = useState(false);
 
   useOnClickOutside(ref, cancelChanges);
+  useEffect(() => {
+     window.document.body.style.overflowY = 'hidden';
+    return () => { window.document.body.style.overflowY = 'visible' };
+  }
+  
+)
+   
 
   const handleCalendarClick = () => {
     setPicker(true);
@@ -70,6 +77,9 @@ export default function EditTransaction({
   return (
     <div className={s.editModalWrapper}>
       <form className={s.editForm} ref={ref}>
+        <span className={s.closeIcon} onClick={cancelChanges}>
+          &#10006;
+        </span>
         <div className={s.inputsWrapper}>
           <div className={s.dateWrapper}>
             <DateForm

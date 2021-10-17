@@ -7,10 +7,13 @@ import styles from './TransactionsList.module.css';
 import Modal from 'components/Modal';
 import EditTransaction from 'components/EditTransaction';
 import contextProps from 'context/context';
+import OnLoader from 'components/OnLoader';
+import { getLoader } from 'redux/transactions';
 
 export default function TransactionsList() {
   const { type, date, setDate } = useContext(contextProps);
   const dispatch = useDispatch();
+  const loader = useSelector(getLoader);
   const transactions = useSelector(selectors.getTransactionsPerDay);
   const filteredTransactions = transactions.filter(item => item.type === type);
   const [modalDel, setModalDel] = useState(false);
@@ -77,6 +80,7 @@ export default function TransactionsList() {
           cancelChanges={onEditCalcel}
         />
       )}
+      {loader && <OnLoader />}
       <div className={styles.bodyTable}>
         <table className={styles.main}>
           <thead className={styles.theadTable}>
@@ -135,6 +139,7 @@ export default function TransactionsList() {
                     className={styles.thIcon}
                     onClick={() => handleEditClick(transaction)}
                   >
+
                     <button className={styles.deleteBtn}>
                       <svg
                         aria-hidden="true"
