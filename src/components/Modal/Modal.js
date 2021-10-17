@@ -64,12 +64,12 @@ function Modal({
           &#10006;
         </span>
 
-//         <div className={styles.title} ref={el => (text = el)}>
-//           <p>{modalTitle}</p>
-//         </div>
+         <div className={styles.title} ref={el => (text = el)}>
+           <p>{modalTitle}</p>
+         </div>
 
-        <p className={styles.title}>{modalTitle}</p>
-        {Form && <Form />}
+        {/* <p className={styles.title}>{modalTitle}</p> */}
+        {/* {Form && <Form />} */}
 
         <div className={styles.buttons}>
           <div ref={el => (buttons = el)}>
