@@ -46,7 +46,7 @@ export default function TransactionsListMobile({ transactionType, date }) {
                     : `- ${transaction.sum}.00 грн.`}
                 </p>
               </div>
-              <div className="buttonWrapper">
+              <div className={s.buttonWrapper}>
                 <button
                   className={s.buttonsGroup}
                   onClick={() => deleteTransaction(transaction)}
