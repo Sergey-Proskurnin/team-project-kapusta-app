@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { gsap, Power3 } from 'gsap';
 
 import s from './login.module.css';
 import { logIn } from '../../redux/auth/auth-operations';
@@ -68,79 +69,135 @@ const LoginForm = ({ onClickRegister }) => {
     clearInput();
   };
 
-  return (
-    <div className={s.formRegistr}>
-      <p className={s.promtText}>
-        Вы можете авторизоваться с помощью Google Account:
-      </p>
-      <a
-        href="https://kapusta-api.herokuapp.com/api/v1/users/google"
-        className={s.btnGoogle}
-      >
-        Google
-      </a>
-      <p className={s.promtText}>
-        Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
-      </p>
-      <form onSubmit={handleSubmit} action="" autoComplete="on">
-        <label className={s.formLabel}>
-          <p className={s.labelText}>
-            {emailDirty && emailError && (
-              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                {errorSymbol}{' '}
-              </span>
-            )}
-            Электронная почта:
-          </p>
-          <input
-            onBlur={blurHandler}
-            onChange={emailHandler}
-            type="email"
-            name="email"
-            value={email}
-            placeholder="your@email.com"
-            className={s.formInput}
-          />
-          {emailDirty && emailError && (
-            <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-              {emailError}{' '}
-            </div>
-          )}
-        </label>
-        <label className={s.formLabel}>
-          <span className={s.labelText}>
-            {passwordDirty && passwordError && (
-              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                {errorSymbol}{' '}
-              </span>
-            )}
-            Пароль:
-          </span>
-          <input
-            onBlur={blurHandler}
-            onChange={passwordHandler}
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Пароль"
-            className={s.formInput}
-          />
-          {passwordDirty && passwordError && (
-            <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-              {passwordError}{' '}
-            </div>
-          )}
-        </label>
-        <div className={s.containerButton}>
-          <button type="submit" className={s.button}>
-            ВОЙТИ
-          </button>
-          <button type="button" onClick={onClickRegister} className={s.button}>
-            РЕГИСТРАЦИЯ
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+  let emailRef = useRef(null);
+  let passwordRef = useRef(null);
+  let btnRef = useRef(null);
+  
+  useEffect(() => {
+    gsap.fromTo(
+      emailRef,
+      1,
+      {
+        opacity: 0,
+        x: -800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+
+      gsap.fromTo(
+        btnRef,
+        0.8,
+        {
+          rotate: 2,
+          ease: Power3.easeInOut,
+        },
+        {
+          rotate: 360,
+          ease: Power3.easeInOut,
+        },
+      );
+
+    gsap.fromTo(
+      passwordRef,
+      1,
+      {
+        opacity: 0,
+        x: 800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+  }, []);
+
+   return (
+     <div className={s.formRegistr}>
+       <p className={s.promtText}>
+         Вы можете авторизоваться с помощью Google Account:
+       </p>
+       {/*http://localhost:5737/api/v1/*/}
+       <div ref={el => (btnRef = el)}>
+         <a
+           href="https://kapusta-api.herokuapp.com/api/v1/users/google"
+           className={s.btnGoogle}
+         >
+           Google
+         </a>
+       </div>
+       <p className={s.promtText}>
+         Или зайти с помощью e-mail и пароля, предварительно
+         зарегистрировавшись:
+       </p>
+       <form onSubmit={handleSubmit} action="" autoComplete="on">
+         <div ref={el => (emailRef = el)}>
+           <label className={s.formLabel}>
+             <p className={s.labelText}>
+               {emailDirty && emailError && (
+                 <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                   {errorSymbol}{' '}
+                 </span>
+               )}
+               Электронная почта:
+             </p>
+             <input
+               onBlur={blurHandler}
+               onChange={emailHandler}
+               type="email"
+               name="email"
+               value={email}
+               placeholder="your@email.com"
+               className={s.formInput}
+             />
+             {emailDirty && emailError && (
+               <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                 {emailError}{' '}
+               </div>
+             )}
+           </label>
+         </div>
+         <div ref={el => (passwordRef = el)}>
+           <label className={s.formLabel}>
+             <span className={s.labelText}>
+               {passwordDirty && passwordError && (
+                 <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                   {errorSymbol}{' '}
+                 </span>
+               )}
+               Пароль:
+             </span>
+             <input
+               onBlur={blurHandler}
+               onChange={passwordHandler}
+               type="password"
+               name="password"
+               value={password}
+               placeholder="Пароль"
+               className={s.formInput}
+             />
+             {passwordDirty && passwordError && (
+               <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                 {passwordError}{' '}
+               </div>
+             )}
+           </label>
+         </div>
+         <div className={s.containerButton}>
+           <button type="submit" className={s.button}>
+             ВОЙТИ
+           </button>
+           <button type="button" onClick={onClickRegister} className={s.button}>
+             РЕГИСТРАЦИЯ
+           </button>
+         </div>
+       </form>
+     </div>
+   );
+
 };
 export default LoginForm;
