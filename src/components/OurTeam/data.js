@@ -7,7 +7,7 @@ import img7 from './images/team/Strilchuk_Mykhaylo.jpg';
 import img9 from './images/team/Yevhen_Cherniuk.jpeg';
 import img10 from './images/team/Zharkynbek_Idirisov.jpeg';
 
-export default [
+const teammates = [
   {
     id: 1,
     fullName: 'Sergey Proskurnin',
@@ -83,3 +83,5 @@ export default [
       'https://www.instagram.com/p/COX-ndOjkkn7WzamP265w4VgpO1MVk9jQ61aNQ0/?igshid=110vzxuoc9ttg',
   },
 ];
+
+export default teammates;

@@ -14,7 +14,7 @@ export default function TransactionsListMobile({ transactionType, date }) {
     if (date) {
       dispatch(transactionsOperations.getTransactionsDay(date));
     }
-  }, [date]);
+  }, [dispatch, date]);
   const deleteTransaction = transaction => {
     dispatch(transactionsOperations.deleteTransaction(transaction));
   };
@@ -44,8 +44,8 @@ export default function TransactionsListMobile({ transactionType, date }) {
                   }
                 >
                   {transaction.type === 'income'
-                    ? transaction.sum
-                    : `- ${transaction.sum}`}
+                    ? `${transaction.sum}.00 грн.`
+                    : `- ${transaction.sum}.00 грн.`}
                 </p>
               </div>
               <div className="buttonWrapper">

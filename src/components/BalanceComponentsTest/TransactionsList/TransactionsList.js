@@ -24,10 +24,11 @@ export default function TransactionsList() {
       dispatch(transactionsOperations.getTransactionsDay(date));
     }
 
+
     if (del) {
       deleteTransaction(transactions.find(item => item._id === transaction));
     }
-  }, [date, del]);
+  }, [dispatch, date, del]);
 
   const deleteTransaction = transaction => {
     dispatch(transactionsOperations.deleteTransaction(transaction));
@@ -104,6 +105,7 @@ export default function TransactionsList() {
                       type !== 'income' && styles.tdSumExpense
                     }`}
                   >
+
                     {type === 'income'
                       ? `${transaction.sum}.00 грн.`
                       : `-${transaction.sum}.00 грн.`}
@@ -136,14 +138,28 @@ export default function TransactionsList() {
                     className={styles.thIcon}
                     onClick={() => handleEditClick(transaction)}
                   >
-                    <div>ed</div>
+                    <div className={styles.deleteBtn}>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 226 226"
+                      >
+                        <path d="M0 226V0h226v226z" fill="none"></path>
+                        <path
+                          d="M175 2c-6 0-11 2-14 6l-9 9 57 57 9-9c8-7 8-20 0-28L189 8c-4-4-9-6-14-6zm-33 23-14 13 60 60 14-13zm-22 22-94 93-5 6-20 68c-1 3 0 6 2 9 3 2 6 3 9 2l68-20c3-1 6-3 7-6l93-92-13-13-95 96-39 11-8-8 12-40 94-94zm20 21-95 96 14 3 2 13 95-96z"
+                          fill="#52555f"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-
       </div>
     </>
   );

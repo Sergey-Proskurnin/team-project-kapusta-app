@@ -129,23 +129,14 @@
   width: 16px;
   height: 18px;
 }
-
+/* 
 .deleteBtn:hover svg path {
   color: #ff751d;
   fill: currentColor;
-}
+} */
 
 @media screen and (min-width: 1280px) {
   .bodyTable {
     width: 75%;
   }
-}
-
-.buttonsGroup {
-  border: 1px solid transparent;
-  background-color: transparent;
-}
-
-.buttonGroup:hover svg path {
-  fill: red;
 }
