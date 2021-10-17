@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     color: #000;
-    width: 125px;
+    min-width: 125px;
     height: 44px;
     border: 2px solid #ffffff;
     background-color: transparent;
@@ -80,7 +80,7 @@
     height: 44px;
     margin-left: 21px;
     margin-top: 0px;
-    width: 125px;
+    min-width: 125px;
     border: 2px solid #ffffff;
     background-color: transparent;
     border-radius: 16px;

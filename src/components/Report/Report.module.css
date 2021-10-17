@@ -84,7 +84,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0px;
-    color:#ff751d;
+    color: #ff751d;
     align-items: center;
     list-style: none;
     font-size: 12px;
@@ -171,14 +171,12 @@
   }
   .buttonWidth {
     min-width: 183px;
-    border-radius: 16px;
+    border-radius: 16px 16px 16px 16px;
   }
 }
 @media screen and (min-width: 768px) {
   .section {
     margin-bottom: 30px;
-    /* border-radius: 30px;
-    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4); */
   }
 
   .navigation {
