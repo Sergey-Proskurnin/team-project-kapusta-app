@@ -7,8 +7,14 @@ import UserInfo from 'components/UserInfo';
 import UserLogout from 'components/UserLogout';
 import { gsap, Power2 } from 'gsap';
 import s from 'components/Header/Header.module.css';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+
+import './animationKeyframes.css';
+
+
 
 const Header = () => {
+  const viewPort = useWindowDimensions();
   const isAuthenticated = useSelector(state => getIsAuthenticated(state));
   let logotip = useRef(null);
   useEffect(() => {
@@ -32,8 +38,8 @@ const Header = () => {
           <Link to="/" alt="homepage" className={s.logoLink}>
             <img src={logo} className={s.logoImg} alt="Kapusta-logo" />
           </Link>
-          <NavLink to="/developers" className={s.Blazing}>
-          TEAM FSD #28
+          <NavLink to="/developers" className="Blazing">
+          {viewPort.width < 768 ? '#28' : 'TEAM FSD #28'}
         </NavLink>
           {isAuthenticated && (
             <div className={s.user_container}>

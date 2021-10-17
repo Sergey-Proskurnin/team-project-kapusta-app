@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
 import teammates from './data';
 import s from './OurTeam.module.css';
+
 
 export default function OurTeam() {
   return (
     <div className={s.content}>
-      <button className={s.close}></button>
+       <Link to="/" alt="homepage" className={s.close}/>
+        
       {teammates.map(teammate => (
         <figure className={s.snip1344}>
           <img src={teammate.photo} alt="" className={s.background} />
