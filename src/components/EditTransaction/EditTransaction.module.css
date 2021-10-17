@@ -1,3 +1,4 @@
+@media screen and (min-width: 320px) {
 .editModalWrapper {
   width: 100vw;
   height: 100vh;
@@ -132,7 +133,7 @@
   margin-left: auto;
   color: #ff751d;
 }
-
+}
 @media screen and (min-width: 768px) {
   .editModalWrapper {
     width: 100vw;
@@ -168,7 +169,8 @@
     position: relative;
   }
   .pickerWrapper {
-    margin: 35px -30px;
+    width: 265px;
+    margin: 6px -97px;
   }
 
   .selectWrapper {
@@ -201,7 +203,7 @@
   }
   .calcIcon {
     position: absolute;
-    margin: -36px 156px;
+    margin: -36px 131px;
   }
   .calc {
     margin: 10px 25px;
@@ -266,4 +268,10 @@
     margin-left: auto;
     color: #ff751d;
   }
+}
+@media screen and (min-width: 1280px) {
+  .pickerWrapper {
+    margin: 37px -41px;
+  }
+
 }

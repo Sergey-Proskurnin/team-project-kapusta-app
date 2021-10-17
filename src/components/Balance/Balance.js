@@ -11,13 +11,12 @@ const Balance = ({ hide, width }) => {
   const balance = useSelector(getTotalBalance);
   const dispatch = useDispatch();
   const [sum, setSum] = useState('');
-// катя
+  // катя
   const [setPromptClose, setClosePrompt] = useState(true);
-   const toggleWindow = () => {
+  const toggleWindow = () => {
     setClosePrompt(setClosePrompt => !setClosePrompt);
   };
-// катя
- 
+  // катя
 
   const onHandleChange = e => setSum(e.currentTarget.value);
   useEffect(() => {
@@ -35,7 +34,7 @@ const Balance = ({ hide, width }) => {
         <div className={s.buttonsGroup}>
           {balance === 0 ? (
             <>
-              {setPromptClose &&(<Notification onClose={toggleWindow} />)}
+              {setPromptClose && <Notification onClose={toggleWindow} />}
               <input
                 type="text"
                 name="name"
@@ -44,7 +43,7 @@ const Balance = ({ hide, width }) => {
                 onChange={onHandleChange}
                 className={`${s.balanceInput} ${width}`}
                 // className={s.balanceInput}
-                autoComplete='off'
+                autoComplete="off"
               />
               <button className={`${s.balanceButton} ${width}`} type="submit">
                 ПОДТВЕРДИТЬ
