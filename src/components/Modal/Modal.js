@@ -15,6 +15,7 @@ function Modal({
   modalButtonleft = 'Да',
   modalButtonRight = ' Нет',
   Form,
+  styleReg
 }) {
   useEffect(() => {
     window.document.body.style.overflowY = 'hidden';
@@ -59,7 +60,7 @@ function Modal({
 
   return createPortal(
     <div className={styles.modalBackground} onClick={handleOverlayClick}>
-      <div className={styles.modalContainer}>
+      <div className={`${styles.modalContainer} ${styleReg}`}>
         <span className={styles.closeBtn} onClick={onClose}>
           &#10006;
         </span>

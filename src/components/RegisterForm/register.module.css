@@ -75,6 +75,13 @@
 .button:active {
   background-color: #8a3d0d;
 }
+.modalContainerReg {
+  width: 420px;
+  height: 250px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* Adaptive */
 @media screen and (min-width: 768px) {
   .formRegistr {
