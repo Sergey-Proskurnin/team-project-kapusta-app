@@ -8,8 +8,8 @@ export default function OurTeam() {
     <div className={s.content}>
        <Link to="/" alt="homepage" className={s.close}/>
         
-      {teammates.map(teammate => (
-        <figure className={s.snip1344}>
+      {teammates.map((teammate, idx ) => (
+        <figure key={idx} className={s.snip1344}>
           <img src={teammate.photo} alt="" className={s.background} />
           <img
             src={teammate.photo}
