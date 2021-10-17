@@ -146,12 +146,12 @@ export default function ChartReport({ month, year, category, type }) {
       },
     },
   };
-
+ const height = width < 425 ? 400 : 200
   const options = width < 425 ? optionsHorizontal : optionsVertical;
 
   return (
     <div className={s.chartContainer}>
-      <Bar data={data} height={400} width={320} options={options} />
+      <Bar data={data} height={height} width={320} options={options} />
     </div>
   );
 }

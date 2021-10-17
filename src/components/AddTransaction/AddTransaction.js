@@ -1,4 +1,3 @@
-
 import { useState, useContext, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -67,8 +66,8 @@ export default function AddTransaction() {
     setSum('');
   };
 
-   let enterRef = useRef(null);
-   let clearRef = useRef(null);
+  let enterRef = useRef(null);
+  let clearRef = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import AddTransaction from 'components/BalanceComponentsTest/AddTransaction/AddTransaction';
+import AddTransaction from 'components/AddTransaction/AddTransaction';
 import { Container } from 'components/Container';
-import TransactionsList from 'components/BalanceComponentsTest/TransactionsList/TransactionsList';
-import TransactionsListMobile from 'components/BalanceComponentsTest/TransactionsList/TransactionListMobile';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
+import TransactionsListMobile from 'components/TransactionsList/TransactionListMobile';
 import Summary from 'components/Summary';
 import Balance from 'components/Balance';
 import ToGoReport from 'components/ToGoReport';
