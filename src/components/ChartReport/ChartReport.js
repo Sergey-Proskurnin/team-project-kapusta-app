@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import useWindowDimensions from 'hooks/useWindowDimensions';
@@ -6,7 +6,7 @@ import transactionsOperations from 'redux/transactions/transactions-operations';
 import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
 import s from './ChartReport.module.css';
 
-export default function ChartReport({ month, year, category }) {
+export default function ChartReport({ month, year, category, type }) {
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
 
@@ -18,27 +18,66 @@ export default function ChartReport({ month, year, category }) {
 
   const transactions = useSelector(getTransactionsPerMonth);
 
-  const filteredByDate = transactions.filter(
+  const filteredByType = transactions.filter(
+    transaction => transaction.type === type,
+  );
+
+  const filteredByDate = filteredByType.filter(
     transaction =>
       transaction.month === String(month) && transaction.year === String(year),
   );
 
-  const filteredByCategoryTransactions = filteredByDate.filter(transaction =>
-    !!category ? transaction.category === category : transaction,
-  );
+  const findTotalSumForChart = data => {
+    if (!!category) {
+      return data
+        .filter(transaction => transaction.category === category)
+        .reduce((result, currentSub) => {
+          const subCategory = result.find(
+            item => item.subCategory === currentSub.subCategory,
+          );
+          if (!subCategory) {
+            result.push({
+              subCategory: currentSub.subCategory,
+              sum: currentSub.sum,
+            });
+          } else {
+            subCategory.sum += currentSub.sum;
+          }
+          return result;
+        }, []);
+    }
+
+    const result = [];
+    data.map(transaction => {
+      const category = result.find(
+        item => item.category === transaction.category,
+      );
+      if (!category) {
+        return result.push({
+          category: transaction.category,
+          sum: transaction.sum,
+        });
+      } else {
+        return (category.sum += transaction.sum);
+      }
+    });
+    return result;
+  };
 
   const sortedSubCategoryTransactions = [
-    ...filteredByCategoryTransactions,
+    ...findTotalSumForChart(filteredByDate),
   ].sort((a, b) => b.sum - a.sum);
 
-  const sortedLables = [...sortedSubCategoryTransactions].map(
-    label => label.subCategory,
-  );
+  const sortedLables = [...sortedSubCategoryTransactions].map(tr => {
+    return tr.subCategory ? tr.subCategory : tr.category;
+  });
 
   const sortedSum = [...sortedSubCategoryTransactions].map(data => data.sum);
 
+  const labelName = type === 'expense' ? 'Расход' : 'Доход';
+
   const getNextColor = color => {
-    const colors = ['#FF751D', '#FFDAC0', '#fcd7bd', '#FF751D'];
+    const colors = ['#FF751D', '#FFDAC0', '#fcd7bd'];
 
     if (!color) {
       return colors[0];
@@ -67,13 +106,14 @@ export default function ChartReport({ month, year, category }) {
     labels: sortedLables,
     datasets: [
       {
-        label: 'Расход',
+        label: labelName,
         data: sortedSum,
         backgroundColor: colorsArray(sortedSum),
         borderColor: colorsArray(sortedSum),
         borderWidth: 1,
         borderRadius: 10,
         barThickness: barWidth,
+        barMargin: 20,
       },
     ],
   };
@@ -92,6 +132,7 @@ export default function ChartReport({ month, year, category }) {
   };
 
   const optionsHorizontal = {
+    maintainAspectRatio: false,
     indexAxis: 'y',
     elements: {
       bar: {
@@ -110,7 +151,7 @@ export default function ChartReport({ month, year, category }) {
 
   return (
     <div className={s.chartContainer}>
-      <Bar data={data} options={options} />
+      <Bar data={data} height={400} width={320} options={options} />
     </div>
   );
 }

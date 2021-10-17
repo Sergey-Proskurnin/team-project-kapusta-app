@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -9,7 +9,8 @@ import s from './Report.module.css';
 import Balance from '../Balance';
 import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
 import { CurrentAmount, CurrentMonth } from './';
-import categories from 'data/categories';
+import expenseIconCategories from 'data/expenseIcon';
+import incomeIconCategories from 'data/incomeIcon';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
 import transactionsOperations from 'redux/transactions/transactions-operations';
@@ -31,7 +32,7 @@ const Report = ({
     if ((month, year)) {
       dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
     }
-  }, [month, year]);
+  }, [dispatch, month, year]);
 
   const getTransactionByType = type => {
     const filteredByType = transaction.filter(
@@ -40,15 +41,16 @@ const Report = ({
     return filteredByType;
   };
 
-  const findeTotalSumByCategiry = (type, category) => {
+  const findTotalSumByCategory = (type, category) => {
     let totalExpense = 0;
     getTransactionByType(type)
       .filter(tr => tr.category === category)
-      .map(el => {
-        totalExpense += el.sum;
-      });
+      .map(el => (totalExpense += el.sum));
     return totalExpense;
   };
+
+  const categories =
+    type === 'expense' ? expenseIconCategories : incomeIconCategories;
 
   // const onHandleChangeType = () => {
   //   if (type === 'expense') {
@@ -99,9 +101,9 @@ const Report = ({
             </p>
           ) : (
             categories.map(event => {
-              let sum = findeTotalSumByCategiry(type, event.label);
+              let sum = findTotalSumByCategory(type, event.label);
               if (sum === 0) {
-                return;
+                return null;
               }
 
               return (

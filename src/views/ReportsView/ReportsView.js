@@ -33,9 +33,11 @@ const ReportsView = () => {
   const onHandleChangeType = () => {
     if (type === 'expense') {
       setType('income');
+      setCategory('');
     }
     if (type === 'income') {
       setType('expense');
+      setCategory('');
     }
   };
   const getCategory = e => {
