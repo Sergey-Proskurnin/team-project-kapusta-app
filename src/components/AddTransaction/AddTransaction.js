@@ -70,33 +70,36 @@ export default function AddTransaction() {
   let clearRef = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      enterRef,
-      1,
-      {
-        opacity: 0,
-        x: -800,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        ease: Power3.easeInOut,
-      },
-    );
+    if (viewPort.width > 767) {
+      gsap.fromTo(
+        enterRef,
+        1,
+        {
+          opacity: 0,
+          x: -800,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          ease: Power3.easeInOut,
+        },
+      );
 
-    gsap.fromTo(
-      clearRef,
-      1,
-      {
-        opacity: 0,
-        x: 800,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        ease: Power3.easeInOut,
-      },
-    );
+      gsap.fromTo(
+        clearRef,
+        1,
+        {
+          opacity: 0,
+          x: 800,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          ease: Power3.easeInOut,
+        },
+      );
+    }
+    return;
   }, []);
 
   return (
