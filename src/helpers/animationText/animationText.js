@@ -2,7 +2,7 @@ export function textAnimation(text) {
   text.innerHTML = [...text.textContent]
     .map(
       n =>
-        `<span style="font-weight: normal;font-size: 14px;transition: all 1.5s; display: inline-block; margin-bottom: 24px; font-family: Roboto;">${
+        `<span style="font-weight: normal;font-size: 14px;transition: all 1.5s; display: inline-block; margin-bottom: 8px; font-family: Roboto;">${
           n.trim() ? n : '&nbsp;'
         }</span>`,
     )
