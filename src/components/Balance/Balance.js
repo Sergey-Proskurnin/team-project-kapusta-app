@@ -5,15 +5,25 @@ import s from './Balance.module.css';
 import { getTotalBalance } from 'redux/transactions/transactions-selectors';
 import transactionOp from 'redux/transactions/transactions-operations';
 
+import Notification from '../Notification/Notification';
+
 const Balance = ({ hide, width }) => {
   const balance = useSelector(getTotalBalance);
   const dispatch = useDispatch();
   const [sum, setSum] = useState('');
+// катя
+  const [setPromptClose, setClosePrompt] = useState(true);
+   const toggleWindow = () => {
+    setClosePrompt(setClosePrompt => !setClosePrompt);
+  };
+// катя
+ 
 
   const onHandleChange = e => setSum(e.currentTarget.value);
   useEffect(() => {
     setSum(balance);
   }, [balance]);
+
   const onhandleSubmit = e => {
     e.preventDefault();
     dispatch(transactionOp.setBalance(sum));
@@ -25,6 +35,7 @@ const Balance = ({ hide, width }) => {
         <div className={s.buttonsGroup}>
           {balance === 0 ? (
             <>
+              {setPromptClose &&(<Notification onClose={toggleWindow} />)}
               <input
                 type="text"
                 name="name"
@@ -32,6 +43,8 @@ const Balance = ({ hide, width }) => {
                 placeholder="00.00"
                 onChange={onHandleChange}
                 className={`${s.balanceInput} ${width}`}
+                // className={s.balanceInput}
+                autoComplete='off'
               />
               <button className={`${s.balanceButton} ${width}`} type="submit">
                 ПОДТВЕРДИТЬ

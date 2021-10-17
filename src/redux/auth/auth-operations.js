@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 import {
   registerRequest,
   registerSuccess,
@@ -29,10 +31,15 @@ const register = credentials => async dispatch => {
     const response = await fetchSignUp(credentials);
     // token.set(response.data.token);
     dispatch(registerSuccess(response.data));
-  } catch ({response}) {
+  } catch ({ response }) {
     dispatch(registerError(response.data.message));
-    alert(`Incorrect login!
-    Server error: ${response.data.message}`);
+    Swal.fire({
+      title: 'Incorrect login!',
+      text: `${response.data.message}`,
+      icon: 'error',
+      confirmButtonColor: '#FF751D',
+      confirmButtonText: 'OK',
+    });
   }
 };
 
@@ -42,9 +49,15 @@ const logIn = credentials => async dispatch => {
     const response = await fetchLogin(credentials);
     token.set(response.data.data);
     dispatch(loginSuccess(response.data.data));
-  } catch ({response}) {
+  } catch ({ response }) {
     dispatch(loginError(response.data.message));
-    alert(`Incorrect login or password! Server error: ${response.data.message}`);
+    Swal.fire({
+      title: 'Incorrect login or password!',
+      text: `${response.data.message}`,
+      icon: 'error',
+      confirmButtonColor: '#FF751D',
+      confirmButtonText: 'OK',
+    });
   }
 };
 
@@ -54,9 +67,14 @@ const logOut = () => async dispatch => {
     await fetchLogout();
     token.unset();
     dispatch(logoutSuccess());
-  } catch ({response}) {
+  } catch ({ response }) {
     dispatch(logoutError(response.data.message));
-    alert(`Server error: ${response.data.message}`);
+      Swal.fire({
+      title: `${response.data.message}`,
+      icon: 'error',
+      confirmButtonColor: '#FF751D',
+      confirmButtonText: 'OK',
+    });
   }
 };
 
@@ -74,9 +92,14 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const response = await fetchCurrent();
     dispatch(getCurrentUserSuccess(response.data.user));
     dispatch(setTotalBalanceSuccess(response.data.user.balance));
-  } catch ({response}) {
+  } catch ({ response }) {
     dispatch(getCurrentUserError(response.data.message));
-    alert(`Server error: ${response.data.message}`);
+      Swal.fire({
+      title: `${response.data.message}`,
+      icon: 'error',
+      confirmButtonColor: '#FF751D',
+      confirmButtonText: 'OK',
+    });
   }
 };
 
