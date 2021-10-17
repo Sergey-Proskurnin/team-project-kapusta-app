@@ -9,8 +9,7 @@ import EditTransaction from 'components/EditTransaction';
 import contextProps from 'context/context';
 
 export default function TransactionsList() {
-  const { type, picker, handleCalendarClick, closePicker, date, setDate } =
-    useContext(contextProps);
+  const { type, date, setDate } = useContext(contextProps);
   const dispatch = useDispatch();
   const transactions = useSelector(selectors.getTransactionsPerDay);
   const filteredTransactions = transactions.filter(item => item.type === type);
@@ -23,7 +22,6 @@ export default function TransactionsList() {
     if (date) {
       dispatch(transactionsOperations.getTransactionsDay(date));
     }
-
 
     if (del) {
       deleteTransaction(transactions.find(item => item._id === transaction));
@@ -105,13 +103,12 @@ export default function TransactionsList() {
                       type !== 'income' && styles.tdSumExpense
                     }`}
                   >
-
                     {type === 'income'
                       ? `${transaction.sum}.00 грн.`
                       : `-${transaction.sum}.00 грн.`}
                   </td>
                   <td className={styles.thIcon}>
-                    <div
+                    <button
                       className={styles.deleteBtn}
                       onClick={() => handleDeteteClick(transaction)}
                     >
@@ -132,28 +129,27 @@ export default function TransactionsList() {
                           </clipPath>
                         </defs>
                       </svg>
-                    </div>
+                    </button>
                   </td>
                   <td
                     className={styles.thIcon}
                     onClick={() => handleEditClick(transaction)}
                   >
-                    <div className={styles.deleteBtn}>
-                    <div>
+                    <button className={styles.deleteBtn}>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 226 226"
-                      >
-                        <path d="M0 226V0h226v226z" fill="none"></path>
+                        aria-hidden="true"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        version="1.1"
+                        width="16"
+                        data-view-component="true"
+                                           >
                         <path
-                          d="M175 2c-6 0-11 2-14 6l-9 9 57 57 9-9c8-7 8-20 0-28L189 8c-4-4-9-6-14-6zm-33 23-14 13 60 60 14-13zm-22 22-94 93-5 6-20 68c-1 3 0 6 2 9 3 2 6 3 9 2l68-20c3-1 6-3 7-6l93-92-13-13-95 96-39 11-8-8 12-40 94-94zm20 21-95 96 14 3 2 13 95-96z"
-                          fill="#52555f"
+                          fill="#52555F"
+                          d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"
                         ></path>
                       </svg>
-                    </div>
-                  </div>
+                    </button>
                   </td>
                 </tr>
               ))}

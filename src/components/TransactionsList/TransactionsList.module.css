@@ -121,19 +121,22 @@
   margin-right: auto;
   margin-left: auto;
   cursor: pointer;
-  width: 16px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border:  transparent;
+  background-color: transparent;
 }
 
 .deleteBtnIcon {
   width: 16px;
   height: 18px;
 }
-/* 
+
 .deleteBtn:hover svg path {
   color: #ff751d;
   fill: currentColor;
-} */
+}
 
 @media screen and (min-width: 1280px) {
   .bodyTable {

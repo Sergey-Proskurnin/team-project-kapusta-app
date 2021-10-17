@@ -31,18 +31,18 @@
   justify-content: space-between;
 }
 
-.Blazing {
+/* .Blazing {
   font-family: 'Akronim', cursive;
   font-size: 24px;
   text-decoration: none;
   vertical-align: middle;
   outline: none;
   color: #ff7300;
-  /* text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 4px -5px 6px #ff0,
-    -4px -10px 10px #ff0, 0 -10px 30px #ff0; */
+  text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 4px -5px 6px #ff0,
+    -4px -10px 10px #ff0, 0 -10px 30px #ff0;
   -webkit-animation: Blazing 2s linear infinite alternate;
   animation: Blazing 2s linear infinite alternate;
-}
+} */
 
 @media (min-width: 768px) {
   .serInfo_container {

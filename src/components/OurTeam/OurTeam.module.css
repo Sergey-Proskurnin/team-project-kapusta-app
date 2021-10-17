@@ -156,7 +156,7 @@ figure:focus {
 
 .close {
   position: absolute;
-  top: 0.5rem;
+  top: 4.5rem;
   right: 0.5rem;
   display: flex;
   align-items: center;
