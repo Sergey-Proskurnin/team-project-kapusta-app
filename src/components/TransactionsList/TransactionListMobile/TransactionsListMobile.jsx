@@ -1,23 +1,80 @@
-import { useEffect } from 'react';
+import { useEffect,useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as selectors from 'redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import s from './TransactionsListMobile.module.css';
+import Modal from 'components/Modal';
+import EditTransaction from 'components/EditTransaction';
+import contextProps from 'context/context';
 
-export default function TransactionsListMobile({ transactionType, date }) {
+export default function TransactionsListMobile() {
+   const { type, date, setDate } = useContext(contextProps);
   const dispatch = useDispatch();
   const transactions = useSelector(selectors.getTransactionsPerDay);
+ const [modalDel, setModalDel] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [transaction, setTransaction] = useState('');
+  const [del, setDel] = useState(false);
 
   useEffect(() => {
     if (date) {
       dispatch(transactionsOperations.getTransactionsDay(date));
     }
-  }, [dispatch, date]);
+
+     if (del) {
+      deleteTransaction(transactions.find(item => item._id === transaction));
+    }
+  }, [dispatch, date, del]);
   const deleteTransaction = transaction => {
     dispatch(transactionsOperations.deleteTransaction(transaction));
+     setDel(false);
+    setTransaction('');
+    setModalDel(false);
   };
 
+    const handleDeteteClick = transaction => {
+    setModalDel(true);
+    setTransaction(transaction._id);
+  };
+  const onDelCancel = () => {
+    setDel(false);
+    setTransaction('');
+    setModalDel(false);
+  };
+
+  const onDelOk = () => {
+    setDel(true);
+    setModalDel(false);
+  };
+
+  const handleEditClick = transaction => {
+    setModalEdit(true);
+    setTransaction(transaction._id);
+  };
+
+  const onEditCalcel = () => {
+    setModalEdit(false);
+    setTransaction('');
+    setModalDel(false);
+  };
+
+
   return (
+     <>
+      {modalDel && (
+        <Modal
+          modalTitle="Вы действительно хотите удалить эту запись?"
+          handleClickRight={onDelCancel}
+          handleClickLeft={onDelOk}
+        />
+      )}
+      {modalEdit && (
+        <EditTransaction
+          onDateChange={setDate}
+          transaction={transactions.find(item => item._id === transaction)}
+          cancelChanges={onEditCalcel}
+        />
+      )}
     <div className={s.tsList__container}>
       <ul style={{ width: '100%', padding: 0 }}>
         {transactions.map(transaction => (
@@ -49,7 +106,7 @@ export default function TransactionsListMobile({ transactionType, date }) {
               <div className={s.buttonWrapper}>
                 <button
                   className={s.buttonsGroup}
-                  onClick={() => deleteTransaction(transaction)}
+                 onClick={() => handleDeteteClick(transaction)}
                 >
                   <svg
                     width="18"
@@ -70,7 +127,7 @@ export default function TransactionsListMobile({ transactionType, date }) {
                 </button>
                 <button
                   className={s.buttonsGroup}
-                  // onClick={() => deleteTransaction(transaction)}
+                  onClick={() => handleEditClick(transaction)}
                 >
                   <svg
                     aria-hidden="true"
@@ -91,6 +148,7 @@ export default function TransactionsListMobile({ transactionType, date }) {
           </div>
         ))}
       </ul>
-    </div>
+      </div>
+       </>
   );
 }
