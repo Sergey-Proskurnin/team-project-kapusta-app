@@ -206,6 +206,7 @@ const RegisterForm = ({ onClickComeBack }) => {
               handleClickLeft={toggleModal}
               handleClickRight={toggleModal}
               onClose={toggleModal}
+              styleReg={s.modalContainerReg}
             />
           )}
         </div>
