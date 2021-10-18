@@ -14,6 +14,9 @@ import OnLoader from 'components/OnLoader';
 
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
+import Alert from 'components/Alert';
+import { getAuthError } from 'redux/auth';
+import { getTransactionError } from 'redux/transactions';
 
 const HomePageView = lazy(() =>
   import('views/HomePageView/HomePageView' /*webpackChunkName: "home-view" */),
@@ -24,12 +27,17 @@ const BalanceView = lazy(() =>
 const ReportsView = lazy(() =>
   import('views/ReportsView' /*webpackChunkName: "reports-view" */),
 );
-const DevelopersView  = lazy(() =>
-  import('views/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */),
+const DevelopersView = lazy(() =>
+  import(
+    'views/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */
+  ),
 );
 
 const App = () => {
   const dispatch = useDispatch();
+
+  const authError = useSelector(getAuthError);
+  const transactionError = useSelector(getTransactionError);
 
   const isFetchigCurrentUser = useSelector(state =>
     getFetchigCurrentUser(state),
@@ -44,6 +52,12 @@ const App = () => {
   return (
     <>
       <Header />
+      {authError & (authError !== 'Unvalid token') && (
+        <Alert text={authError} />
+      )}
+      {transactionError & (transactionError !== 'Unvalid token') && (
+        <Alert text={transactionError} />
+      )}
       <Suspense fallback={<OnLoader />}>
         {isFetchigCurrentUser ? (
           <OnLoader />

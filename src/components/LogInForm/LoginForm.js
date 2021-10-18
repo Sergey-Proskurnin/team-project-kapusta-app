@@ -116,6 +116,7 @@ const LoginForm = ({ onClickRegister }) => {
     );
   }, []);
 
+
   return (
     <div className={s.formRegistr}>
       <p className={s.promtText}>
@@ -197,5 +198,7 @@ const LoginForm = ({ onClickRegister }) => {
       </form>
     </div>
   );
+
+  
 };
 export default LoginForm;

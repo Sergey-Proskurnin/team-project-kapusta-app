@@ -1,5 +1,3 @@
-import Swal from 'sweetalert2';
-
 import {
   registerRequest,
   registerSuccess,
@@ -33,13 +31,6 @@ const register = credentials => async dispatch => {
     dispatch(registerSuccess(response.data));
   } catch ({ response }) {
     dispatch(registerError(response.data.message));
-    Swal.fire({
-      title: 'Incorrect login!',
-      text: `${response.data.message}`,
-      icon: 'error',
-      confirmButtonColor: '#FF751D',
-      confirmButtonText: 'OK',
-    });
   }
 };
 
@@ -51,13 +42,6 @@ const logIn = credentials => async dispatch => {
     dispatch(loginSuccess(response.data.data));
   } catch ({ response }) {
     dispatch(loginError(response.data.message));
-    Swal.fire({
-      title: 'Incorrect login or password!',
-      text: `${response.data.message}`,
-      icon: 'error',
-      confirmButtonColor: '#FF751D',
-      confirmButtonText: 'OK',
-    });
   }
 };
 
@@ -69,12 +53,6 @@ const logOut = () => async dispatch => {
     dispatch(logoutSuccess());
   } catch ({ response }) {
     dispatch(logoutError(response.data.message));
-    Swal.fire({
-      title: `${response.data.message}`,
-      icon: 'error',
-      confirmButtonColor: '#FF751D',
-      confirmButtonText: 'OK',
-    });
   }
 };
 
@@ -107,12 +85,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
       return;
     }
     dispatch(getCurrentUserError(response.data.message));
-    Swal.fire({
-      title: `${response.data.message}`,
-      icon: 'error',
-      confirmButtonColor: '#FF751D',
-      confirmButtonText: 'OK',
-    });
   }
 };
 
