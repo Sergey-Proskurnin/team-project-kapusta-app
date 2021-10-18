@@ -69,6 +69,7 @@ export default function TransactionsList() {
           modalTitle="Вы действительно хотите удалить эту запись?"
           handleClickRight={onDelCancel}
           handleClickLeft={onDelOk}
+          onClose={onDelCancel}
         />
       )}
       {modalEdit && (
@@ -106,8 +107,8 @@ export default function TransactionsList() {
                     }`}
                   >
                     {type === 'income'
-                      ? `${transaction.sum}.00 грн.`
-                      : `-${transaction.sum}.00 грн.`}
+                      ? `${transaction.sum.toLocaleString('ru')}.00 грн.`
+                      : `-${transaction.sum.toLocaleString('ru')}.00 грн.`}
                   </td>
                   <td className={styles.thIcon}>
                     <button

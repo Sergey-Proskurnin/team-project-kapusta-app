@@ -8,10 +8,13 @@ const getFetchigCurrentUser = state => state.auth.isFetchigCurrentUser;
 
 const getCurrentToken = state => state.auth.token;
 
+const getAuthError = state => state.auth.error;
+
 export {
   getIsAuthenticated,
   getUserName,
   getFetchigCurrentUser,
   getCurrentToken,
   getUserAvatar,
+  getAuthError,
 };
