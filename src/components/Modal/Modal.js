@@ -14,8 +14,7 @@ function Modal({
   modalTitle = 'Вы действительно хотите выйти?',
   modalButtonleft = 'Да',
   modalButtonRight = ' Нет',
-  Form,
-  styleReg
+  styleReg,
 }) {
   useEffect(() => {
     window.document.body.style.overflowY = 'hidden';
@@ -38,25 +37,25 @@ function Modal({
     }
   };
 
-   let text = useRef(null);
-   useEffect(() => {
-     textAnimation(text);
-   }, []);
-  
-   let buttons = useRef(null);
-   useEffect(() => {
-     gsap.fromTo(
-       buttons,
-       0.5,
-       {
-         y: -100,
-       },
-       {
-         y: 13,
-         ease: Power1.easeInOut,
-       },
-     );
-   }, []);
+  let text = useRef(null);
+  useEffect(() => {
+    textAnimation(text);
+  }, []);
+
+  let buttons = useRef(null);
+  useEffect(() => {
+    gsap.fromTo(
+      buttons,
+      0.5,
+      {
+        y: -100,
+      },
+      {
+        y: 13,
+        ease: Power1.easeInOut,
+      },
+    );
+  }, []);
 
   return createPortal(
     <div className={styles.modalBackground} onClick={handleOverlayClick}>
@@ -65,12 +64,11 @@ function Modal({
           &#10006;
         </span>
 
-         <div className={styles.title} ref={el => (text = el)}>
-           <p>{modalTitle}</p>
-         </div>
+        <div className={styles.title} ref={el => (text = el)}>
+          <p>{modalTitle}</p>
+        </div>
 
         {/* <p className={styles.title}>{modalTitle}</p> */}
-        {/* {Form && <Form />} */}
 
         <div className={styles.buttons}>
           <div ref={el => (buttons = el)}>

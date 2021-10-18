@@ -8,8 +8,8 @@ const setBalance = balance => async dispatch => {
   try {
     const response = await fetch.setBalance(balance);
     dispatch(actions.setTotalBalanceSuccess(response.data.data.balance));
-  } catch (error) {
-    dispatch(actions.setTotalBalanceError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.setTotalBalanceError(response.data.message));
   }
 };
 
@@ -25,8 +25,8 @@ const addTransaction = transaction => async dispatch => {
 
     dispatch(actions.addTransactionSuccess(response.data.resultTransaction));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
-  } catch (error) {
-    dispatch(actions.addTransactionError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.addTransactionError(response.data.message));
   }
 };
 
@@ -38,8 +38,8 @@ const deleteTransaction = transaction => async dispatch => {
     const setBalance = await fetch.setBalance(balance);
     dispatch(actions.deleteTransactionSuccess(transaction._id));
     dispatch(actions.setTotalBalanceSuccess(setBalance.data.data.balance));
-  } catch (error) {
-    dispatch(actions.addTransactionError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.addTransactionError(response.data.message));
   }
 };
 
@@ -51,8 +51,8 @@ const editTransaction = transaction => async dispatch => {
     const response = await fetch.editTransaction(transaction, balance);
     dispatch(actions.editTransactionSucces(response.data.result));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
-  } catch (error) {
-    dispatch(actions.editTransactionError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.editTransactionError(response.data.message));
   }
 };
 
@@ -62,8 +62,8 @@ const getTransactionsDay = date => async dispatch => {
     const response = await fetch.getTransactionsByDate(date);
 
     dispatch(actions.getTransactionsSuccess(response.data.result));
-  } catch (error) {
-    dispatch(actions.getTransactionsError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.getTransactionsError(response.data.message));
   }
 };
 
@@ -72,8 +72,8 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
   try {
     const response = await fetch.getTransactionsByPeriod(`${month}-${year}`);
     dispatch(actions.getTransactionsMonthYearSuccess(response.data.result));
-  } catch (error) {
-    dispatch(actions.getTransactionsMonthYearError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.getTransactionsMonthYearError(response.data.message));
   }
 };
 
@@ -83,8 +83,8 @@ const getMonthlyBalancesYear = year => async dispatch => {
     const response = await fetch.getTransactionsByPeriod(year);
     const balances = calculateBalancesPerMonth(response.data.result);
     dispatch(actions.getMonthlyBalanceSuccess(balances));
-  } catch (error) {
-    dispatch(actions.getMonthlyBalanceError(error.message));
+  } catch ({ response }) {
+    dispatch(actions.getMonthlyBalanceError(response.data.message));
   }
 };
 
