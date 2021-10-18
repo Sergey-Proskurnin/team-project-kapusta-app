@@ -7,17 +7,18 @@ import s from './HomePage.module.css';
 import imgText from 'img/svg/Union.svg';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 import LoginForm from 'components/LogInForm/LoginForm';
-import { loginGoogleSuccess } from 'redux/auth';
+import { loginGoogleSuccess, refreshLoginGoogleSuccess } from 'redux/auth';
 
 const HomePageView = ({ location }) => {
-  const { token } = queryString.parse(location.search);
+  const { refreshToken, token } = queryString.parse(location.search);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (token) {
       dispatch(loginGoogleSuccess(token));
+      dispatch(refreshLoginGoogleSuccess(refreshToken));
     }
-  });
+  }, []);
 
   const [login, setLogin] = useState(true);
   const onRegisterClick = () => {
