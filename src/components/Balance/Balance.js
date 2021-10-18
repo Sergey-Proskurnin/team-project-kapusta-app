@@ -11,12 +11,10 @@ const Balance = ({ hide, width }) => {
   const balance = useSelector(getTotalBalance);
   const dispatch = useDispatch();
   const [sum, setSum] = useState('');
-  // катя
   const [setPromptClose, setClosePrompt] = useState(true);
   const toggleWindow = () => {
     setClosePrompt(setClosePrompt => !setClosePrompt);
   };
-  // катя
 
   const onHandleChange = e => setSum(e.currentTarget.value);
   useEffect(() => {

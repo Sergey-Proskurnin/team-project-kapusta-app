@@ -21,7 +21,9 @@ const UserInfo = () => {
         <div className={s.userInfo}>
           <div className={s.userInfo_container}>
             {UserAvatar ? (
-              <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
+              <a href='https://ru.gravatar.com/' target="_blank">
+                <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
+              </a>
             ) : (
               <p className={s.userAvatar}>{FirstLetterOfUser}</p>
             )}
@@ -32,7 +34,9 @@ const UserInfo = () => {
       {viewPort.width < 768 && (
         <div className={s.userInfo_container}>
           {UserAvatar ? (
-            <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
+             <a href='https://ru.gravatar.com/' target="_blank">
+                <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
+              </a>
           ) : (
             <p className={s.userAvatar}>{FirstLetterOfUser}</p>
           )}
