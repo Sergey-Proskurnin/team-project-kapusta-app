@@ -52,10 +52,10 @@ const App = () => {
   return (
     <>
       <Header />
-      {authError & (authError !== 'Unvalid token') && (
+      {authError && (authError !== 'Unvalid token') && (
         <Alert text={authError} />
       )}
-      {transactionError & (transactionError !== 'Unvalid token') && (
+      {transactionError && (transactionError !== 'Unvalid token') && (
         <Alert text={transactionError} />
       )}
       <Suspense fallback={<OnLoader />}>
