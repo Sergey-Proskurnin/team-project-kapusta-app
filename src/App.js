@@ -46,16 +46,18 @@ const App = () => {
   const onToken = useSelector(state => getCurrentToken(state));
 
   useEffect(() => {
+    if (authError === 'Unvalid token' || transactionError === 'Unvalid token') {
+      dispatch(getCurrentUser());
+    }
+
     dispatch(getCurrentUser());
-  }, [dispatch, onToken]);
+  }, [dispatch, onToken, authError, transactionError]);
 
   return (
     <>
       <Header />
-      {authError && (authError !== 'Unvalid token') && (
-        <Alert text={authError} />
-      )}
-      {transactionError && (transactionError !== 'Unvalid token') && (
+      {authError && authError !== 'Unvalid token' && <Alert text={authError} />}
+      {transactionError && transactionError !== 'Unvalid token' && (
         <Alert text={transactionError} />
       )}
       <Suspense fallback={<OnLoader />}>
@@ -80,7 +82,6 @@ const App = () => {
               component={ReportsView}
               redirectTo={routes.home}
             />
-
             <PublicRoute
               path={routes.developers}
               component={DevelopersView}
