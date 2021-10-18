@@ -6,6 +6,7 @@ import img6 from './images/team/Sivak_Ekaterina.jpeg';
 import img7 from './images/team/Strilchuk_Mykhaylo.jpg';
 import img9 from './images/team/Yevhen_Cherniuk.jpeg';
 import img10 from './images/team/Zharkynbek_Idirisov.jpeg';
+import img3 from './images/team/Selina_Irina.jpg';
 
 const teammates = [
   {
@@ -20,7 +21,7 @@ const teammates = [
   {
     id: 2,
     fullName: 'Olena Kaminska',
-    position: 'Modal window and slider queen',
+    position: 'Redux Queen',
     photo: `./${img2}`,
     linkedIn: 'https://www.linkedin.com/in/helen-kaminskaya-b1188351/',
     gitHub: 'https://github.com/OlenaKa',
@@ -29,7 +30,7 @@ const teammates = [
   {
     id: 3,
     fullName: 'Zharkynbek Idirisov',
-    position: 'Pagination and alert master',
+    position: 'Component Rescue Superhero',
     photo: `./${img10}`,
     linkedIn:
       'https://www.linkedin.com/mwlite/in/%E2%9A%A1zharkynbek-idirisov-%E2%9A%A1-b41578206',
@@ -37,16 +38,16 @@ const teammates = [
     instagram: 'https://www.instagram.com/jarkynbek/',
   },
   {
-    id: 5,
+    id: 4,
     fullName: 'Ekaterina Sivak',
-    position: 'MarkUp master',
+    position: 'Senior Developer of Login Page',
     photo: `./${img6}`,
     linkedIn: 'https://www.linkedin.com/feed/',
     gitHub: 'https://github.com/SivakKaterina',
     instagram: 'https://www.instagram.com/ksivak335/',
   },
   {
-    id: 6,
+    id: 5,
     fullName: 'Alla Moisieieva',
     position: "'Scream' master",
     photo: `./${img5}`,
@@ -55,7 +56,7 @@ const teammates = [
     instagram: 'https://www.instagram.com/fox.real.name/',
   },
   {
-    id: 7,
+    id: 6,
     fullName: 'Sergii Maksymenko',
     position: 'Creative director',
     photo: `./${img4}`,
@@ -64,9 +65,18 @@ const teammates = [
     instagram: 'https://www.instagram.com/s.v.maksymenko/',
   },
   {
+    id: 7,
+    fullName: 'Irina Selina',
+    position: 'Statistics Component Developer',
+    photo: `./${img3}`,
+    linkedIn: 'https://www.linkedin.com/in/irina-selina-9857541b6/',
+    gitHub: 'https://github.com/IrinaSelina',
+    instagram: 'https://www.instagram.com/irinaselina12/?hl=ru',
+  },
+  {
     id: 8,
     fullName: 'Mykhaylo Strilchuk',
-    position: 'Modal Open master',
+    position: 'Backend lord and Swagger winner',
     photo: `./${img7}`,
     linkedIn: 'linkedin.com/in/misha-strilchuk-ba2a6494 ',
     gitHub: 'https://github.com/mishastr77',
@@ -75,9 +85,9 @@ const teammates = [
   {
     id: 9,
     fullName: 'Yevhen Cherniuk',
-    position: 'Gsap master',
+    position: 'Material-UI expert',
     photo: `./${img9}`,
-    linkedIn: 'https://fs41.fex.net/preview/3334796439/400x0',
+    linkedIn: '#',
     gitHub: 'https://github.com/yevhen-cherniuk',
     instagram:
       'https://www.instagram.com/p/COX-ndOjkkn7WzamP265w4VgpO1MVk9jQ61aNQ0/?igshid=110vzxuoc9ttg',
