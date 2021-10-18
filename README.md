@@ -1,5 +1,3 @@
-# team-project-kapusta-app
-
 <h1 align="center"> :technologist: :books: :fire: GoIT Team project :rocket: :rocket: :rocket:</h1>
 <h2 align="center"> :leafy_green: :moneybag: Kapu:heavy_dollar_sign:ta – your smart finance :moneybag: :money_with_wings:</h2>
 <img src="./readme_assets/1.png" width="100%">
@@ -104,7 +102,7 @@ period just change to left or right
     catgories select and styles, Button toGoBack and Button toGoReport logic and
     style
 
-- [<img src="https://img.shields.io/badge/-Alla%20Moisieieva-6360F8" />](https://github.com/alalasimys)-
+- [<img src="https://img.shields.io/badge/-Alla%20Moisieieva-6360F8" />](https://github.com/alalasimys) -
   **"Scream" Master**
 
   - Connecting the styles and logic of the expense and income Chartjs-2 graph on
@@ -139,6 +137,6 @@ period just change to left or right
     the logic of the appearance of a notification with a zero balance, logging
     into the mobile version, testing and checking markup bugs
 
-- [<img src="https://img.shields.io/badge/-Yevhen%20Cherniuk-2F4F4F" />](https://github.com/yevhen-cherniuk)-
+- [<img src="https://img.shields.io/badge/-Yevhen%20Cherniuk-2F4F4F" />](https://github.com/yevhen-cherniuk) -
   **Material-UI expert**
   - Material-UI svg and icons
