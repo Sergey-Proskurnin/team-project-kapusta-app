@@ -23,13 +23,13 @@ import {
   fetchLogin,
   fetchLogout,
   fetchCurrent,
+  fetchRefreshToken,
 } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
     const response = await fetchSignUp(credentials);
-    // token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch ({ response }) {
     dispatch(registerError(response.data.message));
@@ -69,7 +69,7 @@ const logOut = () => async dispatch => {
     dispatch(logoutSuccess());
   } catch ({ response }) {
     dispatch(logoutError(response.data.message));
-      Swal.fire({
+    Swal.fire({
       title: `${response.data.message}`,
       icon: 'error',
       confirmButtonColor: '#FF751D',
@@ -80,7 +80,7 @@ const logOut = () => async dispatch => {
 
 const getCurrentUser = () => async (dispatch, getState) => {
   const {
-    auth: { token: persistedToken },
+    auth: { token: persistedToken, refreshToken: persistedRefreshToken },
   } = getState();
 
   if (!persistedToken) {
@@ -93,8 +93,21 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(getCurrentUserSuccess(response.data.user));
     dispatch(setTotalBalanceSuccess(response.data.user.balance));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      token.set(persistedRefreshToken);
+      const response = await fetchRefreshToken();
+      dispatch(getCurrentUserSuccess(response.data.data.user));
+      dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
+      dispatch(
+        loginSuccess({
+          token: response.data.data.token,
+          refreshToken: response.data.data.refreshToken,
+        }),
+      );
+      return;
+    }
     dispatch(getCurrentUserError(response.data.message));
-      Swal.fire({
+    Swal.fire({
       title: `${response.data.message}`,
       icon: 'error',
       confirmButtonColor: '#FF751D',
