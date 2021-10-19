@@ -53,7 +53,9 @@ const UserInfo = () => {
               <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
             </a>
           ) : (
-            <p className={s.userAvatar}>{FirstLetterOfUser}</p>
+            <a href="https://ru.gravatar.com/" target="_blank" rel="noreferrer">
+              <p className={s.userAvatar}>{FirstLetterOfUser}</p>
+            </a>
           )}
         </div>
       )}
