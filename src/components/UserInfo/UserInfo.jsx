@@ -9,8 +9,9 @@ const UserInfo = () => {
 
   const avatar = useSelector(state => getUserAvatar(state));
   const defaultGravatar =
-    'https://s.gravatar.com/avatar/c61f12f616393799baecd77a09b6565c?s=250' || 'https://s.gravatar.com/avatar/eee8af510870708594f1c5465104cffd?s=250';
-  const UserAvatar = avatar !== defaultGravatar ? avatar : undefined;
+    'https://s.gravatar.com/avatar/c61f12f616393799baecd77a09b6565c?s=250';
+  const defaultGravatarTo = 'https://s.gravatar.com/avatar/eee8af510870708594f1c5465104cffd?s=250'
+  const UserAvatar = (avatar !== defaultGravatar &&  avatar !== defaultGravatarTo) ? avatar : undefined;
 
   const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
   const viewPort = useWindowDimensions();
