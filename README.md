@@ -13,6 +13,7 @@
 <img src="https://img.shields.io/badge/-Nodejs-brightgreen"/>
 <img src="https://img.shields.io/badge/-nodemailer-%2344ACE7"/>
 <img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/>
+<img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/>
 <img src="https://img.shields.io/badge/-MongoDB-green"/>
 <img src="https://img.shields.io/badge/-GitHub-black"/>
 </p>
@@ -33,7 +34,8 @@ with using
 [<img src="https://img.shields.io/badge/-Nodejs-brightgreen"/>](https://nodejs.org/uk/)
 with using
 [<img src="https://img.shields.io/badge/-nodemailer-%2344ACE7"/>](https://nodemailer.com/about/),
-[<img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/>](https://swagger.io/)
+[<img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/>](https://swagger.io/),
+[<img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/>](https://cloudinary.com/)
 and
 [<img src="https://img.shields.io/badge/-MongoDB-green"/>](https://www.mongodb.com/)
 
