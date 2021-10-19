@@ -55,7 +55,7 @@ const Report = ({
       <div className={`${s.navigation} ${s.section}`}>
         <ArrowToGoBack />
         <div className={s.navigationWrapper}>
-          <Balance width={s.buttonWidth} hide={s.buttonNone}/>
+          <Balance width={true} hide={s.buttonNone}/>
           <CurrentMonth
             currentMonth={month}
             currentYear={year}

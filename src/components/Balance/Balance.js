@@ -39,17 +39,17 @@ const Balance = ({ hide, width }) => {
                 maxLength="10"
                 placeholder="00.00"
                 onChange={onHandleChange}
-                className={`${s.balanceInput} ${width}`}
+                className={ width ? `${s.balanceInputReport} ${s.balanceInput}` : `${s.balanceInput}`}
                 // className={s.balanceInput}
                 autoComplete="off"
               />
-              <button className={`${s.balanceButton} ${width}`} type="submit">
+              <button className={width ? `${s.balanceInputReport} ${s.balanceButton}` : `${s.balanceButton} `} type="submit">
                 ПОДТВЕРДИТЬ
               </button>
             </>
           ) : (
             <>
-              <p className={`${s.balanceInput} ${width}`}>
+              <p className={ width ? `${s.balanceInput} ${s.balanceInputReport}` : `${s.balanceInput}`}>
                 {`${balance.toLocaleString('ru')}.00`} UAH
               </p>
               <button className={`${s.balanceButton} ${hide}`} disabled>
