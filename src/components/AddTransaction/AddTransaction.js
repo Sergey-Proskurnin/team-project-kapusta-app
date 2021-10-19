@@ -9,8 +9,6 @@ import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import { gsap, Power3 } from 'gsap';
 
-import OnLoader from 'components/OnLoader';
-
 import s from './AddTransaction.module.css';
 
 import Dropdown from 'components/Dropdown';

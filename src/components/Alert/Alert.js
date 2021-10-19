@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export default function Alert({ text }) {
+export default function Alert(text) {
   return Swal.fire({
     title: 'Все пропало!',
     text: `${text}`,

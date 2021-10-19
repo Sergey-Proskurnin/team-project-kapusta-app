@@ -1,6 +1,7 @@
 import * as actions from './transactions-actions';
 import { fetch } from 'services/fetchApi';
 import { store } from '../store';
+import Alert from 'components/Alert';
 
 const setBalance = balance => async dispatch => {
   dispatch(actions.setTotalBalanceRequest());
@@ -10,6 +11,7 @@ const setBalance = balance => async dispatch => {
     dispatch(actions.setTotalBalanceSuccess(response.data.data.balance));
   } catch ({ response }) {
     dispatch(actions.setTotalBalanceError(response.data.message));
+    Alert(response.data.message)
   }
 };
 
@@ -27,6 +29,7 @@ const addTransaction = transaction => async dispatch => {
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch ({ response }) {
     dispatch(actions.addTransactionError(response.data.message));
+    Alert(response.data.message)
   }
 };
 
@@ -40,6 +43,7 @@ const deleteTransaction = transaction => async dispatch => {
     dispatch(actions.setTotalBalanceSuccess(setBalance.data.data.balance));
   } catch ({ response }) {
     dispatch(actions.addTransactionError(response.data.message));
+    Alert(response.data.message)
   }
 };
 
@@ -53,6 +57,7 @@ const editTransaction = transaction => async dispatch => {
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch ({ response }) {
     dispatch(actions.editTransactionError(response.data.message));
+    Alert(response.data.message)
   }
 };
 
@@ -64,6 +69,7 @@ const getTransactionsDay = date => async dispatch => {
     dispatch(actions.getTransactionsSuccess(response.data.result));
   } catch ({ response }) {
     dispatch(actions.getTransactionsError(response.data.message));
+    Alert(response.data.message)
   }
 };
 
@@ -74,6 +80,7 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     dispatch(actions.getTransactionsMonthYearSuccess(response.data.result));
   } catch ({ response }) {
     dispatch(actions.getTransactionsMonthYearError(response.data.message));
+    Alert(response.data.message)
   }
 };
 
@@ -85,6 +92,7 @@ const getMonthlyBalancesYear = year => async dispatch => {
     dispatch(actions.getMonthlyBalanceSuccess(balances));
   } catch ({ response }) {
     dispatch(actions.getMonthlyBalanceError(response.data.message));
+    Alert(response.data.message)
   }
 };
 

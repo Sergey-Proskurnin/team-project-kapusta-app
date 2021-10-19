@@ -14,7 +14,6 @@ import incomeIconCategories from 'data/incomeIcon';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import Loader from '../OnLoader';
 
 const Report = ({
   month,
@@ -25,7 +24,6 @@ const Report = ({
   getCategory,
   onHandleChangeType,
 }) => {
-  // const [type, setType] = useState('expense');
   const transaction = useSelector(getTransactionsPerMonth);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -52,14 +50,6 @@ const Report = ({
   const categories =
     type === 'expense' ? expenseIconCategories : incomeIconCategories;
 
-  // const onHandleChangeType = () => {
-  //   if (type === 'expense') {
-  //     setType('income');
-  //   }
-  //   if (type === 'income') {
-  //     setType('expense');
-  //   }
-  // };
   return (
     <div className={s.reportContainer}>
       <div className={`${s.navigation} ${s.section}`}>

@@ -14,7 +14,6 @@ import OnLoader from 'components/OnLoader';
 
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
-import Alert from 'components/Alert';
 import { getAuthError } from 'redux/auth';
 import { getTransactionError } from 'redux/transactions';
 
@@ -43,23 +42,21 @@ const App = () => {
     getFetchigCurrentUser(state),
   );
 
-  const onToken = useSelector(state => getCurrentToken(state));
+  const onToken = useSelector(getCurrentToken);
 
   useEffect(() => {
-    if (authError === 'Unvalid token' || transactionError === 'Unvalid token') {
+    if ((authError === 'Unvalid token' && onToken) || (transactionError === 'Unvalid token' && onToken)) {
       dispatch(getCurrentUser());
     }
 
-    dispatch(getCurrentUser());
+    if (onToken) {
+    dispatch(getCurrentUser()) 
+  } ;
   }, [dispatch, onToken, authError, transactionError]);
 
   return (
     <>
       <Header />
-      {authError && authError !== 'Unvalid token' && <Alert text={authError} />}
-      {transactionError && transactionError !== 'Unvalid token' && (
-        <Alert text={transactionError} />
-      )}
       <Suspense fallback={<OnLoader />}>
         {isFetchigCurrentUser ? (
           <OnLoader />
