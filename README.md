@@ -80,27 +80,26 @@ period just change to left or right
   **Dream Team Lead**
 
   - Leading role on the project, the logic of user authorization on the backend,
-    connection of a swagger by authorization endpoints, connection of a refresh
-    token, styles and logic of the form for entering expenses and income,
-    connection of authorization via Google, styles and logic of the Balance page
-    view on a mobile device, fixing bugs, resolving conflicts when merging
-    branches to the master, technical and moral support of the project team
-    members 24/7
+    connection of a swagger by authorization endpoints, styles and logic of the
+    form for entering expenses and income, connection of authorization via
+    Google, styles and logic of the Balance page on a mobile device, fixing
+    bugs, resolving conflicts when merging branches to the master, technical and
+    moral support of the project team members 24/7
 
 - [<img src="https://img.shields.io/badge/-Olena%20Kaminska-FBF530 " />](https://github.com/OlenaKa) -
   **Redux Queen**
 
-  - Redux, transaction list component (no styles and mobile version), summary
-    component (no styles), add transaction component (no styles), component
-    modify transaction, delete option, refresh token
+  - Redux - transactions reducers, transaction list component (logic for tablet
+    and desktop versions), summary component (logic), add transaction component
+    (logic), component modify transaction, delete option, calendar and custom
+    calculator components, authorization.
 
 - [<img src="https://img.shields.io/badge/-Sergii%20Maksymenko-30FB3D" />](https://github.com/uaMonterey) -
   **Creative director**
 
   - List of transactions in the mobile version, User menu style and logic,
-    Routing, Team modal window, Header style, changing avatar logic, custom
-    catgories select and styles, Button toGoBack and Button toGoReport logic and
-    style
+    Routing, Team modal window, Header style, custom categories select and
+    styles, Button toGoBack and Button toGoReport logic and style
 
 - [<img src="https://img.shields.io/badge/-Alla%20Moisieieva-6360F8" />](https://github.com/alalasimys) -
   **"Scream" Master**
@@ -133,9 +132,9 @@ period just change to left or right
 - [<img src="https://img.shields.io/badge/-Ekaterina%20Sivak-FF5656" />](https://github.com/SivakKaterina) -
   **Senior Developer of Login Page**
 
-  - Home Page View, login and registration form. Connecting an alert library,
-    the logic of the appearance of a notification with a zero balance, logging
-    into the mobile version, testing and checking markup bugs
+  - Home Page, login and registration form. Connecting an alert library, the
+    logic of the appearance of a notification with a zero balance, logging into
+    the mobile version, testing and checking markup bugs
 
 - [<img src="https://img.shields.io/badge/-Yevhen%20Cherniuk-2F4F4F" />](https://github.com/yevhen-cherniuk) -
   **Material-UI expert**
