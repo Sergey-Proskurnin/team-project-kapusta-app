@@ -1,138 +1,141 @@
 @media screen and (min-width: 320px) {
-.editModalWrapper {
-  width: 100vw;
-  height: 100vh;
-  /* background-color: transparent; */
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-.inputsWrapper {
-  text-align: center;
-  width: 200px;
-  padding: 15px;
-}
-.editForm {
-  width: 270px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background: white;
-  height: max-content;
-  padding: 40px;
-  border-radius: 10%;
-}
-.dateWrapper {
-  display: flex;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-}
-.pickerWrapper {
-  margin: 9px -105px;
-}
+  .editModalWrapper {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  .inputsWrapper {
+    text-align: center;
+    width: 200px;
+    padding: 15px;
+  }
+  .editForm {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: white;
+    height: max-content;
+    padding: 40px;
+    border-radius: 10%;
+  }
+  .dateWrapper {
+    display: flex;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+  }
+  .pickerWrapper {
+    margin: 9px -105px;
+  }
 
-.selectWrapper {
-  display: inline-flex;
-  width: fit-content;
-  text-align: center;
-  width: 170px;
-}
-.editInput {
-  outline: none;
+  .selectWrapper {
+    display: inline-flex;
+    width: fit-content;
+    text-align: center;
+    width: 170px;
+  }
+  .editInput {
+    outline: none;
 
-  height: 45px;
-  border: none;
-  border: 2px solid #f5f6fb;
-  text-align: center;
-  color: #52555f;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 14px;
-  letter-spacing: 0.02em;
-}
-/* .dropdown {
+    height: 45px;
+    border: none;
+    border: 2px solid #f5f6fb;
+    text-align: center;
+    color: #52555f;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+  }
+  /* .dropdown {
   width: 162%;
 } */
-.editLabels {
-  margin: 20px 0;
-  border-radius: 0;
-  display: block;
-}
-.calcIcon {
-  position: absolute;
-  margin: -36px 156px;
-}
-.calc {
-  margin: 10px 25px;
-  position: absolute;
-  margin: 0px -2px;
-  width: 170px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 6px;
-  border: 2px solid #f5f6fb;
-  background: white;
-}
-.inputSum {
-  position: relative;
-}
-.buttonOk {
-  color: #fff;
-  background-color: #ff751d;
-  outline: none;
-  border: none;
-  width: 120px;
-  height: 35px;
-  border-radius: 16px;
-}
+  .editLabels {
+    margin: 20px 0;
+    border-radius: 0;
+    display: block;
+  }
+  .calcIcon {
+    cursor: pointer;
+    position: absolute;
+    margin: -36px 156px;
+  }
+  .calc {
+    margin: 10px 25px;
+    position: absolute;
+    margin: 0px -2px;
+    width: 170px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    border: 2px solid #f5f6fb;
+    background: white;
+  }
+  .inputSum {
+    position: relative;
+  }
+  .buttonOk {
+    cursor: pointer;
+    color: #fff;
+    background-color: #ff751d;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
 
-.buttonOk:hover {
-  color: #52555f;
-  background-color: #f5f6fb;
-}
+  .buttonOk:hover {
+    color: #52555f;
+    background-color: #f5f6fb;
+  }
 
-.buttonCancel {
-  color: #52555f;
-  background-color: #f5f6fb;
-  outline: none;
-  border: none;
-  width: 120px;
-  height: 35px;
-  border-radius: 16px;
-}
+  .buttonCancel {
+    cursor: pointer;
+    color: #52555f;
+    background-color: #f5f6fb;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
 
-.buttonCancel:hover {
-  color: #f5f6fb;
-  background-color: #ff751d;
-  outline: none;
-  border: none;
-  width: 120px;
-  height: 35px;
-  border-radius: 16px;
-}
+  .buttonCancel:hover {
+    color: #f5f6fb;
+    background-color: #ff751d;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
 
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.closeIcon {
-  margin-left: auto;
-  color: #52555f;
-}
-.closeIcon:hover {
-  margin-left: auto;
-  color: #ff751d;
-}
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .closeIcon {
+    margin-left: auto;
+    color: #52555f;
+  }
+  .closeIcon:hover {
+    margin-left: auto;
+    color: #ff751d;
+  }
 }
 @media screen and (min-width: 768px) {
   .editModalWrapper {
@@ -273,5 +276,4 @@
   .pickerWrapper {
     margin: 37px -41px;
   }
-
 }

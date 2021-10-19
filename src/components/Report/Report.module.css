@@ -45,6 +45,7 @@
     align-items: 1.17;
     box-sizing: border-box;
     flex-basis: calc((100% - 20px) / 3);
+    cursor: pointer;
   }
   .reportTitle {
     font-weight: bold;
