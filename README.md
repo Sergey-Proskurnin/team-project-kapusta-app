@@ -124,7 +124,7 @@ period just change to left or right
   **Component Rescue Superhero**
 
   - Modal window markup, pivot component markup and transaction styles, Gsap
-    animation implementation, link to technical support.
+    animation implementation.
 
 - [<img src="https://img.shields.io/badge/-Mykhaylo%20Strilchuk-228B22" />](https://github.com/mishastr77) -
   **Backend lord and Swagger winner**
