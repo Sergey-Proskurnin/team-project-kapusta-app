@@ -32,6 +32,11 @@ p {
   margin: 0;
   padding: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -55,7 +60,7 @@ img {
   /* 1 - scrollbar */
   width: 4px;
   height: 4px;
-  background-color: #F5F6FB;
+  background-color: #f5f6fb;
 }
 ::-webkit-scrollbar-thumb {
   /* 5 - slider */
