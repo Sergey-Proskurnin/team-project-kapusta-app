@@ -1,20 +1,18 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
-
-import { getCurrentUser } from './redux/auth';
-
-import { getFetchigCurrentUser, getCurrentToken } from './redux/auth';
-
 import { useDispatch, useSelector } from 'react-redux';
 
+import {
+  getFetchigCurrentUser,
+  getCurrentToken,
+  getCurrentUser,
+  getAuthError,
+} from './redux/auth';
 import routes from 'routes';
 import Header from 'components/Header/Header';
-
 import OnLoader from 'components/OnLoader';
-
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
-import { getAuthError } from 'redux/auth';
 import { getTransactionError } from 'redux/transactions';
 
 const HomePageView = lazy(() =>
@@ -45,13 +43,9 @@ const App = () => {
   const onToken = useSelector(getCurrentToken);
 
   useEffect(() => {
-    if ((authError === 'Unvalid token' && onToken) || (transactionError === 'Unvalid token' && onToken)) {
+    if (onToken) {
       dispatch(getCurrentUser());
     }
-
-    if (onToken) {
-    dispatch(getCurrentUser()) 
-  } ;
   }, [dispatch, onToken, authError, transactionError]);
 
   return (

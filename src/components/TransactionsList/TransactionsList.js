@@ -27,7 +27,7 @@ export default function TransactionsList() {
     if (del) {
       deleteTransaction(transactions.find(item => item._id === transaction));
     }
-  }, [dispatch, date, del]);
+  }, [date, dispatch, del]);
 
   const deleteTransaction = transaction => {
     dispatch(transactionsOperations.deleteTransaction(transaction));

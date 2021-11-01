@@ -2,20 +2,27 @@ import * as actions from './transactions-actions';
 import { fetch } from 'services/fetchApi';
 import { store } from '../store';
 import Alert from 'components/Alert';
+import { refresh } from 'redux/auth';
 
-const setBalance = balance => async dispatch => {
+const setBalance = balance => async (dispatch, getState) => {
   dispatch(actions.setTotalBalanceRequest());
 
   try {
     const response = await fetch.setBalance(balance);
     dispatch(actions.setTotalBalanceSuccess(response.data.data.balance));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetch.setBalance(balance);
+      dispatch(actions.setTotalBalanceSuccess(response.data.data.balance));
+      return;
+    }
     dispatch(actions.setTotalBalanceError(response.data.message));
-    Alert(response.data.message)
+    Alert(response.data.message);
   }
 };
 
-const addTransaction = transaction => async dispatch => {
+const addTransaction = transaction => async (dispatch, getState) => {
   dispatch(actions.addTransactionRequest());
   const balance = calculateBalance(transaction, 'add');
   const splitedDate = dateSplitter(transaction.date);
@@ -28,12 +35,22 @@ const addTransaction = transaction => async dispatch => {
     dispatch(actions.addTransactionSuccess(response.data.resultTransaction));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetch.addTransaction(
+        Object.assign(transaction, splitedDate),
+        balance,
+      );
+      dispatch(actions.addTransactionSuccess(response.data.resultTransaction));
+      dispatch(actions.setTotalBalanceSuccess(response.data.balance));
+      return;
+    }
     dispatch(actions.addTransactionError(response.data.message));
-    Alert(response.data.message)
+    Alert(response.data.message);
   }
 };
 
-const deleteTransaction = transaction => async dispatch => {
+const deleteTransaction = transaction => async (dispatch, getState) => {
   dispatch(actions.deleteTransactionRequest());
   const balance = calculateBalance(transaction, 'delete');
   try {
@@ -42,12 +59,20 @@ const deleteTransaction = transaction => async dispatch => {
     dispatch(actions.deleteTransactionSuccess(transaction._id));
     dispatch(actions.setTotalBalanceSuccess(setBalance.data.data.balance));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      await fetch.deleteTransaction(transaction._id);
+      const setBalance = await fetch.setBalance(balance);
+      dispatch(actions.deleteTransactionSuccess(transaction._id));
+      dispatch(actions.setTotalBalanceSuccess(setBalance.data.data.balance));
+      return;
+    }
     dispatch(actions.addTransactionError(response.data.message));
-    Alert(response.data.message)
+    Alert(response.data.message);
   }
 };
 
-const editTransaction = transaction => async dispatch => {
+const editTransaction = transaction => async (dispatch, getState) => {
   dispatch(actions.editTransactionRequest());
   const balance = calculateBalance(transaction, 'edit');
 
@@ -56,43 +81,73 @@ const editTransaction = transaction => async dispatch => {
     dispatch(actions.editTransactionSucces(response.data.result));
     dispatch(actions.setTotalBalanceSuccess(response.data.balance));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetch.editTransaction(transaction, balance);
+      dispatch(actions.editTransactionSucces(response.data.result));
+      dispatch(actions.setTotalBalanceSuccess(response.data.balance));
+      return;
+    }
     dispatch(actions.editTransactionError(response.data.message));
-    Alert(response.data.message)
+    Alert(response.data.message);
   }
 };
 
-const getTransactionsDay = date => async dispatch => {
+const getTransactionsDay = date => async (dispatch, getState) => {
   dispatch(actions.getTransactionsRequest());
   try {
     const response = await fetch.getTransactionsByDate(date);
 
     dispatch(actions.getTransactionsSuccess(response.data.result));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetch.getTransactionsByDate(date);
+
+      dispatch(actions.getTransactionsSuccess(response.data.result));
+      return;
+    }
     dispatch(actions.getTransactionsError(response.data.message));
-    Alert(response.data.message)
+    Alert(response.data.message);
   }
 };
 
-const getTransactionsMonthYear = (month, year) => async dispatch => {
-  dispatch(actions.getTransactionsMonthYearRequest());
-  try {
-    const response = await fetch.getTransactionsByPeriod(`${month}-${year}`);
-    dispatch(actions.getTransactionsMonthYearSuccess(response.data.result));
-  } catch ({ response }) {
-    dispatch(actions.getTransactionsMonthYearError(response.data.message));
-    Alert(response.data.message)
-  }
-};
+const getTransactionsMonthYear =
+  (month, year) => async (dispatch, getState) => {
+    dispatch(actions.getTransactionsMonthYearRequest());
+    try {
+      const response = await fetch.getTransactionsByPeriod(`${month}-${year}`);
+      dispatch(actions.getTransactionsMonthYearSuccess(response.data.result));
+    } catch ({ response }) {
+      if (response.data.message === 'Unvalid token') {
+        await refresh(dispatch, getState);
+        const response = await fetch.getTransactionsByPeriod(
+          `${month}-${year}`,
+        );
+        dispatch(actions.getTransactionsMonthYearSuccess(response.data.result));
+        return;
+      }
+      dispatch(actions.getTransactionsMonthYearError(response.data.message));
+      Alert(response.data.message);
+    }
+  };
 
-const getMonthlyBalancesYear = year => async dispatch => {
+const getMonthlyBalancesYear = year => async (dispatch, getState) => {
   dispatch(actions.getMonthlyBalanceRequest());
   try {
     const response = await fetch.getTransactionsByPeriod(year);
     const balances = calculateBalancesPerMonth(response.data.result);
     dispatch(actions.getMonthlyBalanceSuccess(balances));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetch.getTransactionsByPeriod(year);
+      const balances = calculateBalancesPerMonth(response.data.result);
+      dispatch(actions.getMonthlyBalanceSuccess(balances));
+      return;
+    }
     dispatch(actions.getMonthlyBalanceError(response.data.message));
-    Alert(response.data.message)
+    Alert(response.data.message);
   }
 };
 
