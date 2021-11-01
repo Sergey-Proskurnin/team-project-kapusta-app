@@ -62,7 +62,7 @@ const logOut = () => async dispatch => {
 
 const getCurrentUser = () => async (dispatch, getState) => {
   const {
-    auth: { token: persistedToken, refreshToken: persistedRefreshToken },
+    auth: { token: persistedToken },
   } = getState();
 
   if (!persistedToken) {
@@ -76,21 +76,34 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(setTotalBalanceSuccess(response.data.user.balance));
   } catch ({ response }) {
     if (response.data.message === 'Unvalid token') {
-      token.set(persistedRefreshToken);
-      const response = await fetchRefreshToken();
-      dispatch(getCurrentUserSuccess(response.data.data.user));
-      dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
-      dispatch(
-        loginSuccess({
-          token: response.data.data.token,
-          refreshToken: response.data.data.refreshToken,
-        }),
-      );
-      return;
+      return await refresh(dispatch, getState);
     }
     dispatch(getCurrentUserError(response.data.message));
     Alert(response.data.message);
   }
 };
 
-export { register, logOut, logIn, getCurrentUser };
+const refresh = async (dispatch, getState) => {
+  const {
+    auth: { refreshToken: persistedRefreshToken },
+  } = getState();
+  token.set(persistedRefreshToken);
+  try {
+    const response = await fetchRefreshToken();
+    dispatch(getCurrentUserSuccess(response.data.data.user));
+    dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
+    dispatch(
+      loginSuccess({
+        token: response.data.data.token,
+        refreshToken: response.data.data.refreshToken,
+      }),
+    );
+    token.set(response.data.data.token);
+  } catch (error) {
+    dispatch(logoutSuccess());
+    token.unset();
+    console.log(error.message);
+  }
+};
+
+export { register, logOut, logIn, getCurrentUser, refresh };
