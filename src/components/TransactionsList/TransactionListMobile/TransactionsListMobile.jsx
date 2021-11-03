@@ -56,6 +56,7 @@ export default function TransactionsListMobile() {
           modalTitle="Вы действительно хотите удалить эту запись?"
           handleClickRight={onDelCancel}
           handleClickLeft={onDelOk}
+          onClose={onDelCancel}
         />
       )}
       {modalEdit && (
