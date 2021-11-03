@@ -8,15 +8,14 @@ import transactionsOperations from 'redux/transactions/transactions-operations';
 import OnLoader from 'components/OnLoader';
 import { getLoader } from 'redux/transactions';
 
-const Summary = ({ year = 2021 }) => {
+const Summary = ({ year }) => {
   const dispatch = useDispatch();
   const totalBalance = useSelector(selectors.getTotalBalance);
   const loader = useSelector(getLoader);
 
   useEffect(() => {
     dispatch(transactionsOperations.getMonthlyBalancesYear(year));
-    /* eslint-disable-next-line */
-  }, [totalBalance]);
+  }, [totalBalance, year, dispatch]);
   const balances = useSelector(selectors.getMonthlyBalances);
 
   const sortedBalances = [...balances].sort((a, b) => b.month - a.month);

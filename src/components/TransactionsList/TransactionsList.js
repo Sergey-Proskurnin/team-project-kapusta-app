@@ -9,7 +9,7 @@ import EditTransaction from 'components/EditTransaction';
 import contextProps from 'context/context';
 
 export default function TransactionsList() {
-  const { type, date, setDate } = useContext(contextProps);
+  const { type, date, setNewDate } = useContext(contextProps);
   const dispatch = useDispatch();
 
   const transactions = useSelector(selectors.getTransactionsPerDay);
@@ -64,7 +64,7 @@ export default function TransactionsList() {
       )}
       {modalEdit && (
         <EditTransaction
-          onDateChange={setDate}
+          onDateChange={setNewDate}
           transaction={transactions.find(item => item._id === transaction)}
           cancelChanges={onEditCalcel}
         />

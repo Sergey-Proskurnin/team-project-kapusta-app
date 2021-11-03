@@ -19,15 +19,21 @@ import OnLoader from 'components/OnLoader';
 const BalanceView = () => {
   const [type, setType] = useState('income');
   const [date, setDate] = useState('');
+  const [year, setYear] = useState('');
   const [picker, setPicker] = useState(false);
   const [listRender, setListRender] = useState(true);
   const loader = useSelector(getLoader);
 
   useEffect(() => {
     setDate(startDate);
+    setYear(startDate.split('.')[2]);
     /* eslint-disable-next-line */
   }, []);
 
+  const setNewDate = date => {
+    setDate(date);
+    setYear(date.split('.')[2]);
+  };
   const handleCalendarClick = () => {
     setPicker(true);
   };
@@ -38,6 +44,7 @@ const BalanceView = () => {
     }.${dateNew.getUTCFullYear()}`;
 
     setDate(newDate);
+    setYear(newDate.split('.')[2]);
     setPicker(false);
   };
   const contextValueBalance = {
@@ -46,7 +53,7 @@ const BalanceView = () => {
     handleCalendarClick,
     closePicker,
     date,
-    setDate,
+    setNewDate,
   };
   const typeToggle = e => {
     setType(`${e.target.title}`);
@@ -100,18 +107,16 @@ const BalanceView = () => {
                   ДОХОД
                 </button>
               </div>
-              <AddTransaction
-                transactionType={type}
-                date={date}
-                changeDate={setDate}
-              />
+              <AddTransaction />
               <div className={s.dataContainer}>
                 <TransactionsList transactionType={type} date={date} />
-                {viewPort.width > 1280 && <Summary />}
+                {viewPort.width > 1280 && <Summary year={year} />}
               </div>
             </div>
             <div className={s.containerSummary768}>
-              {viewPort.width <= 1279 && viewPort.width > 768 && <Summary />}
+              {viewPort.width <= 1279 && viewPort.width > 768 && (
+                <Summary year={year} />
+              )}
             </div>
           </>
         )}
