@@ -17,38 +17,29 @@ export default function TransactionsList() {
   const [modalDel, setModalDel] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [transaction, setTransaction] = useState('');
-  const [del, setDel] = useState(false);
 
   useEffect(() => {
     if (date) {
       dispatch(transactionsOperations.getTransactionsDay(date));
     }
-
-    if (del) {
-      deleteTransaction(transactions.find(item => item._id === transaction));
-    }
-  }, [date, dispatch, del]);
-
-  const deleteTransaction = transaction => {
-    dispatch(transactionsOperations.deleteTransaction(transaction));
-    setDel(false);
-    setTransaction('');
-    setModalDel(false);
-  };
+  }, [date, dispatch]);
 
   const handleDeteteClick = transaction => {
     setModalDel(true);
     setTransaction(transaction._id);
   };
   const onDelCancel = () => {
-    setDel(false);
     setTransaction('');
     setModalDel(false);
   };
 
   const onDelOk = () => {
-    setDel(true);
     setModalDel(false);
+    const transactionToDel = transactions.find(
+      item => item._id === transaction,
+    );
+    dispatch(transactionsOperations.deleteTransaction(transactionToDel));
+    setTransaction('');
   };
 
   const handleEditClick = transaction => {
@@ -59,7 +50,6 @@ export default function TransactionsList() {
   const onEditCalcel = () => {
     setModalEdit(false);
     setTransaction('');
-    setModalDel(false);
   };
 
   return (

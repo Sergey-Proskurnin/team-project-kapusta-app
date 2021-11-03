@@ -69,7 +69,7 @@
   .balanceLabel {
     display: flex;
     align-items: baseline;
-    justify-content: start;
+    justify-content: flex-start;
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 1.17;

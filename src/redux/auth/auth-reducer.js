@@ -78,6 +78,9 @@ const isFetchigCurrentUser = createReducer(false, {
   [getCurrentUserRequest]: () => true,
   [getCurrentUserSuccess]: () => false,
   [getCurrentUserError]: () => false,
+  [logoutSuccess]: () => false,
+
+
 });
 
 const authReducer = combineReducers({

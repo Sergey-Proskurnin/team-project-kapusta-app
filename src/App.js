@@ -3,17 +3,16 @@ import { Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  getIsAuthenticated,
   getFetchigCurrentUser,
   getCurrentToken,
   getCurrentUser,
-  getAuthError,
 } from './redux/auth';
 import routes from 'routes';
 import Header from 'components/Header/Header';
 import OnLoader from 'components/OnLoader';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
-import { getTransactionError } from 'redux/transactions';
 
 const HomePageView = lazy(() =>
   import('views/HomePageView/HomePageView' /*webpackChunkName: "home-view" */),
@@ -33,20 +32,19 @@ const DevelopersView = lazy(() =>
 const App = () => {
   const dispatch = useDispatch();
 
-  const authError = useSelector(getAuthError);
-  const transactionError = useSelector(getTransactionError);
-
   const isFetchigCurrentUser = useSelector(state =>
     getFetchigCurrentUser(state),
   );
 
   const onToken = useSelector(getCurrentToken);
+  const isLogin = useSelector(getIsAuthenticated);
 
   useEffect(() => {
-    if (onToken) {
+    if (onToken || isLogin) {
       dispatch(getCurrentUser());
     }
-  }, [dispatch, onToken, authError, transactionError]);
+    /* eslint-disable-next-line */
+  }, [dispatch, isLogin]);
 
   return (
     <>

@@ -18,6 +18,7 @@ const HomePageView = ({ location }) => {
       dispatch(loginGoogleSuccess(token));
       dispatch(refreshLoginGoogleSuccess(refreshToken));
     }
+    /* eslint-disable-next-line */
   }, []);
 
   const [login, setLogin] = useState(true);

@@ -1,20 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import useWindowDimensions from 'hooks/useWindowDimensions';
-import transactionsOperations from 'redux/transactions/transactions-operations';
 import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
 import s from './ChartReport.module.css';
 
 export default function ChartReport({ month, year, category, type }) {
-  const dispatch = useDispatch();
   const { width } = useWindowDimensions();
-
-  useEffect(() => {
-    if ((month, year)) {
-      dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
-    }
-  }, [dispatch, month, year]);
 
   const transactions = useSelector(getTransactionsPerMonth);
 
@@ -146,7 +138,7 @@ export default function ChartReport({ month, year, category, type }) {
       },
     },
   };
- const height = width < 425 ? 400 : 200
+  const height = width < 425 ? 400 : 200;
   const options = width < 425 ? optionsHorizontal : optionsVertical;
 
   return (

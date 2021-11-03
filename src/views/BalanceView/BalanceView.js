@@ -25,6 +25,7 @@ const BalanceView = () => {
 
   useEffect(() => {
     setDate(startDate);
+    /* eslint-disable-next-line */
   }, []);
 
   const handleCalendarClick = () => {

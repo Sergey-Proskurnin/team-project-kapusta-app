@@ -20,7 +20,7 @@ const CurrentMonth = ({
       <p className={s.title}>Текущий период:</p>
       <div className={s.transactionWrapper}>
         <ArrowBackIosIcon
-          style={{ color: '#FF751D', width: '12' }}
+          style={{ color: '#FF751D', width: '12', cursor: 'pointer' }}
           onClick={onHandleClickLeft}
         />
         {
@@ -30,7 +30,7 @@ const CurrentMonth = ({
         }
 
         <ArrowForwardIosIcon
-          style={{ color: '#FF751D', width: '12' }}
+          style={{ color: '#FF751D', width: '12', cursor: 'pointer' }}
           onClick={onHandleClickRight}
         />
       </div>

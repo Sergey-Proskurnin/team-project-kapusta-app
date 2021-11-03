@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -13,7 +13,6 @@ import expenseIconCategories from 'data/expenseIcon';
 import incomeIconCategories from 'data/incomeIcon';
 import sprite from './icon.svg';
 import ArrowToGoBack from '../ArrowToGoBack';
-import transactionsOperations from 'redux/transactions/transactions-operations';
 
 const Report = ({
   month,
@@ -25,12 +24,6 @@ const Report = ({
   onHandleChangeType,
 }) => {
   const transaction = useSelector(getTransactionsPerMonth);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if ((month, year)) {
-      dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
-    }
-  }, [dispatch, month, year]);
 
   const getTransactionByType = type => {
     const filteredByType = transaction.filter(
@@ -55,7 +48,7 @@ const Report = ({
       <div className={`${s.navigation} ${s.section}`}>
         <ArrowToGoBack />
         <div className={s.navigationWrapper}>
-          <Balance width={true} hide={s.buttonNone}/>
+          <Balance width={true} hide={s.buttonNone} />
           <CurrentMonth
             currentMonth={month}
             currentYear={year}
@@ -64,11 +57,11 @@ const Report = ({
           />
         </div>
       </div>
-      <CurrentAmount currentMonth={month} currentYear={year} />
+      <CurrentAmount />
       <div className={`${s.reportWrapper} ${s.section}`}>
         <div className={`${s.transactionWrapper} ${s.sectionReportTitle}`}>
           <ArrowBackIosIcon
-            style={{ color: '#FF751D' }}
+            style={{ color: '#FF751D', cursor: 'pointer' }}
             fontSize="small"
             onClick={onHandleChangeType}
           />
@@ -78,7 +71,7 @@ const Report = ({
             <h1 className={s.reportTitle}>доходы:</h1>
           )}
           <ArrowForwardIosIcon
-            style={{ color: '#FF751D' }}
+            style={{ color: '#FF751D', cursor: 'pointer' }}
             fontSize="small"
             onClick={onHandleChangeType}
           />

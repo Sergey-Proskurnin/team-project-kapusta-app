@@ -1,29 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import s from './Report.module.css';
 import { ReactComponent as Strip } from './strip.svg';
-import transactionsOperations from 'redux/transactions/transactions-operations';
 import { getTransactionsPerMonth } from 'redux/transactions/transactions-selectors';
 
-
-
-const CurrentAmount = ({ currentMonth, currentYear }) => {
-  const dispatch = useDispatch();
+const CurrentAmount = () => {
   const transactions = useSelector(getTransactionsPerMonth);
-  let monthToString = String(currentMonth);
-  let yearToString = String(currentYear);
-
-  useEffect(() => {
-    if ((monthToString, yearToString)) {
-      dispatch(
-        transactionsOperations.getTransactionsMonthYear(
-          monthToString,
-          yearToString,
-        ),
-      );
-    }
-  }, [currentMonth, currentYear]);
 
   const findTotalSum = type => {
     let totalSum = 0;

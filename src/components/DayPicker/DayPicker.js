@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
-import DayPicker, { LocaleUtils } from 'react-day-picker';
+import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import styles from './DayPicker.module.css';
 import useOnClickOutside from 'hooks/useOnClickOutside';
-import st from 'components/EditTransaction/EditTransaction.module.css';
 
 export default function CalendarPicker({ startDate, closeHandler, align }) {
   const ref = useRef();
@@ -15,6 +14,7 @@ export default function CalendarPicker({ startDate, closeHandler, align }) {
     if (close) {
       closeHandler(selectedDay);
     }
+    /*eslint-disable-next-line*/
   }, [close, startDate]);
 
   const formatDate = date => {
