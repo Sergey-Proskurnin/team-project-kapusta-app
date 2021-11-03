@@ -15,6 +15,7 @@ const Summary = ({ year = 2021 }) => {
 
   useEffect(() => {
     dispatch(transactionsOperations.getMonthlyBalancesYear(year));
+    /* eslint-disable-next-line */
   }, [totalBalance]);
   const balances = useSelector(selectors.getMonthlyBalances);
 

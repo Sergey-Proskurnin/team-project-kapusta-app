@@ -5,7 +5,6 @@ import {
   registerError,
   logoutRequest,
   logoutSuccess,
-  logoutError,
   loginRequest,
   loginSuccess,
   loginError,
@@ -55,8 +54,8 @@ const logOut = () => async dispatch => {
     token.unset();
     dispatch(logoutSuccess());
   } catch ({ response }) {
-    dispatch(logoutError(response.data.message));
-    Alert(response.data.message);
+    token.unset();
+    dispatch(logoutSuccess());
   }
 };
 
@@ -90,6 +89,7 @@ const refresh = async (dispatch, getState) => {
   token.set(persistedRefreshToken);
   try {
     const response = await fetchRefreshToken();
+    token.set(response.data.data.token);
     dispatch(getCurrentUserSuccess(response.data.data.user));
     dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
     dispatch(
@@ -98,7 +98,6 @@ const refresh = async (dispatch, getState) => {
         refreshToken: response.data.data.refreshToken,
       }),
     );
-    token.set(response.data.data.token);
   } catch (error) {
     dispatch(logoutSuccess());
     token.unset();

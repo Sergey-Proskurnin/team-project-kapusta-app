@@ -98,7 +98,7 @@ export default function AddTransaction() {
       );
     }
     return;
-  }, []);
+  }, [viewPort.width]);
 
   return (
     <>

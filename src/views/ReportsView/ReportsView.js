@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import ChartReport from 'components/ChartReport';
 import { Container } from 'components/Container';
 import { Report } from 'components/Report';
 
 import s from './ReportView.module.css';
+import transactionsOperations from 'redux/transactions/transactions-operations';
 
 const ReportsView = () => {
+  const dispatch = useDispatch();
+
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
   let selectedYear = date.getFullYear();
@@ -14,6 +17,13 @@ const ReportsView = () => {
   const [year, setYear] = useState(selectedYear);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('expense');
+
+  useEffect(() => {
+    if ((month, year)) {
+      dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
+    }
+  }, [dispatch, month, year]);
+
   const onHandleClickRight = () => {
     if (month < 12) {
       setMonth(prev => (prev += 1));

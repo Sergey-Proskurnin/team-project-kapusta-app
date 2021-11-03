@@ -102,7 +102,7 @@
   .iconSvg:hover {
     fill: #ff751d;
     background-image: radial-gradient(
-      80% 60%,
+      75% 60% at 50% 50%,
       #ffdac0 15%,
       #ffdac0 15%,
       #ffdac0 40%,
@@ -117,7 +117,7 @@
   .iconSvg:focus {
     fill: #ff751d;
     background-image: radial-gradient(
-      80% 60%,
+      75% 60% at 50% 50%,
       #ffdac0 15%,
       #ffdac0 15%,
       #ffdac0 40%,

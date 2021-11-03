@@ -34,6 +34,7 @@ export default function CalculatorInput({ onCloseCalculator, position }) {
   function calculate(e) {
     e.preventDefault();
     try {
+      /*eslint-disable-next-line*/
       setResult(eval(result).toString());
     } catch (error) {
       setResult('Error');
