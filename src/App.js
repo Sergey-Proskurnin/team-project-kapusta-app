@@ -3,7 +3,6 @@ import { Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  getIsAuthenticated,
   getFetchigCurrentUser,
   getCurrentToken,
   getCurrentUser,
@@ -37,14 +36,13 @@ const App = () => {
   );
 
   const onToken = useSelector(getCurrentToken);
-  const isLogin = useSelector(getIsAuthenticated);
-
+  
   useEffect(() => {
-    if (onToken || isLogin) {
+    if (onToken) {
       dispatch(getCurrentUser());
     }
-    /* eslint-disable-next-line */
-  }, [dispatch, isLogin]);
+    
+  }, [dispatch, onToken]);
 
   return (
     <>
