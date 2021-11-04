@@ -3,6 +3,9 @@ import {
   registerRequest,
   registerSuccess,
   registerError,
+  repeatEmailVerifyRequest,
+  repeatEmailVerifySuccess,
+  repeatEmailVerifyError,
   logoutRequest,
   logoutSuccess,
   loginRequest,
@@ -21,6 +24,7 @@ import {
   fetchLogin,
   fetchLogout,
   fetchCurrent,
+  fetchRepeatVerify,
   fetchRefreshToken,
 } from 'services/fetchApi';
 
@@ -31,6 +35,17 @@ const register = credentials => async dispatch => {
     dispatch(registerSuccess(response.data));
   } catch ({ response }) {
     dispatch(registerError(response.data.message));
+    Alert(response.data.message);
+  }
+};
+
+const repeatVerify = email => async dispatch => {
+  dispatch(repeatEmailVerifyRequest());
+  try {
+    const response = await fetchRepeatVerify(email);
+    dispatch(repeatEmailVerifySuccess(response.data));
+  } catch ({ response }) {
+    dispatch(repeatEmailVerifyError(response.data.message));
     Alert(response.data.message);
   }
 };
@@ -105,4 +120,4 @@ const refresh = async (dispatch, getState) => {
   }
 };
 
-export { register, logOut, logIn, getCurrentUser, refresh };
+export { register, repeatVerify, logOut, logIn, getCurrentUser, refresh };
