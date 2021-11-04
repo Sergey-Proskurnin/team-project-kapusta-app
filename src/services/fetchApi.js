@@ -23,6 +23,12 @@ const fetchCurrent = () => axios.get('/users/current');
 
 const fetchRefreshToken = () => axios.get('/users/refresh');
 
+const fetchRepeatVerify = (email) => axios.post('/users/verify', email);
+
+
+
+
+
 //--------------------------transactions-operations-------------------------------
 
 const addTransaction = (transaction, balance) =>
@@ -52,5 +58,6 @@ export {
   fetchLogout,
   fetchCurrent,
   fetchRefreshToken,
+  fetchRepeatVerify,
   fetch,
 };

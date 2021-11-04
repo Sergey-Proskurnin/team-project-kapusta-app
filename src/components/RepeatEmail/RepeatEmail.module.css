@@ -1,0 +1,15 @@
+.repeatedEmail {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #ff751d;
+  cursor: pointer;
+  transition: 0.1s linear;
+}
+.repeatedEmail:hover,
+.repeatedEmail:focus {
+  transform: scale(1.1);
+}

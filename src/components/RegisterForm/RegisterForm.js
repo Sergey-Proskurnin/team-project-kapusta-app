@@ -5,7 +5,9 @@ import s from './register.module.css';
 import { register } from 'redux/auth/auth-operations';
 
 import Modal from 'components/Modal';
-import { getUserName } from 'redux/auth/auth-selector';
+import { getUserName, getUserEmail } from 'redux/auth';
+
+import RepeatEmail from 'components/RepeatEmail';
 
 const RegisterForm = ({ onClickComeBack }) => {
   const dispatch = useDispatch();
@@ -21,7 +23,9 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
   const [setModalOpen, setShowModal] = useState(false);
+
   const user = useSelector(getUserName);
+  const userEmail = useSelector(getUserEmail);
 
   const onRegister = () => dispatch(register({ name, email, password }));
 
@@ -211,6 +215,7 @@ const RegisterForm = ({ onClickComeBack }) => {
           )}
         </div>
       </form>
+      {userEmail && <RepeatEmail />}
     </div>
   );
 };
