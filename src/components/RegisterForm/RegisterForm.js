@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { gsap, Power3 } from 'gsap';
 
 import s from './register.module.css';
 import { register } from 'redux/auth/auth-operations';
@@ -51,7 +52,7 @@ const RegisterForm = ({ onClickComeBack }) => {
 
   const nameHandler = e => {
     setName(e.target.value);
-    const re = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
+    const re = /^[A-Za-zА-Яа-яЁё' '\-()0-9]{3,30}$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
       setNameError('Некорректное имя');
       setErrorSymbol('*');
@@ -82,10 +83,8 @@ const RegisterForm = ({ onClickComeBack }) => {
 
   const passwordHandler = e => {
     setPassword(e.target.value);
-    if (e.target.value.length < 3 || e.target.value.length > 10) {
-      setPasswordError(
-        'Пароль должен быть не меньше 3 и не больше 10 символов',
-      );
+    if (e.target.value.length < 6) {
+      setPasswordError('Пароль должен быть не меньше 6 символов');
       if (!e.target.value) {
         setPasswordError('это обязательное поле');
       }
@@ -100,7 +99,52 @@ const RegisterForm = ({ onClickComeBack }) => {
     setPassword('');
   };
 
+  let emailRef = useRef(null);
+  let passwordRef = useRef(null);
+  let nameRef = useRef(null);
+
   useEffect(() => {
+    gsap.fromTo(
+      emailRef,
+      1,
+      {
+        opacity: 0,
+        x: -800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+
+    gsap.fromTo(
+      nameRef,
+      0.8,
+      {
+        rotate: 2,
+        ease: Power3.easeInOut,
+      },
+      {
+        rotate: 360,
+        ease: Power3.easeInOut,
+      },
+    );
+
+    gsap.fromTo(
+      passwordRef,
+      1,
+      {
+        opacity: 0,
+        x: 800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+
     if (user) {
       setShowModal(true);
     }
@@ -116,85 +160,100 @@ const RegisterForm = ({ onClickComeBack }) => {
     <div className={s.formRegistr}>
       <p className={s.promtText}>Для регистрации заполните поля:</p>
       <form onSubmit={handleSubmit} action="" autoComplete="on">
-        <label className={s.formLabel} htmlFor="">
-          <p className={s.labelText}>
+        <div ref={el => (nameRef = el)}>
+          <label className={s.formLabel} htmlFor="">
+            <p className={s.labelText}>
+              {nameDirty && nameError && (
+                <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                  {errorSymbol}{' '}
+                </span>
+              )}
+              Имя:
+            </p>
+            <input
+              onBlur={blurHandler}
+              onChange={nameHandler}
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Ваше имя"
+              className={s.formInput}
+              pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
+              title="Имя может состоять только от трёх до 30 букв, апострофа, тире и пробелов. Например Adrian, Jac Mercer, d'Artagnan, Александр Репета и т.п."
+              required
+            />
             {nameDirty && nameError && (
-              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                {errorSymbol}{' '}
-              </span>
+              <div
+                style={{
+                  color: 'red',
+                  fontSize: 10,
+                  paddingTop: 4,
+                  textAlign: 'left',
+                }}
+              >
+                {nameError}{' '}
+              </div>
             )}
-            Имя:
-          </p>
-          <input
-            onBlur={blurHandler}
-            onChange={nameHandler}
-            type="text"
-            name="name"
-            value={name}
-            placeholder="Ваше имя"
-            className={s.formInput}
-          />
-          {nameDirty && nameError && (
-            <div
-              style={{
-                color: 'red',
-                fontSize: 10,
-                paddingTop: 4,
-                textAlign: 'left',
-              }}
-            >
-              {nameError}{' '}
-            </div>
-          )}
-        </label>
-        <label className={s.formLabel} htmlFor="">
-          <p className={s.labelText}>
+          </label>
+        </div>
+        <div ref={el => (emailRef = el)}>
+          <label className={s.formLabel} htmlFor="">
+            <p className={s.labelText}>
+              {emailDirty && emailError && (
+                <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                  {errorSymbol}{' '}
+                </span>
+              )}
+              Электронная почта:
+            </p>
+            <input
+              onBlur={blurHandler}
+              onChange={emailHandler}
+              type="text"
+              name="email"
+              value={email}
+              placeholder="your@email.com"
+              className={s.formInput}
+              pattern="[A-Za-zА-Яа-яЁёЄєЇї0-9._%+-]+@[A-Za-zА-Яа-яЁёЄєЇї0-9.-]+\.[A-Za-zА-Яа-яЁёЄєЇї]{2,4}$"
+              title="Email может, сoстоять из букв цифр и обязательного символа '@'"
+              required
+            />
             {emailDirty && emailError && (
-              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                {errorSymbol}{' '}
-              </span>
+              <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                {emailError}{' '}
+              </div>
             )}
-            Электронная почта:
-          </p>
-          <input
-            onBlur={blurHandler}
-            onChange={emailHandler}
-            type="text"
-            name="email"
-            value={email}
-            placeholder="your@email.com"
-            className={s.formInput}
-          />
-          {emailDirty && emailError && (
-            <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-              {emailError}{' '}
-            </div>
-          )}
-        </label>
-        <label className={s.formLabel} htmlFor="">
-          <p className={s.labelText}>
+          </label>
+        </div>
+        <div ref={el => (passwordRef = el)}>
+          <label className={s.formLabel} htmlFor="">
+            <p className={s.labelText}>
+              {passwordDirty && passwordError && (
+                <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                  {errorSymbol}{' '}
+                </span>
+              )}
+              Пароль:
+            </p>
+            <input
+              onBlur={blurHandler}
+              onChange={passwordHandler}
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Пароль"
+              className={s.formInput}
+              pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
+              title="Пароль может, сoстоять не меньше чем из шести букв цифр и символов '!@#$%^&*'"
+              required
+            />
             {passwordDirty && passwordError && (
-              <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                {errorSymbol}{' '}
-              </span>
+              <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
+                {passwordError}{' '}
+              </div>
             )}
-            Пароль:
-          </p>
-          <input
-            onBlur={blurHandler}
-            onChange={passwordHandler}
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Пароль"
-            className={s.formInput}
-          />
-          {passwordDirty && passwordError && (
-            <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-              {passwordError}{' '}
-            </div>
-          )}
-        </label>
+          </label>
+        </div>
         <div className={s.containerButton}>
           <button type="button" onClick={onClickComeBack} className={s.button}>
             ВЕРНУТЬСЯ
@@ -204,9 +263,12 @@ const RegisterForm = ({ onClickComeBack }) => {
           </button>
           {setModalOpen && (
             <Modal
-              modalTitle={`${user}, перейдите на ваш электронный адрес и подтвердите аутентификацию!`}
-              modalButtonleft={'👌'}
-              modalButtonRight={'ОК'}
+              modalTitle={`${user.split(' ')[0].slice(0, 1).toUpperCase()}${user
+                .split(' ')[0]
+                .slice(1, 12)
+                .toLowerCase()}, перейдите на ваш электронный                            адрес и подтвердите аутентификацию!`}
+              modalButtonleft={'ГОТОВО'}
+              modalButtonRight={'ВЕРНУТЬСЯ'}
               handleClickLeft={toggleModal}
               handleClickRight={toggleModal}
               onClose={toggleModal}

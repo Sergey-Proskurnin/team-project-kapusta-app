@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { gsap, Power3 } from 'gsap';
 
 import s from './login.module.css';
-import { logIn } from '../../redux/auth/auth-operations';
+import { logIn } from 'redux/auth';
 
 const LoginForm = ({ onClickRegister }) => {
   const dispatch = useDispatch();
@@ -46,10 +46,8 @@ const LoginForm = ({ onClickRegister }) => {
 
   const passwordHandler = e => {
     setPassword(e.target.value);
-    if (e.target.value.length < 3 || e.target.value.length > 10) {
-      setPasswordError(
-        'Пароль должен быть не меньше 3 и не больше 10 символов',
-      );
+    if (e.target.value.length < 6) {
+      setPasswordError('Пароль должен быть не меньше 6 символов');
       if (!e.target.value) {
         setPasswordError('это обязательное поле');
       }
@@ -116,7 +114,6 @@ const LoginForm = ({ onClickRegister }) => {
     );
   }, []);
 
-
   return (
     <div className={s.formRegistr}>
       <p className={s.promtText}>
@@ -153,6 +150,9 @@ const LoginForm = ({ onClickRegister }) => {
               value={email}
               placeholder="your@email.com"
               className={s.formInput}
+              pattern="[A-Za-zА-Яа-яЁёЄєЇї0-9._%+-]+@[A-Za-zА-Яа-яЁёЄєЇї0-9.-]+\.[A-Za-zА-Яа-яЁёЄєЇї]{2,4}$"
+              title="Email может, сoстоять из букв цифр и обязательного символа '@'"
+              required
             />
             {emailDirty && emailError && (
               <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
@@ -179,6 +179,9 @@ const LoginForm = ({ onClickRegister }) => {
               value={password}
               placeholder="Пароль"
               className={s.formInput}
+              pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
+              title="Пароль может, сoстоять не меньше чем из шести букв цифр и символов '!@#$%^&*'"
+              required
             />
             {passwordDirty && passwordError && (
               <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
@@ -198,7 +201,5 @@ const LoginForm = ({ onClickRegister }) => {
       </form>
     </div>
   );
-
-  
 };
 export default LoginForm;
