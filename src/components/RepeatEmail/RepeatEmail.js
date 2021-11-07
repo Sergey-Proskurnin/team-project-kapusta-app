@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   repeatVerify,
   getUserEmail,
-    getMessageRepeatEmailVerify,
+  getMessageRepeatEmailVerify,
   repeatEmailVerifyOk,
 } from 'redux/auth';
 import Modal from 'components/Modal';
@@ -25,8 +25,8 @@ const RepeatEmail = () => {
   };
 
   const closeModal = () => {
-      setModal(false);
-      dispatch(repeatEmailVerifyOk());
+    setModal(false);
+    dispatch(repeatEmailVerifyOk());
   };
 
   return (
@@ -39,8 +39,8 @@ const RepeatEmail = () => {
       {modal && (
         <Modal
           modalTitle={`${messageSent}`}
-          modalButtonleft={'👌'}
-          modalButtonRight={'ОК'}
+          modalButtonleft={'ГОТОВО'}
+          modalButtonRight={'ВЕРНУТЬСЯ'}
           handleClickLeft={closeModal}
           handleClickRight={closeModal}
           onClose={closeModal}

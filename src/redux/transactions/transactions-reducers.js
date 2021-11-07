@@ -1,5 +1,20 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import * as actions from './transactions-actions';
+import {
+  registerRequest,
+  registerSuccess,
+  registerError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
+  loginRequest,
+  loginSuccess,
+  loginError,
+  repeatEmailVerifyRequest,
+  repeatEmailVerifySuccess,
+  repeatEmailVerifyOk,
+  repeatEmailVerifyError,
+} from 'redux/auth';
 
 const transactionsDay = createReducer([], {
   [actions.getTransactionsSuccess]: (_, { payload }) => payload,
@@ -44,6 +59,19 @@ const loader = createReducer(false, {
   [actions.getTransactionsMonthYearRequest]: () => true,
   [actions.getTransactionsMonthYearSuccess]: () => false,
   [actions.getTransactionsMonthYearError]: () => false,
+  [registerRequest]: () => true,
+  [registerSuccess]: () => false,
+  [registerError]: () => false,
+  [loginRequest]: () => true,
+  [loginSuccess]: () => false,
+  [loginError]: () => false,
+  [logoutRequest]: () => true,
+  [logoutSuccess]: () => false,
+  [logoutError]: () => false,
+  [repeatEmailVerifyRequest]: () => true,
+  [repeatEmailVerifySuccess]: () => false,
+  [repeatEmailVerifyOk]: () => false,
+  [repeatEmailVerifyError]: () => false,
 });
 
 const error = createReducer(null, {
