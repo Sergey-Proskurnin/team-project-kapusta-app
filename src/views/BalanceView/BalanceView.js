@@ -75,8 +75,6 @@ const BalanceView = () => {
     day.getMonth() + 1
   }.${day.getFullYear()}`;
 
-  console.log(listRender);
-
   return (
     <contextProps.Provider value={contextValueBalance}>
       <Container>
