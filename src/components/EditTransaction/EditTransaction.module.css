@@ -86,6 +86,8 @@
     position: relative;
   }
   .buttonOk {
+    margin-left: 5px;
+
     cursor: pointer;
     color: #fff;
     background-color: #ff751d;
@@ -102,6 +104,7 @@
   }
 
   .buttonCancel {
+    margin-left: 10px;
     cursor: pointer;
     color: #52555f;
     background-color: #f5f6fb;

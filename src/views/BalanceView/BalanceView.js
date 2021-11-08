@@ -63,6 +63,9 @@ const BalanceView = () => {
     typeToggle(e);
     return listRender ? setListRender(false) : setListRender(true);
   };
+  const onBack = () => {
+    setListRender(true);
+  };
 
   const viewPort = useWindowDimensions();
 
@@ -71,6 +74,8 @@ const BalanceView = () => {
   const startDate = `${day.getDate()}.${
     day.getMonth() + 1
   }.${day.getFullYear()}`;
+
+  console.log(listRender);
 
   return (
     <contextProps.Provider value={contextValueBalance}>
@@ -163,7 +168,11 @@ const BalanceView = () => {
                 <button className={s.buttonArrowGoBack} onClick={onArrow}>
                   &#8592;
                 </button>
-                <AddTransaction transactionType={type} date={date} />
+                <AddTransaction
+                  onCloseForm={onBack}
+                  transactionType={type}
+                  date={date}
+                />
               </>
             )}
           </>

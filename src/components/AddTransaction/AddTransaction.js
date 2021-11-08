@@ -15,7 +15,7 @@ import Dropdown from 'components/Dropdown';
 
 import CalculatorInput from 'components/CalculatorInput';
 
-export default function AddTransaction() {
+export default function AddTransaction({ onCloseForm }) {
   const { type, picker, handleCalendarClick, closePicker, date } =
     useContext(contextProps);
   const dispatch = useDispatch();
@@ -39,6 +39,11 @@ export default function AddTransaction() {
     };
     dispatch(transactionsOperations.addTransaction(transaction));
     cleanState();
+  };
+
+  const handleSubmitMobile = e => {
+    handleSubmit(e);
+    onCloseForm();
   };
 
   const handleCalcClick = () => {
@@ -253,7 +258,7 @@ export default function AddTransaction() {
       {viewPort.width < 768 && (
         <>
           <div>
-            <form onSubmit={handleSubmit} className={s.containerForm320}>
+            <form onSubmit={handleSubmitMobile} className={s.containerForm320}>
               <div className={s.containerFormTablet}>
                 <div className={s.inputForm}>
                   <label>

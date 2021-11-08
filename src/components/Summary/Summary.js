@@ -14,8 +14,11 @@ const Summary = ({ year }) => {
   const loader = useSelector(getLoader);
 
   useEffect(() => {
-    dispatch(transactionsOperations.getMonthlyBalancesYear(year));
+    if (year > 0) {
+      dispatch(transactionsOperations.getMonthlyBalancesYear(year));
+    }
   }, [totalBalance, year, dispatch]);
+
   const balances = useSelector(selectors.getMonthlyBalances);
 
   const sortedBalances = [...balances].sort((a, b) => b.month - a.month);
