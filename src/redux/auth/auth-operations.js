@@ -3,6 +3,9 @@ import {
   registerRequest,
   registerSuccess,
   registerError,
+  uploadAvatarRequest,
+  uploadAvatarSuccess,
+  uploadAvatarError,
   repeatEmailVerifyRequest,
   repeatEmailVerifySuccess,
   repeatEmailVerifyError,
@@ -23,6 +26,7 @@ import {
   fetchSignUp,
   fetchLogin,
   fetchLogout,
+  fetchAvatar,
   fetchCurrent,
   fetchRepeatVerify,
   fetchRefreshToken,
@@ -74,6 +78,17 @@ const logOut = () => async dispatch => {
   }
 };
 
+const uploadAvatar = formData => async dispatch => {
+  dispatch(uploadAvatarRequest());
+  try {
+    const response = await fetchAvatar(formData);
+    dispatch(uploadAvatarSuccess(response.data.data));
+  } catch ({ response }) {
+    dispatch(uploadAvatarError(response.data.message));
+    Alert(response.data.message);
+  }
+};
+
 const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
@@ -120,4 +135,12 @@ const refresh = async (dispatch, getState) => {
   }
 };
 
-export { register, repeatVerify, logOut, logIn, getCurrentUser, refresh };
+export {
+  register,
+  repeatVerify,
+  logOut,
+  logIn,
+  getCurrentUser,
+  refresh,
+  uploadAvatar,
+};

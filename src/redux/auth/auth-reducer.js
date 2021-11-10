@@ -10,6 +10,9 @@ import {
   repeatEmailVerifyError,
   logoutSuccess,
   logoutError,
+  uploadAvatarRequest,
+  uploadAvatarSuccess,
+  uploadAvatarError,
   loginSuccess,
   loginError,
   getCurrentUserRequest,
@@ -31,6 +34,7 @@ const initialUserState = { name: null, email: null, balance: 0 };
 const user = createReducer(initialUserState, {
   [registerSuccess]: (_, { payload }) => payload.user,
   [loginSuccess]: (_, { payload }) => payload.user,
+  [uploadAvatarSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
@@ -58,6 +62,9 @@ const error = createReducer(null, {
   [loginError]: setError,
   [loginSuccess]: () => null,
   [loginRequest]: () => null,
+  [uploadAvatarError]: setError,
+  [uploadAvatarSuccess]: () => null,
+  [uploadAvatarRequest]: () => null,
   [logoutError]: setError,
   [logoutError]: () => null,
   [logoutRequest]: () => null,

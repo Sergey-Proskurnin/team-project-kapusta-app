@@ -3,6 +3,7 @@ import { getUserName, getUserAvatar } from 'redux/auth';
 
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import s from './UserInfo.module.css';
+import AvatarModal from 'components/AvatarModal';
 
 const UserInfo = () => {
   const UserName = useSelector(state => getUserName(state));
@@ -23,28 +24,31 @@ const UserInfo = () => {
   return (
     <>
       {viewPort.width >= 768 && (
-        <div className={s.userInfo}>
-          <div className={s.userInfo_container}>
-            {UserAvatar ? (
-              <a
-                href="https://ru.gravatar.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
-              </a>
-            ) : (
-              <a
-                href="https://ru.gravatar.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p className={s.userAvatar}>{FirstLetterOfUser}</p>
-              </a>
-            )}
-            <p className={s.userFullName}>{UserName}</p>
+        <>
+          <AvatarModal />
+          <div className={s.userInfo}>
+            <div className={s.userInfo_container}>
+              {UserAvatar ? (
+                <a
+                  href="https://ru.gravatar.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={UserAvatar} alt="Avatar" className={s.userAvatar} />
+                </a>
+              ) : (
+                <a
+                  href="https://ru.gravatar.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p className={s.userAvatar}>{FirstLetterOfUser}</p>
+                </a>
+              )}
+              <p className={s.userFullName}>{UserName}</p>
+            </div>
           </div>
-        </div>
+        </>
       )}
       {viewPort.width < 768 && (
         <div className={s.userInfo_container}>

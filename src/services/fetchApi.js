@@ -23,11 +23,18 @@ const fetchCurrent = () => axios.get('/users/current');
 
 const fetchRefreshToken = () => axios.get('/users/refresh');
 
-const fetchRepeatVerify = (email) => axios.post('/users/verify', email);
+const fetchRepeatVerify = email => axios.post('/users/verify', email);
 
-
-
-
+const fetchAvatar = formData =>
+  axios.patch(
+    '/users/avatars',
+    formData,
+    // {
+    // headers: {
+    //   'Content-Type': 'multipart/form-data',
+    // }
+    // }
+  );
 
 //--------------------------transactions-operations-------------------------------
 
@@ -59,5 +66,6 @@ export {
   fetchCurrent,
   fetchRefreshToken,
   fetchRepeatVerify,
+  fetchAvatar,
   fetch,
 };
