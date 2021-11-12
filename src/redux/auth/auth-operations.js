@@ -78,12 +78,17 @@ const logOut = () => async dispatch => {
   }
 };
 
-const uploadAvatar = formData => async dispatch => {
+const uploadAvatar = formData => async (dispatch, getState) => {
   dispatch(uploadAvatarRequest());
   try {
     const response = await fetchAvatar(formData);
     dispatch(uploadAvatarSuccess(response.data.data));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetchAvatar(formData);
+      dispatch(uploadAvatarSuccess(response.data.data));
+    }
     dispatch(uploadAvatarError(response.data.message));
     Alert(response.data.message);
   }
