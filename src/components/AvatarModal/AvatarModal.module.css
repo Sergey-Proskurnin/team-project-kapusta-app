@@ -1,1 +1,219 @@
+@media screen and (min-width: 320px) {
+  .avatarModallWrapper {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  .changeAvatarForm {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    background: white;
+    height: 320px;
+    padding: 40px;
+    border-radius: 10%;
+  }
+  .modalAvatarTitle {
+    color: #52555f;
+    margin-bottom: 10px;
+  }
+  .dropZone {
+    border: 2px dashed #52555f;
+    margin: auto;
+    width: 85%;
+    height: 30%;
+    color: #b4b7c5;
+  }
+  .arrowDown {
+    font-size: 40px;
+    text-align: center;
+    color: #52555f;
+  }
+  .arrowDownOrange {
+    font-size: 40px;
+    text-align: center;
+    color: #ff751d;
+  }
+  .fileName {
+    text-align: center;
+  }
 
+  .buttonDelFile {
+    display: block;
+    margin: 5px auto;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    color: #52555f;
+    background-color: #f5f6fb;
+  }
+  .buttonDelFile:hover,
+  .buttonDelFile:focus {
+    color: #fff;
+    background-color: #ff751d;
+  }
+  .inputFileAvatar {
+    display: none;
+  }
+  .avatarInputFileLabel:hover,
+  .avatarInputFileLabel:focus {
+    color: #fff;
+    background-color: #ff751d;
+  }
+
+  .avatarInputFileLabel {
+    width: max-content;
+    text-align: center;
+    border-radius: 16px;
+    padding: 10px;
+    margin: 10px auto;
+    color: #52555f;
+    background-color: #f5f6fb;
+    cursor: pointer;
+  }
+  .nameInput {
+    outline: none;
+    border: none;
+    text-align: center;
+    color: #52555f;
+    border-bottom: 1px solid #f5f6fb;
+    cursor: pointer;
+    max-width: 80%;
+  }
+  .nameLabel {
+    color: #b4b7c5;
+    text-align: center;
+  }
+  .avatarInputFileLabel:hover,
+  .avatarInputFileLabel:focus {
+    color: #fff;
+    background-color: #ff751d;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .buttonOk {
+    margin-left: 5px;
+
+    cursor: pointer;
+    color: #fff;
+    background-color: #ff751d;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
+
+  .buttonOk:hover {
+    color: #52555f;
+    background-color: #f5f6fb;
+  }
+
+  .buttonCancel {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #52555f;
+    background-color: #f5f6fb;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
+
+  .buttonCancel:hover {
+    color: #f5f6fb;
+    background-color: #ff751d;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
+
+  .closeIcon {
+    margin-left: auto;
+    color: #52555f;
+    cursor: pointer;
+  }
+  .closeIcon:hover {
+    margin-left: auto;
+    color: #ff751d;
+  }
+}
+@media screen and (min-width: 768px) {
+  .avatarModallWrapper {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .changeAvatarForm {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: white;
+    height: 300px;
+    padding: 15px 30px 40px;
+    border-radius: 10%;
+  }
+
+  .buttonOk {
+    color: #fff;
+    background-color: #ff751d;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
+
+  .buttonOk:hover {
+    color: #52555f;
+    background-color: #f5f6fb;
+  }
+
+  .buttonCancel {
+    color: #52555f;
+    background-color: #f5f6fb;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
+
+  .buttonCancel:hover {
+    color: #f5f6fb;
+    background-color: #ff751d;
+    outline: none;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 16px;
+  }
+}
