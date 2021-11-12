@@ -34,6 +34,8 @@
   align-self: center;
   border-radius: 30px;
   background-color: #f5f6fa;
+
+  cursor: pointer;
 }
 
 .userFullName {
@@ -41,6 +43,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  margin-right: 10px;
 
   font-size: 12px;
   letter-spacing: 0.04em;
@@ -52,4 +55,10 @@
 .userFullName:hover {
   font-weight: bold;
   color: #ff751d;
+}
+.MuiSvgIcon-root {
+  fill: #ff751d;
+}
+.iconWrapper {
+  cursor: pointer;
 }
