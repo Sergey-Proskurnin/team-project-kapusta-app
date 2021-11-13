@@ -14,14 +14,14 @@ const UserInfo = () => {
   const avatar = useSelector(state => getUserAvatar(state));
   const loader = useSelector(getLoader);
   const [editProfile, setEditProfile] = useState(false);
-  const defaultGravatar =
-    'https://s.gravatar.com/avatar/c61f12f616393799baecd77a09b6565c?s=250';
-  const defaultGravatarTo =
-    'https://s.gravatar.com/avatar/eee8af510870708594f1c5465104cffd?s=250';
-  const UserAvatar =
-    avatar !== defaultGravatar && avatar !== defaultGravatarTo
-      ? avatar
-      : undefined;
+  // const defaultGravatar =
+  //   'https://s.gravatar.com/avatar/c61f12f616393799baecd77a09b6565c?s=250';
+  // const defaultGravatarTo =
+  //   'https://s.gravatar.com/avatar/eee8af510870708594f1c5465104cffd?s=250';
+  // const UserAvatar =
+  //   avatar !== defaultGravatar && avatar !== defaultGravatarTo
+  //   ? avatar
+  //   : undefined;
 
   const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
   const viewPort = useWindowDimensions();
@@ -41,9 +41,9 @@ const UserInfo = () => {
           {editProfile && <AvatarModal closeAvatarModal={closeProfileModal} />}
           <div className={s.userInfo}>
             <div className={s.userInfo_container}>
-              {UserAvatar ? (
+              {avatar ? (
                 <img
-                  src={UserAvatar}
+                  src={avatar}
                   alt="Avatar"
                   className={s.userAvatar}
                   onClick={openModalProfile}
@@ -64,9 +64,9 @@ const UserInfo = () => {
       {viewPort.width < 768 && (
         <div className={s.userInfo_container}>
           {editProfile && <AvatarModal closeAvatarModal={closeProfileModal} />}
-          {UserAvatar ? (
+          {avatar ? (
             <img
-              src={UserAvatar}
+              src={avatar}
               alt="Avatar"
               className={s.userAvatar}
               onClick={openModalProfile}

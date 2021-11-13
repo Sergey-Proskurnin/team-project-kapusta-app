@@ -24,7 +24,6 @@ const AvatarModal = ({ closeAvatarModal }) => {
   const handleDropAvatar = e => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    console.log(files[0].type.includes('image'));
     if (files[0].type.includes('image')) {
       setFile(files[0]);
     } else {
