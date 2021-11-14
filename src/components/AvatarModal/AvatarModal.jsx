@@ -107,10 +107,10 @@ const AvatarModal = ({ closeAvatarModal }) => {
             className={s.inputFileAvatar}
             onChange={handleChangeAvatar}
             accept="image/png, image/jpeg"
-          />{' '}
+          />
         </label>
         <label className={s.nameLabel}>
-          Имя:
+          &#128396; Имя:
           <input
             type="text"
             className={s.nameInput}
