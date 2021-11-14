@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { uploadAvatar, getUserName } from 'redux/auth';
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import Alert from 'components/Alert';
 import s from './AvatarModal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -24,10 +25,14 @@ const AvatarModal = ({ closeAvatarModal }) => {
   const handleDropAvatar = e => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    if (files[0].type.includes('image')) {
+    if (
+      (files[0].type.includes('image/png') ||
+        files[0].type.includes('image/jpeg')) &&
+      files[0].size <= 2000000
+    ) {
       setFile(files[0]);
     } else {
-      alert('формат файла может быть .png или.jpg');
+      Alert('Формат файла может быть .png или .jpg и не должен привышать 2 МВ');
     }
   };
   const handleDragOver = e => {
@@ -39,7 +44,15 @@ const AvatarModal = ({ closeAvatarModal }) => {
   };
 
   const handleChangeAvatar = e => {
-    setFile(e.target.files[0]);
+    if (
+      (e.target.files[0].type.includes('image/png') ||
+        e.target.files[0].type.includes('image/jpeg')) &&
+      e.target.files[0].size <= 2000000
+    ) {
+      setFile(e.target.files[0]);
+    } else {
+      Alert('Формат файла может быть .png или .jpg и не должен привышать 2 МВ');
+    }
   };
   const onHandleChangeName = e => {
     setUserNewName(e.target.value);
@@ -67,7 +80,7 @@ const AvatarModal = ({ closeAvatarModal }) => {
           onDrop={handleDropAvatar}
           onDragOver={handleDragOver}
         >
-          Аватар
+          Перетяните сюда свой аватар
           {file ? (
             <>
               <p className={s.fileName}>{file.name}</p>
@@ -93,7 +106,7 @@ const AvatarModal = ({ closeAvatarModal }) => {
             name="avatar"
             className={s.inputFileAvatar}
             onChange={handleChangeAvatar}
-            accept="image/*"
+            accept="image/png, image/jpeg"
           />{' '}
         </label>
         <label className={s.nameLabel}>

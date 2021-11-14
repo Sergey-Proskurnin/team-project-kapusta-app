@@ -4,25 +4,13 @@ import { useState } from 'react';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import s from './UserInfo.module.css';
 import AvatarModal from 'components/AvatarModal';
-import OnLoader from 'components/OnLoader';
-import { getLoader } from 'redux/transactions';
 
 import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined';
 const UserInfo = () => {
   const UserName = useSelector(state => getUserName(state));
 
   const avatar = useSelector(state => getUserAvatar(state));
-  const loader = useSelector(getLoader);
   const [editProfile, setEditProfile] = useState(false);
-  // const defaultGravatar =
-  //   'https://s.gravatar.com/avatar/c61f12f616393799baecd77a09b6565c?s=250';
-  // const defaultGravatarTo =
-  //   'https://s.gravatar.com/avatar/eee8af510870708594f1c5465104cffd?s=250';
-  // const UserAvatar =
-  //   avatar !== defaultGravatar && avatar !== defaultGravatarTo
-  //   ? avatar
-  //   : undefined;
-
   const FirstLetterOfUser = UserName.slice(0, 1).toUpperCase();
   const viewPort = useWindowDimensions();
 
@@ -35,7 +23,6 @@ const UserInfo = () => {
   };
   return (
     <>
-      {loader && <OnLoader />}
       {viewPort.width >= 768 && (
         <>
           {editProfile && <AvatarModal closeAvatarModal={closeProfileModal} />}
@@ -53,7 +40,9 @@ const UserInfo = () => {
                   {FirstLetterOfUser}
                 </p>
               )}
-              <p className={s.userFullName}>{UserName} </p>
+              <p className={s.userFullName} onClick={openModalProfile}>
+                {UserName}{' '}
+              </p>
               <div className={s.iconWrapper} onClick={openModalProfile}>
                 <TuneOutlinedIcon color="disabled" />
               </div>
