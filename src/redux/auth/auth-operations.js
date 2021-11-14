@@ -88,9 +88,10 @@ const uploadAvatar = formData => async (dispatch, getState) => {
       await refresh(dispatch, getState);
       const response = await fetchAvatar(formData);
       dispatch(uploadAvatarSuccess(response.data.data));
+    } else {
+      dispatch(uploadAvatarError(response.data.message));
+      Alert(response.data.message);
     }
-    dispatch(uploadAvatarError(response.data.message));
-    Alert(response.data.message);
   }
 };
 

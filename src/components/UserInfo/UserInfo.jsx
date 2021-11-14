@@ -40,7 +40,9 @@ const UserInfo = () => {
                   {FirstLetterOfUser}
                 </p>
               )}
-              <p className={s.userFullName}>{UserName} </p>
+              <p className={s.userFullName} onClick={openModalProfile}>
+                {UserName}{' '}
+              </p>
               <div className={s.iconWrapper} onClick={openModalProfile}>
                 <TuneOutlinedIcon color="disabled" />
               </div>

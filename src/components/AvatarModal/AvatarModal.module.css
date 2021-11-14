@@ -19,7 +19,7 @@
     justify-content: space-around;
     text-align: center;
     background: white;
-    height: 320px;
+    /* height: 320px; */
     padding: 40px;
     border-radius: 10%;
   }
@@ -31,7 +31,8 @@
     border: 2px dashed #52555f;
     margin: auto;
     width: 85%;
-    height: 30%;
+    overflow: hidden;
+    /* height: 30%; */
     color: #b4b7c5;
   }
   .arrowDown {
@@ -177,7 +178,7 @@
     flex-direction: column;
     justify-content: space-around;
     background: white;
-    height: 300px;
+    /* height: 300px; */
     padding: 15px 30px 40px;
     border-radius: 10%;
   }

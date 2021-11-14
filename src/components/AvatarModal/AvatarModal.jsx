@@ -25,10 +25,14 @@ const AvatarModal = ({ closeAvatarModal }) => {
   const handleDropAvatar = e => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    if (files[0].type.includes('image/png') || files[0].type.includes('image/jpeg')) {
+    if (
+      (files[0].type.includes('image/png') ||
+        files[0].type.includes('image/jpeg')) &&
+      files[0].size <= 2000000
+    ) {
       setFile(files[0]);
     } else {
-      Alert('Формат файла может быть .png или .jpg');
+      Alert('Формат файла может быть .png или .jpg и не должен привышать 2 МВ');
     }
   };
   const handleDragOver = e => {
@@ -40,7 +44,15 @@ const AvatarModal = ({ closeAvatarModal }) => {
   };
 
   const handleChangeAvatar = e => {
-    setFile(e.target.files[0]);
+    if (
+      (e.target.files[0].type.includes('image/png') ||
+        e.target.files[0].type.includes('image/jpeg')) &&
+      e.target.files[0].size <= 2000000
+    ) {
+      setFile(e.target.files[0]);
+    } else {
+      Alert('Формат файла может быть .png или .jpg и не должен привышать 2 МВ');
+    }
   };
   const onHandleChangeName = e => {
     setUserNewName(e.target.value);
@@ -68,7 +80,7 @@ const AvatarModal = ({ closeAvatarModal }) => {
           onDrop={handleDropAvatar}
           onDragOver={handleDragOver}
         >
-          Аватар
+          Перетяните сюда свой аватар
           {file ? (
             <>
               <p className={s.fileName}>{file.name}</p>
