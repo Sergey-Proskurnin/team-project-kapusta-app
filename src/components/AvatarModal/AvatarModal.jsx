@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { uploadAvatar, getUserName } from 'redux/auth';
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import Alert from 'components/Alert';
 import s from './AvatarModal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -24,10 +25,10 @@ const AvatarModal = ({ closeAvatarModal }) => {
   const handleDropAvatar = e => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    if (files[0].type.includes('image')) {
+    if (files[0].type.includes('image/png') || files[0].type.includes('image/jpeg')) {
       setFile(files[0]);
     } else {
-      alert('формат файла может быть .png или.jpg');
+      Alert('Формат файла может быть .png или .jpg');
     }
   };
   const handleDragOver = e => {
@@ -93,7 +94,7 @@ const AvatarModal = ({ closeAvatarModal }) => {
             name="avatar"
             className={s.inputFileAvatar}
             onChange={handleChangeAvatar}
-            accept="image/*"
+            accept="image/png, image/jpeg"
           />{' '}
         </label>
         <label className={s.nameLabel}>
