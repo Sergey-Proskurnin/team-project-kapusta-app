@@ -20,6 +20,8 @@
     padding: 0;
     text-align: center;
     list-style: none;
+    height: 136%;
+    overflow-x: hidden;
   }
 
   .summaryItem {
