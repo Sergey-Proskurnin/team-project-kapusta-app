@@ -1,12 +1,26 @@
-import { useSelector } from 'react-redux';
-import { getUserName, getUserAvatar } from 'redux/auth';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined';
+
+import { getUserName, getUserAvatar } from 'redux/auth';
+
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import s from './UserInfo.module.css';
 import AvatarModal from 'components/AvatarModal';
 
-import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined';
+const useStyles = makeStyles(theme => ({
+  customHoverFocus: {
+    '&:hover, &.Mui-focusVisible': {
+      color: '#ff751d',
+      backgroundColor: 'transparent',
+    },
+    '&:focus': { color: '#ff751d', backgroundColor: 'transparent' },
+  },
+}));
+
 const UserInfo = () => {
+  const classes = useStyles();
   const UserName = useSelector(state => getUserName(state));
 
   const avatar = useSelector(state => getUserAvatar(state));
@@ -43,9 +57,9 @@ const UserInfo = () => {
               <p className={s.userFullName} onClick={openModalProfile}>
                 {UserName}{' '}
               </p>
-              <div className={s.iconWrapper} onClick={openModalProfile}>
-                <TuneOutlinedIcon color="disabled" />
-              </div>
+              <button className={s.iconWrapper} onClick={openModalProfile} type="button">
+                <TuneOutlinedIcon color="disabled" className={classes.customHoverFocus }/>
+              </button>
             </div>
           </div>
         </>
@@ -65,9 +79,9 @@ const UserInfo = () => {
               {FirstLetterOfUser}
             </p>
           )}
-          <div className={s.iconWrapper} onClick={openModalProfile}>
-            <TuneOutlinedIcon color="disabled" />
-          </div>
+          <button className={s.iconWrapper} onClick={openModalProfile} >
+            <TuneOutlinedIcon color="disabled" className={classes.customHoverFocus} type="button"/>
+          </button>
         </div>
       )}
     </>

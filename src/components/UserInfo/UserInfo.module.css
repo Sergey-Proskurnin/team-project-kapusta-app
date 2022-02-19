@@ -60,5 +60,8 @@
   fill: #ff751d;
 }
 .iconWrapper {
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
   cursor: pointer;
 }
